@@ -198,7 +198,7 @@ h6 {
 }
 .categories .container article {
   height: 150px;
-  border-radius: 5px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -217,4 +217,14 @@ h6 {
 .categories .container article a {
   background-color: #F1F1F1;
   padding-bottom: 15px;
+}
+
+.products-display .container article {
+  background-color: #D87D4A;
+  background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+  background-position: center;
+  background-size: cover;
+}
+.products-display .container article img {
+  width: 150px;
 }/*# sourceMappingURL=dashboard.css.map */
