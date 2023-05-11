@@ -1,0 +1,15 @@
+@use "../../mixins" as *;
+section{
+    .container{
+        width: 500px;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    // .hero{
+    //      @include flex(flex-start, center, none ,column);
+       
+    // }
+}
+
+// for categories firs solution would be to erase flex-direction and set width for artile to 100% and the gap 10px

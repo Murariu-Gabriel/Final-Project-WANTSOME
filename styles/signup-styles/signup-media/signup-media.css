@@ -1,0 +1,10 @@
+@media screen and (min-width: 500px) {
+  section .container {
+    width: 500px;
+    height: 650px;
+  }
+  section .container form .names {
+    flex-direction: row;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=signup-media.css.map */

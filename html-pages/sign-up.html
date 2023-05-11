@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/signup-styles/signup.css" />
+    <link
+      rel="stylesheet"
+      href="/styles/signup-styles/signup-media/signup-media.css"
+      media="screen and (min-width: 500px)"
+    />
+
+    <title>Sign Up</title>
+  </head>
+  <body>
+   
+    <section>
+      <div class="container">
+        <form action="">
+          <h2>sign up</h2>
+          <div class="names">
+            <div>
+              <label for="first-name">First Name</label>
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                placeholder="First Name"
+                required
+                minlength="3"
+                maxlength="15"
+              />
+            </div>
+
+
+            <div>
+              <label for="last-name">Last Name</label>
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                placeholder="Last Name"
+                required
+                minlength="3"
+                maxlength="15"
+              />
+
+            </div>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Insert your email"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Insert your password"
+              minlength="8"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="repeated-password">Repeat Password</label>
+            <input
+              type="password"
+              id="repeated-password"
+              name="repeated-password"
+              placeholder="Repeat your password"
+              minlength="8"
+              required
+            />
+          </div>
+
+          <div class="terms">
+            <input
+              type="checkbox"
+              name="condition-term"
+              id="condition-terms"
+              required
+            />
+            <label for="condition-terms"
+              >I agree to the <a href="">terms of user</a></label
+            >
+          </div>
+
+          <div class="buttons">
+            <button type="submit" class="button-1">sign up</button>
+            <a href="/html-pages/login.html" class="button-3" >
+              Login <img src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg" alt="button-arrow" />
+          </a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

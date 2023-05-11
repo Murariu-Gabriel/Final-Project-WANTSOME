@@ -1,0 +1,36 @@
+@mixin just-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@mixin flex($justify: none, $align: none, $wrap: none, $direction: none) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+}
+
+
+@mixin ul {
+    ul{
+        padding: 0;
+        @include flex(center , none , wrap , none);
+        list-style: none;
+        padding: 10px;
+
+        li{
+            padding: 0 15px;
+            cursor: pointer;
+            a{  
+                text-decoration: none;
+                 color: $white;
+
+                &:hover{
+                      color: $black;
+                }
+            }
+        }
+    }
+}

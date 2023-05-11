@@ -1,0 +1,17 @@
+
+    @media screen and (min-width: 500px) {
+       
+       section{
+           .container{
+               width: 500px;
+               height: 650px;
+
+                    form{
+                        .names{
+                        flex-direction: row;
+                        justify-content: center;
+                    }
+                }
+           }
+       }
+    }

@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+h1, h2, h3, h4, h5, h6, .overline, .subtitle {
+  text-transform: uppercase;
+}
+
+h1 {
+  letter-spacing: 2px;
+  line-height: 58px;
+  font-size: 56px;
+}
+
+h2 {
+  letter-spacing: 1.5px;
+  line-height: 44px;
+  font-size: 40px;
+}
+
+h3 {
+  letter-spacing: 1.15px;
+  line-height: 36px;
+  font-size: 32px;
+}
+
+h4 {
+  letter-spacing: 2px;
+  line-height: 36px;
+  font-size: 28px;
+}
+
+h5 {
+  letter-spacing: 1.7px;
+  line-height: 33px;
+  font-size: 24px;
+}
+
+h6 {
+  letter-spacing: 1.3px;
+  line-height: 24px;
+  font-size: 18px;
+}
+
+.overline {
+  letter-spacing: 10px;
+  line-height: 19px;
+  font-size: 14px;
+  color: #D87D4A;
+}
+
+.subtitle {
+  letter-spacing: 1px;
+  line-height: 25px;
+  font-size: 13px;
+  color: #D87D4A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+a:hover {
+  color: #D87D4A;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+img {
+  display: block;
+}
+
+input {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 15px 20px;
+  border-radius: 10px;
+  caret-color: #D87D4A;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #D87D4A;
+}
+
+.button-1, .button-2, .button-2b, .button-3 {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button-1 {
+  color: #FFFFFF;
+  background-color: #D87D4A;
+  border: none;
+  padding: 15px 30px;
+}
+.button-1:hover {
+  background-color: #FBAF85;
+}
+
+.button-2 {
+  border: 1px solid #000000;
+  background-color: #FFFFFF;
+  padding: 15px 30px;
+}
+.button-2:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.button-2b {
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 15px 30px;
+}
+.button-2b:hover {
+  background-color: gray;
+  color: #FFFFFF;
+}
+
+.button-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: gray;
+  background-color: #FFFFFF;
+  border: none;
+}
+.button-3:hover {
+  color: #D87D4A;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: none;
+  flex-direction: column;
+  background-color: #F1F1F1;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: none;
+  flex-wrap: none;
+  flex-direction: none;
+}
+section .container {
+  display: flex;
+  align-items: none;
+  justify-content: none;
+  flex-wrap: none;
+  flex-direction: column;
+  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.65);
+  background-color: #FAFAFA;
+  width: 100vw;
+  height: 100vh;
+}
+section .container form {
+  display: flex;
+  flex-direction: column;
+}
+section .container form h2 {
+  text-align: center;
+  margin: 0;
+  text-transform: capitalize;
+  padding-top: 40px;
+}
+section .container form div {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+section .container form a {
+  align-self: flex-end;
+  text-transform: capitalize;
+}
+section .container form button {
+  margin-top: 30px;
+}
+section .container .socials {
+  text-transform: capitalize;
+}
+section .container .socials ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: none;
+  flex-direction: none;
+  gap: 15px;
+}
+section .container .socials ul a {
+  font-size: 1.5rem;
+}
+section .container .socials ul a:hover {
+  fill: #D87D4A;
+}
+section .container .socials div {
+  text-align: center;
+}
+section .container .socials div:last-of-type {
+  padding-top: 30px;
+}
+section .container .socials div:last-of-type a {
+  text-transform: uppercase;
+  font-size: larger;
+}
+section .container img {
+  width: 60px;
+  align-self: center;
+}/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,16 @@
+@use "variables" as *;
+@use "spacings" as *;
+
+input {
+    font-weight: bold;
+    border: 2px solid $gray;
+    padding: $base-padding $base-padding + 5px;
+    border-radius: 10px;
+    caret-color: $orange;
+    
+    
+    &:focus {
+      outline: none;
+      border: 2px solid $orange;
+    }
+  }

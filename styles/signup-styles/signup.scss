@@ -1,0 +1,112 @@
+@use "../typography" as *;
+@use "../default" as *;
+@use "../variables" as *;
+@use "../spacings" as *;
+@use "../mixins" as *;
+@use "../form-els" as *;
+@use "../buttons";
+
+body {
+  @include flex(center, center, none, none);
+  background-color: $light-gray;
+  height: 100vh;
+}
+
+.container {
+  @include flex(center, none, none, column);
+  box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.65);
+  // background-color: $gray;
+  width: 100vw;
+  height: 100vh;
+  form {
+    @include just-flex;
+
+    h2 {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+
+
+    div {
+      margin-top: $base-spacing - 5;
+      @include just-flex;
+      gap: $base-spacing - 5;
+       
+    }
+
+    a {
+      align-self: flex-end;
+      text-transform: uppercase;
+    }
+
+    .terms {
+      margin-top: $base-spacing + 10;
+        flex-direction: row;
+        a{
+          font-weight: bold;
+        }
+    }
+
+    .buttons {
+      margin-top: $m-spacing ;
+      flex-direction: row;
+      justify-content: center;
+
+      button, a{
+        width: 50%;
+      }
+
+      .button-3{
+        background-color: inherit; 
+        padding: $base-spacing $m-spacing;
+       
+      }
+    }
+
+  }
+}
+
+
+
+
+
+// .socials {
+//   text-transform: capitalize;
+//   @include flex(space-between, center, none, column);
+//   gap: $xxl-spacing - 20;
+//   ul {
+//     @include flex;
+//     justify-content: center;
+//     gap: $base-spacing;
+
+//     a {
+//       font-size: 1.5rem;
+//       &:hover {
+//         opacity: 0.7;
+//       }
+//     }
+
+//     :first-of-type {
+//       a {
+//         color: rgb(68, 74, 240);
+//       }
+//     }
+
+//     :last-of-type {
+//       a {
+//         color: rgb(0, 162, 255);
+//       }
+//     }
+//   }
+
+//   div{
+//     text-align: center;
+//     a {
+//         text-transform: uppercase;
+//         font-size: larger;
+//       }
+//   }
+
+// }
