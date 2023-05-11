@@ -75,7 +75,7 @@ ul {
 }
 
 a {
-  color: #000000;
+  color: #FFFFFF;
   text-decoration: none;
 }
 a:hover {
@@ -134,7 +134,7 @@ input:focus {
   padding: 15px 30px;
 }
 .button-2b:hover {
-  background-color: gray;
+  background-color: #aaaaaa;
   color: #FFFFFF;
 }
 
@@ -143,7 +143,7 @@ input:focus {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  color: gray;
+  color: #aaaaaa;
   background-color: #FFFFFF;
   border: none;
 }

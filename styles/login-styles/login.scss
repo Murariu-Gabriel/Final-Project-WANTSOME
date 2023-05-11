@@ -16,12 +16,17 @@ section{
   @include flex(none, center, none, none);
 
   .container {
+    border-radius: $base-border-radius;
     @include flex(none, none, none, column);
     box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.65);
     background-color: $light-gray;
     
     width: 100vw;
     height: 100vh;
+
+    a{
+      color: $black;
+    } 
     
     form {
       @include just-flex;
@@ -80,8 +85,9 @@ section{
       }
     }
     img{
-      width: 60px;
+      width: 120px;
       align-self: center;
+      border-radius: $base-border-radius;
     }
   }
 }  

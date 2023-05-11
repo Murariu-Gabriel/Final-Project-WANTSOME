@@ -14,7 +14,7 @@
   background-color: $black;
 
   > .container {
-    border-bottom: 3px solid rgba(90, 90, 90, 0.992);
+    border-bottom: 3px solid $out-of-color-palette-gray;
     padding: $base-spacing;
     // width: 100vw
 
@@ -34,6 +34,9 @@
       @include flex(space-between, center, none, none);
       // padding: $base-spacing;
       height: 60px;
+      img {
+        width: 80px;
+      }
       nav {
         display: none;
       }
@@ -79,7 +82,7 @@
 
     article {
       height: 150px;
-      border-radius: 8px;
+      border-radius: $base-border-radius;
       @include flex(flex-end, center, none, column);
       background-color: $gray;
       position: relative;
@@ -127,11 +130,16 @@
 // }
 
 .products-display {
-    padding-top: $xxl-spacing;
+  padding-top: $xxl-spacing;
+
   .container {
     article {
+      margin-top: $base-spacing;
 
+      border-radius: $base-border-radius;
       &:first-of-type {
+        padding: 0 $base-spacing;
+        color: $white;
         height: 600px;
         @include flex(center, center, none, column);
         text-align: center;
@@ -143,27 +151,106 @@
         // background-position: 50%;
         // background-size: 400px;
         background-size: 170%;
-        
 
         img {
           width: 200px;
         }
-        h2 {
-          padding: 0 $base-padding;
-        }
-
-        p{
-          padding: 0 $base-padding;
-        }
-
       }
 
-      &:nth-of-type(2){
-        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/");
+      &:nth-of-type(2) {
+        padding: 0 $base-spacing;
+        @include flex(center, flex-start, none, column);
+        height: 320px;
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/210303-mi-watch-wm-5-1920x1080.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        // background-position: 220px;
+      }
+
+      &:last-of-type {
+        .image {
+          height: 200px;
+          border-radius: $base-border-radius;
+          // width: 100;
+          background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
+          background-size: cover;
+          background-position: center;
+          // width: 100%;
+          // padding: 0;
+          // border-radius: $base-border-radius;
+        }
+
+        div {
+          margin-top: $base-spacing;
+          border-radius: $base-border-radius;
+          background-color: $gray;
+          padding: 0 $base-spacing;
+
+          h2 {
+            padding: 33.2px 0;
+            margin: 0;
+          }
+
+          button {
+            margin-bottom: $m-spacing;
+          }
+        }
       }
     }
   }
 }
 
+.about {
+  padding-top: $xxl-spacing;
+  padding-bottom: $xxl-spacing;
 
+  .container {
+    text-align: center;
+    div {
+      border-radius: $base-border-radius;
+      height: 300px;
+      background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg");
+      background-size: cover;
+      background-position: left;
+    }
+
+    p{
+      color: $out-of-color-palette-gray;
+    }
+    span {
+      color: $orange;
+    }
+  }
+}
+
+footer {
+
+  .container{
+    @include flex(center, center, wrap, column);
+    padding: $m-spacing;
+    gap: $m-spacing;
+    background-color: $black;
+    text-align: center;
+  img {
+    width: 80px;
+  }
+
+
+  p{
+    color: $out-of-color-palette-gray;
+  }
+
+  .socials{
+        @include flex(center, center, none, none);
+        gap: $base-spacing;
+        a {
+          fill: $white;
+          font-size: 1.5rem;
+            &:hover {
+             fill: $orange;
+            }
+        }
+  }
+}
+  }
 // nu uita ca fiecare sectiune are   padding-top: $xxl-spacing;
