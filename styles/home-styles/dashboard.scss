@@ -11,9 +11,9 @@
 @use "../buttons";
 
 .nav-and-hero {
-    background-color: $black;
-    
-    >.container {
+  background-color: $black;
+
+  > .container {
     border-bottom: 3px solid rgba(90, 90, 90, 0.992);
     padding: $base-spacing;
     // width: 100vw
@@ -52,64 +52,55 @@
 
     // AICI AI TOATE SETARILE ASTEA IN CARE AI DOUA METODE DE CENTRARE DAR A DOUA NU FUNCTIONEAZA DEOARECE AI DOUA de container
     .container {
-        color: white;
-        text-align: center;
-        // margin: 0;
-        // position: absolute;
-        // @include flex(center, center, none ,column);
-        // top: 50%;
-        // transform: translateY(-50%);
-        // padding: $container-spacing;
-        // width: calc(100% - 2 * $m-spacing);
-        // width: 100%;
-    
-        button{
-            margin-top: 20px;
-        }
+      color: white;
+      text-align: center;
+      // margin: 0;
+      // position: absolute;
+      // @include flex(center, center, none ,column);
+      // top: 50%;
+      // transform: translateY(-50%);
+      // padding: $container-spacing;
+      // width: calc(100% - 2 * $m-spacing);
+      // width: 100%;
+
+      button {
+        margin-top: 20px;
+      }
     }
   }
 }
 
+.categories {
+  padding-top: $xxl-spacing;
 
-.categories{
- 
-    .container{
-        padding-top: 100px;
-        display: flex;
-        flex-direction: column;
-  
-        justify-content: center;
-       
-       
-        gap: 70px;
-            article{
-                height: 150px;
-                border-radius: 8px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-end;
-                background-color: $gray;
-                position: relative;
+  .container {
+    @include flex(center, none, none, column);
+    gap: 70px;
 
-               .category-image{
-                position: absolute;
-                top: -60px;
-                width: 100px;
-                // filter: drop-shadow(0px 50px 45px #000000);
-               }
+    article {
+      height: 150px;
+      border-radius: 8px;
+      @include flex(flex-end, center, none, column);
+      background-color: $gray;
+      position: relative;
 
-               .subtitle{
-                color: $black;
-               }
+      .category-image {
+        position: absolute;
+        top: -60px;
+        width: 100px;
+        // filter: drop-shadow(0px 50px 45px #000000);
+      }
 
-               a{
-                background-color: $gray;
-                padding-bottom: $base-padding;
-               }
-                    
-            }
+      .subtitle {
+        color: $black;
+      }
+
+      a {
+        background-color: $gray;
+        padding-bottom: $base-padding;
+      }
     }
+  }
 }
 
 // .categories{
@@ -131,25 +122,48 @@
 //                }
 //            }
 //        }
-       
+
 //     }
 // }
 
+.products-display {
+    padding-top: $xxl-spacing;
+  .container {
+    article {
 
-.products-display{
+      &:first-of-type {
+        height: 600px;
+        @include flex(center, center, none, column);
+        text-align: center;
+        background-color: $orange;
+        background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+        background-repeat: no-repeat;
+        background-position-x: 50%;
+        background-position-y: -100px;
+        // background-position: 50%;
+        // background-size: 400px;
+        background-size: 170%;
+        
 
-  .container{
+        img {
+          width: 200px;
+        }
+        h2 {
+          padding: 0 $base-padding;
+        }
 
-    article{
-      background-color: $orange;
-      background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-      background-position: center;
-      background-size: cover;
-      img{
-        width: 150px;
+        p{
+          padding: 0 $base-padding;
+        }
+
       }
 
+      &:nth-of-type(2){
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/");
+      }
     }
   }
 }
 
+
+// nu uita ca fiecare sectiune are   padding-top: $xxl-spacing;

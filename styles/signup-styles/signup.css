@@ -119,7 +119,7 @@ input:focus {
 
 .button-2 {
   border: 1px solid #000000;
-  background-color: #FFFFFF;
+  background-color: transparent;
   padding: 15px 30px;
 }
 .button-2:hover {

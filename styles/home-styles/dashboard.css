@@ -107,7 +107,7 @@ h6 {
 
 .button-2 {
   border: 1px solid #000000;
-  background-color: #FFFFFF;
+  background-color: transparent;
   padding: 15px 30px;
 }
 .button-2:hover {
@@ -189,20 +189,25 @@ h6 {
   margin-top: 20px;
 }
 
+.categories {
+  padding-top: 120px;
+}
 .categories .container {
-  padding-top: 100px;
   display: flex;
-  flex-direction: column;
+  align-items: none;
   justify-content: center;
+  flex-wrap: none;
+  flex-direction: column;
   gap: 70px;
 }
 .categories .container article {
   height: 150px;
   border-radius: 8px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  flex-wrap: none;
+  flex-direction: column;
   background-color: #F1F1F1;
   position: relative;
 }
@@ -219,12 +224,33 @@ h6 {
   padding-bottom: 15px;
 }
 
-.products-display .container article {
+.products-display {
+  padding-top: 120px;
+}
+.products-display .container article:first-of-type {
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: none;
+  flex-direction: column;
+  text-align: center;
   background-color: #D87D4A;
   background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-  background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: -100px;
+  background-size: 170%;
 }
-.products-display .container article img {
-  width: 150px;
+.products-display .container article:first-of-type img {
+  width: 200px;
+}
+.products-display .container article:first-of-type h2 {
+  padding: 0 15px;
+}
+.products-display .container article:first-of-type p {
+  padding: 0 15px;
+}
+.products-display .container article:nth-of-type(2) {
+  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/");
 }/*# sourceMappingURL=dashboard.css.map */
