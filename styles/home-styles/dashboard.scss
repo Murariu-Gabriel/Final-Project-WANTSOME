@@ -18,21 +18,22 @@
     padding: $base-spacing;
     // width: 100vw
 
-    button {
+      button {
       padding: 0;
-      align-items: center;
       background: none;
       border: none;
       cursor: pointer;
       fill: $white;
-      &:hover {
-        fill: $orange;
-      }
+
+        &:hover {
+          fill: $orange;
+        }
     }
 
     header {
-      @include flex(space-between, center, none, none);
-      // padding: $base-spacing;
+      @include flex(space-between, unset, unset, unset);
+      display: flex;
+      padding: 0 $base-spacing;
       height: 60px;
       img {
         width: 80px;
@@ -44,27 +45,22 @@
   }
 
   .hero {
-    // height: 100vh;
-    height: 500px;
+    height: 400px;
     background-image: url(/assets/Images/Home-images/d1094b5234f1c27ccfbb091660517ebe.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    @include flex(center, center, none, column);
+    @include flex(center, center, unset, unset);
 
-    // AICI AI TOATE SETARILE ASTEA IN CARE AI DOUA METODE DE CENTRARE DAR A DOUA NU FUNCTIONEAZA DEOARECE AI DOUA de container
     .container {
+      max-width: 400px;
       color: white;
       text-align: center;
-      // margin: 0;
-      // position: absolute;
-      // @include flex(center, center, none ,column);
-      // top: 50%;
-      // transform: translateY(-50%);
-      // padding: $container-spacing;
-      // width: calc(100% - 2 * $m-spacing);
-      // width: 100%;
+ 
+      h1{
+        padding: 20px 0;
+      }
 
       button {
         margin-top: 20px;
@@ -77,13 +73,13 @@
   padding-top: $xxl-spacing;
 
   .container {
-    @include flex(center, none, none, column);
+    @include flex(center, unset, unset, column);
     gap: 70px;
 
     article {
       height: 150px;
       border-radius: $base-border-radius;
-      @include flex(flex-end, center, none, column);
+      @include flex(flex-end, center, unset, column);
       background-color: $gray;
       position: relative;
 
@@ -106,93 +102,81 @@
   }
 }
 
-// .categories{
-//     .container{
-//        .articles{
-//             display: flex;
-//             flex-direction: column;
-//             align-items: center;
-//            article{
-//                width: 50%;
-//                background-color: $gray;
-//                // position:relative;
-//                .category-image{
-//                    // position: absolute;
-//                    width: 100px;
-//                    // top: -50%;
-//                    // width: calc(100% - 2 * $m-spacing);
-//                    // padding: 10px;
-//                }
-//            }
-//        }
-
-//     }
-// }
-
 .products-display {
   padding-top: $xxl-spacing;
 
   .container {
     article {
-      margin-top: $base-spacing;
-
+      margin-top: $m-spacing;
       border-radius: $base-border-radius;
+
       &:first-of-type {
-        padding: 0 $base-spacing;
+        padding: $xl-spacing $base-spacing;
         color: $white;
-        height: 600px;
-        @include flex(center, center, none, column);
+        @include flex(center, center, unset, column);
         text-align: center;
         background-color: $orange;
         background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
         background-repeat: no-repeat;
         background-position-x: 50%;
         background-position-y: -100px;
-        // background-position: 50%;
-        // background-size: 400px;
         background-size: 170%;
 
         img {
           width: 200px;
         }
+
+        p{
+          padding: $base-padding;
+        }
+
+        h2{
+          margin: 40px 10px 10px 10px;
+        }
       }
 
       &:nth-of-type(2) {
         padding: 0 $base-spacing;
-        @include flex(center, flex-start, none, column);
+        @include flex(center, flex-start, unset, column);
         height: 320px;
-        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/210303-mi-watch-wm-5-1920x1080.jpg");
-        background-size: cover;
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/mi-watch-6.webp");
+        background-size:cover;
         background-repeat: no-repeat;
-        // background-position: 220px;
+        
+        h2{
+          width: 40%;
+        }
+
       }
 
       &:last-of-type {
+        //  height: 500px; // Pentru desktop
         .image {
-          height: 200px;
+          min-height: 200px;
           border-radius: $base-border-radius;
-          // width: 100;
           background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
           background-size: cover;
           background-position: center;
-          // width: 100%;
-          // padding: 0;
-          // border-radius: $base-border-radius;
+  
         }
 
         div {
-          margin-top: $base-spacing;
-          border-radius: $base-border-radius;
-          background-color: $gray;
-          padding: 0 $base-spacing;
+          margin-top: $m-spacing;
+          &:nth-of-type(2){
+            
+            border-radius: $base-border-radius;
+            background-color: $gray;
+            padding: 0 $base-spacing;
+  
+            h2 {
+              padding: $m-spacing 0;
+              margin: 0;
+            }
+  
+            button {
+              margin-bottom: $m-spacing;
+            }
 
-          h2 {
-            padding: 33.2px 0;
-            margin: 0;
-          }
-
-          button {
-            margin-bottom: $m-spacing;
           }
         }
       }
@@ -208,13 +192,13 @@
     text-align: center;
     div {
       border-radius: $base-border-radius;
-      height: 300px;
+      min-height: 300px;
       background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg");
       background-size: cover;
       background-position: left;
     }
 
-    p{
+    p {
       color: $out-of-color-palette-gray;
     }
     span {
@@ -224,33 +208,45 @@
 }
 
 footer {
-
-  .container{
+  position: relative;
+  background-color: $black;
+  
+  .container {
     @include flex(center, center, wrap, column);
     padding: $m-spacing;
     gap: $m-spacing;
-    background-color: $black;
+   
     text-align: center;
-  img {
-    width: 80px;
-  }
 
+    &::after {
+      content: "";
+      width: 101px;
+      height: 4px;
+      background-color: $orange;
+      position: absolute;
+      top: 0;
+      // nu uita ca aici probabil va trebuii sa ii dai un left
+    }
 
-  p{
-    color: $out-of-color-palette-gray;
-  }
+    img {
+      width: 80px;
+    }
 
-  .socials{
-        @include flex(center, center, none, none);
-        gap: $base-spacing;
-        a {
-          fill: $white;
-          font-size: 1.5rem;
-            &:hover {
-             fill: $orange;
-            }
+    p {
+      color: $out-of-color-palette-gray;
+    }
+
+    .socials {
+      @include flex(center, center, unset, unset);
+      gap: $base-spacing;
+      a {
+        fill: $white;
+        font-size: 1.5rem;
+        &:hover {
+          fill: $orange;
         }
+      }
+    }
   }
 }
-  }
 // nu uita ca fiecare sectiune are   padding-top: $xxl-spacing;

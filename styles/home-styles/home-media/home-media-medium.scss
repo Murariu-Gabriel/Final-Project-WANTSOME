@@ -1,15 +1,123 @@
 @use "../../mixins" as *;
-section{
+@use "../../spacings" as *;
+
+@media screen and (min-width: 600px) {
     .container{
-        width: 500px;
-        padding: 0;
+        width: 90%;
         margin: 0 auto;
     }
 
-    // .hero{
-    //      @include flex(flex-start, center, none ,column);
-       
-    // }
+    .nav-and-hero{
+        >.container{
+            margin: 0 auto;
+            padding: $base-spacing 0;
+
+            header {
+                @include flex(unset, unset, unset, unset);
+                padding: 0;
+                gap: $m-spacing;
+
+                button{
+                    &:last-of-type{
+                        margin-left: auto;
+                    }
+                }
+            }
+        }
+
+        .hero {
+            height: 500px;
+        }
+
+    }
+
+    .categories{
+        padding-top: $xxl-spacing ;
+
+        .container{
+            margin: 0 auto;
+            @include flex(unset, unset, unset, unset);
+            gap: 10px;
+
+            article {
+                width: 100%;
+            }
+        }
+    }
+
+    .products-display{
+        padding-top: $xxl-spacing - 30;
+
+        .container{
+            article{
+                &:first-of-type{
+                     background-position-x: 50%;
+                     background-position-y: -300px;
+                      background-size: 150%;
+
+                    h2,p{
+                        width: 50%;
+                    }
+                }
+
+                &:nth-of-type(2){
+                    background-position: 50% 90%;
+                }
+
+                 &:last-of-type {
+                    display: flex;
+                    gap: 20px;
+
+                    div{
+                        width: 50%;
+                    }
+                 }
+    
+            }
+
+        }
+
+
+    }
+
+
+
+    .about {
+        padding-top: $xl-spacing;
+        padding-bottom: $xl-spacing;
+
+        div{
+            p{
+                padding: 0 $m-spacing;
+            }
+        }
+    }
+
+    footer{
+        .container{
+            @include flex(flex-start, center, wrap, unset );
+            text-align: unset;
+            padding: $m-spacing 0;
+            
+            &::after{
+                left: 5%;
+            }
+
+            nav{
+               width: 100%;
+              ul{
+                @include flex;
+                gap: $m-spacing ;
+              }
+            }
+
+            .socials{
+                  margin-left: auto;
+            }
+        }
+    }
+
 }
 
-// for categories firs solution would be to erase flex-direction and set width for artile to 100% and the gap 10px
+
+// for categories firs solution would be to erase flex-direction and set width for article to 100% and the gap 10px

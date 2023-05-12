@@ -1,5 +1,94 @@
-section .container {
-  width: 500px;
-  padding: 0;
-  margin: 0 auto;
+@media screen and (min-width: 600px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .nav-and-hero > .container {
+    margin: 0 auto;
+    padding: 15px 0;
+  }
+  .nav-and-hero > .container header {
+    display: flex;
+    align-items: unset;
+    justify-content: unset;
+    flex-wrap: unset;
+    flex-direction: unset;
+    padding: 0;
+    gap: 30px;
+  }
+  .nav-and-hero > .container header button:last-of-type {
+    margin-left: auto;
+  }
+  .nav-and-hero .hero {
+    height: 500px;
+  }
+  .categories {
+    padding-top: 120px;
+  }
+  .categories .container {
+    margin: 0 auto;
+    display: flex;
+    align-items: unset;
+    justify-content: unset;
+    flex-wrap: unset;
+    flex-direction: unset;
+    gap: 10px;
+  }
+  .categories .container article {
+    width: 100%;
+  }
+  .products-display {
+    padding-top: 90px;
+  }
+  .products-display .container article:first-of-type {
+    background-position-x: 50%;
+    background-position-y: -300px;
+    background-size: 150%;
+  }
+  .products-display .container article:first-of-type h2, .products-display .container article:first-of-type p {
+    width: 50%;
+  }
+  .products-display .container article:nth-of-type(2) {
+    background-position: 50% 90%;
+  }
+  .products-display .container article:last-of-type {
+    display: flex;
+    gap: 20px;
+  }
+  .products-display .container article:last-of-type div {
+    width: 50%;
+  }
+  .about {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .about div p {
+    padding: 0 30px;
+  }
+  footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: unset;
+    text-align: unset;
+    padding: 30px 0;
+  }
+  footer .container::after {
+    left: 5%;
+  }
+  footer .container nav {
+    width: 100%;
+  }
+  footer .container nav ul {
+    display: flex;
+    align-items: none;
+    justify-content: none;
+    flex-wrap: none;
+    flex-direction: none;
+    gap: 30px;
+  }
+  footer .container .socials {
+    margin-left: auto;
+  }
 }/*# sourceMappingURL=home-media-medium.css.map */
