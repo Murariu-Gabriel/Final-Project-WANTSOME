@@ -70,7 +70,7 @@
 }
 
 .categories {
-  padding-top: $xxl-spacing;
+  padding-top: $section-spacing;
 
   .container {
     @include flex(center, unset, unset, column);
@@ -103,7 +103,7 @@
 }
 
 .products-display {
-  padding-top: $xxl-spacing;
+  padding-top: $section-spacing;
 
   .container {
     article {
@@ -162,11 +162,12 @@
 
         div {
           margin-top: $m-spacing;
+          padding: 0 $base-padding;
           &:nth-of-type(2){
             
             border-radius: $base-border-radius;
             background-color: $gray;
-            padding: 0 $base-spacing;
+            // padding: 0 $base-spacing;
   
             h2 {
               padding: $m-spacing 0;
@@ -185,8 +186,8 @@
 }
 
 .about {
-  padding-top: $xxl-spacing;
-  padding-bottom: $xxl-spacing;
+  padding-top: $section-spacing;
+  padding-bottom: $section-spacing;
 
   .container {
     text-align: center;

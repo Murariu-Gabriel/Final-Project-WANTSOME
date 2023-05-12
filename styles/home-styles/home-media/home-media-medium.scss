@@ -32,7 +32,7 @@
     }
 
     .categories{
-        padding-top: $xxl-spacing ;
+        padding-top: $section-spacing + 30;
 
         .container{
             margin: 0 auto;
@@ -46,7 +46,7 @@
     }
 
     .products-display{
-        padding-top: $xxl-spacing - 30;
+        padding-top: $section-spacing ;
 
         .container{
             article{
@@ -69,6 +69,7 @@
                     gap: 20px;
 
                     div{
+                        margin-top: 0;
                         width: 50%;
                     }
                  }
@@ -83,9 +84,6 @@
 
 
     .about {
-        padding-top: $xl-spacing;
-        padding-bottom: $xl-spacing;
-
         div{
             p{
                 padding: 0 $m-spacing;

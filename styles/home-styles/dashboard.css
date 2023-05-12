@@ -198,7 +198,7 @@ h6 {
 }
 
 .categories {
-  padding-top: 120px;
+  padding-top: 96px;
 }
 .categories .container {
   display: flex;
@@ -233,7 +233,7 @@ h6 {
 }
 
 .products-display {
-  padding-top: 120px;
+  padding-top: 96px;
 }
 .products-display .container article {
   margin-top: 30px;
@@ -288,11 +288,11 @@ h6 {
 }
 .products-display .container article:last-of-type div {
   margin-top: 30px;
+  padding: 0 15px;
 }
 .products-display .container article:last-of-type div:nth-of-type(2) {
   border-radius: 8px;
   background-color: #F1F1F1;
-  padding: 0 15px;
 }
 .products-display .container article:last-of-type div:nth-of-type(2) h2 {
   padding: 30px 0;
@@ -303,8 +303,8 @@ h6 {
 }
 
 .about {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 .about .container {
   text-align: center;

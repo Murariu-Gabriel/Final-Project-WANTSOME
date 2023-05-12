@@ -23,7 +23,7 @@
     height: 500px;
   }
   .categories {
-    padding-top: 120px;
+    padding-top: 126px;
   }
   .categories .container {
     margin: 0 auto;
@@ -38,7 +38,7 @@
     width: 100%;
   }
   .products-display {
-    padding-top: 90px;
+    padding-top: 96px;
   }
   .products-display .container article:first-of-type {
     background-position-x: 50%;
@@ -56,11 +56,8 @@
     gap: 20px;
   }
   .products-display .container article:last-of-type div {
+    margin-top: 0;
     width: 50%;
-  }
-  .about {
-    padding-top: 60px;
-    padding-bottom: 60px;
   }
   .about div p {
     padding: 0 30px;
