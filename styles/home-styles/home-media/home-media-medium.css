@@ -1,10 +1,9 @@
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 550px) {
   .container {
     width: 90%;
     margin: 0 auto;
   }
   .nav-and-hero > .container {
-    margin: 0 auto;
     padding: 15px 0;
   }
   .nav-and-hero > .container header {
@@ -18,9 +17,6 @@
   }
   .nav-and-hero > .container header button:last-of-type {
     margin-left: auto;
-  }
-  .nav-and-hero .hero {
-    height: 500px;
   }
   .categories {
     padding-top: 126px;

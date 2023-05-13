@@ -32,7 +32,6 @@
 
     header {
       @include flex(space-between, unset, unset, unset);
-      display: flex;
       padding: 0 $base-spacing;
       height: 60px;
       img {
@@ -45,7 +44,7 @@
   }
 
   .hero {
-    height: 400px;
+    height: 90vh;
     background-image: url(/assets/Images/Home-images/d1094b5234f1c27ccfbb091660517ebe.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -250,4 +249,4 @@ footer {
     }
   }
 }
-// nu uita ca fiecare sectiune are   padding-top: $xxl-spacing;
+

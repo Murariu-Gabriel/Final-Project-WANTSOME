@@ -1,7 +1,7 @@
 @use "../../mixins" as *;
 @use "../../spacings" as *;
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 550px) {
     .container{
         width: 90%;
         margin: 0 auto;
@@ -9,7 +9,6 @@
 
     .nav-and-hero{
         >.container{
-            margin: 0 auto;
             padding: $base-spacing 0;
 
             header {
@@ -26,7 +25,11 @@
         }
 
         .hero {
-            height: 500px;
+            // height: 500px;
+            // @include flex(unset, center, unset, unset);
+            .container{
+                // width: 500px;
+            }
         }
 
     }

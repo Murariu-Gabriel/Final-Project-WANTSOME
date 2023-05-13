@@ -162,7 +162,6 @@ h6 {
   justify-content: space-between;
   flex-wrap: unset;
   flex-direction: unset;
-  display: flex;
   padding: 0 15px;
   height: 60px;
 }
@@ -173,7 +172,7 @@ h6 {
   display: none;
 }
 .nav-and-hero .hero {
-  height: 400px;
+  height: 90vh;
   background-image: url(/assets/Images/Home-images/d1094b5234f1c27ccfbb091660517ebe.jpg);
   background-size: cover;
   background-repeat: no-repeat;
