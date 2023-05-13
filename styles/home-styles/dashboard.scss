@@ -14,7 +14,7 @@
   background-color: $black;
 
   > .container {
-    border-bottom: 3px solid $out-of-color-palette-gray;
+    border-bottom: 1px solid $out-of-color-palette-gray;
     padding: $base-spacing;
     // width: 100vw
 
@@ -54,9 +54,12 @@
 
     .container {
       max-width: 400px;
-      color: white;
+      color: $white;
       text-align: center;
- 
+      
+      .overline{
+        color: $white;
+      }
       h1{
         padding: 20px 0;
       }

@@ -23,15 +23,13 @@
     flex-direction: none;
     gap: 60px;
   }
-  .nav-and-hero .hero {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: unset;
-    flex-direction: unset;
-  }
   .nav-and-hero .hero .container {
-    margin: 0;
-    margin: 15%;
+    margin: 0 auto;
+    max-width: 1110px;
+    text-align: left;
+    padding: 0;
+  }
+  .nav-and-hero .hero .container p, .nav-and-hero .hero .container h2 {
+    width: 35%;
   }
 }/*# sourceMappingURL=home-media-large.css.map */

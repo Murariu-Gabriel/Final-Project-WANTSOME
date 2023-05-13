@@ -30,30 +30,15 @@
         }
 
         .hero{
-            @include flex(flex-start, center, unset, unset);
-            // position: relative; //ASTEA SUNT PT POSITION-ul DE JOS
-            // display: block;
             .container{
-                margin: 0;
-                margin: 15%;
+                margin: 0 auto;
+                max-width: 1110px;
+                text-align: left;
+                padding: 0;
 
-
-
-
-
-
-                // margin: 0;
-                // padding: 0;
-                // text-align: left;
-                // position: absolute;
-            
-                // // padding: $m-spacing;
-                // top: 50%;
-                // // left: 5%;
-                // transform: translateY(-50%);
-                // // width: calc(90% - 2 * $container-spacing);
-                // // width: %;
-               
+                p, h2{
+                    width: 35%;
+                }
             }
         }
 
@@ -73,14 +58,15 @@
 
 
 
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -95,3 +81,18 @@
 
 
 
+
+// FOR HEERO CONTAINER JUST IN CASE I AM STUPID ENOUGH TO TRY AND CHANGE IT
+
+                // margin: 0;
+                // padding: 0;
+                // text-align: left;
+                // position: absolute;
+            
+                // // padding: $m-spacing;
+                // top: 50%;
+                // // left: 5%;
+                // transform: translateY(-50%);
+                // // width: calc(90% - 2 * $container-spacing);
+                // // width: %;
+               

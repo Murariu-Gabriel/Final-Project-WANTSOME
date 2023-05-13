@@ -143,7 +143,7 @@ h6 {
   background-color: #000000;
 }
 .nav-and-hero > .container {
-  border-bottom: 3px solid gray;
+  border-bottom: 1px solid gray;
   padding: 15px;
 }
 .nav-and-hero > .container button {
@@ -186,8 +186,11 @@ h6 {
 }
 .nav-and-hero .hero .container {
   max-width: 400px;
-  color: white;
+  color: #FFFFFF;
   text-align: center;
+}
+.nav-and-hero .hero .container .overline {
+  color: #FFFFFF;
 }
 .nav-and-hero .hero .container h1 {
   padding: 20px 0;
