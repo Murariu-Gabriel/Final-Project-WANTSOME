@@ -1,124 +1,140 @@
 @use "../../mixins" as *;
 @use "../../spacings" as *;
+@use "../../typography" as *;
 
 @media screen and (min-width: 550px) {
-    .container{
-        width: 90%;
-        margin: 0 auto;
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .nav-and-hero {
+    > .container {
+      padding: $base-spacing 0;
+
+      header {
+        @include flex(unset, unset, unset, unset);
+        padding: 0;
+        gap: $m-spacing;
+
+        button {
+          &:last-of-type {
+            margin-left: auto;
+          }
+        }
+      }
     }
 
-    .nav-and-hero{
-        >.container{
-            padding: $base-spacing 0;
-
-            header {
-                @include flex(unset, unset, unset, unset);
-                padding: 0;
-                gap: $m-spacing;
-
-                button{
-                    &:last-of-type{
-                        margin-left: auto;
-                    }
-                }
-            }
+    .hero {
+      // height: 500px;
+      // @include flex(unset, center, unset, unset);
+      .container {
+        // width: 500px;
+        h1 {
+          font-size: $h1-font-size;
         }
-
-        .hero {
-            // height: 500px;
-            // @include flex(unset, center, unset, unset);
-            .container{
-                // width: 500px;
-            }
-        }
-
+      }
     }
+  }
 
-    .categories{
-        padding-top: $section-spacing + 30;
+  .categories {
+    padding-top: $section-spacing + 30;
 
-        .container{
-            margin: 0 auto;
-            @include flex(unset, unset, unset, unset);
-            gap: 10px;
+    .container {
+      margin: 0 auto;
+      @include flex(unset, unset, unset, unset);
+      gap: 10px;
 
-            article {
-                width: 100%;
-            }
-        }
+      article {
+        width: 100%;
+      }
     }
+  }
 
-    .products-display{
-        padding-top: $section-spacing ;
+  .products-display {
+    padding-top: $section-spacing;
 
-        .container{
-            article{
-                &:first-of-type{
-                     background-position-x: 50%;
-                     background-position-y: -300px;
-                      background-size: 150%;
+    .container {
+      article {
+        &:first-of-type {
+          background-position-x: 50%;
+          background-position-y: -300px;
+          background-size: 150%;
 
-                    h2,p{
-                        width: 50%;
-                    }
-                }
+          h2 {
+            font-size: $h1-font-size;
+            line-height: $h1-line-height;
+          }
 
-                &:nth-of-type(2){
-                    background-position: 50% 90%;
-                }
-
-                 &:last-of-type {
-                    display: flex;
-                    gap: 20px;
-
-                    div{
-                        margin-top: 0;
-                        width: 50%;
-                    }
-                 }
-    
-            }
-
+          h2,
+          p {
+            width: 50%;
+          }
         }
 
-
-    }
-
-
-
-    .about {
-        div{
-            p{
-                padding: 0 $m-spacing;
-            }
+        &:nth-of-type(2) {
+          background-position: 50% 90%;
         }
-    }
 
-    footer{
-        .container{
-            @include flex(flex-start, center, wrap, unset );
-            text-align: unset;
-            padding: $m-spacing 0;
-            
-            &::after{
-                left: 5%;
+        &:last-of-type {
+          height: 320px;
+          display: flex;
+          gap: 20px;
+
+          div {
+            margin-top: 0;
+            width: 50%;
+            &:last-of-type {
+              padding-left: 5%;
             }
 
-            nav{
-               width: 100%;
-              ul{
-                @include flex;
-                gap: $m-spacing ;
-              }
+            &:first-of-type {
+              background-position: 60%;
             }
-
-            .socials{
-                  margin-left: auto;
-            }
+          }
         }
+      }
     }
+  }
 
+  .about {
+    .container {
+      div {
+        &:last-of-type {
+          h2 {
+            font-size: $h2-font-size;
+          }
+          p {
+            padding: 0 $m-spacing;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .container {
+      @include flex(flex-start, center, wrap, unset);
+      text-align: unset;
+      padding: $m-spacing 0;
+
+      &::after {
+        left: 5%;
+      }
+
+      nav {
+        width: 100%;
+        ul {
+          @include flex;
+          gap: $m-spacing;
+        }
+      }
+
+      .socials {
+        margin-left: auto;
+      }
+    }
+  }
 }
-
 
 // for categories firs solution would be to erase flex-direction and set width for article to 100% and the gap 10px

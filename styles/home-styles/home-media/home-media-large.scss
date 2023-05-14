@@ -1,98 +1,156 @@
 @use "../../mixins" as *;
 @use "../../spacings" as *;
+@use "../../typography" as *;
+@use "../../variables" as *;
 
 @media screen and (min-width: 990px) {
-
-    .nav-and-hero {
-        >.container{
-            max-width: 1100px;
-            header {
-                justify-content: space-between;
-                align-items: center;
-                button{
-                    &:first-of-type{
-                        display: none;
-                    }
-                    &:last-of-type{
-                        margin-left: 0;
-                    }
-                }
-
-               nav{
-                display: inline-block;
-                 ul{
-                    @include flex(center, center, none, none);
-                    gap: $xl-spacing;
-                 }
-               }
-            }
-
+  .container {
+    max-width: 1100px;
+  }
+  .nav-and-hero {
+    > .container {
+      header {
+        justify-content: space-between;
+        align-items: center;
+        button {
+          &:first-of-type {
+            display: none;
+          }
+          &:last-of-type {
+            margin-left: 0;
+          }
         }
 
-        .hero{
-            .container{
-                margin: 0 auto;
-                max-width: 1110px;
-                text-align: left;
-                padding: 0;
-
-                p, h2{
-                    width: 35%;
-                }
-            }
+        nav {
+          display: inline-block;
+          ul {
+            @include flex(center, center, none, none);
+            gap: $xl-spacing;
+          }
         }
-
-
-
-
-
-
+      }
     }
 
+    .hero {
+      .container {
+        margin: 0 auto;
+        max-width: 1110px;
+        text-align: left;
+        padding: 0;
 
+        p,
+        h2 {
+          width: 35%;
+        }
+      }
+    }
+  }
 
+  .categories {
+    padding-top: $m-section-spacing;
+    .container {
+      article {
+        height: 200px;
+        p {
+          font-size: $m-font;
+        }
+        .category-image {
+          top: -90px;
+          width: 150px;
+        }
+      }
+    }
+  }
 
+  .products-display {
+    padding-top: $m-section-spacing;
+    .container {
+      article {
 
+        &:first-of-type {
+          height: 560px;
+          padding: $xl-spacing $base-spacing;
+          color: $white;
+          @include flex(space-around, center, unset, unset);
+          text-align: left;
+          background-color: $orange;
+          background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+          background-repeat: no-repeat;
+          background-position-x: 50%;
+          background-position-y: -100px;
+          background-size: 170%;
 
+          img{
+            width: 400px;
+          }
 
+          div{
+            width: 35%;
+            align-items: flex-start;
+            gap: $m-spacing;
+            
+            h2{
+                font-size: $h1-font-size;
+            }
 
+            h2,p{
+                margin: 0;
+                padding: 0;
+                width: 90%;
+            }
+          }
+        }
 
+        &:nth-of-type(2){
+            background-position: center;
+        }
+      }
+    }
+  } 
+  
+  .about{
+    padding-top: $m-section-spacing;
+    .container{
+         flex-direction: row;
+        //  flex-wrap: wrap;
+        div{
+                width: 50%;
+                &:first-of-type{
+                    height: 588px;
+                    width: 50%;
+                    background-position: 30%;
+                     order:1;
+                    
+                }
+                &:last-of-type{
+                    text-align: left;
+                    p{
+                        padding: 0;
+                    }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                    h2, p {
+                        width: 80%;
+                    }
+                }
+            }
+    }
+  }
+  
+  
+  
+  // La toate trebuie sa pui top padding de m-section-spacing
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // FOR HEERO CONTAINER JUST IN CASE I AM STUPID ENOUGH TO TRY AND CHANGE IT
 
-                // margin: 0;
-                // padding: 0;
-                // text-align: left;
-                // position: absolute;
-            
-                // // padding: $m-spacing;
-                // top: 50%;
-                // // left: 5%;
-                // transform: translateY(-50%);
-                // // width: calc(90% - 2 * $container-spacing);
-                // // width: %;
-               
+// margin: 0;
+// padding: 0;
+// text-align: left;
+// position: absolute;
+
+// // padding: $m-spacing;
+// top: 50%;
+// // left: 5%;
+// transform: translateY(-50%);
+// // width: calc(90% - 2 * $container-spacing);
+// // width: %;

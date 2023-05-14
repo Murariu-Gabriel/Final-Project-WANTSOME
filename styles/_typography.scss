@@ -1,9 +1,14 @@
 @use "variables" as *;
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
 
-// *{
-//     margin: 0;
-// }
+$s-font: 15px;
+$m-font: 18px;
+$l-font: 28px;
+$xl-font: 36px;
+$h1-font-size: 56px;
+$h2-font-size: 40px;
+
+$h1-line-height: 58px;
 
 body{
     font-family: 'Manrope', sans-serif;

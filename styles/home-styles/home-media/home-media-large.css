@@ -1,5 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+h1, h2, h3, h4, h5, h6, .overline, .subtitle {
+  text-transform: uppercase;
+}
+
+h1 {
+  letter-spacing: 2px;
+  line-height: 58px;
+  font-size: 56px;
+}
+
+h2 {
+  letter-spacing: 1.5px;
+  line-height: 44px;
+  font-size: 40px;
+}
+
+h3 {
+  letter-spacing: 1.15px;
+  line-height: 36px;
+  font-size: 32px;
+}
+
+h4 {
+  letter-spacing: 2px;
+  line-height: 36px;
+  font-size: 28px;
+}
+
+h5 {
+  letter-spacing: 1.7px;
+  line-height: 33px;
+  font-size: 24px;
+}
+
+h6 {
+  letter-spacing: 1.3px;
+  line-height: 24px;
+  font-size: 18px;
+}
+
+.overline {
+  letter-spacing: 10px;
+  line-height: 19px;
+  font-size: 14px;
+  color: #D87D4A;
+}
+
+.subtitle {
+  letter-spacing: 1px;
+  line-height: 25px;
+  font-size: 13px;
+  color: #D87D4A;
+}
+
 @media screen and (min-width: 990px) {
-  .nav-and-hero > .container {
+  .container {
     max-width: 1100px;
   }
   .nav-and-hero > .container header {
@@ -29,7 +90,84 @@
     text-align: left;
     padding: 0;
   }
-  .nav-and-hero .hero .container p, .nav-and-hero .hero .container h2 {
+  .nav-and-hero .hero .container p,
+.nav-and-hero .hero .container h2 {
     width: 35%;
+  }
+  .categories {
+    padding-top: 168px;
+  }
+  .categories .container article {
+    height: 200px;
+  }
+  .categories .container article p {
+    font-size: 18px;
+  }
+  .categories .container article .category-image {
+    top: -90px;
+    width: 150px;
+  }
+  .products-display {
+    padding-top: 168px;
+  }
+  .products-display .container article:first-of-type {
+    height: 560px;
+    padding: 60px 15px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: unset;
+    flex-direction: unset;
+    text-align: left;
+    background-color: #D87D4A;
+    background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: -100px;
+    background-size: 170%;
+  }
+  .products-display .container article:first-of-type img {
+    width: 400px;
+  }
+  .products-display .container article:first-of-type div {
+    width: 35%;
+    align-items: flex-start;
+    gap: 30px;
+  }
+  .products-display .container article:first-of-type div h2 {
+    font-size: 56px;
+  }
+  .products-display .container article:first-of-type div h2, .products-display .container article:first-of-type div p {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+  }
+  .products-display .container article:nth-of-type(2) {
+    background-position: center;
+  }
+  .about {
+    padding-top: 168px;
+  }
+  .about .container {
+    flex-direction: row;
+  }
+  .about .container div {
+    width: 50%;
+  }
+  .about .container div:first-of-type {
+    height: 588px;
+    width: 50%;
+    background-position: 30%;
+    order: 1;
+  }
+  .about .container div:last-of-type {
+    text-align: left;
+  }
+  .about .container div:last-of-type p {
+    padding: 0;
+  }
+  .about .container div:last-of-type h2, .about .container div:last-of-type p {
+    width: 80%;
   }
 }/*# sourceMappingURL=home-media-large.css.map */

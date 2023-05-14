@@ -1,3 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+h1, h2, h3, h4, h5, h6, .overline, .subtitle {
+  text-transform: uppercase;
+}
+
+h1 {
+  letter-spacing: 2px;
+  line-height: 58px;
+  font-size: 56px;
+}
+
+h2 {
+  letter-spacing: 1.5px;
+  line-height: 44px;
+  font-size: 40px;
+}
+
+h3 {
+  letter-spacing: 1.15px;
+  line-height: 36px;
+  font-size: 32px;
+}
+
+h4 {
+  letter-spacing: 2px;
+  line-height: 36px;
+  font-size: 28px;
+}
+
+h5 {
+  letter-spacing: 1.7px;
+  line-height: 33px;
+  font-size: 24px;
+}
+
+h6 {
+  letter-spacing: 1.3px;
+  line-height: 24px;
+  font-size: 18px;
+}
+
+.overline {
+  letter-spacing: 10px;
+  line-height: 19px;
+  font-size: 14px;
+  color: #D87D4A;
+}
+
+.subtitle {
+  letter-spacing: 1px;
+  line-height: 25px;
+  font-size: 13px;
+  color: #D87D4A;
+}
+
 @media screen and (min-width: 550px) {
   .container {
     width: 90%;
@@ -17,6 +78,9 @@
   }
   .nav-and-hero > .container header button:last-of-type {
     margin-left: auto;
+  }
+  .nav-and-hero .hero .container h1 {
+    font-size: 56px;
   }
   .categories {
     padding-top: 126px;
@@ -41,13 +105,19 @@
     background-position-y: -300px;
     background-size: 150%;
   }
-  .products-display .container article:first-of-type h2, .products-display .container article:first-of-type p {
+  .products-display .container article:first-of-type h2 {
+    font-size: 56px;
+    line-height: 58px;
+  }
+  .products-display .container article:first-of-type h2,
+.products-display .container article:first-of-type p {
     width: 50%;
   }
   .products-display .container article:nth-of-type(2) {
     background-position: 50% 90%;
   }
   .products-display .container article:last-of-type {
+    height: 320px;
     display: flex;
     gap: 20px;
   }
@@ -55,7 +125,16 @@
     margin-top: 0;
     width: 50%;
   }
-  .about div p {
+  .products-display .container article:last-of-type div:last-of-type {
+    padding-left: 5%;
+  }
+  .products-display .container article:last-of-type div:first-of-type {
+    background-position: 60%;
+  }
+  .about .container div:last-of-type h2 {
+    font-size: 40px;
+  }
+  .about .container div:last-of-type p {
     padding: 0 30px;
   }
   footer .container {
