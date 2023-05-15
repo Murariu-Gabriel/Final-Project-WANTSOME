@@ -76,9 +76,10 @@
           background-color: $orange;
           background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
           background-repeat: no-repeat;
-          background-position-x: 50%;
-          background-position-y: -100px;
-          background-size: 170%;
+          background-position-x: -250px;
+          background-position-y: 50%;
+          // background-position: left;
+          background-size: 100%;
 
           img{
             width: 400px;
@@ -136,7 +137,34 @@
     }
   }
   
-  
+   footer {
+    .container {
+      img{
+        order: 1;
+      }
+      nav{
+        &:first-of-type{
+            width:min-content;
+            margin-left: auto;
+          order: 2;
+        }
+        &:last-of-type{
+          order: 4;
+          align-self: flex-end;
+        }
+      }
+
+      p{
+        width: 70%;
+        &:first-of-type{
+          order: 3;
+        }
+        &:last-of-type{
+          order: 5;
+        }
+      }
+    }
+  }
   
   // La toate trebuie sa pui top padding de m-section-spacing
 }

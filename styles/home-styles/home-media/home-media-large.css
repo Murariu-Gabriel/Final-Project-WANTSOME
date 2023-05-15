@@ -123,9 +123,9 @@ h6 {
     background-color: #D87D4A;
     background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
     background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: -100px;
-    background-size: 170%;
+    background-position-x: -250px;
+    background-position-y: 50%;
+    background-size: 100%;
   }
   .products-display .container article:first-of-type img {
     width: 400px;
@@ -169,5 +169,28 @@ h6 {
   }
   .about .container div:last-of-type h2, .about .container div:last-of-type p {
     width: 80%;
+  }
+  footer .container img {
+    order: 1;
+  }
+  footer .container nav:first-of-type {
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    margin-left: auto;
+    order: 2;
+  }
+  footer .container nav:last-of-type {
+    order: 4;
+    align-self: flex-end;
+  }
+  footer .container p {
+    width: 70%;
+  }
+  footer .container p:first-of-type {
+    order: 3;
+  }
+  footer .container p:last-of-type {
+    order: 5;
   }
 }/*# sourceMappingURL=home-media-large.css.map */

@@ -114,7 +114,7 @@ h6 {
     width: 50%;
   }
   .products-display .container article:nth-of-type(2) {
-    background-position: 50% 90%;
+    background-size: cover;
   }
   .products-display .container article:last-of-type {
     height: 320px;
@@ -149,10 +149,10 @@ h6 {
   footer .container::after {
     left: 5%;
   }
-  footer .container nav {
+  footer .container nav:first-of-type {
     width: 100%;
   }
-  footer .container nav ul {
+  footer .container nav:first-of-type ul {
     display: flex;
     align-items: none;
     justify-content: none;
@@ -160,7 +160,7 @@ h6 {
     flex-direction: none;
     gap: 30px;
   }
-  footer .container .socials {
+  footer .container nav:last-of-type {
     margin-left: auto;
   }
 }/*# sourceMappingURL=home-media-medium.css.map */

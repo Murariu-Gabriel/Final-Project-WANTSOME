@@ -153,7 +153,7 @@
         padding: 0 $base-spacing;
         @include flex(center, flex-start, unset, column);
         height: 320px;
-        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/mi-watch-6.webp");
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/210303-mi-watch-wm-5.jpg");
         background-size:cover;
         background-repeat: no-repeat;
         
@@ -253,7 +253,7 @@ footer {
    
     text-align: center;
 
-    &::after {
+    &::before {
       content: "";
       width: 101px;
       height: 4px;
@@ -270,15 +270,16 @@ footer {
     p {
       color: $out-of-color-palette-gray;
     }
-
-    .socials {
-      @include flex(center, center, unset, unset);
-      gap: $base-spacing;
-      a {
-        fill: $white;
-        font-size: 1.5rem;
-        &:hover {
-          fill: $orange;
+    nav{
+      .socials {
+        @include flex(center, center, unset, unset);
+        gap: $base-spacing;
+        a {
+          fill: $white;
+          font-size: 1.5rem;
+          &:hover {
+            fill: $orange;
+          }
         }
       }
     }
