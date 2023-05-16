@@ -173,10 +173,6 @@ section .container {
   height: 100vh;
   border-radius: 8px;
 }
-section .container form {
-  display: flex;
-  flex-direction: column;
-}
 section .container form h2 {
   text-align: center;
   margin: 0;
@@ -200,16 +196,15 @@ section .container form .terms a {
   color: #000000;
   font-weight: bold;
 }
+section .container form .terms a:hover {
+  color: #D87D4A;
+}
 section .container form .buttons {
-  margin: 30px;
+  margin: 30px 0;
   flex-direction: row;
-  justify-content: center;
 }
 section .container form .buttons button, section .container form .buttons a {
-  width: 50%;
-}
-section .container form .buttons .button-1 {
-  padding: 15px 30px;
+  width: 100%;
 }
 section .container form .buttons .button-3 {
   background-color: inherit;

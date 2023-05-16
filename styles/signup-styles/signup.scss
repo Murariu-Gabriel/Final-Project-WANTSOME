@@ -22,7 +22,7 @@ section{
     height: 100vh;
     border-radius: $base-border-radius;
     form {
-      @include just-flex;
+      // @include just-flex;
   
       h2 {
         text-align: center;
@@ -50,23 +50,22 @@ section{
           a{
             color: $black;
             font-weight: bold;
+            
+            &:hover{
+              color: $orange;
+            }
           }
       }
   
       .buttons {
-        margin: $m-spacing ;
+        margin: $m-spacing 0 ;
         flex-direction: row;
-        justify-content: center;
-        
-  
+      
         button, a{
-          width: 50%;
+          width: 100%;
+        
         }
 
-        .button-1{
-          padding: $base-spacing $m-spacing;
-        }
-  
         .button-3{
           background-color: inherit; 
           padding: $base-spacing $m-spacing;
@@ -79,44 +78,3 @@ section{
 
 }  
 
-
-
-
-// .socials {
-//   text-transform: capitalize;
-//   @include flex(space-between, center, none, column);
-//   gap: $xxl-spacing - 20;
-//   ul {
-//     @include flex;
-//     justify-content: center;
-//     gap: $base-spacing;
-
-//     a {
-//       font-size: 1.5rem;
-//       &:hover {
-//         opacity: 0.7;
-//       }
-//     }
-
-//     :first-of-type {
-//       a {
-//         color: rgb(68, 74, 240);
-//       }
-//     }
-
-//     :last-of-type {
-//       a {
-//         color: rgb(0, 162, 255);
-//       }
-//     }
-//   }
-
-//   div{
-//     text-align: center;
-//     a {
-//         text-transform: uppercase;
-//         font-size: larger;
-//       }
-//   }
-
-// }

@@ -170,20 +170,14 @@ section {
 }
 section .container {
   border-radius: 8px;
-  display: flex;
-  align-items: none;
-  justify-content: none;
-  flex-wrap: none;
-  flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
 section .container a {
   color: #000000;
 }
-section .container form {
-  display: flex;
-  flex-direction: column;
+section .container a:hover {
+  color: #D87D4A;
 }
 section .container form h2 {
   text-align: center;
@@ -203,6 +197,7 @@ section .container form a {
 }
 section .container form button {
   margin-top: 30px;
+  width: 100%;
 }
 section .container .socials {
   text-transform: capitalize;
@@ -225,14 +220,9 @@ section .container .socials div {
   text-align: center;
 }
 section .container .socials div:last-of-type {
-  padding-top: 30px;
+  padding: 0 30px;
 }
 section .container .socials div:last-of-type a {
   text-transform: uppercase;
   font-size: larger;
-}
-section .container img {
-  width: 120px;
-  align-self: center;
-  border-radius: 8px;
 }/*# sourceMappingURL=login.css.map */

@@ -9,84 +9,78 @@
 body {
   @include flex(center, center, none, column);
   background-color: $gray;
-  
 }
-section{
+section {
   height: 100vh;
   @include flex(none, center, none, none);
 
   .container {
     border-radius: $base-border-radius;
-    @include flex(none, none, none, column);
-    
+    // @include flex(none, none, none, column);
+
     width: 100vw;
     height: 100vh;
-    a{
+    a {
       color: $black;
-    } 
-    
+      &:hover {
+        color: $orange;
+      }
+    }
+
     form {
-      @include just-flex;
-  
+
       h2 {
         text-align: center;
         margin: 0;
         text-transform: capitalize;
         padding-top: 40px;
       }
-  
+
       div {
         margin-top: $base-spacing;
         @include just-flex;
         gap: $base-spacing - 5px;
       }
-  
+
       a {
         align-self: flex-end;
         text-transform: capitalize;
       }
-  
+
       button {
         margin-top: $m-spacing;
+        width: 100%;
       }
     }
-  
+
     .socials {
       text-transform: capitalize;
-      
+
       ul {
         @include flex(center, center, none, none);
         gap: $base-spacing;
-  
+
         a {
           font-size: 1.5rem;
 
-            &:hover {
-              fill: $orange;
-            }
+          &:hover {
+            fill: $orange;
+          }
         }
       }
-  
-      div{
+
+      div {
         text-align: center;
 
-          &:last-of-type{
-            padding-top: $m-spacing;
-            
-              a {
-                text-transform: uppercase;
-                font-size: larger;
-              }
+        &:last-of-type {
+          padding: 0 $m-spacing;
 
+          a {
+            text-transform: uppercase;
+            font-size: larger;
           }
+        }
       }
     }
-    img{
-      width: 120px;
-      align-self: center;
-      border-radius: $base-border-radius;
-    }
   }
-}  
-
-
+}
