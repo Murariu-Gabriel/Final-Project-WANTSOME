@@ -138,13 +138,24 @@ h6 {
   .products-display .container article:first-of-type div h2 {
     font-size: 56px;
   }
-  .products-display .container article:first-of-type div h2, .products-display .container article:first-of-type div p {
+  .products-display .container article:first-of-type div h2,
+.products-display .container article:first-of-type div p {
     margin: 0;
     padding: 0;
     width: 90%;
   }
   .products-display .container article:nth-of-type(2) {
     background-position: center;
+  }
+  .products-display .container article:nth-of-type(2) div {
+    padding: 0 60px;
+  }
+  .products-display .container article:last-of-type div:last-of-type h4 {
+    padding: 0 0 30px 60px;
+    margin: 0;
+  }
+  .products-display .container article:last-of-type div:last-of-type button {
+    margin: 0 0 0 60px;
   }
   .about {
     padding-top: 168px;
@@ -167,7 +178,8 @@ h6 {
   .about .container div:last-of-type p {
     padding: 0;
   }
-  .about .container div:last-of-type h2, .about .container div:last-of-type p {
+  .about .container div:last-of-type h2,
+.about .container div:last-of-type p {
     width: 80%;
   }
   footer .container img {

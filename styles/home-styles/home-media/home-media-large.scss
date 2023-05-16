@@ -66,7 +66,6 @@
     padding-top: $m-section-spacing;
     .container {
       article {
-
         &:first-of-type {
           height: 560px;
           padding: $xl-spacing $base-spacing;
@@ -81,91 +80,110 @@
           // background-position: left;
           background-size: 100%;
 
-          img{
+          img {
             width: 400px;
           }
 
-          div{
+          div {
             width: 35%;
             align-items: flex-start;
             gap: $m-spacing;
-            
-            h2{
-                font-size: $h1-font-size;
+
+            h2 {
+              font-size: $h1-font-size;
             }
 
-            h2,p{
-                margin: 0;
-                padding: 0;
-                width: 90%;
+            h2,
+            p {
+              margin: 0;
+              padding: 0;
+              width: 90%;
             }
           }
         }
 
-        &:nth-of-type(2){
-            background-position: center;
+        &:nth-of-type(2) {
+          background-position: center;
+          div {
+            padding: 0 $xl-spacing;
+          }
+        }
+
+        &:last-of-type {
+          div {
+            &:last-of-type {
+              h4 {
+                padding: 0 0 $m-spacing $xl-spacing;
+                margin: 0;
+              }
+
+              button {
+                margin: 0 0 0 $xl-spacing;
+              }
+            }
+          }
         }
       }
-    }
-  } 
-  
-  .about{
-    padding-top: $m-section-spacing;
-    .container{
-         flex-direction: row;
-        //  flex-wrap: wrap;
-        div{
-                width: 50%;
-                &:first-of-type{
-                    height: 588px;
-                    width: 50%;
-                    background-position: 30%;
-                     order:1;
-                    
-                }
-                &:last-of-type{
-                    text-align: left;
-                    p{
-                        padding: 0;
-                    }
-
-                    h2, p {
-                        width: 80%;
-                    }
-                }
-            }
     }
   }
-  
-   footer {
+
+  .about {
+    padding-top: $m-section-spacing;
     .container {
-      img{
+      flex-direction: row;
+      //  flex-wrap: wrap;
+      div {
+        width: 50%;
+        &:first-of-type {
+          height: 588px;
+          width: 50%;
+          background-position: 30%;
+          order: 1;
+        }
+        &:last-of-type {
+          text-align: left;
+          p {
+            padding: 0;
+          }
+
+          h2,
+          p {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .container {
+      img {
         order: 1;
       }
-      nav{
-        &:first-of-type{
-            width:min-content;
-            margin-left: auto;
+      nav {
+        &:first-of-type {
+          width: min-content;
+          margin-left: auto;
           order: 2;
         }
-        &:last-of-type{
+        &:last-of-type {
           order: 4;
           align-self: flex-end;
         }
       }
 
-      p{
+      p {
         width: 70%;
-        &:first-of-type{
+        &:first-of-type {
           order: 3;
         }
-        &:last-of-type{
+        &:last-of-type {
           order: 5;
         }
       }
     }
   }
-  
+
   // La toate trebuie sa pui top padding de m-section-spacing
 }
 

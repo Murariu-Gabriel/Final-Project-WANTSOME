@@ -156,56 +156,62 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: none;
-  flex-direction: none;
+  flex-direction: column;
   background-color: #FAFAFA;
-  height: 100vh;
 }
 
-.container {
+section {
+  height: 100vh;
   display: flex;
-  align-items: none;
-  justify-content: center;
+  align-items: center;
+  justify-content: none;
   flex-wrap: none;
-  flex-direction: column;
-  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.65);
+  flex-direction: none;
+}
+section .container {
   width: 100vw;
   height: 100vh;
+  border-radius: 8px;
 }
-.container form {
+section .container form {
   display: flex;
   flex-direction: column;
 }
-.container form h2 {
+section .container form h2 {
   text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 30px;
 }
-.container form div {
+section .container form div {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.container form a {
+section .container form a {
   align-self: flex-end;
   text-transform: uppercase;
 }
-.container form .terms {
+section .container form .terms {
   margin-top: 25px;
   flex-direction: row;
 }
-.container form .terms a {
+section .container form .terms a {
+  color: #000000;
   font-weight: bold;
 }
-.container form .buttons {
-  margin-top: 30px;
+section .container form .buttons {
+  margin: 30px;
   flex-direction: row;
   justify-content: center;
 }
-.container form .buttons button, .container form .buttons a {
+section .container form .buttons button, section .container form .buttons a {
   width: 50%;
 }
-.container form .buttons .button-3 {
+section .container form .buttons .button-1 {
+  padding: 15px 30px;
+}
+section .container form .buttons .button-3 {
   background-color: inherit;
   padding: 15px 30px;
 }/*# sourceMappingURL=signup.css.map */

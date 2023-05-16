@@ -56,7 +56,7 @@
     @include flex(center, center, unset, unset);
 
     .container {
-      max-width: 400px;
+      max-width: 500px;
       color: $white;
       text-align: center;
       
@@ -150,17 +150,18 @@
       }
 
       &:nth-of-type(2) {
-        padding: 0 $base-spacing;
-        @include flex(center, flex-start, unset, column);
         height: 320px;
-        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/210303-mi-watch-wm-5.jpg");
-        background-size:cover;
-        background-repeat: no-repeat;
+        @include flex(flex-start, center, unset, unset);
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-3.jpg");
+        background-size: cover;
+        background-position: 30%;
         
-        h4{
-          width: 40%;
-          color: rgb(255, 255, 255); /// ATENTIE AICI E NEGRU
-         
+        div{
+            padding: 0 $m-spacing;
+            h4{
+              margin-top: 0;
+              width: 60%;
+            }
         }
 
       }
@@ -169,11 +170,10 @@
         //  height: 500px; // Pentru desktop
         position: relative;
         div {
+          height: 200px;
           margin-top: $m-spacing;
-          padding: 0 $base-padding;
 
           &:first-of-type{
-            min-height: 200px;
             border-radius: $base-border-radius;
             background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
             background-size: cover;
@@ -188,14 +188,12 @@
             @include flex(center, flex-start, unset, column);
             
             h4 {
-              padding: $m-spacing 0;
+              padding: 0 0 $m-spacing  $m-spacing;
               margin: 0;
-              //  font-weight: 700;
             }
   
             button {
-              margin-bottom: $m-spacing;
-             
+              margin: 0 0 0  $m-spacing;
             }
 
           }
