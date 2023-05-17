@@ -21,24 +21,28 @@
       href="/styles/home-styles/home-media/home-media-large.css"
       media="screen and (min-width: 990px)"
     />
+
+    <script src="../dashboard.js" defer></script>
     <title>WT-Home</title>
   </head>
   <body>
     <section class="nav-and-hero">
       <div class="container">
         <header>
-          <button>
+          <button id="h-button">
             <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
               <g fill-rule="evenodd">
                 <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
               </g>
             </svg>
           </button>
-          <img
-            src="/assets/Images/logo-images/second-logo/png/logo-no-background.png"
-            alt="Wrist Trackers logo"
-          />
-          <nav>
+          <a href="/html-pages/dashboard.html">
+            <img
+              src="/assets/Images/logo-images/second-logo/png/logo-no-background.png"
+              alt="Wrist Trackers logo"
+            />
+          </a>
+          <nav class="a" id="header-nav">
             <ul>
               <li><a href="">home</a></li>
               <li><a href="">workout</a></li>
@@ -72,51 +76,57 @@
     <section class="categories">
       <div class="container">
         <article>
-          <img
-            class="category-image"
-            src="/assets/Images/Devices/Huawei/Gt-Runner.png"
-            alt="Huawei Gt Runner"
-          />
-          <h3 class="subtitle">Workout Tracking</h3>
-          <a href="" class="button-3">
-            shop
+          <div>
             <img
-              src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
-              alt="button-arrow"
+              class="category-image"
+              src="/assets/Images/Devices/Huawei/Gt-Runner.png"
+              alt="Huawei Gt Runner"
             />
-          </a>
+            <h3 class="subtitle">Workout Tracking</h3>
+            <a href="" class="button-3">
+              shop
+              <img
+                src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
+                alt="button-arrow"
+              />
+            </a>
+          </div>
         </article>
 
         <article>
-          <img
-            class="category-image"
-            src="/assets/Images/Devices/Fit-Bit/fitbit-inspire.png"
-            alt="Fitbit Inspire 3"
-          />
-          <h3 class="subtitle">Sleep Tracking</h3>
-          <a href="" class="button-3">
-            shop
+          <div>
             <img
-              src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
-              alt="button-arrow"
+              class="category-image"
+              src="/assets/Images/Devices/Fit-Bit/fitbit-inspire.png"
+              alt="Fitbit Inspire 3"
             />
-          </a>
+            <h3 class="subtitle">Sleep Tracking</h3>
+            <a href="" class="button-3">
+              shop
+              <img
+                src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
+                alt="button-arrow"
+              />
+            </a>
+          </div>
         </article>
 
         <article>
-          <img
-            class="category-image"
-            src="/assets/Images/Devices/Whoop-strap-4/whoopstrap.png"
-            alt="Whoop strap 4"
-          />
-          <h3 class="subtitle">Health Tracking</h3>
-          <a href="" class="button-3">
-            shop
+          <div>
             <img
-              src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
-              alt="button-arrow"
+              class="category-image"
+              src="/assets/Images/Devices/Whoop-strap-4/whoopstrap.png"
+              alt="Whoop strap 4"
             />
-          </a>
+            <h3 class="subtitle">Health Tracking</h3>
+            <a href="" class="button-3">
+              shop
+              <img
+                src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
+                alt="button-arrow"
+              />
+            </a>
+          </div>
         </article>
       </div>
     </section>

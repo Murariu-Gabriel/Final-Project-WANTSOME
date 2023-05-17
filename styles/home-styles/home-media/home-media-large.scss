@@ -21,13 +21,25 @@
           }
         }
 
+        .nav-toggle{
+          all: revert;
+          display: inline-block;
+           ul {
+            @include flex(center, center, none, row);
+            gap: $xl-spacing;
+            font-size: $s-font - 2;
+          }
+        }
+
         nav {
           display: inline-block;
           ul {
-            @include flex(center, center, none, none);
+            @include flex(center, center, none, row);
             gap: $xl-spacing;
           }
         }
+
+      
       }
     }
 
@@ -48,15 +60,21 @@
 
   .categories {
     padding-top: $m-section-spacing;
+
     .container {
       article {
-        height: 200px;
-        p {
-          font-size: $m-font;
-        }
-        .category-image {
-          top: -90px;
-          width: 150px;
+        div{
+          height: 200px;
+          .subtitle {
+            font-size: $m-font ;
+            padding-top: $base-spacing;
+          }
+          .category-image {
+            width: 150px;
+          }
+          .button-3{
+            padding-bottom: $m-spacing;
+          }
         }
       }
     }
@@ -104,6 +122,7 @@
 
         &:nth-of-type(2) {
           background-position: center;
+          // background-size: contain;
           div {
             padding: 0 $xl-spacing;
           }

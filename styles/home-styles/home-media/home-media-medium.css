@@ -63,6 +63,7 @@ h6 {
   .container {
     width: 90%;
     margin: 0 auto;
+    padding: 0;
   }
   .nav-and-hero > .container {
     padding: 15px 0;
@@ -78,6 +79,15 @@ h6 {
   }
   .nav-and-hero > .container header button:last-of-type {
     margin-left: auto;
+  }
+  .nav-and-hero > .container header .nav-toggle {
+    width: 200px;
+    left: 4%;
+    border-radius: 8px;
+  }
+  .nav-and-hero > .container header .nav-toggle ul {
+    align-items: flex-start;
+    padding-left: 30px;
   }
   .nav-and-hero .hero .container h1 {
     font-size: 56px;
@@ -96,6 +106,9 @@ h6 {
   }
   .categories .container article {
     width: 100%;
+  }
+  .categories .container article div .subtitle {
+    font-size: 14px;
   }
   .products-display {
     padding-top: 96px;

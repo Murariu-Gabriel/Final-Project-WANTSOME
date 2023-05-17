@@ -6,10 +6,11 @@
   .container {
     width: 90%;
     margin: 0 auto;
+    padding: 0;
   }
 
   .nav-and-hero {
-    > .container {
+    >.container {
       padding: $base-spacing 0;
 
       header {
@@ -22,14 +23,21 @@
             margin-left: auto;
           }
         }
+
+       .nav-toggle{
+          width: 200px;
+          left: 4%; 
+          border-radius: $base-border-radius;
+          ul{
+            align-items: flex-start;
+            padding-left: $m-spacing;
+          }
+        }
       }
     }
 
     .hero {
-      // height: 500px;
-      // @include flex(unset, center, unset, unset);
       .container {
-        // width: 700px;
         h1 {
           font-size: $h1-font-size;
         }
@@ -46,6 +54,11 @@
       gap: 10px;
 
       article {
+        div{
+          .subtitle{
+            font-size: 14px;
+          }
+        }
         width: 100%;
       }
     }

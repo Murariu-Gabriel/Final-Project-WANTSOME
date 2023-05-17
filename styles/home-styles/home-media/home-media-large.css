@@ -73,6 +73,19 @@ h6 {
   .nav-and-hero > .container header button:last-of-type {
     margin-left: 0;
   }
+  .nav-and-hero > .container header .nav-toggle {
+    all: revert;
+    display: inline-block;
+  }
+  .nav-and-hero > .container header .nav-toggle ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: none;
+    flex-direction: row;
+    gap: 60px;
+    font-size: 13px;
+  }
   .nav-and-hero > .container header nav {
     display: inline-block;
   }
@@ -81,7 +94,7 @@ h6 {
     align-items: center;
     justify-content: center;
     flex-wrap: none;
-    flex-direction: none;
+    flex-direction: row;
     gap: 60px;
   }
   .nav-and-hero .hero .container {
@@ -97,15 +110,18 @@ h6 {
   .categories {
     padding-top: 168px;
   }
-  .categories .container article {
+  .categories .container article div {
     height: 200px;
   }
-  .categories .container article p {
+  .categories .container article div .subtitle {
     font-size: 18px;
+    padding-top: 15px;
   }
-  .categories .container article .category-image {
-    top: -90px;
+  .categories .container article div .category-image {
     width: 150px;
+  }
+  .categories .container article div .button-3 {
+    padding-bottom: 30px;
   }
   .products-display {
     padding-top: 168px;

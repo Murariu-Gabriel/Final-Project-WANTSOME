@@ -162,14 +162,49 @@ h6 {
   justify-content: space-between;
   flex-wrap: unset;
   flex-direction: unset;
-  padding: 0 15px;
   height: 60px;
 }
-.nav-and-hero > .container header img {
+.nav-and-hero > .container header a {
+  align-self: center;
+}
+.nav-and-hero > .container header a img {
   width: 80px;
 }
 .nav-and-hero > .container header nav {
   display: none;
+}
+.nav-and-hero > .container header .nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  top: 90px;
+  left: 0px;
+  background-color: #D87D4A;
+  z-index: 1;
+}
+.nav-and-hero > .container header .nav-toggle ul {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 20px;
+}
+.nav-and-hero > .container header .nav-toggle ul li a:hover {
+  color: #000000;
+}
+.nav-and-hero > .container header .toggle-close svg {
+  fill: white;
+}
+.nav-and-hero > .container header .toggle-close svg:hover {
+  fill: #D87D4A;
+}
+.nav-and-hero > .container header .toggle-close svg g path {
+  width: 0;
+  height: 0;
 }
 .nav-and-hero .hero {
   height: 90vh;
@@ -209,8 +244,9 @@ h6 {
   flex-wrap: unset;
   flex-direction: column;
   gap: 70px;
+  padding: 0;
 }
-.categories .container article {
+.categories .container article div {
   height: 150px;
   border-radius: 8px;
   display: flex;
@@ -219,18 +255,15 @@ h6 {
   flex-wrap: unset;
   flex-direction: column;
   background-color: #F1F1F1;
-  position: relative;
 }
-.categories .container article .category-image {
-  position: absolute;
-  top: -60px;
+.categories .container article div .category-image {
   width: 100px;
 }
-.categories .container article .subtitle {
+.categories .container article div .subtitle {
   color: #000000;
   font-size: 15px;
 }
-.categories .container article a {
+.categories .container article div a {
   background-color: #F1F1F1;
   padding-bottom: 15px;
 }
@@ -279,7 +312,7 @@ h6 {
   justify-content: flex-start;
   flex-wrap: unset;
   flex-direction: unset;
-  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-3.jpg");
+  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-6.jpg");
   background-size: cover;
   background-position: 30%;
 }

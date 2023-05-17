@@ -12,7 +12,6 @@
 
 // font sizes for phone display
 
-
 .nav-and-hero {
   background-color: $black;
 
@@ -21,27 +20,75 @@
     padding: $base-spacing;
     // width: 100vw
 
-      button {
+    button {
       padding: 0;
       background: none;
       border: none;
       cursor: pointer;
       fill: $white;
 
-        &:hover {
-          fill: $orange;
-        }
+      &:hover {
+        fill: $orange;
+      }
     }
 
     header {
       @include flex(space-between, unset, unset, unset);
-      padding: 0 $base-spacing;
+
       height: 60px;
-      img {
-        width: 80px;
+      a {
+        align-self: center;
+        img {
+          width: 80px;
+        }
       }
       nav {
         display: none;
+      }
+
+      .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 250px;
+        width: 100%;
+        position: absolute;
+        // border-radius: $base-border-radius;
+        top: 90px;
+        left: 0px;
+        // left: 4%; pentru medium size
+        background-color: $orange;
+        z-index: 1;
+
+        ul {
+          width: 100%;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          font-size: 20px;
+          li {
+            a {
+              &:hover {
+                color: $black;
+              }
+            }
+          }
+        }
+      }
+      .toggle-close{
+        svg{
+          fill: white;
+          &:hover{
+            fill: $orange;
+          }
+          g{
+            path{
+              width: 0;
+              height: 0;
+            }
+          }
+        }
       }
     }
   }
@@ -59,12 +106,12 @@
       max-width: 500px;
       color: $white;
       text-align: center;
-      
-      .overline{
+
+      .overline {
         color: $white;
       }
 
-      h1{
+      h1 {
         font-size: $xl-font;
       }
 
@@ -81,29 +128,26 @@
   .container {
     @include flex(center, unset, unset, column);
     gap: 70px;
-
+    padding: 0;
     article {
-      height: 150px;
-      border-radius: $base-border-radius;
-      @include flex(flex-end, center, unset, column);
-      background-color: $gray;
-      position: relative;
-
-      .category-image {
-        position: absolute;
-        top: -60px;
-        width: 100px;
-        // filter: drop-shadow(0px 50px 45px #000000);
-      }
-
-      .subtitle {
-        color: $black;
-        font-size: $s-font;
-      }
-
-      a {
+      div {
+        height: 150px;
+        border-radius: $base-border-radius;
+        @include flex(flex-end, center, unset, column);
         background-color: $gray;
-        padding-bottom: $base-padding;
+        .category-image {
+          width: 100px;
+        }
+
+        .subtitle {
+          color: $black;
+          font-size: $s-font;
+        }
+
+        a {
+          background-color: $gray;
+          padding-bottom: $base-padding;
+        }
       }
     }
   }
@@ -114,12 +158,13 @@
 
   .container {
     article {
-      &:not(:first-of-type){
+      &:not(:first-of-type) {
         margin-top: $m-spacing;
       }
       border-radius: $base-border-radius;
 
-      &:first-of-type, &:first-of-type > div{
+      &:first-of-type,
+      &:first-of-type > div {
         @include flex(center, center, unset, column);
       }
 
@@ -134,16 +179,15 @@
         background-position-y: -100px;
         background-size: 170%;
 
-      
         img {
           width: 200px;
         }
 
-        p{
+        p {
           padding: $base-padding;
         }
 
-        h2{
+        h2 {
           margin: 40px 10px 10px 10px;
           font-size: $xl-font;
         }
@@ -152,18 +196,17 @@
       &:nth-of-type(2) {
         height: 320px;
         @include flex(flex-start, center, unset, unset);
-        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-3.jpg");
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-6.jpg");
         background-size: cover;
         background-position: 30%;
-        
-        div{
-            padding: 0 $m-spacing;
-            h4{
-              margin-top: 0;
-              width: 60%;
-            }
-        }
 
+        div {
+          padding: 0 $m-spacing;
+          h4 {
+            margin-top: 0;
+            width: 60%;
+          }
+        }
       }
 
       &:last-of-type {
@@ -173,29 +216,27 @@
           height: 200px;
           margin-top: $m-spacing;
 
-          &:first-of-type{
+          &:first-of-type {
             border-radius: $base-border-radius;
             background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
             background-size: cover;
             background-position: center;
           }
 
-
-          &:last-of-type{
+          &:last-of-type {
             border-radius: $base-border-radius;
             background-color: $gray;
             // padding: 0 $base-spacing;
             @include flex(center, flex-start, unset, column);
-            
+
             h4 {
-              padding: 0 0 $m-spacing  $m-spacing;
+              padding: 0 0 $m-spacing $m-spacing;
               margin: 0;
             }
-  
-            button {
-              margin: 0 0 0  $m-spacing;
-            }
 
+            button {
+              margin: 0 0 0 $m-spacing;
+            }
           }
         }
       }
@@ -211,8 +252,7 @@
     text-align: center;
     @include flex(center, center, unset, column);
     div {
-
-      &:first-of-type{
+      &:first-of-type {
         border-radius: $base-border-radius;
         height: 300px;
         width: 100%;
@@ -221,34 +261,31 @@
         background-position: left;
       }
 
-      &:last-of-type{
-        h2{
+      &:last-of-type {
+        h2 {
           font-size: $l-font;
         }
-    
+
         p {
           color: $out-of-color-palette-gray;
         }
         span {
           color: $orange;
         }
-
       }
-
     }
-
   }
 }
 
 footer {
   position: relative;
   background-color: $black;
-  
+
   .container {
     @include flex(center, center, wrap, column);
     padding: $m-spacing;
     gap: $m-spacing;
-   
+
     text-align: center;
 
     &::before {
@@ -268,7 +305,7 @@ footer {
     p {
       color: $out-of-color-palette-gray;
     }
-    nav{
+    nav {
       .socials {
         @include flex(center, center, unset, unset);
         gap: $base-spacing;
@@ -283,4 +320,3 @@ footer {
     }
   }
 }
-
