@@ -152,6 +152,7 @@ h6 {
   border: none;
   cursor: pointer;
   fill: #FFFFFF;
+  width: 25px;
 }
 .nav-and-hero > .container button:hover {
   fill: #D87D4A;
@@ -197,14 +198,16 @@ h6 {
   color: #000000;
 }
 .nav-and-hero > .container header .toggle-close svg {
+  display: flex;
+  align-items: center;
   fill: white;
 }
 .nav-and-hero > .container header .toggle-close svg:hover {
   fill: #D87D4A;
 }
-.nav-and-hero > .container header .toggle-close svg g path {
-  width: 0;
-  height: 0;
+.nav-and-hero > .container header .toggle-close svg path {
+  width: 16px;
+  height: 15px;
 }
 .nav-and-hero .hero {
   height: 90vh;
@@ -229,6 +232,8 @@ h6 {
 }
 .nav-and-hero .hero .container h1 {
   font-size: 36px;
+  line-height: 40px;
+  margin: 30px 0;
 }
 .nav-and-hero .hero .container button {
   margin-top: 20px;

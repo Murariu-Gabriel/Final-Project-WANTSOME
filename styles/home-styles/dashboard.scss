@@ -26,6 +26,7 @@
       border: none;
       cursor: pointer;
       fill: $white;
+      width: 25px;
 
       &:hover {
         fill: $orange;
@@ -76,17 +77,19 @@
           }
         }
       }
+
+
       .toggle-close{
         svg{
+          display: flex;
+          align-items: center;
           fill: white;
           &:hover{
             fill: $orange;
           }
-          g{
-            path{
-              width: 0;
-              height: 0;
-            }
+          path{
+            width: 16px;
+            height: 15px;
           }
         }
       }
@@ -113,6 +116,8 @@
 
       h1 {
         font-size: $xl-font;
+         line-height: 40px;
+         margin: $m-spacing 0;
       }
 
       button {
