@@ -10,7 +10,8 @@
 
 @use "../buttons";
 
-// font sizes for phone display
+@use "../form-els" as *;
+
 
 .nav-and-hero {
   background-color: $black;
@@ -34,8 +35,9 @@
     }
 
     header {
-      @include flex(space-between, unset, unset, unset);
-      height: 60px;
+      @include flex(space-between, unset, wrap, unset);
+      // height: 60px;
+      gap: $base-spacing;
 
       a {
         align-self: center;
@@ -59,7 +61,7 @@
         height: 250px;
         width: 100%;
         position: absolute;
-        top: 90px;
+        top: 125px;
         left: 0px;
         background-color: $orange;
 
@@ -93,6 +95,40 @@
             width: 16px;
             height: 15px;
           }
+        }
+      }
+
+ 
+      // SEARCH INPUT
+
+      .search-container{
+        align-self: center;
+        position: relative;
+        width: 100%;
+
+        input{
+          width: 100%;
+          padding: 5px;
+        }
+
+        button{
+          position: absolute;
+          background-color: transparent;
+          fill: black;
+          height: 100%;
+          width: 50px;
+          top: 0;
+          right: 0;
+          border-bottom-right-radius: $base-border-radius;
+          border-top-right-radius: $base-border-radius;
+
+           
+            &:hover{
+              background-color: $orange;
+               svg{
+              fill: white;
+            }
+            }
         }
       }
     }
@@ -133,7 +169,7 @@
   padding: $section-spacing $base-spacing 0 $base-spacing;
   .container {
     @include flex(center, unset, unset, column);
-    gap: 70px;
+    gap: 100px;
     padding: 0;
     article {
       &:hover {
@@ -148,6 +184,8 @@
           box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
           border-radius: $base-border-radius;
           z-index: 1;
+          // width: 90%;        // Aici e in caz ca vrei sa iti dai seama cum sa il centrezi
+          // justify-self: center;
         }
 
         height: 150px;

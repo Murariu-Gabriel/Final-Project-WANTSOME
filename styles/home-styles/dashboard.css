@@ -139,6 +139,18 @@ h6 {
   color: #D87D4A;
 }
 
+input {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 15px 20px;
+  border-radius: 10px;
+  caret-color: #D87D4A;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #D87D4A;
+}
+
 .nav-and-hero {
   background-color: #000000;
 }
@@ -161,9 +173,9 @@ h6 {
   display: flex;
   align-items: unset;
   justify-content: space-between;
-  flex-wrap: unset;
+  flex-wrap: wrap;
   flex-direction: unset;
-  height: 60px;
+  gap: 15px;
 }
 .nav-and-hero > .container header a {
   align-self: center;
@@ -185,7 +197,7 @@ h6 {
   height: 250px;
   width: 100%;
   position: absolute;
-  top: 90px;
+  top: 125px;
   left: 0px;
   background-color: #D87D4A;
 }
@@ -211,6 +223,32 @@ h6 {
 .nav-and-hero > .container header .toggle-close svg path {
   width: 16px;
   height: 15px;
+}
+.nav-and-hero > .container header .search-container {
+  align-self: center;
+  position: relative;
+  width: 100%;
+}
+.nav-and-hero > .container header .search-container input {
+  width: 100%;
+  padding: 5px;
+}
+.nav-and-hero > .container header .search-container button {
+  position: absolute;
+  background-color: transparent;
+  fill: black;
+  height: 100%;
+  width: 50px;
+  top: 0;
+  right: 0;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.nav-and-hero > .container header .search-container button:hover {
+  background-color: #D87D4A;
+}
+.nav-and-hero > .container header .search-container button:hover svg {
+  fill: white;
 }
 .nav-and-hero .hero {
   height: 90vh;
@@ -250,7 +288,7 @@ h6 {
   justify-content: center;
   flex-wrap: unset;
   flex-direction: column;
-  gap: 70px;
+  gap: 100px;
   padding: 0;
 }
 .categories .container article:hover {
