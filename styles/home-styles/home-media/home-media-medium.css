@@ -63,7 +63,6 @@ h6 {
   .container {
     width: 90%;
     margin: 0 auto;
-    padding: 0;
   }
   .nav-and-hero > .container {
     padding: 15px 0;
@@ -101,16 +100,17 @@ h6 {
     margin: 0 auto;
     display: flex;
     align-items: unset;
-    justify-content: unset;
+    justify-content: space-around;
     flex-wrap: unset;
     flex-direction: unset;
     gap: 10px;
+    padding: 0;
   }
   .categories .container article {
     width: 100%;
   }
   .categories .container article div .subtitle {
-    font-size: 14px;
+    font-size: 13px;
   }
   .products-display {
     padding-top: 96px;

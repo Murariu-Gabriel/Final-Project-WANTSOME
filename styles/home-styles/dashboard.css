@@ -169,7 +169,11 @@ h6 {
   align-self: center;
 }
 .nav-and-hero > .container header a img {
+  transition: transform 0.2s ease-in-out;
   width: 80px;
+}
+.nav-and-hero > .container header a img:hover {
+  transform: scale(1.1);
 }
 .nav-and-hero > .container header nav {
   display: none;
@@ -184,7 +188,6 @@ h6 {
   top: 90px;
   left: 0px;
   background-color: #D87D4A;
-  z-index: 1;
 }
 .nav-and-hero > .container header .nav-toggle ul {
   width: 100%;
@@ -215,7 +218,6 @@ h6 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -240,7 +242,7 @@ h6 {
 }
 
 .categories {
-  padding-top: 96px;
+  padding: 96px 15px 0 15px;
 }
 .categories .container {
   display: flex;
@@ -251,7 +253,12 @@ h6 {
   gap: 70px;
   padding: 0;
 }
+.categories .container article:hover {
+  z-index: 1;
+}
 .categories .container article div {
+  transition: transform 0.2s ease-in-out;
+  border: none;
   height: 150px;
   border-radius: 8px;
   display: flex;
@@ -260,6 +267,12 @@ h6 {
   flex-wrap: unset;
   flex-direction: column;
   background-color: #F1F1F1;
+}
+.categories .container article div:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
+  border-radius: 8px;
+  z-index: 1;
 }
 .categories .container article div .category-image {
   width: 100px;
@@ -357,6 +370,12 @@ h6 {
 .products-display .container article:last-of-type div:last-of-type button {
   margin: 0 0 0 30px;
 }
+.products-display .container article:last-of-type div:last-of-type:hover {
+  box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
+}
+.products-display .container article:not(:last-of-type):hover {
+  box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
+}
 
 .about {
   padding-top: 96px;
@@ -411,7 +430,11 @@ footer .container::before {
   top: 0;
 }
 footer .container img {
+  transition: transform 0.2s ease-in-out;
   width: 80px;
+}
+footer .container img:hover {
+  transform: scale(1.1);
 }
 footer .container p {
   color: gray;
@@ -430,4 +453,21 @@ footer .container nav .socials a {
 }
 footer .container nav .socials a:hover {
   fill: #D87D4A;
-}/*# sourceMappingURL=dashboard.css.map */
+}
+
+/* ANIMATION IN CASE YOU WANT AND AND TWEAK IT
+
+      animation: pop-out 0.7s ease-out;
+        animation-play-state: running;
+        @keyframes pop-out {
+          0% {
+            left: -200px;
+          }
+
+          100% {
+            // right: 0;
+          }
+        }
+
+
+*//*# sourceMappingURL=dashboard.css.map */

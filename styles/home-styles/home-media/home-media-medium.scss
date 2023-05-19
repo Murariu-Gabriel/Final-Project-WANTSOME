@@ -6,7 +6,7 @@
   .container {
     width: 90%;
     margin: 0 auto;
-    padding: 0;
+    // padding: 0;
   }
 
   .nav-and-hero {
@@ -52,13 +52,13 @@
 
     .container {
       margin: 0 auto;
-      @include flex(unset, unset, unset, unset);
+      @include flex(space-around, unset, unset, unset);
       gap: 10px;
-
+      padding: 0;
       article {
         div{
           .subtitle{
-            font-size: 14px;
+            font-size: $s-font - 2;
           }
         }
         width: 100%;
