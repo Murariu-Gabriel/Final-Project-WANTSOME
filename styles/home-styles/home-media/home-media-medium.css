@@ -77,6 +77,10 @@ h6 {
     gap: 30px;
   }
   .nav-and-hero > .container header button:last-of-type {
+    order: 1;
+  }
+  .nav-and-hero > .container header .search-container {
+    margin: 0;
     margin-left: auto;
   }
   .nav-and-hero > .container header .nav-toggle {

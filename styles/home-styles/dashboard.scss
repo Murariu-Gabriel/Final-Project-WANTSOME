@@ -105,6 +105,8 @@
         align-self: center;
         position: relative;
         width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
 
         input{
           width: 100%;
@@ -181,7 +183,7 @@
         &:hover {
           transform: scale(1.1);
           // border: 2px solid $orange;
-          box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
+          box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
           border-radius: $base-border-radius;
           z-index: 1;
           // width: 90%;        // Aici e in caz ca vrei sa iti dai seama cum sa il centrezi
@@ -215,10 +217,12 @@
 
   .container {
     article {
+      border-radius: $base-border-radius;
+      transition: box-shadow 0.3s ease-in-out;
+
       &:not(:first-of-type) {
         margin-top: $m-spacing;
       }
-      border-radius: $base-border-radius;
 
       &:first-of-type,
       &:first-of-type > div {
@@ -283,12 +287,14 @@
           &:last-of-type {
             border-radius: $base-border-radius;
             background-color: $gray;
+            transition: box-shadow 0.2s ease-in-out;
             // padding: 0 $base-spacing;
             @include flex(center, flex-start, unset, column);
 
             h4 {
               padding: 0 0 $m-spacing $m-spacing;
               margin: 0;
+              width: 90%;
             }
 
             button {
@@ -296,14 +302,14 @@
             }
 
             &:hover {
-              box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
+              box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
             }
           }
         }
       }
       &:not(:last-of-type) {
         &:hover {
-          box-shadow: 0px 0px 10px 1px rgb(150, 150, 150);
+          box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
         }
       }
     }

@@ -18,10 +18,17 @@
         padding: 0;
         gap: $m-spacing;
 
+    
+
         button {
           &:last-of-type {
-            margin-left: auto;
+            order: 1;
           }
+        }
+
+        .search-container{
+          margin: 0 ;
+          margin-left: auto;
         }
 
        .nav-toggle{
