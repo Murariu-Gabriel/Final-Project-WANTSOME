@@ -130,10 +130,12 @@
           right: 0;
           border-bottom-right-radius: $base-border-radius;
           border-top-right-radius: $base-border-radius;
+           transition: background-color 0.2s ease-in-out;
             svg{
               border-bottom-right-radius: $base-border-radius;
               border-top-right-radius: $base-border-radius;
               background-color: white;
+              transition: background-color 0.2s ease-in-out;
             }
            
             &:hover{
@@ -190,13 +192,15 @@
       }
       div {
         transition: transform 0.2s ease-in-out;
+        // transition: box-shadow 0.5s ease-in-out;
+        // transition: z-index 0.5s ease-in-out;
         border: none;
         &:hover {
           transform: scale(1.1);
           // border: 2px solid $orange;
           box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
           border-radius: $base-border-radius;
-          z-index: 1;
+          // z-index: 1;
           // width: 90%;        // Aici e in caz ca vrei sa iti dai seama cum sa il centrezi
           // justify-self: center;
         }
@@ -400,6 +404,7 @@ footer {
         a {
           fill: $white;
           font-size: 1.5rem;
+           transition: fill 0.3s ease-in-out;
           &:hover {
             fill: $orange;
           }

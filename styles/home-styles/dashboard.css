@@ -17,6 +17,7 @@ ul {
 a {
   color: #FFFFFF;
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
 }
 a:hover {
   color: #D87D4A;
@@ -95,11 +96,19 @@ h6 {
   cursor: pointer;
 }
 
+button {
+  transition: fill 0.3s ease-in-out;
+}
+button:hover {
+  fill: #D87D4A;
+}
+
 .button-1 {
   color: #FFFFFF;
   background-color: #D87D4A;
   border: none;
   padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out;
 }
 .button-1:hover {
   background-color: #FBAF85;
@@ -109,6 +118,8 @@ h6 {
   border: 1px solid #000000;
   background-color: transparent;
   padding: 15px 30px;
+  transition: color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 .button-2:hover {
   background-color: #000000;
@@ -120,6 +131,7 @@ h6 {
   background-color: #000000;
   color: #FFFFFF;
   padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out;
 }
 .button-2b:hover {
   background-color: #aaaaaa;
@@ -148,7 +160,7 @@ input {
 }
 input:focus {
   outline: none;
-  border: 2px solid #D87D4A;
+  border: 3px solid #D87D4A;
 }
 
 .nav-and-hero {
@@ -254,11 +266,13 @@ input:focus {
   right: 0;
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
 }
 .nav-and-hero > .container header .search-container button svg {
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
   background-color: white;
+  transition: background-color 0.2s ease-in-out;
 }
 .nav-and-hero > .container header .search-container button:hover {
   background-color: #D87D4A;
@@ -326,7 +340,6 @@ input:focus {
   transform: scale(1.1);
   box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
   border-radius: 8px;
-  z-index: 1;
 }
 .categories .container article div .category-image {
   width: 100px;
@@ -507,6 +520,7 @@ footer .container nav .socials {
 footer .container nav .socials a {
   fill: #FFFFFF;
   font-size: 1.5rem;
+  transition: fill 0.3s ease-in-out;
 }
 footer .container nav .socials a:hover {
   fill: #D87D4A;
