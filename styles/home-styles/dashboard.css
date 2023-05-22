@@ -159,12 +159,15 @@ input:focus {
   padding: 15px;
 }
 .nav-and-hero > .container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   background: none;
   border: none;
   cursor: pointer;
   fill: #FFFFFF;
-  width: 25px;
+  width: 50px;
 }
 .nav-and-hero > .container button:hover {
   fill: #D87D4A;
@@ -194,7 +197,6 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 250px;
   width: 100%;
   position: absolute;
   top: 125px;
@@ -206,11 +208,18 @@ input:focus {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 30px;
   font-size: 20px;
+  text-align: center;
+}
+.nav-and-hero > .container header .nav-toggle ul li {
+  width: 100%;
+  padding: 15px;
+}
+.nav-and-hero > .container header .nav-toggle ul li:hover {
+  background-color: #FBAF85;
 }
 .nav-and-hero > .container header .nav-toggle ul li a:hover {
-  color: #000000;
+  color: #FFFFFF;
 }
 .nav-and-hero > .container header .toggle-close svg {
   display: flex;
@@ -228,7 +237,7 @@ input:focus {
   align-self: center;
   position: relative;
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
   margin: 0 auto;
 }
 .nav-and-hero > .container header .search-container input {
@@ -246,11 +255,16 @@ input:focus {
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
 }
+.nav-and-hero > .container header .search-container button svg {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: white;
+}
 .nav-and-hero > .container header .search-container button:hover {
   background-color: #D87D4A;
 }
 .nav-and-hero > .container header .search-container button:hover svg {
-  fill: white;
+  background-color: #D87D4A;
 }
 .nav-and-hero .hero {
   height: 90vh;

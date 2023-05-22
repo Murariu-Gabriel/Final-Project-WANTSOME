@@ -32,12 +32,14 @@
         }
 
        .nav-toggle{
+          top: 80px;
           width: 200px;
           left: 4%; 
           border-radius: $base-border-radius;
           ul{
-            align-items: flex-start;
-            padding-left: $m-spacing;
+            li{
+              border-radius: $base-border-radius;
+            }
           }
         }
       }

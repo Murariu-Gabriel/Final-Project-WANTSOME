@@ -21,21 +21,36 @@
           }
         }
 
+        // NAV REVERTION
         .nav-toggle{
           all: revert;
           display: inline-block;
+           flex-grow: 2;
            ul {
             @include flex(center, center, none, row);
-            gap: $xl-spacing;
-            font-size: $s-font - 2;
+            gap: $m-spacing;
+            font-size: $s-font;
+            li{
+              &:hover{
+                background-color: transparent;
+              }
+              padding: 0;
+              width:auto;
+              a {
+                &:hover{
+                  color: $orange;
+                }
+              }
+            }
           }
         }
 
         nav {
           display: inline-block;
+          flex-grow: 2;
           ul {
             @include flex(center, center, none, row);
-            gap: $xl-spacing;
+            gap: $m-spacing;
           }
         }
 
@@ -52,7 +67,6 @@
 
         h1{
             width: 46%;
-        // padding: ;
         }
 
         p,

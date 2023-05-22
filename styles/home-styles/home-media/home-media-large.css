@@ -76,6 +76,7 @@ h6 {
   .nav-and-hero > .container header .nav-toggle {
     all: revert;
     display: inline-block;
+    flex-grow: 2;
   }
   .nav-and-hero > .container header .nav-toggle ul {
     display: flex;
@@ -83,11 +84,22 @@ h6 {
     justify-content: center;
     flex-wrap: none;
     flex-direction: row;
-    gap: 60px;
-    font-size: 13px;
+    gap: 30px;
+    font-size: 15px;
+  }
+  .nav-and-hero > .container header .nav-toggle ul li {
+    padding: 0;
+    width: auto;
+  }
+  .nav-and-hero > .container header .nav-toggle ul li:hover {
+    background-color: transparent;
+  }
+  .nav-and-hero > .container header .nav-toggle ul li a:hover {
+    color: #D87D4A;
   }
   .nav-and-hero > .container header nav {
     display: inline-block;
+    flex-grow: 2;
   }
   .nav-and-hero > .container header nav ul {
     display: flex;
@@ -95,7 +107,7 @@ h6 {
     justify-content: center;
     flex-wrap: none;
     flex-direction: row;
-    gap: 60px;
+    gap: 30px;
   }
   .nav-and-hero .hero .container {
     margin: 0 auto;
