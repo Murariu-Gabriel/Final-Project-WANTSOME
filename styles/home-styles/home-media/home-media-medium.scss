@@ -35,10 +35,14 @@
           top: 80px;
           width: 200px;
           left: 4%; 
-          border-radius: $base-border-radius;
+          border-bottom-left-radius: $base-border-radius;
+          border-bottom-right-radius: $base-border-radius;
           ul{
             li{
-              border-radius: $base-border-radius;
+              &:last-of-type{
+                border-bottom-left-radius: $base-border-radius;
+               border-bottom-right-radius: $base-border-radius;
+              }
             }
           }
         }

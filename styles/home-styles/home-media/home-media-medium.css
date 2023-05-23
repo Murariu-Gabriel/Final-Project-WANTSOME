@@ -87,10 +87,12 @@ h6 {
     top: 80px;
     width: 200px;
     left: 4%;
-    border-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
-  .nav-and-hero > .container header .nav-toggle ul li {
-    border-radius: 8px;
+  .nav-and-hero > .container header .nav-toggle ul li:last-of-type {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
   .nav-and-hero .hero .container h1 {
     font-size: 56px;

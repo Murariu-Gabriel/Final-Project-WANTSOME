@@ -12,6 +12,7 @@
 
 @use "../form-els" as *;
 
+@use "../animations" as *;
 
 .nav-and-hero {
   background-color: $black;
@@ -20,6 +21,10 @@
     border-bottom: 1px solid $out-of-color-palette-gray;
     padding: $base-spacing;
     // width: 100vw
+
+    .display-none{
+      display: none;
+    }
 
     button {
       display: flex;
@@ -35,7 +40,9 @@
       &:hover {
         fill: $orange;
       }
+
     }
+    
 
     header {
       @include flex(space-between, unset, wrap, unset);
@@ -46,7 +53,7 @@
         img {
           transition: transform 0.2s ease-in-out;
           width: 80px;
-
+          
           &:hover {
             transform: scale(1.1);
           }
@@ -65,6 +72,8 @@
         top: 125px;
         left: 0px;
         background-color: $orange;
+        animation: pop-out 0.3s ease-in-out;
+        transform-origin: top;
 
         ul {
           width: 100%;
@@ -77,11 +86,16 @@
 
           li {
             width: 100%;
-            padding: 15px;
+            &:not(:first-of-type){
+              border-top: 1px solid $black;
+            }
             &:hover{
               background-color: $light-orange;
             }
             a {
+              display: block;
+              padding: 15px;
+              animation: fade 0.7s ease-in-out ;
               &:hover {
                 color: $white;
               }
@@ -89,6 +103,8 @@
           }
         }
       }
+          
+
 
       .toggle-close {
         svg {
@@ -114,8 +130,10 @@
         width: 100%;
         max-width: 350px;
         margin: 0 auto;
+        // height: 30px;
 
         input{
+          box-sizing: border-box;
           width: 100%;
           padding: 5px;
         }

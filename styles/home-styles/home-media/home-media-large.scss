@@ -16,6 +16,9 @@
           &:first-of-type {
             display: none;
           }
+          &:nth-of-type(2){
+            display: none;
+          }
           &:last-of-type {
             margin-left: 0;
           }
@@ -37,6 +40,7 @@
               padding: 0;
               width:auto;
               a {
+                padding: 0;
                 &:hover{
                   color: $orange;
                 }
