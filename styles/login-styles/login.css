@@ -1,4 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  color: #D87D4A;
+}
+
+.socials li a {
+  fill: #FFFFFF;
+  font-size: 1.5rem;
+  transition: fill 0.3s ease-in-out;
+}
+.socials li a:hover {
+  fill: #D87D4A;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+img {
+  display: block;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   font-size: 15px;
@@ -57,50 +98,6 @@ h6 {
   line-height: 25px;
   font-size: 13px;
   color: #D87D4A;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: #FFFFFF;
-  text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-a:hover {
-  color: #D87D4A;
-}
-
-.container {
-  padding: 0 15px;
-}
-
-img {
-  display: block;
-}
-
-input {
-  font-weight: bold;
-  border: 2px solid #F1F1F1;
-  padding: 15px 20px;
-  border-radius: 10px;
-  caret-color: #D87D4A;
-}
-input:focus {
-  outline: none;
-  border: 3px solid #D87D4A;
 }
 
 .button-1, .button-2, .button-2b, .button-3 {
@@ -163,11 +160,56 @@ button:hover {
   color: #D87D4A;
 }
 
+input {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 15px 20px;
+  border-radius: 10px;
+  caret-color: #D87D4A;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #D87D4A;
+}
+
+@-webkit-keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: none;
+  flex-wrap: unset;
   flex-direction: column;
   background-color: #F1F1F1;
 }
@@ -176,12 +218,13 @@ section {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: none;
-  flex-wrap: none;
-  flex-direction: none;
+  justify-content: unset;
+  flex-wrap: unset;
+  flex-direction: unset;
 }
 section .container {
   border-radius: 8px;
+  background-color: #FFFFFF;
   width: 100vw;
   height: 100vh;
 }
@@ -200,11 +243,20 @@ section .container form h2 {
 section .container form div {
   margin-top: 15px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
 }
+section .container form div label {
+  align-self: center;
+}
+section .container form div p {
+  margin: 0 0 0 auto;
+}
+section .container form div input {
+  width: 100%;
+}
 section .container form a {
-  align-self: flex-end;
+  margin-left: auto;
   text-transform: capitalize;
 }
 section .container form button {
@@ -218,12 +270,13 @@ section .container .socials ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: none;
-  flex-direction: none;
+  flex-wrap: unset;
+  flex-direction: unset;
   gap: 15px;
 }
 section .container .socials ul a {
   font-size: 1.5rem;
+  fill: #000000;
 }
 section .container .socials ul a:hover {
   fill: #D87D4A;

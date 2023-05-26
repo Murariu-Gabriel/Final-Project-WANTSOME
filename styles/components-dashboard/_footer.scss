@@ -1,0 +1,43 @@
+@use "../abstracts/" as *;
+
+footer {
+  position: relative;
+  background-color: $black;
+
+  .container {
+    @include flex(center, center, wrap, column);
+    padding: $m-spacing $base-spacing;
+    gap: $m-spacing;
+
+    text-align: center;
+
+    &::before {
+      content: "";
+      width: 101px;
+      height: 4px;
+      background-color: $orange;
+      position: absolute;
+      top: 0;
+    }
+
+    img {
+      transition: transform 0.2s ease-in-out;
+      width: 80px;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    p {
+      color: $out-of-color-palette-gray;
+    }
+    
+    nav {
+      .socials {
+        @include flex(center, center, unset, unset);
+        gap: $base-spacing;
+      }
+    }
+  }
+}

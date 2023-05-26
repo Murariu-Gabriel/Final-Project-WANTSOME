@@ -1,13 +1,7 @@
-@use "../typography" as *;
-@use "../default" as *;
-@use "../variables" as *;
-@use "../spacings" as *;
-@use "../mixins" as *;
-@use "../form-els" as *;
-@use "../buttons";
+@use "../abstracts/" as *;
 
 body {
-  @include flex(center, center, none, column);
+  @include flex(center, center, unset, column);
   background-color: $light-gray;
 
   
@@ -15,7 +9,7 @@ body {
 
 section{
   height: 100vh;
-  @include flex(none, center, none, none);
+  @include flex(unset, center, unset, unset);
 
   .container {
     width: 100vw;

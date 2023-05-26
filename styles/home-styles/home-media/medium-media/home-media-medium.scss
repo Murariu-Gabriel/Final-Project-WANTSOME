@@ -1,52 +1,55 @@
-@use "../../mixins" as *;
-@use "../../spacings" as *;
-@use "../../typography" as *;
+@use "../../../abstracts/" as *;
+
 
 @media screen and (min-width: 550px) {
   .container {
     width: 90%;
     margin: 0 auto;
-    // padding: 0;
+    padding: 0;
   }
 
+
   .nav-and-hero {
-    >.container {
-      padding: $base-spacing 0;
-
-      header {
-        @include flex(unset, unset, unset, unset);
-        padding: 0;
-        gap: $m-spacing;
-
-    
-
-        button {
-          &:last-of-type {
-            order: 1;
+    .navigation{
+      >.container {
+        padding: $base-spacing 0;
+  
+        header {
+          @include flex(unset, unset, unset, unset);
+          padding: 0;
+          gap: $m-spacing;
+  
+      
+  
+          button {
+            &:last-of-type {
+              order: 1;
+            }
           }
-        }
-
-        .search-container{
-          margin: 0 ;
-          margin-left: auto;
-        }
-
-       .nav-toggle{
-          top: 80px;
-          width: 200px;
-          left: 4%; 
-          border-bottom-left-radius: $base-border-radius;
-          border-bottom-right-radius: $base-border-radius;
-          ul{
-            li{
-              &:last-of-type{
-                border-bottom-left-radius: $base-border-radius;
-               border-bottom-right-radius: $base-border-radius;
+  
+          .search-container{
+            margin: 0 ;
+            margin-left: auto;
+          }
+  
+         .nav-toggle{
+            top: 80px;
+            width: 200px;
+            left: 4%; 
+            border-bottom-left-radius: $base-border-radius;
+            border-bottom-right-radius: $base-border-radius;
+            ul{
+              li{
+                &:last-of-type{
+                  border-bottom-left-radius: $base-border-radius;
+                 border-bottom-right-radius: $base-border-radius;
+                }
               }
             }
           }
         }
       }
+
     }
 
     .hero {
@@ -61,13 +64,13 @@
   }
 
   .categories {
+    padding: 0;
     padding-top: $section-spacing + 30;
 
     .container {
       margin: 0 auto;
       @include flex(space-around, unset, unset, unset);
       gap: 10px;
-      padding: 0;
       article {
         div{
           .subtitle{

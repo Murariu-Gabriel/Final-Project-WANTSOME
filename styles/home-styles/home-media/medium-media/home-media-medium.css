@@ -1,4 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  color: #D87D4A;
+}
+
+.socials li a {
+  fill: #FFFFFF;
+  font-size: 1.5rem;
+  transition: fill 0.3s ease-in-out;
+}
+.socials li a:hover {
+  fill: #D87D4A;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+img {
+  display: block;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   font-size: 15px;
@@ -59,15 +100,121 @@ h6 {
   color: #D87D4A;
 }
 
+.button-1, .button-2, .button-2b, .button-3 {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button {
+  transition: fill 0.3s ease-in-out;
+}
+button:hover {
+  fill: #D87D4A;
+}
+
+.button-1 {
+  color: #FFFFFF;
+  background-color: #D87D4A;
+  border: none;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-1:hover {
+  background-color: #FBAF85;
+}
+
+.button-2 {
+  border: 1px solid #000000;
+  background-color: transparent;
+  padding: 15px 30px;
+  transition: color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-2:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.button-2b {
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-2b:hover {
+  background-color: #aaaaaa;
+  color: #FFFFFF;
+}
+
+.button-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #aaaaaa;
+  background-color: #FFFFFF;
+  border: none;
+}
+.button-3:hover {
+  color: #D87D4A;
+}
+
+input {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 15px 20px;
+  border-radius: 10px;
+  caret-color: #D87D4A;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #D87D4A;
+}
+
+@-webkit-keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @media screen and (min-width: 550px) {
   .container {
     width: 90%;
     margin: 0 auto;
+    padding: 0;
   }
-  .nav-and-hero > .container {
+  .nav-and-hero .navigation > .container {
     padding: 15px 0;
   }
-  .nav-and-hero > .container header {
+  .nav-and-hero .navigation > .container header {
     display: flex;
     align-items: unset;
     justify-content: unset;
@@ -76,21 +223,21 @@ h6 {
     padding: 0;
     gap: 30px;
   }
-  .nav-and-hero > .container header button:last-of-type {
+  .nav-and-hero .navigation > .container header button:last-of-type {
     order: 1;
   }
-  .nav-and-hero > .container header .search-container {
+  .nav-and-hero .navigation > .container header .search-container {
     margin: 0;
     margin-left: auto;
   }
-  .nav-and-hero > .container header .nav-toggle {
+  .nav-and-hero .navigation > .container header .nav-toggle {
     top: 80px;
     width: 200px;
     left: 4%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-  .nav-and-hero > .container header .nav-toggle ul li:last-of-type {
+  .nav-and-hero .navigation > .container header .nav-toggle ul li:last-of-type {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
@@ -100,6 +247,7 @@ h6 {
     line-height: 50px;
   }
   .categories {
+    padding: 0;
     padding-top: 126px;
   }
   .categories .container {
@@ -110,7 +258,6 @@ h6 {
     flex-wrap: unset;
     flex-direction: unset;
     gap: 10px;
-    padding: 0;
   }
   .categories .container article {
     width: 100%;

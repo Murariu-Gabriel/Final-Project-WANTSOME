@@ -1,0 +1,38 @@
+@use "../abstracts/" as *;
+
+
+
+
+    
+@use "../components-dashboard/header"; 
+
+
+.hero {
+    height: 90vh;
+    background-image: url(/assets/Images/Home-images/d1094b5234f1c27ccfbb091660517ebe.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include flex(center, center, unset, unset);
+
+    .container {
+        max-width: 500px;
+        color: $white;
+        text-align: center;
+
+        .overline {
+            color: $white;
+        }
+
+        h1 {
+            font-size: $xl-font;
+            line-height: 40px;
+            margin: $m-spacing 0;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    }
+}
+

@@ -1,0 +1,105 @@
+@use "../abstracts/" as *;
+
+.products-display {
+  padding-top: $section-spacing;
+
+  .container {
+    article {
+      border-radius: $base-border-radius;
+      transition: box-shadow 0.3s ease-in-out;
+
+      &:not(:first-of-type) {
+        margin-top: $m-spacing;
+      }
+
+      &:first-of-type,
+      &:first-of-type > div {
+        @include flex(center, center, unset, column);
+      }
+
+      &:first-of-type {
+        padding: $xl-spacing $base-spacing;
+        color: $white;
+        text-align: center;
+        background-color: $orange;
+        background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+        background-repeat: no-repeat;
+        background-position-x: 50%;
+        background-position-y: -100px;
+        background-size: 170%;
+
+        img {
+          width: 200px;
+        }
+
+        p {
+          padding: $base-padding;
+        }
+
+        h2 {
+          margin: 40px 10px 10px 10px;
+          font-size: $xl-font;
+        }
+      }
+
+      &:nth-of-type(2) {
+        height: 320px;
+        @include flex(flex-start, center, unset, unset);
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-6.jpg");
+        background-size: cover;
+        background-position: 30%;
+
+        div {
+          padding: 0 $m-spacing;
+          h4 {
+            margin-top: 0;
+            width: 60%;
+          }
+        }
+      }
+
+      &:last-of-type {
+        //  height: 500px; // Pentru desktop
+        position: relative;
+        div {
+          height: 200px;
+          margin-top: $m-spacing;
+
+          &:first-of-type {
+            border-radius: $base-border-radius;
+            background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
+            background-size: cover;
+            background-position: center;
+          }
+
+          &:last-of-type {
+            border-radius: $base-border-radius;
+            background-color: $gray;
+            transition: box-shadow 0.2s ease-in-out;
+            // padding: 0 $base-spacing;
+            @include flex(center, flex-start, unset, column);
+
+            h4 {
+              padding: 0 0 $m-spacing $m-spacing;
+              margin: 0;
+              width: 90%;
+            }
+
+            button {
+              margin: 0 0 0 $m-spacing;
+            }
+
+            &:hover {
+              box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+            }
+          }
+        }
+      }
+      &:not(:last-of-type) {
+        &:hover {
+          box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+        }
+      }
+    }
+  }
+}

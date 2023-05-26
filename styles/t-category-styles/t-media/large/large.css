@@ -205,62 +205,125 @@ input:focus {
     opacity: 1;
   }
 }
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-  background-color: #FAFAFA;
-}
-
-section {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: unset;
-  flex-wrap: unset;
-  flex-direction: unset;
-}
-section .container {
-  width: 100vw;
-  height: 100vh;
-  border-radius: 8px;
-}
-section .container form h2 {
-  text-align: center;
-  margin: 0;
-  padding: 30px;
-}
-section .container form div {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-section .container form a {
-  align-self: flex-end;
-  text-transform: uppercase;
-}
-section .container form .terms {
-  margin-top: 25px;
-  flex-direction: row;
-}
-section .container form .terms a {
-  color: #000000;
-  font-weight: bold;
-}
-section .container form .terms a:hover {
-  color: #D87D4A;
-}
-section .container form .buttons {
-  margin: 30px 0;
-  flex-direction: row;
-}
-section .container form .buttons button, section .container form .buttons a {
-  width: 100%;
-}
-section .container form .buttons .button-3 {
-  background-color: inherit;
-  padding: 15px 30px;
-}/*# sourceMappingURL=signup.css.map */
+@media screen and (min-width: 990px) {
+  .container {
+    max-width: 1100px;
+    padding: 0;
+  }
+  .navigation > .container header {
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navigation > .container header > button:first-of-type {
+    display: none;
+  }
+  .navigation > .container header > button:nth-of-type(2) {
+    display: none;
+  }
+  .navigation > .container header > button:last-of-type {
+    margin-left: 0;
+  }
+  .navigation > .container header .nav-toggle {
+    all: revert;
+    display: inline-block;
+    flex-grow: 2;
+  }
+  .navigation > .container header .nav-toggle ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: none;
+    flex-direction: row;
+    gap: 30px;
+    font-size: 15px;
+  }
+  .navigation > .container header .nav-toggle ul li {
+    padding: 0;
+    width: auto;
+  }
+  .navigation > .container header .nav-toggle ul li:hover {
+    background-color: transparent;
+  }
+  .navigation > .container header .nav-toggle ul li a {
+    padding: 0;
+  }
+  .navigation > .container header .nav-toggle ul li a:hover {
+    color: #D87D4A;
+  }
+  .navigation > .container header nav {
+    display: inline-block;
+    flex-grow: 2;
+  }
+  .navigation > .container header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: none;
+    flex-direction: row;
+    gap: 30px;
+  }
+  .categories {
+    padding-top: 168px;
+  }
+  .categories .container article div {
+    height: 200px;
+  }
+  .categories .container article div .subtitle {
+    font-size: 18px;
+    padding-top: 15px;
+  }
+  .categories .container article div .category-image {
+    width: 150px;
+  }
+  .categories .container article div .button-3 {
+    padding-bottom: 30px;
+  }
+  .about {
+    padding-top: 168px;
+  }
+  .about .container {
+    flex-direction: row;
+  }
+  .about .container div {
+    width: 50%;
+  }
+  .about .container div:first-of-type {
+    height: 588px;
+    width: 50%;
+    background-position: 30%;
+    order: 1;
+  }
+  .about .container div:last-of-type {
+    text-align: left;
+  }
+  .about .container div:last-of-type p {
+    padding: 0;
+  }
+  .about .container div:last-of-type h2,
+.about .container div:last-of-type p {
+    width: 80%;
+  }
+  footer .container img {
+    order: 1;
+  }
+  footer .container nav:first-of-type {
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    margin-left: auto;
+    order: 2;
+  }
+  footer .container nav:last-of-type {
+    order: 4;
+    align-self: flex-end;
+  }
+  footer .container p {
+    width: 70%;
+  }
+  footer .container p:first-of-type {
+    order: 3;
+  }
+  footer .container p:last-of-type {
+    order: 5;
+  }
+}/*# sourceMappingURL=large.css.map */

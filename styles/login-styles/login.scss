@@ -1,22 +1,18 @@
-@use "../typography" as *;
-@use "../default" as *;
-@use "../variables" as *;
-@use "../spacings" as *;
-@use "../mixins" as *;
-@use "../form-els" as *;
-@use "../buttons";
+@use "../abstracts/" as *;
 
 body {
-  @include flex(center, center, none, column);
+  @include flex(center, center, unset, column);
   background-color: $gray;
 }
 section {
   height: 100vh;
-  @include flex(none, center, none, none);
+  @include flex(unset, center, unset, unset);
 
   .container {
     border-radius: $base-border-radius;
-    // @include flex(none, none, none, column);
+    // @include flex(unset, unset, unset, column);
+    background-color: $white;
+
 
     width: 100vw;
     height: 100vh;
@@ -38,12 +34,31 @@ section {
 
       div {
         margin-top: $base-spacing;
-        @include just-flex;
+        // @include just-flex;
+        display: flex;
+        // align-items: center;
+        // flex-direction: column;
+        flex-wrap: wrap;
         gap: $base-spacing - 5px;
+
+        label{
+         align-self: center;
+        }
+        p{
+          
+          margin: 0 0 0 auto;
+        }
+        input{
+          width: 100%;
+          // &:invalid{
+          //   color: red;
+          //   border-color: red;
+          // }
+        }
       }
 
       a {
-        align-self: flex-end;
+        margin-left: auto;
         text-transform: capitalize;
       }
 
@@ -57,12 +72,12 @@ section {
       text-transform: capitalize;
 
       ul {
-        @include flex(center, center, none, none);
+        @include flex(center, center, unset, unset);
         gap: $base-spacing;
 
         a {
           font-size: 1.5rem;
-
+          fill: $black;
           &:hover {
             fill: $orange;
           }

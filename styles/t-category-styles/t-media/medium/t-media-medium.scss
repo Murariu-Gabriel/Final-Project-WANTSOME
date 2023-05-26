@@ -1,0 +1,113 @@
+@use "../../abstracts/" as *;
+
+
+@media screen and (min-width: 550px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+   .navigation{
+      >.container {
+        padding: $base-spacing 0;
+  
+        header {
+          @include flex(unset, unset, unset, unset);
+          padding: 0;
+          gap: $m-spacing;
+  
+      
+  
+          button {
+            &:last-of-type {
+              order: 1;
+            }
+          }
+  
+          .search-container{
+            margin: 0 ;
+            margin-left: auto;
+          }
+  
+         .nav-toggle{
+            top: 80px;
+            width: 200px;
+            left: 4%; 
+            border-bottom-left-radius: $base-border-radius;
+            border-bottom-right-radius: $base-border-radius;
+            ul{
+              li{
+                &:last-of-type{
+                  border-bottom-left-radius: $base-border-radius;
+                 border-bottom-right-radius: $base-border-radius;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+      .categories {
+    padding: 0;
+    padding-top: $section-spacing + 30;
+
+    .container {
+      margin: 0 auto;
+      @include flex(space-around, unset, unset, unset);
+      gap: 10px;
+      article {
+        div{
+          .subtitle{
+            font-size: $s-font - 2;
+          }
+        }
+        width: 100%;
+      }
+    }
+  }
+
+.about {
+    .container {
+      div {
+        &:last-of-type {
+          h2 {
+            font-size: $h2-font-size;
+          }
+          p {
+            padding: 0 $m-spacing;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .container {
+      @include flex(flex-start, center, wrap, unset);
+      text-align: unset;
+      padding: $m-spacing 0;
+
+      &::after {
+        left: 5%;
+      }
+
+      nav {
+        &:first-of-type{
+          width: 100%;
+          ul {
+            @include flex;
+            gap: $m-spacing;
+          }
+        }
+
+        &:last-of-type{
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+}

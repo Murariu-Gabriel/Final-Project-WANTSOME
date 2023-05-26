@@ -4,102 +4,93 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/assets/Images/logo-images/Initials-Favicon.png"
-    />
-    <link rel="stylesheet" href="/styles/home-styles/dashboard.css" />
-    <link
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/t-category-styles/t-style.css" />
+     <link
       rel="stylesheet"
-      href="/styles/home-styles/home-media/medium-media/home-media-medium.css"
+      href="/styles/t-category-styles/t-media/medium/t-media-medium.css"
       media="screen and (min-width: 550px)"
     />
     <link
       rel="stylesheet"
-      href="/styles/home-styles/home-media/large-media/home-media-large.css"
+      href="/styles/t-category-styles/t-media/large/large.css"
       media="screen and (min-width: 990px)"
     />
-
-    <script src="../scripts/dashboard.js" defer></script>
-    <title>WT-Home</title>
+    <script src="../scripts/t-script.js" defer></script>
   </head>
   <body>
-    <section class="nav-and-hero">
-      <div class="navigation" >
-
-
-        <div class="container">
-          <header>
-            <button id="h-button">
-              <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
-                <g fill-rule="evenodd">
-                  <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
-                </g>
-              </svg>
-            </button>
-            <button class="display-none" id="x-button">
-              <svg stroke="currentColor"  stroke-width="0" viewBox="0 0 512 512" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
-                <path d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z">
-                </path>
-              </svg>
-            </button>
-            <a href="/html-pages/dashboard.html">
-              <img
-                src="/assets/Images/logo-images/second-logo/png/logo-no-background.png"
-                alt="Wrist Trackers logo"
+    <section class="navigation">
+      <div class="container">
+        <header>
+          <button id="h-button">
+            <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
+              <g fill-rule="evenodd">
+                <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
+              </g>
+            </svg>
+          </button>
+          <button class="display-none" id="x-button">
+            <svg
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 512 512"
+              height="25"
+              width="25"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"
+              ></path>
+            </svg>
+          </button>
+          <a href="/html-pages/dashboard.html">
+            <img
+              src="/assets/Images/logo-images/second-logo/png/logo-no-background.png"
+              alt="Wrist Trackers logo"
+            />
+          </a>
+          <nav class="a" id="header-nav">
+            <ul>
+              <li><a href="">home</a></li>
+              <li><a href="">workout</a></li>
+              <li><a href="">sleep</a></li>
+              <li><a href="">health</a></li>
+            </ul>
+          </nav>
+          <button>
+            <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
+                fill-rule="nonzero"
               />
-            </a>
-            <nav class="a" id="header-nav">
-              <ul>
-                <li><a href="">home</a></li>
-                <li><a href="">workout</a></li>
-                <li><a href="">sleep</a></li>
-                <li><a href="">health</a></li>
-              </ul>
-            </nav>
-            <button>
-              <svg width="23" height="20" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+          </button>
+          <form class="search-container">
+            <input class="search-input" type="text" />
+            <button type="submit">
+              <svg
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                height="25"
+                width="45"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
-                  d="M8.625 15.833c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.054-.935-2.054-2.083 0-1.15.922-2.084 2.054-2.084zm9.857 0c1.132 0 2.054.935 2.054 2.084 0 1.148-.922 2.083-2.054 2.083-1.132 0-2.053-.935-2.053-2.083 0-1.15.92-2.084 2.053-2.084zm-9.857 1.39a.69.69 0 00-.685.694.69.69 0 00.685.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zm9.857 0a.69.69 0 00-.684.694.69.69 0 00.684.694.69.69 0 00.685-.694.69.69 0 00-.685-.695zM4.717 0c.316 0 .59.215.658.517l.481 2.122h16.47a.68.68 0 01.538.262c.127.166.168.38.11.579l-2.695 9.236a.672.672 0 01-.648.478H7.41a.667.667 0 00-.673.66c0 .364.303.66.674.66h12.219c.372 0 .674.295.674.66 0 .364-.302.66-.674.66H7.412c-1.115 0-2.021-.889-2.021-1.98 0-.812.502-1.511 1.218-1.816L4.176 1.32H.674A.667.667 0 010 .66C0 .296.302 0 .674 0zm16.716 3.958H6.156l1.797 7.917h11.17l2.31-7.917z"
-                  fill-rule="nonzero"
-                />
+                  d="M19.023,16.977c-0.513-0.488-1.004-0.997-1.367-1.384c-0.372-0.378-0.596-0.653-0.596-0.653l-2.8-1.337 C15.34,12.37,16,10.763,16,9c0-3.859-3.14-7-7-7S2,5.141,2,9s3.14,7,7,7c1.763,0,3.37-0.66,4.603-1.739l1.337,2.8 c0,0,0.275,0.224,0.653,0.596c0.387,0.363,0.896,0.854,1.384,1.367c0.494,0.506,0.988,1.012,1.358,1.392 c0.362,0.388,0.604,0.646,0.604,0.646l2.121-2.121c0,0-0.258-0.242-0.646-0.604C20.035,17.965,19.529,17.471,19.023,16.977z M9,14 c-2.757,0-5-2.243-5-5s2.243-5,5-5s5,2.243,5,5S11.757,14,9,14z"
+                ></path>
               </svg>
             </button>
-            <form class="search-container">
-              <input class="search-input" type="text" />
-              <button type="submit">
-                <svg
-                  stroke="currentColor"
-                 
-                  stroke-width="0"
-                  viewBox="0 0 24 24"
-                  height="25"
-                  width="45"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19.023,16.977c-0.513-0.488-1.004-0.997-1.367-1.384c-0.372-0.378-0.596-0.653-0.596-0.653l-2.8-1.337 C15.34,12.37,16,10.763,16,9c0-3.859-3.14-7-7-7S2,5.141,2,9s3.14,7,7,7c1.763,0,3.37-0.66,4.603-1.739l1.337,2.8 c0,0,0.275,0.224,0.653,0.596c0.387,0.363,0.896,0.854,1.384,1.367c0.494,0.506,0.988,1.012,1.358,1.392 c0.362,0.388,0.604,0.646,0.604,0.646l2.121-2.121c0,0-0.258-0.242-0.646-0.604C20.035,17.965,19.529,17.471,19.023,16.977z M9,14 c-2.757,0-5-2.243-5-5s2.243-5,5-5s5,2.243,5,5S11.757,14,9,14z"
-                  ></path>
-                </svg>
-              </button>
-            </form>
-          </header>
-        </div>
-      </div>
-      <div class="hero">
-        <article class="container">
-          <p class="overline">NEW PRODUCT</p>
-          <h1>Xiaomi watch s1-pro</h1>
-          <p>
-            Experience a classic hit fit and exceptional build quality made for
-            the passionate watch enthusiast.
-          </p>
-          <button class="button-1">See Product</button>
-        </article>
+          </form>
+        </header>
       </div>
     </section>
+
+
+
+
+
+
 
     <section class="categories">
       <div class="container">
@@ -159,40 +150,6 @@
       </div>
     </section>
 
-    <section class="products-display">
-      <div class="container">
-        <article>
-          <img
-            class="category-image"
-            src="/assets/Images/Devices/Fit-Bit/fitbit-inspire.png"
-            alt="Fitbit Inspire 3"
-          />
-          <div>
-            <h2>fitbit inspire 3</h2>
-            <p>
-              Upgrade to premium sleep tracking that is designed to deliver
-              truly accurate sleep monitorization.
-            </p>
-            <button class="button-2b">see product</button>
-          </div>
-        </article>
-
-        <article>
-          <div>
-            <h4>xiaomi mi watch</h4>
-            <button class="button-2">see product</button>
-          </div>
-        </article>
-
-        <article>
-          <div></div>
-          <div>
-            <h4>garmin vivomove</h4>
-            <button class="button-2">see product</button>
-          </div>
-        </article>
-      </div>
-    </section>
 
     <section class="about">
       <div class="container">
@@ -210,8 +167,7 @@
         </div>
       </div>
     </section>
-
-    <footer>
+     <footer>
       <div class="container">
         <a href="/html-pages/dashboard.html">
           <img

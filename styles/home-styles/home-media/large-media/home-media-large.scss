@@ -1,65 +1,66 @@
-@use "../../mixins" as *;
-@use "../../spacings" as *;
-@use "../../typography" as *;
-@use "../../variables" as *;
+@use "../../../abstracts/" as *;
 
 @media screen and (min-width: 990px) {
   .container {
     max-width: 1100px;
+    padding: 0;
   }
   .nav-and-hero {
-    > .container {
-      header {
-        justify-content: space-between;
-        align-items: center;
-        >button {
-          &:first-of-type {
-            display: none;
+    .navigation{
+      >.container {
+        header {
+          justify-content: space-between;
+          align-items: center;
+          >button {
+            &:first-of-type {
+              display: none;
+            }
+            &:nth-of-type(2){
+              display: none;
+            }
+            &:last-of-type {
+              margin-left: 0;
+            }
           }
-          &:nth-of-type(2){
-            display: none;
-          }
-          &:last-of-type {
-            margin-left: 0;
-          }
-        }
-
-        // NAV REVERTION
-        .nav-toggle{
-          all: revert;
-          display: inline-block;
-           flex-grow: 2;
-           ul {
-            @include flex(center, center, none, row);
-            gap: $m-spacing;
-            font-size: $s-font;
-            li{
-              &:hover{
-                background-color: transparent;
-              }
-              padding: 0;
-              width:auto;
-              a {
-                padding: 0;
+  
+          // NAV REVERTION
+          .nav-toggle{ 
+            all: revert;
+            display: inline-block;
+             flex-grow: 2;
+             ul {
+              @include flex(center, center, none, row);
+              gap: $m-spacing;
+              font-size: $s-font;
+              li{
                 &:hover{
-                  color: $orange;
+                  background-color: transparent;
+                }
+                padding: 0;
+                width:auto;
+                a {
+                  padding: 0;
+                  &:hover{
+                    color: $orange;
+                  }
                 }
               }
             }
           }
-        }
-
-        nav {
-          display: inline-block;
-          flex-grow: 2;
-          ul {
-            @include flex(center, center, none, row);
-            gap: $m-spacing;
+  
+          nav {
+            display: inline-block;
+            flex-grow: 2;
+            ul {
+              @include flex(center, center, none, row);
+              gap: $m-spacing;
+            }
           }
+  
+        
         }
-
-      
       }
+
     }
 
     .hero {

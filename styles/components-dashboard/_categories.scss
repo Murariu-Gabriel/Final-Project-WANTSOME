@@ -1,0 +1,47 @@
+@use "../abstracts/" as *;
+
+.categories {
+  padding: $section-spacing $base-spacing 0 $base-spacing;
+  
+  .container {
+    @include flex(center, unset, unset, column);
+    gap: 100px;
+    padding: 0;
+
+    article {
+
+      &:hover {
+        z-index: 1;
+      }
+
+      div {
+        transition: transform 0.2s ease-in-out;
+        border: none;
+        &:hover {
+          transform: scale(1.1);
+          box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+          border-radius: $base-border-radius;
+        }
+
+        height: 150px;
+        border-radius: $base-border-radius;
+        @include flex(flex-end, center, unset, column);
+        background-color: $gray;
+        
+        .category-image {
+          width: 100px;
+        }
+
+        .subtitle {
+          color: $black;
+          font-size: $s-font;
+        }
+
+        a {
+          background-color: $gray;
+          padding-bottom: $base-padding;
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/login-styles/login.css" />
     <link rel="stylesheet" href="/styles/login-styles/login-media/login-media.css" media="screen and (min-width: 450px)" />
-
+    <script src="/scripts/login.js" defer></script>
     <title>Login</title>
   </head>
   <body>
@@ -19,24 +19,26 @@
             <h2>Login</h2>
             <div>
                 <label for="email">Email</label>
+                <p id="email-error">email</p>
                 <input
                     type="email"
                     id="email"
                     name="email"
                     placeholder="Insert your email"
-                    required
+                    
                 />
             </div>
 
             <div>
                 <label for="password">Password</label>
+                <p id="password-error">password</p>
                 <input
                     type="password"
                     id="password"
                     name="password"
                     placeholder="Insert your password"
                     minlength="8"
-                    required
+                    
                 />
                 <a href="">forgot password?</a>
             </div>

@@ -338,35 +338,6 @@ input:focus {
   background-color: #D87D4A;
 }
 
-.hero {
-  height: 90vh;
-  background-image: url(/assets/Images/Home-images/d1094b5234f1c27ccfbb091660517ebe.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: unset;
-}
-.hero .container {
-  max-width: 500px;
-  color: #FFFFFF;
-  text-align: center;
-}
-.hero .container .overline {
-  color: #FFFFFF;
-}
-.hero .container h1 {
-  font-size: 36px;
-  line-height: 40px;
-  margin: 30px 0;
-}
-.hero .container button {
-  margin-top: 20px;
-}
-
 .categories {
   padding: 96px 15px 0 15px;
 }
@@ -409,100 +380,6 @@ input:focus {
 .categories .container article div a {
   background-color: #F1F1F1;
   padding-bottom: 15px;
-}
-
-.products-display {
-  padding-top: 96px;
-}
-.products-display .container article {
-  border-radius: 8px;
-  transition: box-shadow 0.3s ease-in-out;
-}
-.products-display .container article:not(:first-of-type) {
-  margin-top: 30px;
-}
-.products-display .container article:first-of-type, .products-display .container article:first-of-type > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-}
-.products-display .container article:first-of-type {
-  padding: 60px 15px;
-  color: #FFFFFF;
-  text-align: center;
-  background-color: #D87D4A;
-  background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-  background-repeat: no-repeat;
-  background-position-x: 50%;
-  background-position-y: -100px;
-  background-size: 170%;
-}
-.products-display .container article:first-of-type img {
-  width: 200px;
-}
-.products-display .container article:first-of-type p {
-  padding: 15px;
-}
-.products-display .container article:first-of-type h2 {
-  margin: 40px 10px 10px 10px;
-  font-size: 36px;
-}
-.products-display .container article:nth-of-type(2) {
-  height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: unset;
-  flex-direction: unset;
-  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-6.jpg");
-  background-size: cover;
-  background-position: 30%;
-}
-.products-display .container article:nth-of-type(2) div {
-  padding: 0 30px;
-}
-.products-display .container article:nth-of-type(2) div h4 {
-  margin-top: 0;
-  width: 60%;
-}
-.products-display .container article:last-of-type {
-  position: relative;
-}
-.products-display .container article:last-of-type div {
-  height: 200px;
-  margin-top: 30px;
-}
-.products-display .container article:last-of-type div:first-of-type {
-  border-radius: 8px;
-  background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
-  background-size: cover;
-  background-position: center;
-}
-.products-display .container article:last-of-type div:last-of-type {
-  border-radius: 8px;
-  background-color: #F1F1F1;
-  transition: box-shadow 0.2s ease-in-out;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-}
-.products-display .container article:last-of-type div:last-of-type h4 {
-  padding: 0 0 30px 30px;
-  margin: 0;
-  width: 90%;
-}
-.products-display .container article:last-of-type div:last-of-type button {
-  margin: 0 0 0 30px;
-}
-.products-display .container article:last-of-type div:last-of-type:hover {
-  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
-}
-.products-display .container article:not(:last-of-type):hover {
-  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
 }
 
 .about {
@@ -574,4 +451,4 @@ footer .container nav .socials {
   flex-wrap: unset;
   flex-direction: unset;
   gap: 15px;
-}/*# sourceMappingURL=dashboard.css.map */
+}/*# sourceMappingURL=t-style.css.map */

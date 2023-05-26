@@ -1,0 +1,147 @@
+@use "../../../abstracts/" as *;
+
+@media screen and (min-width: 990px) {
+  .container {
+    max-width: 1100px;
+    padding: 0;
+  }
+
+    .navigation{
+      >.container {
+        header {
+          justify-content: space-between;
+          align-items: center;
+          >button {
+            &:first-of-type {
+              display: none;
+            } 
+            &:nth-of-type(2){
+              display: none;
+            }
+            &:last-of-type {
+              margin-left: 0;
+            }
+          }
+  
+          // NAV REVERTION
+          .nav-toggle{ 
+            all: revert;
+            display: inline-block;
+             flex-grow: 2;
+             ul {
+              @include flex(center, center, none, row);
+              gap: $m-spacing;
+              font-size: $s-font;
+              li{
+                &:hover{
+                  background-color: transparent;
+                }
+                padding: 0;
+                width:auto;
+                a {
+                  padding: 0;
+                  &:hover{
+                    color: $orange;
+                  }
+                }
+              }
+            }
+          }
+  
+          nav {
+            display: inline-block;
+            flex-grow: 2;
+            ul {
+              @include flex(center, center, none, row);
+              gap: $m-spacing;
+            }
+          }
+  
+        
+        }
+      }
+
+    }
+
+
+    .categories {
+    padding-top: $m-section-spacing;
+
+    .container {
+      article {
+        div{
+          height: 200px;
+          .subtitle {
+            font-size: $m-font ;
+            padding-top: $base-spacing;
+          }
+          .category-image {
+            width: 150px;
+          }
+          .button-3{
+            padding-bottom: $m-spacing; 
+          }
+        }
+      }
+    }
+  }
+
+  .about {
+    padding-top: $m-section-spacing;
+    .container {
+      flex-direction: row;
+      //  flex-wrap: wrap;
+      div {
+        width: 50%;
+        &:first-of-type {
+          height: 588px;
+          width: 50%;
+          background-position: 30%;
+          order: 1;
+        }
+        &:last-of-type {
+          text-align: left;
+          p {
+            padding: 0;
+          }
+
+          h2,
+          p {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .container {
+      img {
+        order: 1;
+      }
+      nav {
+        &:first-of-type {
+          width: min-content;
+          margin-left: auto;
+          order: 2;
+        }
+        &:last-of-type {
+          order: 4;
+          align-self: flex-end;
+        }
+      }
+
+      p {
+        width: 70%;
+        &:first-of-type {
+          order: 3;
+        }
+        &:last-of-type {
+          order: 5;
+        }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,152 @@
+@use "../abstracts/" as *;
+
+.navigation{
+    background-color: $black;
+    
+    >.container {
+        border-bottom: 1px solid $out-of-color-palette-gray;
+        padding: $base-spacing;
+        // width: 100vw
+
+        .display-none {
+            display: none;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            fill: $white;
+            width: 50px;
+
+            &:hover {
+                fill: $orange;
+            }
+        }
+
+        header {
+            @include flex(space-between, unset, wrap, unset);
+            gap: $base-spacing;
+
+            a {
+                align-self: center;
+                img {
+                    transition: transform 0.2s ease-in-out;
+                    width: 80px;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+
+            nav {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                position: absolute;
+                top: 125px;
+                left: 0px;
+                background-color: $orange;
+                animation: pop-out 0.3s ease-in-out;
+                transform-origin: top;
+
+                ul {
+                    width: 100%;
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    // gap: 30px;
+                    font-size: 20px;
+                    text-align: center;
+
+                    li {
+                        width: 100%;
+                        &:not(:first-of-type) {
+                            border-top: 1px solid $black;
+                        }
+                        &:hover {
+                            background-color: $light-orange;
+                        }
+                        a {
+                            display: block;
+                            padding: 15px;
+                            animation: fade 0.7s ease-in-out;
+                            &:hover {
+                                color: $white;
+                            }
+                        }
+                    }
+                }   
+            }
+
+            .toggle-close {
+                svg {
+                    display: flex;
+                    align-items: center;
+                    fill: white;
+
+                    &:hover {
+                        fill: $orange;
+                    }
+                    path {
+                        width: 16px;
+                        height: 15px;
+                    }
+                }
+            }
+
+            // SEARCH INPUT
+
+            .search-container {
+                align-self: center;
+                position: relative;
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+                // height: 30px;
+
+                input {
+                box-sizing: border-box;
+                width: 100%;
+                padding: 5px;
+                }
+
+                button {
+                    position: absolute;
+                    background-color: transparent;
+                    fill: black;
+                    height: 100%;
+                    width: 50px;
+                    top: 0;
+                    right: 0;
+                    border-bottom-right-radius: $base-border-radius;
+                    border-top-right-radius: $base-border-radius;
+                    transition: background-color 0.2s ease-in-out;
+                    svg {
+                        border-bottom-right-radius: $base-border-radius;
+                        border-top-right-radius: $base-border-radius;
+                        background-color: white;
+                        transition: background-color 0.2s ease-in-out;
+                    }
+
+                    &:hover {
+                        background-color: $orange;
+                        svg {
+                            background-color: $orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
