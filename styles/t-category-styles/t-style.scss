@@ -8,6 +8,10 @@
 
 @use "../components-dashboard/footer";
 
+* {
+    box-sizing: border-box;
+}
+
 .navigation{
     .container{
         
@@ -25,7 +29,30 @@
 
 
 .template-category{ 
+    padding-top: $s-top-category-section;
+    .container{ 
+        article{
+            padding-bottom: $xxl-spacing;
+            text-align: center;
+            img{
+                width: 100%;
+                max-width: 350px;
+                 margin: 0 auto;
+                // width: 50%; // acestea sunt pentru large media
+                // max-width: 540px;
 
+            }
+
+            p{
+                margin: 24px 0;
+            }
+
+            h2{
+                font-size: $l-font;
+            }
+           
+        }
+    }
 }
 
 

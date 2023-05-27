@@ -96,7 +96,7 @@ h6 {
 .subtitle {
   letter-spacing: 1px;
   line-height: 25px;
-  font-size: 13px;
+  font-size: 14px;
   color: #D87D4A;
 }
 
@@ -294,5 +294,14 @@ input:focus {
     color: #FFFFFF;
     font-size: 40px;
     border-bottom: none;
+  }
+  .template-category {
+    padding-top: 120px;
+  }
+  .template-category .container article {
+    padding-bottom: 120px;
+  }
+  .template-category .container article h2 {
+    font-size: 40px;
   }
 }/*# sourceMappingURL=t-media-medium.css.map */

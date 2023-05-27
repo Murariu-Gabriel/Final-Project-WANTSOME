@@ -1,7 +1,36 @@
 @use "../../../components-dashboard/media-mixins" as *;
+@use "../../../abstracts/" as *;
 
 @media screen and (min-width: 990px) {
   
  @include large-media;
 
+    .template-category{ 
+        padding-top:$l-top-category-section;
+        .container{
+            article{
+                padding-bottom: $l-top-category-section;
+
+                display: flex;
+                align-items: center;
+                text-align: start;
+                gap: 100px;
+                img{
+                    width: 50%; 
+                    max-width: 540px;
+            
+                }
+                
+                h2{
+                    width: 75%;
+                }
+
+                &:nth-of-type(2){
+                    img{
+                        order: 1;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -2,7 +2,7 @@
 @use "../../../abstracts/" as *;
 
 @media screen and (min-width: 550px) {
-  @include medium-media; // Aici ai toate stilurile pt elementele care se reutilizeaza
+  @include medium-media; 
   
   .navigation{
       .container{
@@ -17,5 +17,17 @@
           }
       }
   }
-  // iar de aici poti adauga noile stiluri pentru componentele noi
+
+  .template-category{ 
+    padding-top: $xxl-spacing;
+    .container{
+        article{
+          padding-bottom: $xxl-spacing;
+
+           h2{
+                font-size: $h2-font-size;
+            }
+        }
+    }
+  }
 } 

@@ -96,7 +96,7 @@ h6 {
 .subtitle {
   letter-spacing: 1px;
   line-height: 25px;
-  font-size: 13px;
+  font-size: 14px;
   color: #D87D4A;
 }
 
@@ -459,6 +459,10 @@ footer .container nav .socials {
   gap: 15px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .navigation .container:last-of-type {
   padding: 0;
 }
@@ -467,4 +471,23 @@ footer .container nav .socials {
   color: #FFFFFF;
   font-size: 28px;
   border-bottom: none;
+}
+
+.template-category {
+  padding-top: 64px;
+}
+.template-category .container article {
+  padding-bottom: 120px;
+  text-align: center;
+}
+.template-category .container article img {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.template-category .container article p {
+  margin: 24px 0;
+}
+.template-category .container article h2 {
+  font-size: 28px;
 }/*# sourceMappingURL=t-style.css.map */

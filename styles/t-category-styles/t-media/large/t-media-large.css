@@ -96,7 +96,7 @@ h6 {
 .subtitle {
   letter-spacing: 1px;
   line-height: 25px;
-  font-size: 13px;
+  font-size: 14px;
   color: #D87D4A;
 }
 
@@ -325,5 +325,25 @@ input:focus {
   }
   footer .container p:last-of-type {
     order: 5;
+  }
+  .template-category {
+    padding-top: 160px;
+  }
+  .template-category .container article {
+    padding-bottom: 160px;
+    display: flex;
+    align-items: center;
+    text-align: start;
+    gap: 100px;
+  }
+  .template-category .container article img {
+    width: 50%;
+    max-width: 540px;
+  }
+  .template-category .container article h2 {
+    width: 75%;
+  }
+  .template-category .container article:nth-of-type(2) img {
+    order: 1;
   }
 }/*# sourceMappingURL=t-media-large.css.map */
