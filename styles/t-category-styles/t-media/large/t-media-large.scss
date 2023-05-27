@@ -1,0 +1,7 @@
+@use "../../../components-dashboard/media-mixins" as *;
+
+@media screen and (min-width: 990px) {
+  
+ @include large-media;
+
+}

@@ -59,14 +59,15 @@
                 background-color: $orange;
                 animation: pop-out 0.3s ease-in-out;
                 transform-origin: top;
-
+                border-bottom-left-radius: $base-border-radius;
+                border-bottom-right-radius: $base-border-radius;
+                
                 ul {
                     width: 100%;
                     align-items: center;
                     display: flex;
                     flex-direction: column;
-                    // gap: 30px;
-                    font-size: 20px;
+                    font-size: $s-font + 5;
                     text-align: center;
 
                     li {
@@ -74,9 +75,16 @@
                         &:not(:first-of-type) {
                             border-top: 1px solid $black;
                         }
+
+                        &:last-of-type{
+                            border-bottom-left-radius: $base-border-radius;
+                            border-bottom-right-radius: $base-border-radius;
+                        }
+
                         &:hover {
                             background-color: $light-orange;
                         }
+
                         a {
                             display: block;
                             padding: 15px;

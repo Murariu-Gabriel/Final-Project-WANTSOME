@@ -1,10 +1,12 @@
+
+
 @mixin just-flex {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 
-@mixin flex($justify: none, $align: none, $wrap: none, $direction: none) {
+@mixin flex($justify: none, $align: none, $wrap: none, $direction: none) { 
     display: flex;
     align-items: $align;
     justify-content: $justify;
@@ -34,3 +36,13 @@
         }
     }
 }
+
+
+
+
+
+
+
+
+
+

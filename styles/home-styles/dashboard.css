@@ -262,6 +262,8 @@ input:focus {
   -webkit-animation: pop-out 0.3s ease-in-out;
           animation: pop-out 0.3s ease-in-out;
   transform-origin: top;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .navigation > .container header .nav-toggle ul {
   width: 100%;
@@ -276,6 +278,10 @@ input:focus {
 }
 .navigation > .container header .nav-toggle ul li:not(:first-of-type) {
   border-top: 1px solid #000000;
+}
+.navigation > .container header .nav-toggle ul li:last-of-type {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .navigation > .container header .nav-toggle ul li:hover {
   background-color: #FBAF85;

@@ -234,12 +234,6 @@ input:focus {
     top: 80px;
     width: 200px;
     left: 4%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-  .navigation > .container header .nav-toggle ul li:last-of-type {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
   }
   .categories {
     padding: 0;
@@ -291,5 +285,14 @@ input:focus {
   }
   footer .container nav:last-of-type {
     margin-left: auto;
+  }
+  .navigation .container:last-of-type {
+    padding: 30px 0;
+  }
+  .navigation .container:last-of-type h2 {
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 40px;
+    border-bottom: none;
   }
 }/*# sourceMappingURL=t-media-medium.css.map */
