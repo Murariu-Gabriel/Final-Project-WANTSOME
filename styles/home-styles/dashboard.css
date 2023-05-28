@@ -160,16 +160,22 @@ button:hover {
   color: #D87D4A;
 }
 
-input {
+input:not([type=checkbox]) {
   font-weight: bold;
   border: 2px solid #F1F1F1;
-  padding: 15px 20px;
+  padding: 20px 20px;
   border-radius: 10px;
   caret-color: #D87D4A;
+  width: 100%;
 }
 input:focus {
   outline: none;
   border: 2px solid #D87D4A;
+}
+
+label {
+  text-transform: capitalize;
+  font-weight: 700;
 }
 
 @-webkit-keyframes pop-out {

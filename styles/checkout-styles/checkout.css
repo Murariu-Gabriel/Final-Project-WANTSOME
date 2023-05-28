@@ -350,80 +350,6 @@ label {
   background-color: #D87D4A;
 }
 
-.categories {
-  padding: 96px 15px 0 15px;
-}
-.categories .container {
-  display: flex;
-  align-items: unset;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-  gap: 100px;
-  padding: 0;
-}
-.categories .container article:hover {
-  z-index: 1;
-}
-.categories .container article div {
-  transition: transform 0.2s ease-in-out;
-  border: none;
-  height: 150px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: unset;
-  flex-direction: column;
-  background-color: #F1F1F1;
-}
-.categories .container article div:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
-  border-radius: 8px;
-}
-.categories .container article div .category-image {
-  width: 100px;
-}
-.categories .container article div .subtitle {
-  color: #000000;
-  font-size: 15px;
-}
-.categories .container article div a {
-  background-color: #F1F1F1;
-  padding-bottom: 15px;
-}
-
-.about {
-  padding-top: 96px;
-  padding-bottom: 96px;
-}
-.about .container {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-}
-.about .container div:first-of-type {
-  border-radius: 8px;
-  height: 300px;
-  width: 100%;
-  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg");
-  background-size: cover;
-  background-position: left;
-}
-.about .container div:last-of-type h2 {
-  font-size: 28px;
-}
-.about .container div:last-of-type p {
-  color: gray;
-}
-.about .container div:last-of-type span {
-  color: #D87D4A;
-}
-
 footer {
   position: relative;
   background-color: #000000;
@@ -465,31 +391,26 @@ footer .container nav .socials {
   gap: 15px;
 }
 
-.navigation .container:last-of-type {
-  padding: 0;
-}
-.navigation .container:last-of-type h2 {
-  text-align: center;
-  color: #FFFFFF;
-  font-size: 28px;
-  border-bottom: none;
+body {
+  background-color: #FAFAFA;
 }
 
-.template-category {
-  padding-top: 64px;
+.checkout .container p a {
+  color: gray;
 }
-.template-category .container article {
-  padding-bottom: 120px;
-  text-align: center;
+.checkout .container form {
+  padding: 3% 5%;
+  background-color: #FFFFFF;
+  border-radius: 8px;
 }
-.template-category .container article img {
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
+.checkout .container form .payment {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-.template-category .container article p {
-  margin: 24px 0;
+.checkout .container form .payment .subtitle {
+  margin: 32px 0 0 0;
 }
-.template-category .container article h2 {
-  font-size: 28px;
-}/*# sourceMappingURL=t-style.css.map */
+.checkout .container form .payment label {
+  font-size: 12px;
+}/*# sourceMappingURL=checkout.css.map */

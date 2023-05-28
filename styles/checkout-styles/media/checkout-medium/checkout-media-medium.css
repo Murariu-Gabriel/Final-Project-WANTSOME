@@ -292,22 +292,4 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
-  .navigation .container:last-of-type {
-    padding: 30px 0;
-  }
-  .navigation .container:last-of-type h2 {
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 40px;
-    border-bottom: none;
-  }
-  .template-category {
-    padding-top: 120px;
-  }
-  .template-category .container article {
-    padding-bottom: 120px;
-  }
-  .template-category .container article h2 {
-    font-size: 40px;
-  }
-}/*# sourceMappingURL=t-media-medium.css.map */
+}/*# sourceMappingURL=checkout-media-medium.css.map */

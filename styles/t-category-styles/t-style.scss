@@ -8,9 +8,7 @@
 
 @use "../components-dashboard/footer";
 
-* {
-    box-sizing: border-box;
-}
+
 
 .navigation{
     .container{
@@ -38,9 +36,6 @@
                 width: 100%;
                 max-width: 350px;
                  margin: 0 auto;
-                // width: 50%; // acestea sunt pentru large media
-                // max-width: 540px;
-
             }
 
             p{

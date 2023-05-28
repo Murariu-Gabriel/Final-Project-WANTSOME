@@ -1,0 +1,67 @@
+@use "../abstracts/" as *;
+
+@use "../components-dashboard/header"; 
+@use "../components-dashboard/footer";
+
+body{
+ background-color: $light-gray;
+}
+
+.checkout{
+    .container{
+        p{
+            a{
+                color: $out-of-color-palette-gray;      
+            }
+        }
+
+        form{
+            padding: 3% 5%;
+            background-color: $white;
+            border-radius: $base-border-radius;
+   
+
+            .payment{
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                
+
+                .subtitle{
+                    margin: 32px 0 0 0;
+                }
+
+            //     input{
+            //     width: 100%; 
+            //    }
+
+               label{
+                font-size: 12px;
+               }
+        
+
+            }
+            
+        }
+    }
+}
+
+
+// Just in case you need it 
+    
+
+// div{
+//     &:not(.summary){
+//     display: flex;
+//     flex-direction: column;
+//     // padding-top: 40px;
+    
+//    }
+
+//    input{
+//     width: 100%; 
+//    }
+// }
+
+
+

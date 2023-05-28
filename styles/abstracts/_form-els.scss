@@ -1,15 +1,25 @@
 @use "variables" as *;
 @use "spacings" as *;
 
-input {
+input { 
+  &:not([type="checkbox"]){
     font-weight: bold;
     border: 2px solid $gray;
-    padding: $base-padding $base-padding + 5px;
+    padding: 20px $base-padding + 5px;
     border-radius: 10px;
     caret-color: $orange;
-    
-    &:focus {
-      outline: none;
-      border: 2px solid $orange;
-    }
+    width: 100%;
+
   }
+  
+  &:focus {
+    outline: none;
+    border: 2px solid $orange;
+  }
+}
+
+label{
+  text-transform: capitalize;
+  font-weight: 700;
+ 
+}

@@ -1,0 +1,6 @@
+@use "../../../components-dashboard/media-mixins" as *;
+@use "../../../abstracts/" as *;
+
+@media screen and (min-width: 990px) {
+ @include large-media;
+} 
