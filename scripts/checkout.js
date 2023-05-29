@@ -1,3 +1,5 @@
+//NAV PART
+
 const headerNav = document.getElementById("header-nav")
 const hamburgerButton = document.getElementById("h-button")
 const closeButton = document.getElementById("x-button")
@@ -14,9 +16,37 @@ closeButton.addEventListener("click", () => {
   headerNav.classList.toggle("nav-toggle")
 })
 
+// INPUT PART
 
-const form = document.getElementsByTagName("form")
 
-form[1].addEventListener("submit", () => {
-  e.preventDefault()
+const eMoneyContainer = document.getElementById("e-money-container")
+const onDeliveryContainer = document.getElementById("on-delivery-container")
+const radioMoney = document.getElementById("e-money")
+const onDelivery = document.getElementById("cash-on-delivery")
+
+
+
+eMoneyContainer.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    eMoneyContainer.style.borderColor = "#D87D4A"
+    console.log("true")
+  } 
+  if (!e.target.checked) {
+    eMoneyContainer.style.borderColor = "green"
+    console.log("false")
+  }
 })
+
+onDelivery.addEventListener("click", (e) => {
+  if (e.target.checked) {
+    onDeliveryContainer.style.borderColor = "#D87D4A"
+  }
+})
+
+
+
+// const form = document.getElementsByTagName("form")
+
+// form[1].addEventListener("submit", () => {
+//   e.preventDefault()
+// })

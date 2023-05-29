@@ -2,14 +2,14 @@
 @use "spacings" as *;
 
 input { 
-  &:not([type="checkbox"]){
+ 
+  &:not([type="checkbox"]) {
     font-weight: bold;
     border: 2px solid $gray;
     padding: 20px $base-padding + 5px;
-    border-radius: 10px;
+    border-radius: $base-border-radius;
     caret-color: $orange;
     width: 100%;
-
   }
   
   &:focus {
@@ -20,6 +20,12 @@ input {
 
 label{
   text-transform: capitalize;
-  font-weight: 700;
- 
+  font-weight: 700; 
+}
+
+.radio-button{
+  font-weight: bold;
+  border: 2px solid $gray;
+  padding: 15px 0;
+  border-radius: $base-border-radius;
 }

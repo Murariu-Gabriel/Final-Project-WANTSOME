@@ -95,7 +95,7 @@
         <form action="">
           <h2>checkout</h2>
 
-          <div class="billing-details payment">
+          <div class="payment">
             <p class="subtitle">billing details</p>
             <div>
               <label for="name">name</label>
@@ -133,7 +133,7 @@
             </div>
           </div>
 
-          <div class="shipping-info payment">
+          <div class="payment">
             <p class="subtitle">shipping info</p>
             <div>
               <label for="address">your address</label>
@@ -180,28 +180,33 @@
             </div>
           </div>
 
-          <div class="payment-details payment">
+          <div class="payment">
             <p class="subtitle">payment details</p>
             <div>
               <span>payment method</span>
-              <input
-                type="radio"
-                name="payment-method"
-                id="e-money"
-                value="e-money"
-                required
-              />
-              <label for="e-money">e-money</label>
 
-              <input
-                type="radio"
-                name="payment-method"
-                id="cash-on-delivery"
-                value="cash on delivery"
-                required
-              />
+              <div class="radio-button" id="e-money-container">
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="e-money"
+                  value="e-money"
+                  required
+                />
+                <label for="e-money" >e-money</label>
+              </div>
 
-              <label for="cash-on-delivery">cash-on-delivery</label>
+              <div class="radio-button" id="on-delivery-container">
+                <input
+                  type="radio"
+                  name="payment-method"
+                  id="cash-on-delivery"
+                  value="cash on delivery"
+                  required
+                />
+  
+                <label for="cash-on-delivery">cash on delivery</label>
+              </div>
             </div>
 
             <div>
