@@ -93,148 +93,159 @@
         </p>
 
         <form action="">
-          <h2>checkout</h2>
+          <div class="about-payment">
+            <h2>checkout</h2>
 
-          <div class="payment">
-            <p class="subtitle">billing details</p>
-            <div>
-              <label for="name">name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Alexei Johnson"
-                required
-              />
-            </div>
-
-            <div>
-              <label for="email">email address</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                required
-                placeholder="alexander_12@gmail.com"
-              />
-            </div>
-
-            <div>
-              <label for="phone-number">phone number</label>
-              <input
-                type="tel"
-                name="phone-number"
-                id="phone-number"
-                inputmode="numeric"
-                placeholder="1202-555-0136"
-                pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="payment">
-            <p class="subtitle">shipping info</p>
-            <div>
-              <label for="address">your address</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                placeholder="1137 Avenue"
-                required
-              />
-            </div>
-
-            <div>
-              <label for="zip-code">ZIP code</label>
-              <input
-                type="text"
-                name="zip-code"
-                id="zip-code"
-                placeholder="12011"
-                required
-              />
-            </div>
-
-            <div>
-              <label for="city">city</label>
-              <input
-                type="text"
-                name="city"
-                id="city"
-                placeholder="San Diego"
-                required
-              />
-            </div>
-
-            <div>
-              <label for="country">country</label>
-              <input
-                type="text"
-                name="country"
-                id="country"
-                placeholder="United States"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="payment">
-            <p class="subtitle">payment details</p>
-            <div>
-              <span>payment method</span>
-
-              <div class="radio-button" id="e-money-container">
+            <div class="payment">
+              <p class="subtitle">billing details</p>
+              <div>
+                <label for="name">name</label>
                 <input
-                  type="radio"
-                  name="payment-method"
-                  id="e-money"
-                  value="e-money"
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Alexei Johnson"
                   required
+                  maxlength="20"
                 />
-                <label for="e-money" >e-money</label>
               </div>
 
-              <div class="radio-button" id="on-delivery-container">
+              <div>
+                <label for="email">email address</label>
                 <input
-                  type="radio"
-                  name="payment-method"
-                  id="cash-on-delivery"
-                  value="cash on delivery"
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  placeholder="alexander_12@gmail.com"
+                />
+              </div>
+
+              <div>
+                <label for="phone-number">phone number</label>
+                <input
+                  type="tel"
+                  name="phone-number"
+                  id="phone-number"
+                  inputmode="numeric"
+                  placeholder="1202-555-0136"
+                  pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
                   required
                 />
-  
-                <label for="cash-on-delivery">cash on delivery</label>
               </div>
             </div>
 
-            <div>
-              <label for="card-number">e-money number</label>
-              <input
-                type="text"
-                name="card-number"
-                id="card-number"
-                placeholder="343219987"
-                required
-              />
+            <div class="payment">
+              <p class="subtitle">shipping info</p>
+              <div>
+                <label for="address">your address</label>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  placeholder="1137 Avenue"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="zip-code">ZIP code</label>
+                <input
+                  type="text"
+                  name="zip-code"
+                  id="zip-code"
+                  placeholder="12011"
+                  required
+                  minlength="5"
+                  maxlength="5"
+                />
+              </div>
+
+              <div>
+                <label for="city">city</label>
+                <input
+                  type="text"
+                  name="city"
+                  id="city"
+                  placeholder="San Diego"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="country">country</label>
+                <input
+                  type="text"
+                  name="country"
+                  id="country"
+                  placeholder="United States"
+                  required
+                />
+              </div>
             </div>
 
-            <div>
-              <label for="card-pin">e-money PIN</label>
-              <input
-                type="text"
-                name="card-pin"
-                id="card-pin"
-                placeholder="0912"
-                required
-              />
+            <div class="payment">
+              <p class="subtitle">payment details</p>
+              <div>
+                <span>payment method</span>
+
+                <div class="radio-button" id="e-money-container">
+                  <input
+                    type="radio"
+                    name="payment-method"
+                    id="e-money"
+                    value="e-money"
+                    required
+                  />
+                  <label for="e-money" >e-money</label>
+                </div>
+
+                <div class="radio-button" id="on-delivery-container">
+                  <input
+                    type="radio"
+                    name="payment-method"
+                    id="cash-on-delivery"
+                    value="cash on delivery"
+                    required
+                  />
+    
+                  <label for="cash-on-delivery">cash on delivery</label>
+                </div>
+              </div>
+
+              <div>
+                <label for="card-number">e-money number</label>
+                <input
+                  type="text"
+                  name="card-number"
+                  id="card-number"
+                  placeholder="343219987"
+                  maxlength="9"
+                  minlength="9"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="card-pin">e-money PIN</label>
+                <input
+                  type="text"
+                  name="card-pin"
+                  id="card-pin"
+                  placeholder="0912"
+                   maxlength="4"
+                  minlength="4"
+                  required
+                />
+              </div>
             </div>
           </div>
+          
 
           <div class="summary">
             <h2>summary</h2>
-            <div>
+
+            <article >
               <img src="" alt="" />
 
               <div>
@@ -242,10 +253,10 @@
                 <p>$ price</p>
               </div>
 
-              <p>x quantity</p>
-            </div>
+              <p>x1</p>
+            </article>
 
-            <div>
+            <article >
               <img src="" alt="" />
 
               <div>
@@ -253,10 +264,10 @@
                 <p>$ price</p>
               </div>
 
-              <p>x quantity</p>
-            </div>
+              <p>x1</p>
+            </article>
 
-            <div>
+            <article >
               <img src="" alt="" />
 
               <div>
@@ -264,8 +275,8 @@
                 <p>$ price</p>
               </div>
 
-              <p>x quantity</p>
-            </div>
+              <p>x1</p>
+            </article>
 
             <div class="total">
               <div>
@@ -288,7 +299,7 @@
                 <p>$ sum</p>
               </div>
             </div>
-
+            
             <button class="button-1" type="submit">continue & pay</button>
           </div>
         </form>

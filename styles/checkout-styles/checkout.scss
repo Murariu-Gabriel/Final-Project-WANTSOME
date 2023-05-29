@@ -9,66 +9,128 @@ body{
 
 .checkout{
     .container{
+         padding-bottom: $xxl-spacing; 
         p{
+            margin-bottom: 25px;
             a{
                 color: $out-of-color-palette-gray;      
             }
         }
 
         form{
-            padding: 3% 5%;
-            background-color: $white;
-            border-radius: $base-border-radius;
-   
+            .about-payment{
+                border-radius: $base-border-radius;
+                background-color: $white;
+                padding: $m-spacing 5%;
+                
+                .payment{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    
+    
+                    .subtitle{
+                        margin: 32px 0 0 0;
+                    }
+    
+                    label{
+                        font-size: 12px;
+                    }
+    
+                    &:nth-of-type(3){
+                        span{
+                            font-weight: 700;
+                            text-transform: capitalize;
+                        }
+                        .radio-button{
+                            margin-top: $base-padding;
+                            display: flex;
+                            align-items: center;
+    
+                            input{
+                                width: 5px;
+                                // height: 20px;
+                                margin: 0 20px;
+                                padding: 5px 5px;
+                                appearance: none;
+                                -webkit-appearance: none;
+                                border-radius: 50%;
+                                /* The border will be the spacing between the dot and the outer circle */
+                                border: 4px solid #FFF;
+                                /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
+                                box-shadow: 0 0 0 1px $out-of-color-palette-gray;
+    
+                                &:checked{
+                                    background-color: $orange;
+                                    &.radio-button{
+                                        border: 1px solid red;
+                                    }
+                                }
+                            }
+                          
+                        }
+                    }
+    
+                }
+            }
 
-            .payment{
+            .summary{
+                background-color: $white;
+                border-radius: $base-border-radius;
+                padding: 0 5% $m-spacing 5%;
+                margin: $m-spacing 0 0 0;
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
-                
-
-                .subtitle{
-                    margin: 32px 0 0 0;
-                }
-
-                label{
-                    font-size: 12px;
-                }
-
-                &:nth-of-type(3){
-                    span{
-                        font-weight: 700;
-                        text-transform: capitalize;
-                    }
-                    .radio-button{
-                        margin-top: $base-padding;
-                        display: flex;
-                        align-items: center;
-
-                        input{
-                            width: 5px;
-                            // height: 20px;
-                            margin: 0 20px;
-                            padding: 5px 5px;
-                            appearance: none;
-                            -webkit-appearance: none;
-                            border-radius: 50%;
-                            /* The border will be the spacing between the dot and the outer circle */
-                            border: 4px solid #FFF;
-                            /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
-                            box-shadow: 0 0 0 1px $out-of-color-palette-gray;
-
-                            &:checked{
-                                background-color: $orange;
-                                &.radio-button{
-                                    border: 1px solid red;
-                                }
-                                }
+                article{
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    
+                        img{
+                            width: 64px;
+                            height: 64px;
+                            background-color: gray;
+                            border-radius: $base-border-radius;
+                        }
+                        div{
+                            p{
+                                margin: 0;
                             }
-                      
+                        }
+
+                    p{
+                        align-self: flex-start;
+                        margin-left: auto;
                     }
                 }
+            }
 
+            .total{
+                div{
+                    display: flex;
+                    p{
+                        margin: 10px 0;
+
+                        &:nth-of-type(1){
+                            text-transform: uppercase;
+                            color: $out-of-color-palette-gray;
+                        }
+                        
+                        &:nth-of-type(2){
+                            margin-left: auto;
+                            font-weight: 700;
+                        }
+                    }
+
+                    &:last-of-type{
+                        p{
+                            &:last-of-type{
+                                color: $orange;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

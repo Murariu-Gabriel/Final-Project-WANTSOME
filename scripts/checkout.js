@@ -18,30 +18,55 @@ closeButton.addEventListener("click", () => {
 
 // INPUT PART
 
+// I have a feeling this part has performance issues
+
+// Second try with looping
+// IT works but I have a feeling this code isn t the most optimal
+
+// const payment = document.getElementsByName("payment-method")
+// const container = document.getElementsByClassName("radio-button")
+
+// for(const [index, el] of payment.entries()){
+//   el.addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//       container[index].style.borderColor = "#D87D4A"
+   
+//       if(index === 0){
+//         container[1].style.borderColor = "#F1F1F1"
+//       } else{
+//         container[0].style.borderColor = "#F1F1F1"
+//       }
+//     } 
+//   })
+// }
+
+
+// first try, it repeats
 
 const eMoneyContainer = document.getElementById("e-money-container")
 const onDeliveryContainer = document.getElementById("on-delivery-container")
 const radioMoney = document.getElementById("e-money")
 const onDelivery = document.getElementById("cash-on-delivery")
 
-
-
 eMoneyContainer.addEventListener("change", (e) => {
   if (e.target.checked) {
     eMoneyContainer.style.borderColor = "#D87D4A"
-    console.log("true")
-  } 
-  if (!e.target.checked) {
-    eMoneyContainer.style.borderColor = "green"
-    console.log("false")
   }
+  onDeliveryContainer.style.borderColor = "#F1F1F1"
 })
 
-onDelivery.addEventListener("click", (e) => {
+onDelivery.addEventListener("change", (e) => {
   if (e.target.checked) {
     onDeliveryContainer.style.borderColor = "#D87D4A"
   }
+  eMoneyContainer.style.borderColor = "#F1F1F1"
 })
+
+
+
+
+
+
 
 
 

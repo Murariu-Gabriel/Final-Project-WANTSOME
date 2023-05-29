@@ -402,35 +402,41 @@ body {
   background-color: #FAFAFA;
 }
 
+.checkout .container {
+  padding-bottom: 120px;
+}
+.checkout .container p {
+  margin-bottom: 25px;
+}
 .checkout .container p a {
   color: gray;
 }
-.checkout .container form {
-  padding: 3% 5%;
-  background-color: #FFFFFF;
+.checkout .container form .about-payment {
   border-radius: 8px;
+  background-color: #FFFFFF;
+  padding: 30px 5%;
 }
-.checkout .container form .payment {
+.checkout .container form .about-payment .payment {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-.checkout .container form .payment .subtitle {
+.checkout .container form .about-payment .payment .subtitle {
   margin: 32px 0 0 0;
 }
-.checkout .container form .payment label {
+.checkout .container form .about-payment .payment label {
   font-size: 12px;
 }
-.checkout .container form .payment:nth-of-type(3) span {
+.checkout .container form .about-payment .payment:nth-of-type(3) span {
   font-weight: 700;
   text-transform: capitalize;
 }
-.checkout .container form .payment:nth-of-type(3) .radio-button {
+.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button {
   margin-top: 15px;
   display: flex;
   align-items: center;
 }
-.checkout .container form .payment:nth-of-type(3) .radio-button input {
+.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button input {
   width: 5px;
   margin: 0 20px;
   padding: 5px 5px;
@@ -443,9 +449,53 @@ body {
   /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
   box-shadow: 0 0 0 1px gray;
 }
-.checkout .container form .payment:nth-of-type(3) .radio-button input:checked {
+.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button input:checked {
   background-color: #D87D4A;
 }
-.checkout .container form .payment:nth-of-type(3) .radio-button input:checked.radio-button {
+.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button input:checked.radio-button {
   border: 1px solid red;
+}
+.checkout .container form .summary {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 0 5% 30px 5%;
+  margin: 30px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.checkout .container form .summary article {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.checkout .container form .summary article img {
+  width: 64px;
+  height: 64px;
+  background-color: gray;
+  border-radius: 8px;
+}
+.checkout .container form .summary article div p {
+  margin: 0;
+}
+.checkout .container form .summary article p {
+  align-self: flex-start;
+  margin-left: auto;
+}
+.checkout .container form .total div {
+  display: flex;
+}
+.checkout .container form .total div p {
+  margin: 10px 0;
+}
+.checkout .container form .total div p:nth-of-type(1) {
+  text-transform: uppercase;
+  color: gray;
+}
+.checkout .container form .total div p:nth-of-type(2) {
+  margin-left: auto;
+  font-weight: 700;
+}
+.checkout .container form .total div:last-of-type p:last-of-type {
+  color: #D87D4A;
 }/*# sourceMappingURL=checkout.css.map */

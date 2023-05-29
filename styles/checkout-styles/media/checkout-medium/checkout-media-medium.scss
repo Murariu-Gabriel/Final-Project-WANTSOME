@@ -3,4 +3,23 @@
 
 @media screen and (min-width: 550px) {
   @include medium-media; 
-}
+
+  .checkout{
+    .container{
+      form{
+        .about-payment{
+          .payment{
+
+            flex-wrap: wrap;
+         flex-direction: row;
+            div{
+              width: 50%;
+            }
+
+
+          }
+        }
+      }
+    }
+  }
+} 

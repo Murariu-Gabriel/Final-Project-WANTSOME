@@ -299,4 +299,11 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
+  .checkout .container form .about-payment .payment {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .checkout .container form .about-payment .payment div {
+    width: 50%;
+  }
 }/*# sourceMappingURL=checkout-media-medium.css.map */
