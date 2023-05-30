@@ -339,4 +339,21 @@ label {
   footer .container p:last-of-type {
     order: 5;
   }
+  .checkout .container form {
+    display: flex;
+    gap: 30px;
+  }
+  .checkout .container form .about-payment {
+    max-width: 750px;
+    padding: inherit 15px;
+  }
+  .checkout .container form .summary {
+    margin: 0;
+    min-width: 350px;
+    height: 100%;
+    padding: 35px 30px;
+  }
+  .checkout .container form .summary h2 {
+    margin: 0;
+  }
 }/*# sourceMappingURL=checkout-media-large.css.map */

@@ -30,7 +30,7 @@ body{
                     
     
                     .subtitle{
-                        margin: 32px 0 0 0;
+                        margin: 32px 0 $base-spacing 0;
                     }
     
                     label{
@@ -46,6 +46,7 @@ body{
                             margin-top: $base-padding;
                             display: flex;
                             align-items: center;
+                           
     
                             input{
                                 width: 5px;
@@ -82,6 +83,11 @@ body{
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
+
+                h2{
+                    font-size: $m-font;
+                }
+
                 article{
                     display: flex;
                     align-items: center;

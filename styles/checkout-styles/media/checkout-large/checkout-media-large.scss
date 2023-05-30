@@ -3,4 +3,30 @@
 
 @media screen and (min-width: 990px) {
  @include large-media;
+
+ .checkout{
+    .container{
+        form{
+            display: flex;
+            gap: 30px;
+
+            .about-payment{
+                max-width: 750px;
+                padding: inherit $base-padding ;
+            }
+
+            .summary{
+                margin: 0;
+                min-width: 350px;
+                // max-width: 350px;
+                height: 100%;
+                padding: 35px 30px;
+
+                h2{
+                    margin: 0;
+                }
+            }
+        }
+    }
+ }
 } 

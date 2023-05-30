@@ -422,7 +422,7 @@ body {
   gap: 24px;
 }
 .checkout .container form .about-payment .payment .subtitle {
-  margin: 32px 0 0 0;
+  margin: 32px 0 15px 0;
 }
 .checkout .container form .about-payment .payment label {
   font-size: 12px;
@@ -463,6 +463,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+.checkout .container form .summary h2 {
+  font-size: 18px;
 }
 .checkout .container form .summary article {
   display: flex;

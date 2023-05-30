@@ -10,13 +10,38 @@
         .about-payment{
           .payment{
 
-            flex-wrap: wrap;
-         flex-direction: row;
+            @include flex(unset, flex-end, wrap, unset);
+            gap: 2%;
             div{
-              width: 50%;
+              margin-top: 24px;
+              width: 49%;
+              label{
+                width: 100%;
+              }
             }
 
+            &:nth-of-type(2){
+              div{
+                &:first-of-type{
+                  width: 100%;
+                }
+              }
+            }
 
+            &:nth-of-type(3){
+               .payment-method{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                
+                .radio-button{
+                  align-self: flex-end;
+                  align-items: center;
+                  // padding: 15px;
+                  
+                }
+              }
+            }
           }
         }
       }

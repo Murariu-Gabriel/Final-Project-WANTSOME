@@ -300,10 +300,30 @@ label {
     margin-left: auto;
   }
   .checkout .container form .about-payment .payment {
+    display: flex;
+    align-items: flex-end;
+    justify-content: unset;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: unset;
+    gap: 2%;
   }
   .checkout .container form .about-payment .payment div {
-    width: 50%;
+    margin-top: 24px;
+    width: 49%;
+  }
+  .checkout .container form .about-payment .payment div label {
+    width: 100%;
+  }
+  .checkout .container form .about-payment .payment:nth-of-type(2) div:first-of-type {
+    width: 100%;
+  }
+  .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method .radio-button {
+    align-self: flex-end;
+    align-items: center;
   }
 }/*# sourceMappingURL=checkout-media-medium.css.map */
