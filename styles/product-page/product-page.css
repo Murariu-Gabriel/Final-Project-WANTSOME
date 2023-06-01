@@ -1,0 +1,531 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  color: #D87D4A;
+}
+
+.socials li a {
+  fill: #FFFFFF;
+  font-size: 1.5rem;
+  transition: fill 0.3s ease-in-out;
+}
+.socials li a:hover {
+  fill: #D87D4A;
+}
+
+.container {
+  padding: 0 15px;
+}
+
+img {
+  display: block;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+h1, h2, h3, h4, h5, h6, .overline, .subtitle {
+  text-transform: uppercase;
+}
+
+h1 {
+  letter-spacing: 2px;
+  line-height: 58px;
+  font-size: 56px;
+}
+
+h2 {
+  letter-spacing: 1.5px;
+  line-height: 44px;
+  font-size: 40px;
+}
+
+h3 {
+  letter-spacing: 1.15px;
+  line-height: 36px;
+  font-size: 32px;
+}
+
+h4 {
+  letter-spacing: 2px;
+  line-height: 36px;
+  font-size: 28px;
+}
+
+h5 {
+  letter-spacing: 1.7px;
+  line-height: 33px;
+  font-size: 24px;
+}
+
+h6 {
+  letter-spacing: 1.3px;
+  line-height: 24px;
+  font-size: 18px;
+}
+
+.overline {
+  letter-spacing: 10px;
+  line-height: 19px;
+  font-size: 14px;
+  color: #D87D4A;
+}
+
+.subtitle {
+  letter-spacing: 1px;
+  line-height: 25px;
+  font-size: 14px;
+  color: #D87D4A;
+}
+
+.button-1, .button-2, .button-2b, .button-3 {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button {
+  transition: fill 0.3s ease-in-out;
+}
+button:hover {
+  fill: #D87D4A;
+}
+
+.button-1 {
+  color: #FFFFFF;
+  background-color: #D87D4A;
+  border: none;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-1:hover {
+  background-color: #FBAF85;
+}
+
+.button-2 {
+  border: 1px solid #000000;
+  background-color: transparent;
+  padding: 15px 30px;
+  transition: color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-2:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.button-2b {
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-2b:hover {
+  background-color: #aaaaaa;
+  color: #FFFFFF;
+}
+
+.button-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #aaaaaa;
+  background-color: #FFFFFF;
+  border: none;
+}
+.button-3:hover {
+  color: #D87D4A;
+}
+
+input:not([type=checkbox]) {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 20px 20px;
+  border-radius: 8px;
+  caret-color: #D87D4A;
+  width: 100%;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #D87D4A;
+}
+
+label {
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.radio-button {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 15px 0;
+  border-radius: 8px;
+}
+
+@-webkit-keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.navigation {
+  background-color: #000000;
+}
+.navigation > .container {
+  border-bottom: 1px solid gray;
+  padding: 15px;
+}
+.navigation > .container .display-none {
+  display: none;
+}
+.navigation > .container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  fill: #FFFFFF;
+  width: 50px;
+}
+.navigation > .container button:hover {
+  fill: #D87D4A;
+}
+.navigation > .container header {
+  display: flex;
+  align-items: unset;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: unset;
+  gap: 15px;
+}
+.navigation > .container header a {
+  align-self: center;
+}
+.navigation > .container header a img {
+  transition: transform 0.2s ease-in-out;
+  width: 80px;
+}
+.navigation > .container header a img:hover {
+  transform: scale(1.1);
+}
+.navigation > .container header nav {
+  display: none;
+}
+.navigation > .container header .nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  top: 125px;
+  left: 0px;
+  background-color: #D87D4A;
+  -webkit-animation: pop-out 0.3s ease-in-out;
+          animation: pop-out 0.3s ease-in-out;
+  transform-origin: top;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.navigation > .container header .nav-toggle ul {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  text-align: center;
+}
+.navigation > .container header .nav-toggle ul li {
+  width: 100%;
+}
+.navigation > .container header .nav-toggle ul li:not(:first-of-type) {
+  border-top: 1px solid #000000;
+}
+.navigation > .container header .nav-toggle ul li:last-of-type {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.navigation > .container header .nav-toggle ul li:hover {
+  background-color: #FBAF85;
+}
+.navigation > .container header .nav-toggle ul li a {
+  display: block;
+  padding: 15px;
+  -webkit-animation: fade 0.7s ease-in-out;
+          animation: fade 0.7s ease-in-out;
+}
+.navigation > .container header .nav-toggle ul li a:hover {
+  color: #FFFFFF;
+}
+.navigation > .container header .toggle-close svg {
+  display: flex;
+  align-items: center;
+  fill: white;
+}
+.navigation > .container header .toggle-close svg:hover {
+  fill: #D87D4A;
+}
+.navigation > .container header .toggle-close svg path {
+  width: 16px;
+  height: 15px;
+}
+.navigation > .container header .search-container {
+  align-self: center;
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+.navigation > .container header .search-container input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+}
+.navigation > .container header .search-container button {
+  position: absolute;
+  background-color: transparent;
+  fill: black;
+  height: 100%;
+  width: 50px;
+  top: 0;
+  right: 0;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+.navigation > .container header .search-container button svg {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+.navigation > .container header .search-container button:hover {
+  background-color: #D87D4A;
+}
+.navigation > .container header .search-container button:hover svg {
+  background-color: #D87D4A;
+}
+
+.categories {
+  padding: 96px 15px 0 15px;
+}
+.categories .container {
+  display: flex;
+  align-items: unset;
+  justify-content: center;
+  flex-wrap: unset;
+  flex-direction: column;
+  gap: 100px;
+  padding: 0;
+}
+.categories .container article:hover {
+  z-index: 1;
+}
+.categories .container article div {
+  transition: transform 0.2s ease-in-out;
+  border: none;
+  height: 150px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: unset;
+  flex-direction: column;
+  background-color: #F1F1F1;
+}
+.categories .container article div:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+  border-radius: 8px;
+}
+.categories .container article div .category-image {
+  width: 100px;
+}
+.categories .container article div .subtitle {
+  color: #000000;
+  font-size: 15px;
+}
+.categories .container article div a {
+  background-color: #F1F1F1;
+  padding-bottom: 15px;
+}
+
+.about {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+.about .container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: unset;
+  flex-direction: column;
+}
+.about .container div:first-of-type {
+  border-radius: 8px;
+  height: 300px;
+  width: 100%;
+  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg");
+  background-size: cover;
+  background-position: left;
+}
+.about .container div:last-of-type h2 {
+  font-size: 28px;
+}
+.about .container div:last-of-type p {
+  color: gray;
+}
+.about .container div:last-of-type span {
+  color: #D87D4A;
+}
+
+footer {
+  position: relative;
+  background-color: #000000;
+}
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 30px 15px;
+  gap: 30px;
+  text-align: center;
+}
+footer .container::before {
+  content: "";
+  width: 101px;
+  height: 4px;
+  background-color: #D87D4A;
+  position: absolute;
+  top: 0;
+}
+footer .container img {
+  transition: transform 0.2s ease-in-out;
+  width: 80px;
+}
+footer .container img:hover {
+  transform: scale(1.1);
+}
+footer .container p {
+  color: gray;
+}
+footer .container nav .socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: unset;
+  flex-direction: unset;
+  gap: 15px;
+}
+
+.product .container p {
+  margin-bottom: 25px;
+}
+.product .container p a {
+  color: gray;
+}
+.product .container article {
+  padding-bottom: 60px;
+}
+.product .container article:first-of-type img {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+.product .container article:first-of-type p {
+  margin: 24px 0;
+}
+.product .container article:first-of-type h2 {
+  font-size: 28px;
+}
+.product .container article:first-of-type input {
+  all: revert;
+}
+.product .container article:last-of-type div span {
+  display: inline-block;
+}
+.you-may-like .container {
+  display: flex;
+  align-items: unset;
+  justify-content: center;
+  flex-wrap: unset;
+  flex-direction: column;
+  gap: 100px;
+  padding: 0;
+}
+.you-may-like .container article:hover {
+  z-index: 1;
+}
+.you-may-like .container article div {
+  transition: transform 0.2s ease-in-out;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: unset;
+  flex-direction: column;
+}
+.you-may-like .container article div:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+  border-radius: 8px;
+}
+.you-may-like .container article div .category-image {
+  background-color: gray;
+  width: 100px;
+}/*# sourceMappingURL=product-page.css.map */

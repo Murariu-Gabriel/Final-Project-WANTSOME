@@ -3,7 +3,8 @@
 
 input { 
  
-  &:not([type="checkbox"]) {
+  &:not([type="checkbox"]){
+    
     font-weight: bold;
     border: 2px solid $gray;
     padding: 20px $base-padding + 5px;

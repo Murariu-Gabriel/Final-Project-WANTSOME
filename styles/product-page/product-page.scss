@@ -1,0 +1,89 @@
+@use "../abstracts/" as *;
+
+@use "../components-dashboard/header";
+
+@use "../components-dashboard/categories";
+
+@use "../components-dashboard/about";
+
+@use "../components-dashboard/footer";
+
+.product {
+  .container {
+
+     p{
+        margin-bottom: 25px;
+        a{
+            color: $out-of-color-palette-gray;      
+        }
+    }
+
+    article {
+        padding-bottom: $xl-spacing;
+        &:first-of-type{
+            img {
+              width: 100%;
+              max-width: 250px;
+              margin: 0 auto;
+            }
+      
+            p {
+              margin: 24px 0;
+            }
+      
+            h2 {
+              font-size: $l-font;
+            }
+            input{
+                all: revert;
+            }
+        }
+
+        &:last-of-type{
+            div{
+                span{
+                    display: inline-block;
+                }
+                p{
+                    // display: inline;
+                }
+            }
+        
+        }
+    }
+  }
+}
+
+.you-may-like{
+     .container {
+    @include flex(center, unset, unset, column);
+    gap: 100px;
+    padding: 0;
+
+    article {
+
+      &:hover {
+        z-index: 1;
+      }
+
+      div {
+        transition: transform 0.2s ease-in-out;
+        border: none;
+        &:hover {
+          transform: scale(1.1);
+          box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+          border-radius: $base-border-radius;
+        }
+
+        border-radius: $base-border-radius;
+        @include flex(flex-end, center, unset, column);
+        
+        .category-image {
+            background-color: gray;
+            width: 100px;
+        }
+    
+      }
+    }
+  }
+}
