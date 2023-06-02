@@ -492,8 +492,39 @@ footer .container nav .socials {
 .product .container article:first-of-type h2 {
   font-size: 28px;
 }
-.product .container article:first-of-type input {
+.product .container article:first-of-type form {
+  display: flex;
+  gap: 20px;
+}
+.product .container article:first-of-type form .input-steper {
+  display: flex;
+}
+.product .container article:first-of-type form .input-steper input {
   all: revert;
+  text-align: center;
+  border: none;
+  background-color: #F1F1F1;
+}
+.product .container article:first-of-type form .input-steper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product .container article:first-of-type form .input-steper input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.product .container article:first-of-type form .input-steper input:focus {
+  outline: none;
+}
+.product .container article:first-of-type form .input-steper button {
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  padding: 15px;
+}
+.product .container article:first-of-type form .input-steper button:hover {
+  color: orange;
 }
 .product .container article:last-of-type div span {
   display: inline-block;

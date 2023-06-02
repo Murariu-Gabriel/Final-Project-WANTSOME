@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="../scripts/product-page.js" defer></script>
     <link rel="stylesheet" href="../styles/product-page/product-page.css" />
     <!--  <link
       rel="stylesheet"
@@ -108,8 +109,12 @@
             </p>
             <p>$ 213</p>
             <form action="">
-                <input type="number">
-                <button type="submit" class="button-1">add to cart</button>
+              <div class="input-steper">
+                <button id="decrement" type="button" onclick="counter(this)"> - </button>
+                  <input type="number" id="product-counter" value="1" min="1" max="100" readonly>
+                <button id="increment" type="button" onclick="counter(this)"> + </button>
+              </div> 
+              <button type="submit" class="button-1">add to cart</button>
             </form>
           </div>
         </article>
