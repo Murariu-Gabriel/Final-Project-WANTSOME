@@ -33,7 +33,7 @@
           }
   
          .nav-toggle{
-            top: 80px;
+            top: 5.1rem;
             width: 200px;
             left: 4%; 
             border-bottom-left-radius: $base-border-radius;
@@ -56,8 +56,8 @@
       .container {
         h1 {
           font-size: $h1-font-size;
-          margin:$m-spacing  0;
-           line-height: 50px;
+          margin: $m-spacing  0;
+          line-height: 4rem;
         }
       }
     }
@@ -65,7 +65,7 @@
 
   .categories {
     padding: 0;
-    padding-top: $section-spacing + 30;
+    padding-top: $section-spacing + 2rem;
 
     .container {
       margin: 0 auto;
@@ -74,7 +74,7 @@
       article {
         div{
           .subtitle{
-            font-size: $s-font - 2;
+            font-size: $s-font - 0.15rem;
           }
         }
         width: 100%;
@@ -119,7 +119,7 @@
 
         &:last-of-type {
           display: flex;
-          gap: 20px;
+          gap: $m-gap;
           
           div {
             height: 320px;
@@ -156,9 +156,9 @@
       text-align: unset;
       padding: $m-spacing 0;
 
-      &::after {
-        left: 5%;
-      }
+      // &::after {
+      //   left: 2%; 
+      // }
 
       nav {
         &:first-of-type{

@@ -15,19 +15,20 @@
         max-width: 500px;
         color: $white;
         text-align: center;
-
+        margin: 0 auto;
         .overline {
             color: $white;
         }
 
         h1 {
             font-size: $xl-font;
-            line-height: 40px;
+            line-height: 2.5rem;
             margin: $m-spacing 0;
+
         }
 
         button {
-            margin-top: 20px;
+            margin-top: $s-spacing;
         }
     }
 }

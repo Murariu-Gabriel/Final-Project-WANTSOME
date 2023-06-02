@@ -222,25 +222,25 @@ label {
     max-width: 1100px;
     padding: 0;
   }
-  .nav-and-hero .navigation > .container header {
+  .navigation > .container header {
     justify-content: space-between;
     align-items: center;
   }
-  .nav-and-hero .navigation > .container header > button:first-of-type {
+  .navigation > .container header > button:first-of-type {
     display: none;
   }
-  .nav-and-hero .navigation > .container header > button:nth-of-type(2) {
+  .navigation > .container header > button:nth-of-type(2) {
     display: none;
   }
-  .nav-and-hero .navigation > .container header > button:last-of-type {
+  .navigation > .container header > button:last-of-type {
     margin-left: 0;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle {
+  .navigation > .container header .nav-toggle {
     all: revert;
     display: inline-block;
     flex-grow: 2;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul {
+  .navigation > .container header .nav-toggle ul {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -249,24 +249,24 @@ label {
     gap: 2rem;
     font-size: 1rem;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li {
+  .navigation > .container header .nav-toggle ul li {
     padding: 0;
     width: auto;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li:hover {
+  .navigation > .container header .nav-toggle ul li:hover {
     background-color: transparent;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li a {
+  .navigation > .container header .nav-toggle ul li a {
     padding: 0;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li a:hover {
+  .navigation > .container header .nav-toggle ul li a:hover {
     color: #D87D4A;
   }
-  .nav-and-hero .navigation > .container header nav {
+  .navigation > .container header nav {
     display: inline-block;
     flex-grow: 2;
   }
-  .nav-and-hero .navigation > .container header nav ul {
+  .navigation > .container header nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,17 +274,17 @@ label {
     flex-direction: row;
     gap: 2rem;
   }
-  .nav-and-hero .hero .container {
+  .hero .container {
     margin: 0 auto;
     max-width: 1110px;
     text-align: left;
     padding: 0;
   }
-  .nav-and-hero .hero .container h1 {
+  .hero .container h1 {
     width: 46%;
   }
-  .nav-and-hero .hero .container p,
-.nav-and-hero .hero .container h2 {
+  .hero .container p,
+.hero .container h2 {
     width: 35%;
   }
   .categories {
@@ -401,4 +401,4 @@ label {
   footer .container p:last-of-type {
     order: 5;
   }
-}/*# sourceMappingURL=home-media-large.css.map */
+}/*# sourceMappingURL=product-media-large.css.map */

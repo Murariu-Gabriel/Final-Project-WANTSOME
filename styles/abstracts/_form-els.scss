@@ -7,7 +7,7 @@ input {
     
     font-weight: bold;
     border: 2px solid $gray;
-    padding: 20px $base-padding + 5px;
+    padding: $s-spacing $base-padding +0.3rem;
     border-radius: $base-border-radius;
     caret-color: $orange;
     width: 100%;
@@ -27,6 +27,6 @@ label{
 .radio-button{
   font-weight: bold;
   border: 2px solid $gray;
-  padding: 15px 0;
+  padding: $base-spacing 0;
   border-radius: $base-border-radius;
 }

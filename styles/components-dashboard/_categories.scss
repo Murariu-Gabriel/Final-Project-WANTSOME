@@ -5,7 +5,7 @@
   
   .container {
     @include flex(center, unset, unset, column);
-    gap: 100px;
+    gap: $xxl-gap;
     padding: 0;
 
     article {

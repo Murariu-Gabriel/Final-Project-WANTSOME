@@ -1,19 +1,30 @@
-$base-spacing: 15px;
+$base-spacing: 1rem;
+$s-spacing: 1.25rem;
 $m-spacing: $base-spacing * 2;
 $l-spacing: $base-spacing * 3;
 $xl-spacing: $base-spacing * 4;
 $xxl-spacing:  $base-spacing * 8;
 
 $container-spacing: $base-spacing ;
-$base-padding: 15px;
+$base-padding: 1rem;
+$xs-padding: 1.5rem;
+$s-padding: 2.5rem;
 $base-border-radius: 8px;
-$section-spacing: 96px;
-$m-section-spacing: 168px;
+$section-spacing: 6.1rem;
+$m-section-spacing: 11rem;
+$l-section-spacing: 13rem;
 
-$s-top-category-section: 64px;
-$l-top-category-section: 160px;
+$s-top-category-section: 4rem;
+$l-top-category-section: 11rem;
 
-// $categori-arcticle-spacing: 120px;
+$s-gap: 0.625rem;
+$m-gap: 1.5rem;
+$l-gap: 1.875rem;
+$xxl-gap:6.25rem;
+
+$g-back-margin-bootom: 1.563rem;
+ 
+// $category-article-spacing: 120px;
 
 
 

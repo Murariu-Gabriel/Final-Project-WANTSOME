@@ -28,9 +28,9 @@ section{
   
   
       div {
-        margin-top: $base-spacing - 5;
+        margin-top: $base-spacing - 0.3rem;
         @include just-flex;
-        gap: $base-spacing - 5;
+        gap: $base-spacing - 0.3rem;
          
       }
   
@@ -40,7 +40,7 @@ section{
       }
   
       .terms {
-        margin-top: $base-spacing + 10;
+        margin-top: $base-spacing;
           flex-direction: row;
           a{
             color: $black;

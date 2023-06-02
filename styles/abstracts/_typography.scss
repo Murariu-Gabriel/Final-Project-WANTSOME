@@ -1,14 +1,14 @@
 @use "variables" as *;
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
 
-$s-font: 15px;
-$m-font: 18px;
-$l-font: 28px;
-$xl-font: 36px;
-$h1-font-size: 56px;
-$h2-font-size: 40px;
+$s-font: 1rem;
+$m-font: 1.125rem;
+$l-font: 1.75rem;
+$xl-font: 2.25rem;
+$h2-font-size: 2.5rem;
+$h1-font-size: 3.5rem;
 
-$h1-line-height: 58px;
+$h1-line-height: 3.625rem;
 
 body{
     font-family: 'Manrope', sans-serif;
@@ -22,52 +22,52 @@ h1, h2, h3, h4, h5, h6, .overline, .subtitle{
 }
 
 h1{
-    letter-spacing: 2px;
-    line-height: 58px;
-    font-size: 56px;
+    letter-spacing: 0.125rem;
+    line-height: 3.625rem;
+    font-size: 3.5rem;
 }
 
 h2{
-    letter-spacing: 1.5px;
-    line-height: 44px;
-    font-size: 40px;
+    letter-spacing: 0.094rem;
+    line-height: 2.75rem;
+    font-size: 2.5rem;
 }
 
 h3{
-    letter-spacing: 1.15px;
-    line-height: 36px;
-    font-size: 32px;
+    letter-spacing: 0.072rem;
+    line-height: 2.25rem;
+    font-size: 2rem;
 }
 
 h4{
-    letter-spacing: 2px;
-    line-height: 36px;
-    font-size: 28px;
+    letter-spacing: 0.125rem;
+    line-height: 2.25rem;
+    font-size: 1.75rem;
 }
 
 h5{
-    letter-spacing: 1.7px;
-    line-height: 33px;
-    font-size: 24px;
+    letter-spacing: 0.106rem;
+    line-height: 2.063rem;
+    font-size: 1.5rem;
 }
 
 h6{
-    letter-spacing: 1.3px;
-    line-height: 24px;
-    font-size: 18px;
+    letter-spacing: 0.081rem;
+    line-height: 1.5rem;
+    font-size: 1.125rem;
 }
 
 .overline{
-    letter-spacing: 10px;
-    line-height: 19px;
-    font-size: 14px;
+    letter-spacing: 0.625rem;
+    line-height: 1.188rem;
+    font-size: 0.875rem;
     color: $orange;
 }
 
 .subtitle{
-    letter-spacing: 1px;
-    line-height: 25px;
-    font-size: 14px;
+    letter-spacing: 0.063rem;
+    line-height: 1.563rem;
+    font-size: 0.875rem;
     color: $orange;
 }
 

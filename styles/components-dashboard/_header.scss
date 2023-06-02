@@ -21,7 +21,7 @@
             border: none;
             cursor: pointer;
             fill: $white;
-            width: 50px;
+            width: 40px;
 
             &:hover {
                 fill: $orange;
@@ -54,7 +54,7 @@
                 justify-content: center;
                 width: 100%;
                 position: absolute;
-                top: 125px;
+                top: 8rem;
                 left: 0px;
                 background-color: $orange;
                 animation: pop-out 0.3s ease-in-out;
@@ -67,7 +67,7 @@
                     align-items: center;
                     display: flex;
                     flex-direction: column;
-                    font-size: $s-font + 5;
+                    font-size: $s-font + 0.3rem;
                     text-align: center;
 
                     li {
@@ -87,7 +87,7 @@
 
                         a {
                             display: block;
-                            padding: 15px;
+                            padding: $base-spacing;
                             animation: fade 0.7s ease-in-out;
                             &:hover {
                                 color: $white;
@@ -106,10 +106,6 @@
                     &:hover {
                         fill: $orange;
                     }
-                    path {
-                        width: 16px;
-                        height: 15px;
-                    }
                 }
             }
 
@@ -126,7 +122,7 @@
                 input {
                 box-sizing: border-box;
                 width: 100%;
-                padding: 5px;
+                padding: 0.5rem;
                 }
 
                 button {

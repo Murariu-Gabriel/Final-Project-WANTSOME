@@ -25,7 +25,6 @@ a:hover {
 
 .socials li a {
   fill: #FFFFFF;
-  font-size: 1.5rem;
   transition: fill 0.3s ease-in-out;
 }
 .socials li a:hover {
@@ -33,7 +32,7 @@ a:hover {
 }
 
 .container {
-  padding: 0 15px;
+  padding: 0 1rem;
 }
 
 img {
@@ -51,52 +50,52 @@ h1, h2, h3, h4, h5, h6, .overline, .subtitle {
 }
 
 h1 {
-  letter-spacing: 2px;
-  line-height: 58px;
-  font-size: 56px;
+  letter-spacing: 0.125rem;
+  line-height: 3.625rem;
+  font-size: 3.5rem;
 }
 
 h2 {
-  letter-spacing: 1.5px;
-  line-height: 44px;
-  font-size: 40px;
+  letter-spacing: 0.094rem;
+  line-height: 2.75rem;
+  font-size: 2.5rem;
 }
 
 h3 {
-  letter-spacing: 1.15px;
-  line-height: 36px;
-  font-size: 32px;
+  letter-spacing: 0.072rem;
+  line-height: 2.25rem;
+  font-size: 2rem;
 }
 
 h4 {
-  letter-spacing: 2px;
-  line-height: 36px;
-  font-size: 28px;
+  letter-spacing: 0.125rem;
+  line-height: 2.25rem;
+  font-size: 1.75rem;
 }
 
 h5 {
-  letter-spacing: 1.7px;
-  line-height: 33px;
-  font-size: 24px;
+  letter-spacing: 0.106rem;
+  line-height: 2.063rem;
+  font-size: 1.5rem;
 }
 
 h6 {
-  letter-spacing: 1.3px;
-  line-height: 24px;
-  font-size: 18px;
+  letter-spacing: 0.081rem;
+  line-height: 1.5rem;
+  font-size: 1.125rem;
 }
 
 .overline {
-  letter-spacing: 10px;
-  line-height: 19px;
-  font-size: 14px;
+  letter-spacing: 0.625rem;
+  line-height: 1.188rem;
+  font-size: 0.875rem;
   color: #D87D4A;
 }
 
 .subtitle {
-  letter-spacing: 1px;
-  line-height: 25px;
-  font-size: 14px;
+  letter-spacing: 0.063rem;
+  line-height: 1.563rem;
+  font-size: 0.875rem;
   color: #D87D4A;
 }
 
@@ -116,7 +115,7 @@ button:hover {
   color: #FFFFFF;
   background-color: #D87D4A;
   border: none;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   transition: background-color 0.3s ease-in-out;
 }
 .button-1:hover {
@@ -126,7 +125,7 @@ button:hover {
 .button-2 {
   border: 1px solid #000000;
   background-color: transparent;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   transition: color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
@@ -139,7 +138,7 @@ button:hover {
   border: none;
   background-color: #000000;
   color: #FFFFFF;
-  padding: 15px 30px;
+  padding: 1rem 2rem;
   transition: background-color 0.3s ease-in-out;
 }
 .button-2b:hover {
@@ -151,7 +150,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.625rem;
   color: #aaaaaa;
   background-color: #FFFFFF;
   border: none;
@@ -163,7 +162,7 @@ button:hover {
 input:not([type=checkbox]) {
   font-weight: bold;
   border: 2px solid #F1F1F1;
-  padding: 20px 20px;
+  padding: 1.25rem 1.3rem;
   border-radius: 8px;
   caret-color: #D87D4A;
   width: 100%;
@@ -181,7 +180,7 @@ label {
 .radio-button {
   font-weight: bold;
   border: 2px solid #F1F1F1;
-  padding: 15px 0;
+  padding: 1rem 0;
   border-radius: 8px;
 }
 
@@ -247,8 +246,8 @@ label {
     justify-content: center;
     flex-wrap: none;
     flex-direction: row;
-    gap: 30px;
-    font-size: 15px;
+    gap: 2rem;
+    font-size: 1rem;
   }
   .navigation > .container header .nav-toggle ul li {
     padding: 0;
@@ -273,26 +272,89 @@ label {
     justify-content: center;
     flex-wrap: none;
     flex-direction: row;
-    gap: 30px;
+    gap: 2rem;
+  }
+  .hero .container {
+    margin: 0 auto;
+    max-width: 1110px;
+    text-align: left;
+    padding: 0;
+  }
+  .hero .container h1 {
+    width: 46%;
+  }
+  .hero .container p,
+.hero .container h2 {
+    width: 35%;
   }
   .categories {
-    padding-top: 168px;
+    padding-top: 13rem;
   }
   .categories .container article div {
     height: 200px;
   }
   .categories .container article div .subtitle {
-    font-size: 18px;
-    padding-top: 15px;
+    font-size: 1.125rem;
+    padding-top: 1rem;
   }
   .categories .container article div .category-image {
     width: 150px;
   }
   .categories .container article div .button-3 {
-    padding-bottom: 30px;
+    padding-bottom: 2rem;
+  }
+  .products-display {
+    padding-top: 11rem;
+  }
+  .products-display .container article:first-of-type {
+    height: 560px;
+    padding: 4rem 1rem;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: unset;
+    flex-direction: unset;
+    text-align: left;
+    background-color: #D87D4A;
+    background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+    background-repeat: no-repeat;
+    background-position-x: -250px;
+    background-position-y: 50%;
+    background-size: 100%;
+  }
+  .products-display .container article:first-of-type img {
+    width: 400px;
+  }
+  .products-display .container article:first-of-type div {
+    width: 35%;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .products-display .container article:first-of-type div h2 {
+    font-size: 3.5rem;
+  }
+  .products-display .container article:first-of-type div h2,
+.products-display .container article:first-of-type div p {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+  }
+  .products-display .container article:nth-of-type(2) {
+    background-position: center;
+  }
+  .products-display .container article:nth-of-type(2) div {
+    padding: 0 4rem;
+  }
+  .products-display .container article:last-of-type div:last-of-type h4 {
+    padding: 0 0 2rem 4rem;
+    margin: 0;
+  }
+  .products-display .container article:last-of-type div:last-of-type button {
+    margin: 0 0 0 4rem;
   }
   .about {
-    padding-top: 168px;
+    padding-top: 11rem;
   }
   .about .container {
     flex-direction: row;
@@ -340,14 +402,14 @@ label {
     order: 5;
   }
   .template-category {
-    padding-top: 160px;
+    padding-top: 11rem;
   }
   .template-category .container article {
-    padding-bottom: 160px;
+    padding-bottom: 11rem;
     display: flex;
     align-items: center;
     text-align: start;
-    gap: 100px;
+    gap: 6.25rem;
   }
   .template-category .container article img {
     width: 50%;

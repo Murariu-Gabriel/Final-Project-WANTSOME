@@ -1,24 +1,20 @@
 @use "../abstracts/" as *;
 
-
 @mixin medium-media {
- 
   .container {
     width: 90%;
-    margin: 0 auto; 
-    padding: 0; 
+    margin: 0 auto;
+    padding: 0;
   }
 
-  .navigation{
-    >.container {
+  .navigation {
+    > .container {
       padding: $base-spacing 0;
 
-      header { 
+      header {
         @include flex(unset, unset, unset, unset);
         padding: 0;
         gap: $m-spacing;
-
-    
 
         button {
           &:last-of-type {
@@ -26,15 +22,25 @@
           }
         }
 
-        .search-container{
-          margin: 0 ;
+        .search-container {
+          margin: 0;
           margin-left: auto;
         }
 
-        .nav-toggle{
-          top: 80px;
+        .nav-toggle {
+          top: 5.1rem;
           width: 200px;
-          left: 4%; 
+          left: 4%;
+          border-bottom-left-radius: $base-border-radius;
+          border-bottom-right-radius: $base-border-radius;
+          ul {
+            li {
+              &:last-of-type {
+                border-bottom-left-radius: $base-border-radius;
+                border-bottom-right-radius: $base-border-radius;
+              }
+            }
+          }
         }
       }
     }
@@ -42,19 +48,71 @@
 
   .categories {
     padding: 0;
-    padding-top: $section-spacing + 30;
+    padding-top: $section-spacing + 2rem;
 
     .container {
       margin: 0 auto;
       @include flex(space-around, unset, unset, unset);
       gap: 10px;
       article {
-        div{
-          .subtitle{
-            font-size: $s-font - 2;
+        div {
+          .subtitle {
+            font-size: $s-font - 0.15rem;
           }
         }
         width: 100%;
+      }
+    }
+  }
+
+  .products-display {
+    padding-top: $section-spacing;
+
+    .container {
+      article {
+        &:first-of-type {
+          background-position-x: 50%;
+          background-position-y: -300px;
+          background-size: 150%;
+
+          h2 {
+            font-size: $h1-font-size;
+            line-height: $h1-line-height;
+          }
+
+          h2,
+          p {
+            width: 50%;
+          }
+        }
+
+        &:nth-of-type(2) {
+          height: 320px;
+          // background-position: -10%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: left;
+          div {
+            h4 {
+              width: 100%;
+            }
+          }
+        }
+
+        &:last-of-type {
+          display: flex;
+          gap: $m-gap;
+
+          div {
+            height: 320px;
+            margin-top: 0;
+            width: 50%;
+
+            &:first-of-type {
+              background-position: 60%;
+            }
+          }
+        }
       }
     }
   }
@@ -80,12 +138,12 @@
       text-align: unset;
       padding: $m-spacing 0;
 
-      &::after {
-        left: 5%;
-      }
+      // &::after {
+      //   left: 2%;
+      // }
 
       nav {
-        &:first-of-type{ 
+        &:first-of-type {
           width: 100%;
           ul {
             @include flex;
@@ -93,7 +151,7 @@
           }
         }
 
-        &:last-of-type{
+        &:last-of-type {
           margin-left: auto;
         }
       }
@@ -101,87 +159,166 @@
   }
 }
 
-
 @mixin large-media {
   .container {
     max-width: 1100px;
     padding: 0;
   }
 
-    .navigation{
-      >.container {
-        header {
-          justify-content: space-between;
-          align-items: center;
-          >button {
-            &:first-of-type {
-              display: none;
-            } 
-            &:nth-of-type(2){
-              display: none;
-            }
-            &:last-of-type {
-              margin-left: 0;
-            }
+  .navigation {
+    > .container {
+      header {
+        justify-content: space-between;
+        align-items: center;
+        > button {
+          &:first-of-type {
+            display: none;
           }
-  
-          // NAV REVERTION
-          .nav-toggle{ 
-            all: revert;
-            display: inline-block;
-             flex-grow: 2;
-             ul {
-              @include flex(center, center, none, row);
-              gap: $m-spacing;
-              font-size: $s-font;
-              li{
-                &:hover{
-                  background-color: transparent;
-                }
+          &:nth-of-type(2) {
+            display: none;
+          }
+          &:last-of-type {
+            margin-left: 0;
+          }
+        }
+
+        // NAV REVERTION
+        .nav-toggle {
+          all: revert;
+          display: inline-block;
+          flex-grow: 2;
+          ul {
+            @include flex(center, center, none, row);
+            gap: $m-spacing;
+            font-size: $s-font;
+            li {
+              &:hover {
+                background-color: transparent;
+              }
+              padding: 0;
+              width: auto;
+              a {
                 padding: 0;
-                width:auto;
-                a {
-                  padding: 0;
-                  &:hover{
-                    color: $orange;
-                  }
+                &:hover {
+                  color: $orange;
                 }
               }
             }
           }
-  
-          nav {
-            display: inline-block;
-            flex-grow: 2;
-            ul {
-              @include flex(center, center, none, row);
-              gap: $m-spacing;
-            }
+        }
+
+        nav {
+          display: inline-block;
+          flex-grow: 2;
+          ul {
+            @include flex(center, center, none, row);
+            gap: $m-spacing;
           }
-  
-        
         }
       }
-
     }
+  }
 
+  .hero {
+    .container {
+      margin: 0 auto;
+      max-width: 1110px;
+      text-align: left;
+      padding: 0;
 
-    .categories {
-    padding-top: $m-section-spacing;
+      h1 {
+        width: 46%;
+      }
+
+      p,
+      h2 {
+        width: 35%;
+      }
+    }
+  }
+
+  .categories {
+    padding-top: $l-section-spacing;
 
     .container {
       article {
-        div{
+        div {
           height: 200px;
           .subtitle {
-            font-size: $m-font ;
+            font-size: $m-font;
             padding-top: $base-spacing;
           }
           .category-image {
             width: 150px;
           }
-          .button-3{
-            padding-bottom: $m-spacing; 
+          .button-3 {
+            padding-bottom: $m-spacing;
+          }
+        }
+      }
+    }
+  }
+
+  .products-display {
+    padding-top: $m-section-spacing;
+    .container {
+      article {
+        &:first-of-type {
+          height: 560px;
+          padding: $xl-spacing $base-spacing;
+          color: $white;
+          @include flex(space-around, center, unset, unset);
+          text-align: left;
+          background-color: $orange;
+          background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+          background-repeat: no-repeat;
+          background-position-x: -250px;
+          background-position-y: 50%;
+          // background-position: left;
+          background-size: 100%;
+
+          img {
+            width: 400px;
+          }
+
+          div {
+            width: 35%;
+            align-items: flex-start;
+            gap: $m-spacing;
+
+            h2 {
+              font-size: $h1-font-size;
+            }
+
+            h2,
+            p {
+              margin: 0;
+              padding: 0;
+              width: 90%;
+            }
+          }
+        }
+
+        &:nth-of-type(2) {
+          background-position: center;
+          // background-size: contain;
+          div {
+            padding: 0 $xl-spacing;
+          }
+        }
+
+        &:last-of-type {
+          div {
+            &:last-of-type {
+              h4 {
+                padding: 0 0 $m-spacing $xl-spacing;
+                margin: 0;
+              }
+
+              button {
+                margin: 0 0 0 $xl-spacing;
+              }
+            }
           }
         }
       }
@@ -239,7 +376,7 @@
           order: 3;
         }
         &:last-of-type {
-          order: 5; 
+          order: 5;
         }
       }
     }

@@ -223,10 +223,10 @@ label {
     margin: 0 auto;
     padding: 0;
   }
-  .nav-and-hero .navigation > .container {
+  .navigation > .container {
     padding: 1rem 0;
   }
-  .nav-and-hero .navigation > .container header {
+  .navigation > .container header {
     display: flex;
     align-items: unset;
     justify-content: unset;
@@ -235,28 +235,23 @@ label {
     padding: 0;
     gap: 2rem;
   }
-  .nav-and-hero .navigation > .container header button:last-of-type {
+  .navigation > .container header button:last-of-type {
     order: 1;
   }
-  .nav-and-hero .navigation > .container header .search-container {
+  .navigation > .container header .search-container {
     margin: 0;
     margin-left: auto;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle {
+  .navigation > .container header .nav-toggle {
     top: 5.1rem;
     width: 200px;
     left: 4%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li:last-of-type {
+  .navigation > .container header .nav-toggle ul li:last-of-type {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-  }
-  .nav-and-hero .hero .container h1 {
-    font-size: 3.5rem;
-    margin: 2rem 0;
-    line-height: 4rem;
   }
   .categories {
     padding: 0;
@@ -343,4 +338,4 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
-}/*# sourceMappingURL=home-media-medium.css.map */
+}/*# sourceMappingURL=product-media-medium.css.map */

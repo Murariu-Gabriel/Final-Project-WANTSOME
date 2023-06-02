@@ -29,17 +29,17 @@ section {
         text-align: center;
         margin: 0;
         text-transform: capitalize;
-        padding-top: 40px;
+        padding-top: $s-padding;
       }
 
       div {
         margin-top: $base-spacing;
         // @include just-flex;
         display: flex;
-        // align-items: center;
+        // align-items: center; 
         // flex-direction: column;
         flex-wrap: wrap;
-        gap: $base-spacing - 5px;
+        gap: $base-spacing - 0.6rem ;
 
         label{
          align-self: center;
@@ -76,7 +76,6 @@ section {
         gap: $base-spacing;
 
         a {
-          font-size: 1.5rem;
           fill: $black;
           &:hover {
             fill: $orange;

@@ -11,7 +11,7 @@ body{
     .container{
          padding-bottom: $xxl-spacing; 
         p{
-            margin-bottom: 25px;
+            margin-bottom: $g-back-margin-bootom;
             a{
                 color: $out-of-color-palette-gray;      
             }
@@ -26,15 +26,15 @@ body{
                 .payment{
                     display: flex;
                     flex-direction: column;
-                    gap: 24px;
+                    gap: $m-gap;
                     
     
                     .subtitle{
-                        margin: 32px 0 $base-spacing 0;
+                        margin: $m-spacing 0 $base-spacing 0;
                     }
     
                     label{
-                        font-size: 12px;
+                        font-size: 0.75rem;
                     }
     
                     &:nth-of-type(3){
@@ -51,8 +51,8 @@ body{
                             input{
                                 width: 5px;
                                 // height: 20px;
-                                margin: 0 20px;
-                                padding: 5px 5px;
+                                margin: 0 $s-spacing;
+                                padding: 0.3rem 0.3rem;
                                 appearance: none;
                                 -webkit-appearance: none;
                                 border-radius: 50%;
@@ -82,7 +82,7 @@ body{
                 margin: $m-spacing 0 0 0;
                 display: flex;
                 flex-direction: column;
-                gap: 24px;
+                gap: $m-gap;
 
                 h2{
                     font-size: $m-font;
@@ -91,7 +91,7 @@ body{
                 article{
                     display: flex;
                     align-items: center;
-                    gap: 20px;
+                    gap: $s-spacing;
                     
                         img{
                             width: 64px;
@@ -116,7 +116,7 @@ body{
                 div{
                     display: flex;
                     p{
-                        margin: 10px 0;
+                        margin: 0.625rem 0;
 
                         &:nth-of-type(1){
                             text-transform: uppercase;

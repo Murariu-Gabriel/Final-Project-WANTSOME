@@ -10,96 +10,110 @@
 
 .product {
   .container {
-
-     p{
-        margin-bottom: 25px;
-        a{
-            color: $out-of-color-palette-gray;      
-        }
+    p {
+      margin-bottom: 1.5rem;
+      a {
+        color: $out-of-color-palette-gray;
+      }
     }
 
     article {
-        padding-bottom: $xl-spacing;
-        &:first-of-type{
-            img {
-              width: 100%;
-              max-width: 250px;
-              margin: 0 auto;
-            }
-      
-            p {
-              margin: 24px 0;
-            }
-      
-            h2 {
-              font-size: $l-font;
-            }
+      padding-bottom: $xl-spacing;
+      &:first-of-type {
+        img {
+          width: 100%;
+          max-width: 250px;
+          margin: 0 auto;
+        }
 
-            form{
-              display:  flex;
-              gap: 20px;
+        p {
+          margin: 1.5rem 0;
+          &:last-of-type {
+            font-weight: 700;
+            font-size: 1.2rem;
+          }
+        }
 
-              .input-steper{
-                display: flex;
-                
-                input{
-                  all: revert;
-                  text-align: center;
-                  border: none;
-                  background-color: $gray;
-                  &::-webkit-inner-spin-button{
-                    -webkit-appearance: none;
-                    margin: 0;
-                  }
-                  &::-webkit-outer-spin-button{
-                    -webkit-appearance: none;
-                    margin: 0;
-                  }
-                  &:focus{
-                    outline: none;
-                  }
-                }
-  
-                button{
-                  // color: $out-of-color-palette-gray;
-                  
-                  font-size: 1em;
-                  border: none;
-                  cursor: pointer;
-                  padding: 10px;
-                  padding: $base-spacing;
+        h2 {
+          font-size: $l-font;
+          width: 200px;
+        }
 
-                  &:hover{
-                    color: orange;
-                  }
-                }
+        form {
+          display: flex;
+          gap: 1.25rem;
+
+          .input-steper {
+            display: flex;
+
+            input {
+              all: revert;
+              text-align: center;
+              border: none;
+              background-color: $gray;
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+              &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+              &:focus {
+                outline: none;
               }
             }
-        }
 
-        &:last-of-type{
-            div{
-                span{
-                    display: inline-block;
-                }
-                p{
-                    // display: inline;
-                }
+            button {
+              // color: $out-of-color-palette-gray;
+
+              font-size: 1rem;
+              border: none;
+              cursor: pointer;
+              padding: 0.625rem;
+              padding: $base-spacing;
+
+              &:hover {
+                color: orange;
+              }
             }
-        
+          }
         }
+      }
+
+      &:not(:first-of-type){
+        h2{
+          font-size: $l-font - 0.25rem;
+        }
+      }
+
+      &:last-of-type {
+        div {
+          p{
+            color: $out-of-color-palette-gray;
+
+            span {
+              color: $orange;
+              margin-right: $base-spacing;
+            }
+          }
+        }
+      }
+    }
+
+    .prezentation-images{
+
     }
   }
 }
 
-.you-may-like{
-     .container {
+.you-may-like {
+  .container {
     @include flex(center, unset, unset, column);
-    gap: 100px;
+    gap: $xxl-gap;
     padding: 0;
 
     article {
-
       &:hover {
         z-index: 1;
       }
@@ -115,12 +129,11 @@
 
         border-radius: $base-border-radius;
         @include flex(flex-end, center, unset, column);
-        
+
         .category-image {
-            background-color: gray;
-            width: 100px;
+          background-color: gray;
+          width: 100px;
         }
-    
       }
     }
   }
