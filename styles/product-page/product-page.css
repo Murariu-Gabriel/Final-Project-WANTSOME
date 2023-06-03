@@ -536,17 +536,28 @@ footer .container nav .socials {
   color: #D87D4A;
   margin-right: 1rem;
 }
+.product .container .prezentation-images {
+  padding-bottom: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.product .container .prezentation-images img {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.you-may-like {
+  padding-bottom: 7.5rem;
+}
 .you-may-like .container {
   display: flex;
   align-items: unset;
   justify-content: center;
   flex-wrap: unset;
   flex-direction: column;
-  gap: 6.25rem;
-  padding: 0;
-}
-.you-may-like .container article:hover {
-  z-index: 1;
+  gap: 4rem;
+  text-align: center;
 }
 .you-may-like .container article div {
   transition: transform 0.2s ease-in-out;
@@ -557,11 +568,6 @@ footer .container nav .socials {
   justify-content: flex-end;
   flex-wrap: unset;
   flex-direction: column;
-}
-.you-may-like .container article div:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
-  border-radius: 8px;
 }
 .you-may-like .container article div .category-image {
   background-color: gray;
