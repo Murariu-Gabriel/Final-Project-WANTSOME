@@ -476,9 +476,13 @@ footer .container nav .socials {
 .product .container article {
   padding-bottom: 4rem;
 }
-.product .container article:first-of-type img {
+.product .container article:first-of-type .image-container {
+  background-color: #F1F1F1;
+  border-radius: 8px;
+}
+.product .container article:first-of-type .image-container img {
   width: 100%;
-  max-width: 250px;
+  max-width: 200px;
   margin: 0 auto;
 }
 .product .container article:first-of-type p {
@@ -517,6 +521,8 @@ footer .container nav .socials {
   outline: none;
 }
 .product .container article:first-of-type form .input-steper button {
+  color: gray;
+  background-color: #F1F1F1;
   font-size: 1rem;
   border: none;
   cursor: pointer;
@@ -559,17 +565,17 @@ footer .container nav .socials {
   gap: 4rem;
   text-align: center;
 }
-.you-may-like .container article div {
-  transition: transform 0.2s ease-in-out;
-  border: none;
-  border-radius: 8px;
+.you-may-like .container article div a {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: unset;
-  flex-direction: column;
+  justify-content: center;
+  background-color: #F1F1F1;
+  border-radius: 8px;
+  padding: 20px 0;
 }
-.you-may-like .container article div .category-image {
-  background-color: gray;
+.you-may-like .container article div a .category-image {
   width: 100px;
+}
+.you-may-like .container article div h3 {
+  font-size: 1.5rem;
 }/*# sourceMappingURL=product-page.css.map */

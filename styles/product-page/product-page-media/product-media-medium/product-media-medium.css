@@ -338,4 +338,20 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
+  .product .container article:first-of-type {
+    display: flex;
+    justify-content: space-between;
+  }
+  .product .container article .image-container {
+    position: relative;
+    width: 100%;
+    min-width: 190px;
+  }
+  .product .container article .image-container img {
+    max-width: 150px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
 }/*# sourceMappingURL=product-media-medium.css.map */

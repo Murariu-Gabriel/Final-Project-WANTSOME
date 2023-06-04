@@ -3,4 +3,39 @@
 
 @media screen and (min-width: 550px) {
   @include medium-media; 
-}
+
+  .product{
+    .container{
+      article {
+       &:first-of-type {
+         display: flex;
+         
+        //  gap: 10%;
+        justify-content: space-between;
+       }
+       .image-container{
+        position: relative;
+       
+        // margin: auto;
+        //  align-self: center;
+        
+     
+        width: 100%;
+        min-width: 190px;
+        img{
+          max-width: 150px;
+          position: absolute;
+          top: 50%; 
+          right: 50%;
+          transform: translate(50%, -50%);
+     
+        // vertical-align: middle;
+        // margin-top: auto;
+        // margin-bottom: auto;
+        // max-width: 280px;
+         }
+       } 
+     }
+    }
+  }
+} 

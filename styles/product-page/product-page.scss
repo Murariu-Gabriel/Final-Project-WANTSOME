@@ -20,10 +20,15 @@
     article {
       padding-bottom: $xl-spacing;
       &:first-of-type {
-        img {
-          width: 100%;
-          max-width: 250px;
-          margin: 0 auto;
+        .image-container{
+          background-color: $gray;
+          border-radius: $base-border-radius;
+
+          img {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+          }
         }
 
         p {
@@ -65,8 +70,8 @@
             }
 
             button {
-              // color: $out-of-color-palette-gray;
-
+              color: $out-of-color-palette-gray;
+              background-color: $gray;
               font-size: 1rem;
               border: none;
               cursor: pointer;
@@ -124,17 +129,22 @@
 
     article {
       div {
-        transition: transform 0.2s ease-in-out;
-        border: none;
-      
-
-        border-radius: $base-border-radius;
-        @include flex(flex-end, center, unset, column);
-
-        .category-image {
-          background-color: gray;
-          width: 100px;
+        a{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          background-color: $gray;
+          border-radius: $base-border-radius;
+          padding: 20px 0;
+          .category-image {
+            width: 100px;
+          }
         }
+
+        h3{
+          font-size: 1.5rem;
+        }
+
       }
     }
   }

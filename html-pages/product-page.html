@@ -7,7 +7,7 @@
     <title>Document</title>
     <script src="../scripts/product-page.js" defer></script>
     <link rel="stylesheet" href="../styles/product-page/product-page.css" />
-     <link
+    <link
       rel="stylesheet"
       href="/styles/product-page/product-page-media/product-media-medium/product-media-medium.css"
       media="screen and (min-width: 550px)"
@@ -93,10 +93,12 @@
           <a href="">go back</a>
         </p>
         <article>
-          <img
-            src="../assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/xiaomi_watch_s1_pro-black-1-1600px.png"
-            alt="Xiaomi Mi Watch-Pro"
-          />
+          <div class="image-container">
+            <img
+              src="../assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/xiaomi_watch_s1_pro-black-1-1600px.png"
+              alt="Xiaomi Mi Watch-Pro"
+            />
+          </div>
 
           <div>
             <p class="overline">new product</p>
@@ -109,10 +111,21 @@
             <p>$ 213</p>
             <form action="">
               <div class="input-steper">
-                <button id="decrement" type="button" onclick="counter(this)"> - </button>
-                  <input type="number" id="product-counter" value="1" min="1" max="100" readonly>
-                <button id="increment" type="button" onclick="counter(this)"> + </button>
-              </div> 
+                <button id="decrement" type="button" onclick="counter(this)">
+                  -
+                </button>
+                <input
+                  type="number"
+                  id="product-counter"
+                  value="1"
+                  min="1"
+                  max="100"
+                  readonly
+                />
+                <button id="increment" type="button" onclick="counter(this)">
+                  +
+                </button>
+              </div>
               <button type="submit" class="button-1">add to cart</button>
             </form>
           </div>
@@ -139,20 +152,29 @@
         <article>
           <h2>in the box</h2>
           <div>
-              <p><span>x1</span> Mi Watch</p>
-              
-              <p><span>x1</span> Wireless Charging Dock</p>
-              
-              <p><span>x1</span> User Manual</p>
-              
-              <p><span>x1</span>Warranty Notice</p>
+            <p><span>x1</span> Mi Watch</p>
+
+            <p><span>x1</span> Wireless Charging Dock</p>
+
+            <p><span>x1</span> User Manual</p>
+
+            <p><span>x1</span>Warranty Notice</p>
           </div>
         </article>
 
         <div class="prezentation-images">
-          <img src="/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg" alt="" />
-          <img src="/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-4.jpg" alt="" />
-          <img src="/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation.jpg" alt="" />
+          <img
+            src="/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg"
+            alt=""
+          />
+          <img
+            src="/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-4.jpg"
+            alt=""
+          />
+          <img
+            src="/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-copy.jpg"
+            alt=""
+          />
         </div>
       </div>
     </section>
@@ -162,36 +184,42 @@
         <h2>you may also like</h2>
         <article>
           <div>
-            <img
-              class="category-image"
-              src="/assets/Images/Devices/Huawei/Gt-Runner.png"
-              alt="Huawei Gt Runner"
-            />
-            <h3 class="subtitle">product</h3>
+            <a href="">
+              <img
+                class="category-image"
+                src="/assets/Images/Devices/Huawei/Gt-Runner.png"
+                alt="Huawei Gt Runner"
+              />
+            </a>
+            <h3 >product</h3>
             <button class="button-1">see product</button>
           </div>
         </article>
 
         <article>
           <div>
-            <img
-              class="category-image"
-              src="/assets/Images/Devices/Fit-Bit/fitbit-inspire.png"
-              alt="Fitbit Inspire 3"
-            />
-            <h3 class="subtitle">product</h3>
+            <a href="">
+              <img
+                class="category-image"
+                src="/assets/Images/Devices/Fit-Bit/fitbit-inspire.png"
+                alt="Fitbit Inspire 3"
+              />
+            </a>
+            <h3 >product</h3>
             <button class="button-1">see product</button>
           </div>
         </article>
 
         <article>
           <div>
-            <img
-              class="category-image"
-              src="/assets/Images/Devices/Whoop-strap-4/whoopstrap.png"
-              alt="Whoop strap 4"
-            />
-            <h3 class="subtitle">product</h3>
+            <a href="">
+              <img
+                class="category-image"
+                src="/assets/Images/Devices/Whoop-strap-4/whoopstrap.png"
+                alt="Whoop strap 4"
+              />
+            </a>
+            <h3 >product</h3>
             <button class="button-1">see product</button>
           </div>
         </article>
@@ -202,19 +230,20 @@
       <div class="container">
         <article>
           <div>
-            <img
-              class="category-image"
-              src="/assets/Images/Devices/Huawei/Gt-Runner.png"
-              alt="Huawei Gt Runner"
-            />
-            <h3 class="subtitle">Workout Tracking</h3>
-            <a href="" class="button-3">
-              shop
               <img
-                src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
-                alt="button-arrow"
+                class="category-image"
+                src="/assets/Images/Devices/Huawei/Gt-Runner.png"
+                alt="Huawei Gt Runner"
               />
-            </a>
+              <h3 class="subtitle">Workout Tracking</h3>
+              <a href="" class="button-3">
+                shop
+                <img
+                  src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
+                  alt="button-arrow"
+                />
+              </a>
+          
           </div>
         </article>
 
