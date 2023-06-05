@@ -6,31 +6,26 @@
 
   .product {
     .container {
- 
-
+      article{
     
 
-    //   article{
-    //     &:first-of-type {
+        &:last-of-type{ 
+          display: flex;
+          gap: 15%;
 
-    //     }
+         .features{
+          width: 50%;
+         }
+         .inside-box{
+          display: inline;
+          
 
-    //     &:nth-of-type(2){ // AICI E PENTRU DESKTOP LA FEATURES 
-    //         margin-left: 0;
-    //         width: 50%;
-    //         display: inline-block;
-    //         //  // ASTA E PENTRU ULTIMUL ARTICOL
-    //     }
-
-    //     &:last-of-type{
-    //       display: block;
-    //     //   margin-left: auto;
-    //         div{
-    //             margin-left: 0;
-    //         }
-    //     }
-    //   }
-
+          div{
+            margin: 0;
+          }
+         } 
+        }
+      }
     }
   }
 }

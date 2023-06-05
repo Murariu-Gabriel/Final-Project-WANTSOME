@@ -243,6 +243,7 @@ label {
     margin-left: auto;
   }
   .navigation > .container header .nav-toggle {
+    z-index: 1;
     top: 5.1rem;
     width: 200px;
     left: 4%;

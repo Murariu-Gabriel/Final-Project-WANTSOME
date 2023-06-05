@@ -482,19 +482,22 @@ footer .container nav .socials {
 }
 .product .container article:first-of-type .image-container img {
   width: 100%;
-  max-width: 250px;
+  max-width: 350px;
   margin: 0 auto;
 }
+.product .container article:first-of-type .product-info {
+  max-width: 410px;
+}
 .product .container article:first-of-type .product-info p {
-  margin: 1.5rem 0;
+  margin: 10% 0;
 }
 .product .container article:first-of-type .product-info p:last-of-type {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .product .container article:first-of-type .product-info h2 {
   font-size: 1.75rem;
-  width: 200px;
+  width: 60%;
 }
 .product .container article:first-of-type .product-info form {
   display: flex;

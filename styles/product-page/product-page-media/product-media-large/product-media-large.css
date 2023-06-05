@@ -401,4 +401,17 @@ label {
   footer .container p:last-of-type {
     order: 5;
   }
+  .product .container article:last-of-type {
+    display: flex;
+    gap: 15%;
+  }
+  .product .container article:last-of-type .features {
+    width: 50%;
+  }
+  .product .container article:last-of-type .inside-box {
+    display: inline;
+  }
+  .product .container article:last-of-type .inside-box div {
+    margin: 0;
+  }
 }/*# sourceMappingURL=product-media-large.css.map */

@@ -243,6 +243,7 @@ label {
     margin-left: auto;
   }
   .navigation > .container header .nav-toggle {
+    z-index: 1;
     top: 5.1rem;
     width: 200px;
     left: 4%;
@@ -344,16 +345,13 @@ label {
   }
   .product .container article:first-of-type .image-container {
     position: relative;
-    width: 400px;
+    width: 560px;
   }
   .product .container article:first-of-type .image-container img {
     position: absolute;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
-  }
-  .product .container article:first-of-type .product-info {
-    max-width: 310px;
   }
   .product .container article:last-of-type .inside-box {
     display: flex;
