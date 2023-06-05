@@ -2,6 +2,35 @@
 @use "../../../abstracts/" as *;
 
 @media screen and (min-width: 990px) {
-  
- @include large-media;
+  @include large-media;
+
+  .product {
+    .container {
+ 
+
+    
+
+    //   article{
+    //     &:first-of-type {
+
+    //     }
+
+    //     &:nth-of-type(2){ // AICI E PENTRU DESKTOP LA FEATURES 
+    //         margin-left: 0;
+    //         width: 50%;
+    //         display: inline-block;
+    //         //  // ASTA E PENTRU ULTIMUL ARTICOL
+    //     }
+
+    //     &:last-of-type{
+    //       display: block;
+    //     //   margin-left: auto;
+    //         div{
+    //             margin-left: 0;
+    //         }
+    //     }
+    //   }
+
+    }
+  }
 }

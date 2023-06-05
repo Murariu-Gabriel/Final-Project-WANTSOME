@@ -370,7 +370,7 @@ label {
 .categories .container article div {
   transition: transform 0.2s ease-in-out;
   border: none;
-  height: 150px;
+  height: 160px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -482,45 +482,45 @@ footer .container nav .socials {
 }
 .product .container article:first-of-type .image-container img {
   width: 100%;
-  max-width: 200px;
+  max-width: 250px;
   margin: 0 auto;
 }
-.product .container article:first-of-type p {
+.product .container article:first-of-type .product-info p {
   margin: 1.5rem 0;
 }
-.product .container article:first-of-type p:last-of-type {
+.product .container article:first-of-type .product-info p:last-of-type {
   font-weight: 700;
   font-size: 1.2rem;
 }
-.product .container article:first-of-type h2 {
+.product .container article:first-of-type .product-info h2 {
   font-size: 1.75rem;
   width: 200px;
 }
-.product .container article:first-of-type form {
+.product .container article:first-of-type .product-info form {
   display: flex;
   gap: 1.25rem;
 }
-.product .container article:first-of-type form .input-steper {
+.product .container article:first-of-type .product-info form .input-steper {
   display: flex;
 }
-.product .container article:first-of-type form .input-steper input {
+.product .container article:first-of-type .product-info form .input-steper input {
   all: revert;
   text-align: center;
   border: none;
   background-color: #F1F1F1;
 }
-.product .container article:first-of-type form .input-steper input::-webkit-inner-spin-button {
+.product .container article:first-of-type .product-info form .input-steper input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.product .container article:first-of-type form .input-steper input::-webkit-outer-spin-button {
+.product .container article:first-of-type .product-info form .input-steper input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.product .container article:first-of-type form .input-steper input:focus {
+.product .container article:first-of-type .product-info form .input-steper input:focus {
   outline: none;
 }
-.product .container article:first-of-type form .input-steper button {
+.product .container article:first-of-type .product-info form .input-steper button {
   color: gray;
   background-color: #F1F1F1;
   font-size: 1rem;
@@ -529,53 +529,61 @@ footer .container nav .socials {
   padding: 0.625rem;
   padding: 1rem;
 }
-.product .container article:first-of-type form .input-steper button:hover {
+.product .container article:first-of-type .product-info form .input-steper button:hover {
   color: orange;
 }
 .product .container article:not(:first-of-type) h2 {
   font-size: 1.5rem;
 }
-.product .container article:last-of-type div p {
+.product .container article:last-of-type .inside-box p {
   color: gray;
 }
-.product .container article:last-of-type div p span {
+.product .container article:last-of-type .inside-box p span {
   color: #D87D4A;
   margin-right: 1rem;
 }
 .product .container .prezentation-images {
   padding-bottom: 7.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.625rem;
 }
 .product .container .prezentation-images img {
   border-radius: 8px;
   width: 100%;
 }
+.product .container .prezentation-images div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
 
 .you-may-like {
   padding-bottom: 7.5rem;
 }
 .you-may-like .container {
+  text-align: center;
+}
+.you-may-like .container .recommended-products {
   display: flex;
   align-items: unset;
   justify-content: center;
   flex-wrap: unset;
   flex-direction: column;
   gap: 4rem;
-  text-align: center;
 }
-.you-may-like .container article div a {
+.you-may-like .container .recommended-products article div a {
   width: 100%;
   display: flex;
   justify-content: center;
   background-color: #F1F1F1;
   border-radius: 8px;
-  padding: 20px 0;
+  padding: 0.625rem 0;
 }
-.you-may-like .container article div a .category-image {
-  width: 100px;
+.you-may-like .container .recommended-products article div a .category-image {
+  width: 90px;
 }
-.you-may-like .container article div h3 {
+.you-may-like .container .recommended-products article div h3 {
   font-size: 1.5rem;
 }/*# sourceMappingURL=product-page.css.map */

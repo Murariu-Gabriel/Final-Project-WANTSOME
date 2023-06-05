@@ -26,63 +26,66 @@
 
           img {
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
             margin: 0 auto;
           }
         }
 
-        p {
-          margin: 1.5rem 0;
-          &:last-of-type {
-            font-weight: 700;
-            font-size: 1.2rem;
+        .product-info{
+          p {
+            margin: 1.5rem 0;
+            &:last-of-type {
+              font-weight: 700;
+              font-size: 1.2rem;
+            }
           }
-        }
-
-        h2 {
-          font-size: $l-font;
-          width: 200px;
-        }
-
-        form {
-          display: flex;
-          gap: 1.25rem;
-
-          .input-steper {
+  
+          h2 {
+            font-size: $l-font;
+            width: 200px;
+          }
+  
+          form {
             display: flex;
-
-            input {
-              all: revert;
-              text-align: center;
-              border: none;
-              background-color: $gray;
-              &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
+            gap: 1.25rem;
+  
+            .input-steper {
+              display: flex;
+  
+              input {
+                all: revert;
+                text-align: center;
+                border: none;
+                background-color: $gray;
+                &::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+                &::-webkit-outer-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                }
+                &:focus {
+                  outline: none;
+                }
               }
-              &::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-              }
-              &:focus {
-                outline: none;
-              }
-            }
-
-            button {
-              color: $out-of-color-palette-gray;
-              background-color: $gray;
-              font-size: 1rem;
-              border: none;
-              cursor: pointer;
-              padding: 0.625rem;
-              padding: $base-spacing;
-
-              &:hover {
-                color: orange;
+  
+              button {
+                color: $out-of-color-palette-gray;
+                background-color: $gray;
+                font-size: 1rem;
+                border: none;
+                cursor: pointer;
+                padding: 0.625rem;
+                padding: $base-spacing;
+  
+                &:hover {
+                  color: orange;
+                }
               }
             }
           }
+
         }
       }
 
@@ -93,7 +96,7 @@
       }
 
       &:last-of-type {
-        div {
+        .inside-box {
           p {
             color: $out-of-color-palette-gray;
 
@@ -108,12 +111,20 @@
 
     .prezentation-images {
       padding-bottom: $s-section-spacing;
-      display: flex;
-      flex-direction: column;
-      gap: $s-gap;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: $s-gap;
+
       img {
         border-radius: $base-border-radius;
         width: 100%;
+      }
+
+      div{
+        display: flex;
+        flex-direction: column;
+        gap: $s-gap;
       }
     }
   }
@@ -122,29 +133,32 @@
 .you-may-like {
   padding-bottom: $s-section-spacing;
   .container {
-    @include flex(center, unset, unset, column);
-    gap: $xl-spacing;
     // padding: 0;
     text-align: center;
-
-    article {
-      div {
-        a{
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          background-color: $gray;
-          border-radius: $base-border-radius;
-          padding: 20px 0;
-          .category-image {
-            width: 100px;
+    
+    .recommended-products{
+      @include flex(center, unset, unset, column);
+      gap: $xl-spacing;
+      article {
+        div {
+          a{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: $gray;
+            border-radius: $base-border-radius;
+            padding: 0.625rem 0;
+            
+            .category-image {
+              width: 90px;
+            }
           }
+  
+          h3{
+            font-size: 1.5rem;
+          }
+  
         }
-
-        h3{
-          font-size: 1.5rem;
-        }
-
       }
     }
   }

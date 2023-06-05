@@ -7,35 +7,93 @@
   .product{
     .container{
       article {
-       &:first-of-type {
-         display: flex;
-         
-        //  gap: 10%;
-        justify-content: space-between;
-       }
-       .image-container{
-        position: relative;
+        &:first-of-type {
+          display: flex;
+          gap: 10%;
+
+          .image-container{
+          position: relative;
+          width: 400px;
        
-        // margin: auto;
-        //  align-self: center;
+          img{
+            position: absolute;
+            top: 50%; 
+            right: 50%;
+            transform: translate(50%, -50%);
         
-     
-        width: 100%;
-        min-width: 190px;
-        img{
-          max-width: 150px;
-          position: absolute;
-          top: 50%; 
-          right: 50%;
-          transform: translate(50%, -50%);
-     
-        // vertical-align: middle;
-        // margin-top: auto;
-        // margin-bottom: auto;
-        // max-width: 280px;
-         }
-       } 
-     }
+            }
+          } 
+
+          .product-info{
+            max-width: 310px;
+          }
+        }
+
+        &:last-of-type{
+          .inside-box{
+            display: flex;
+            div{
+              margin-left: 30%;
+
+            }
+            p{
+              &:first-of-type{
+                margin-top: $xs-padding;
+              }
+            }
+          }
+        }
+      }
+
+      .prezentation-images{
+       gap: 1%;
+       
+      img{
+        max-width: 50%; 
+      }
+
+        div{
+           max-width: 49%;
+           gap: 2%;
+          img{
+            max-width: 100%;
+            height: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .you-may-like{
+    padding: 0;
+
+    .container {
+      
+      .recommended-products{
+        @include flex(unset, unset, unset, unset);
+        gap: $s-gap;
+
+        article {
+          width: 100%;
+
+          div{
+            
+            a {
+              display: flex;
+              align-items: center;
+              height: 300px;
+              .subtitle {
+                font-size: $s-font - 0.15rem;
+              }
+
+              .category-image{
+                max-width: 180px;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
     }
   }
 } 
