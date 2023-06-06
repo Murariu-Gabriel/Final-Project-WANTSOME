@@ -45,7 +45,7 @@
       &:nth-of-type(2) {
         height: 320px;
         @include flex(flex-start, center, unset, unset);
-        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-6.jpg");
+        background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/prezentation-pictures/mi-watch-display.jpg");
         background-size: cover;
         background-position: 30%;
 
@@ -67,7 +67,7 @@
 
           &:first-of-type {
             border-radius: $base-border-radius;
-            background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
+            background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/prezentation-pictures/prezentation-dashboard.jpg");
             background-size: cover;
             background-position: center;
           }

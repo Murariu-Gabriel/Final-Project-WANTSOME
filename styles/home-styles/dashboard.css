@@ -471,7 +471,7 @@ label {
   justify-content: flex-start;
   flex-wrap: unset;
   flex-direction: unset;
-  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/version-6.jpg");
+  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/prezentation-pictures/mi-watch-display.jpg");
   background-size: cover;
   background-position: 30%;
 }
@@ -491,7 +491,7 @@ label {
 }
 .products-display .container article:last-of-type div:first-of-type {
   border-radius: 8px;
-  background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/Prezentation2.jpg");
+  background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/prezentation-pictures/prezentation-dashboard.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -536,7 +536,7 @@ label {
   border-radius: 8px;
   height: 300px;
   width: 100%;
-  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/photos/prezentation-3.jpg");
+  background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/prezentation-pictures/prezentation-1.jpg");
   background-size: cover;
   background-position: left;
 }
