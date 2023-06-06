@@ -401,6 +401,15 @@ label {
   footer .container p:last-of-type {
     order: 5;
   }
+  .product .container article:first-of-type {
+    gap: 10%;
+  }
+  .product .container article:first-of-type .image-container {
+    width: 50%;
+  }
+  .product .container article:first-of-type .product-info {
+    max-width: 40%;
+  }
   .product .container article:last-of-type {
     display: flex;
     gap: 15%;

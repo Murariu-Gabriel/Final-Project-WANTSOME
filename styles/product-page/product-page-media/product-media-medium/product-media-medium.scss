@@ -6,23 +6,33 @@
 
   .product{
     .container{
+      padding: 0;
       article {
         &:first-of-type {
           display: flex;
-          gap: 10%;
+          gap: 5%;
 
           .image-container{
           position: relative;
-          width: 560px;
-       
+          width: 100%;
+          
           img{
             position: absolute;
             top: 50%; 
             right: 50%;
             transform: translate(50%, -50%);
+          }
+        } 
         
+        .product-info{
+            margin: $l-spacing 0;
+            .overline{
+             margin: 0;
             }
-          } 
+            h2{
+              margin-top: 0;
+            }
+          }
         }
 
         &:last-of-type{

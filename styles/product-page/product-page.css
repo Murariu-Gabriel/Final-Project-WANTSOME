@@ -467,6 +467,9 @@ footer .container nav .socials {
   gap: 1rem;
 }
 
+.product .container {
+  padding: 0 1.5rem;
+}
 .product .container p {
   margin-bottom: 1.5rem;
 }
@@ -486,7 +489,7 @@ footer .container nav .socials {
   margin: 0 auto;
 }
 .product .container article:first-of-type .product-info {
-  max-width: 410px;
+  max-width: 340px;
 }
 .product .container article:first-of-type .product-info p {
   margin: 10% 0;

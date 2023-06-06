@@ -339,19 +339,31 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
+  .product .container {
+    padding: 0;
+  }
   .product .container article:first-of-type {
     display: flex;
-    gap: 10%;
+    gap: 5%;
   }
   .product .container article:first-of-type .image-container {
     position: relative;
-    width: 560px;
+    width: 100%;
   }
   .product .container article:first-of-type .image-container img {
     position: absolute;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
+  }
+  .product .container article:first-of-type .product-info {
+    margin: 3rem 0;
+  }
+  .product .container article:first-of-type .product-info .overline {
+    margin: 0;
+  }
+  .product .container article:first-of-type .product-info h2 {
+    margin-top: 0;
   }
   .product .container article:last-of-type .inside-box {
     display: flex;

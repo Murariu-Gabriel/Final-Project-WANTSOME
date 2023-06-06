@@ -7,7 +7,17 @@
   .product {
     .container {
       article{
-    
+        &:first-of-type{
+          gap: 10%;
+
+          .image-container{
+              width: 50%;
+          }
+          .product-info{
+            max-width: 40%;
+          }
+
+        }
 
         &:last-of-type{ 
           display: flex;
