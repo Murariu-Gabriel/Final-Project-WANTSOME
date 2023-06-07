@@ -360,7 +360,7 @@ label {
     margin: 3rem 0;
   }
   .product .container article:first-of-type .product-info .overline {
-    margin: 0;
+    margin: 1rem 0;
   }
   .product .container article:first-of-type .product-info h2 {
     margin-top: 0;

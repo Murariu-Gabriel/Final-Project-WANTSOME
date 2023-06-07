@@ -410,6 +410,9 @@ label {
   .product .container article:first-of-type .product-info {
     max-width: 40%;
   }
+  .product .container article:first-of-type .product-info h2 {
+    font-size: 2.5rem;
+  }
   .product .container article:last-of-type {
     display: flex;
     gap: 15%;
