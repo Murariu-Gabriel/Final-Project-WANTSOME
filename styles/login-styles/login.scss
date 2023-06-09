@@ -25,6 +25,10 @@ section {
 
     form {
 
+      .hide{
+        display: none;
+      }
+
       h2 {
         text-align: center;
         margin: 0;
@@ -34,26 +38,37 @@ section {
 
       div {
         margin-top: $base-spacing;
+        position: relative;
         // @include just-flex;
-        display: flex;
         // align-items: center; 
         // flex-direction: column;
+        display: flex;
         flex-wrap: wrap;
         gap: $base-spacing - 0.6rem ;
 
         label{
          align-self: center;
         }
-        p{
-          
+        span{
           margin: 0 0 0 auto;
         }
+
+        .show{
+          display: initial;
+          color: #CD2C2C;
+        }
+
         input{
           width: 100%;
           // &:invalid{
           //   color: red;
           //   border-color: red;
           // }
+
+        }
+
+        .error{
+           border: 2px solid #CD2C2C;
         }
       }
 
@@ -62,7 +77,33 @@ section {
         text-transform: capitalize;
       }
 
-      button {
+      .sh-password{
+        position: absolute;
+       
+        top: 42%;
+        right: 4%;
+        padding:0 ;
+        border: none;
+        background: none;
+        // background-color: green;
+        z-index: 1;
+        svg{
+          transition: color 0.3s ease-in-out;
+          // pointer-events:none;
+          // background-color: red;
+        
+          &:hover{
+            // cursor: pointer;
+
+            &[stroke]{
+              color: $orange;
+            }
+          }
+
+        }
+      }
+
+      .button-1 {
         margin-top: $m-spacing;
         width: 100%;
       }

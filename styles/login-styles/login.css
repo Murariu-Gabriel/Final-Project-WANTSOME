@@ -246,6 +246,9 @@ section .container a {
 section .container a:hover {
   color: #D87D4A;
 }
+section .container form .hide {
+  display: none;
+}
 section .container form h2 {
   text-align: center;
   margin: 0;
@@ -254,6 +257,7 @@ section .container form h2 {
 }
 section .container form div {
   margin-top: 1rem;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -261,17 +265,39 @@ section .container form div {
 section .container form div label {
   align-self: center;
 }
-section .container form div p {
+section .container form div span {
   margin: 0 0 0 auto;
+}
+section .container form div .show {
+  display: initial;
+  color: #CD2C2C;
 }
 section .container form div input {
   width: 100%;
+}
+section .container form div .error {
+  border: 2px solid #CD2C2C;
 }
 section .container form a {
   margin-left: auto;
   text-transform: capitalize;
 }
-section .container form button {
+section .container form .sh-password {
+  position: absolute;
+  top: 42%;
+  right: 4%;
+  padding: 0;
+  border: none;
+  background: none;
+  z-index: 1;
+}
+section .container form .sh-password svg {
+  transition: color 0.3s ease-in-out;
+}
+section .container form .sh-password svg:hover[stroke] {
+  color: #D87D4A;
+}
+section .container form .button-1 {
   margin-top: 2rem;
   width: 100%;
 }

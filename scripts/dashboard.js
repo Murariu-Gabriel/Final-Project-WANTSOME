@@ -22,7 +22,27 @@ closeButton.addEventListener("click", () => {
 
 
 
-// IN cazul in care te razgandesti si vrei sa faci toggle cu DOM
+
+// const showHideBtn = document.getElementById("show-hide")
+
+// showHideBtn.addEventListener("click", (e) => {
+//   const inputPassword = document.getElementById("password")
+//   if (inputPassword.getAttribute("type") === "password") {
+//     inputPassword.setAttribute("type", "text")
+//     e.target.textContent = "hide"
+//   } else {
+//     inputPassword.setAttribute("type", "password")
+//     e.target.textContent = "show"
+//   }
+// })
+
+
+
+
+
+
+
+// IN cazul in care te razgandesti la nav toggle
 
   // if (hamburgerButton.classList.contains("toggle-close")) {
   //   hamburgerButton.innerHTML = `
