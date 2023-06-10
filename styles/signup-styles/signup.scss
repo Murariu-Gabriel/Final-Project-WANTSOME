@@ -1,7 +1,7 @@
 @use "../abstracts/" as *;
 
 body {
-  @include flex(center, center, unset, column);
+  @include flex(center, unset, unset, unset);
   background-color: $light-gray;
 
   
@@ -17,7 +17,6 @@ section{
     border-radius: $base-border-radius;
     background-color: $white;
     form {
-      // @include just-flex;
   
       h2 {
         text-align: center;
@@ -26,39 +25,54 @@ section{
       }
   
   
-  
       div {
-        margin-top: $base-spacing - 0.3rem;
-        @include just-flex;
-        gap: $base-spacing - 0.3rem;
-         
-      }
-  
-      a {
-        align-self: flex-end;
-        text-transform: uppercase;
-      }
-  
-      .terms {
-        margin-top: $base-spacing;
+        margin-top: $base-spacing ;
+        display: flex;
+        flex-direction: column;
+
+        &:not(.names){
           flex-direction: row;
+                            flex-wrap: wrap;
+        }
+ 
+        span{
+          margin-left: auto;
+        }
+         
+        .show{
+          display: initial;
+          color: #CD2C2C;
+        }
+
+        .hide{
+          display: none;
+        }
+
+         .error{
+           border: 2px solid #CD2C2C;
+        }
+
+      }
+
+      .terms {
+        margin-top: $base-spacing;;
           a{
             color: $black;
             font-weight: bold;
+            color: $orange;
             
             &:hover{
-              color: $orange;
+              color: $light-orange;
             }
           }
+
       }
   
       .buttons {
         margin: $m-spacing 0 ;
-        flex-direction: row;
-      
+ 
         button, a{
-          width: 100%;
-        
+          width: 50%;
         }
 
         .button-3{

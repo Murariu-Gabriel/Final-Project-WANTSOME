@@ -219,10 +219,10 @@ label {
 }
 body {
   display: flex;
-  align-items: center;
+  align-items: unset;
   justify-content: center;
   flex-wrap: unset;
-  flex-direction: column;
+  flex-direction: unset;
   background-color: #FAFAFA;
 }
 
@@ -246,32 +246,43 @@ section .container form h2 {
   padding: 2rem;
 }
 section .container form div {
-  margin-top: 0.7rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
 }
-section .container form a {
-  align-self: flex-end;
-  text-transform: uppercase;
+section .container form div:not(.names) {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+section .container form div span {
+  margin-left: auto;
+}
+section .container form div .show {
+  display: initial;
+  color: #CD2C2C;
+}
+section .container form div .hide {
+  display: none;
+}
+section .container form div .error {
+  border: 2px solid #CD2C2C;
 }
 section .container form .terms {
   margin-top: 1rem;
-  flex-direction: row;
 }
 section .container form .terms a {
   color: #000000;
   font-weight: bold;
+  color: #D87D4A;
 }
 section .container form .terms a:hover {
-  color: #D87D4A;
+  color: #FBAF85;
 }
 section .container form .buttons {
   margin: 2rem 0;
-  flex-direction: row;
 }
 section .container form .buttons button, section .container form .buttons a {
-  width: 100%;
+  width: 50%;
 }
 section .container form .buttons .button-3 {
   background-color: inherit;

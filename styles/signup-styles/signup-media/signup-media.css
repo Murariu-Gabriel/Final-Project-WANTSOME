@@ -1,13 +1,235 @@
-@media screen and (min-width: 500px) {
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  color: #D87D4A;
+}
+
+.socials li a {
+  fill: #FFFFFF;
+  transition: fill 0.3s ease-in-out;
+}
+.socials li a:hover {
+  fill: #D87D4A;
+}
+
+.container {
+  padding: 0 1rem;
+}
+
+img {
+  display: block;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+h1, h2, h3, h4, h5, h6, .overline, .subtitle {
+  text-transform: uppercase;
+}
+
+h1 {
+  letter-spacing: 0.125rem;
+  line-height: 3.625rem;
+  font-size: 3.5rem;
+}
+
+h2 {
+  letter-spacing: 0.094rem;
+  line-height: 2.75rem;
+  font-size: 2.5rem;
+}
+
+h3 {
+  letter-spacing: 0.072rem;
+  line-height: 2.25rem;
+  font-size: 2rem;
+}
+
+h4 {
+  letter-spacing: 0.125rem;
+  line-height: 2.25rem;
+  font-size: 1.75rem;
+}
+
+h5 {
+  letter-spacing: 0.106rem;
+  line-height: 2.063rem;
+  font-size: 1.5rem;
+}
+
+h6 {
+  letter-spacing: 0.081rem;
+  line-height: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.overline {
+  letter-spacing: 0.625rem;
+  line-height: 1.188rem;
+  font-size: 0.875rem;
+  color: #D87D4A;
+}
+
+.subtitle {
+  letter-spacing: 0.063rem;
+  line-height: 1.563rem;
+  font-size: 0.875rem;
+  color: #D87D4A;
+}
+
+.button-1, .button-2, .button-2b, .button-3 {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button {
+  transition: fill 0.3s ease-in-out;
+}
+button:hover {
+  fill: #D87D4A;
+}
+
+.button-1 {
+  color: #FFFFFF;
+  background-color: #D87D4A;
+  border: none;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-1:hover {
+  background-color: #FBAF85;
+}
+
+.button-2 {
+  border: 1px solid #000000;
+  background-color: transparent;
+  padding: 1rem 2rem;
+  transition: color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-2:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.button-2b {
+  border: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+.button-2b:hover {
+  background-color: #aaaaaa;
+  color: #FFFFFF;
+}
+
+.button-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  color: #aaaaaa;
+  background-color: #FFFFFF;
+  border: none;
+}
+.button-3:hover {
+  color: #D87D4A;
+}
+
+input:not([type=checkbox]) {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 1.25rem 1.3rem;
+  border-radius: 8px;
+  caret-color: #D87D4A;
+  width: 100%;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #D87D4A;
+}
+
+label {
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.radio-button {
+  font-weight: bold;
+  border: 2px solid #F1F1F1;
+  padding: 1rem 0;
+  border-radius: 8px;
+}
+
+@-webkit-keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes pop-out {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media screen and (min-width: 550px) {
   section .container {
-    width: 500px;
+    width: 550px;
     height: 700px;
     box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.65);
   }
   section .container form .names {
     flex-direction: row;
+    gap: 0.7rem;
   }
-  section .container form .names div:last-of-type {
-    margin-left: auto;
+  section .container form .names div {
+    width: 50%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }/*# sourceMappingURL=signup-media.css.map */

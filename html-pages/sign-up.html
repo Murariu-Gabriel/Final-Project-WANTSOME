@@ -10,7 +10,7 @@
       href="/styles/signup-styles/signup-media/signup-media.css"
       media="screen and (min-width: 500px)"
     />
-    <script src="/scripts/sign-up.js"></script>
+    <script src="/scripts/sign-up.js" async></script>
 
     <title>Sign Up</title>
   </head>
@@ -23,28 +23,25 @@
           <div class="names">
             <div>
               <label for="first-name">First Name</label>
+              <span class="hide">error</span>
               <input
                 type="text"
                 id="first-name"
                 name="first-name"
                 placeholder="First Name"
-                required
-                minlength="3"
-                maxlength="15"
               />
             </div>
 
 
             <div>
               <label for="last-name">Last Name</label>
+              <span class="hide">error</span>
               <input
                 type="text"
                 id="last-name"
                 name="last-name"
                 placeholder="Last Name"
-                required
-                minlength="3"
-                maxlength="15"
+
               />
 
             </div>
@@ -52,36 +49,34 @@
 
           <div>
             <label for="email">Email</label>
+            <span class="hide">error</span>
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               placeholder="Insert your email"
-              required
             />
           </div>
 
           <div>
             <label for="password">Password</label>
+            <span class="hide">error</span>
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Insert your password"
-              minlength="8"
-              required
             />
           </div>
 
           <div>
             <label for="repeated-password">Repeat Password</label>
+            <span class="hide">error</span>
             <input
               type="password"
               id="repeated-password"
               name="repeated-password"
               placeholder="Repeat your password"
-              minlength="8"
-              required
             />
           </div>
 
@@ -90,11 +85,11 @@
               type="checkbox"
               name="condition-term"
               id="condition-terms"
-              required
             />
             <label for="condition-terms"
               >I agree to the <a href="">terms of user</a></label
             >
+            <span class="hide">error</span>
           </div>
 
           <div class="buttons">

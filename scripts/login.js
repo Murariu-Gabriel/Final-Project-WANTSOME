@@ -1,8 +1,6 @@
 const form = document.querySelector("form")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
-const emailError = document.getElementById("email-error")
-const passwordError = document.getElementById("password-error")
 const inputs = document.body.getElementsByTagName("input")
 const eyeButton = document.getElementById("eye-button")
 
@@ -54,25 +52,36 @@ const hideShowError = (input, errorMessage, func) => {
     span.classList.replace("hide", "show")
     label.classList.add("show")
   } else {
-    console.log("nu merge")
     label.classList.remove("show")
     input.classList.remove("error")
     span.classList.replace("show", "hide")
   }
   span.textContent = errorMessage
 
-  return span.classList.contains("show") && !label.classList.contains("show")
-    ? true
-    : false
+  // return span.classList.contains("show") && !label.classList.contains("show")
+  //   ? true
+  //   : false
+}
+
+const upperCaseFirstLetter = (name) => {
+  const split = name.split("")
+  split[0] = split[0].toUpperCase()
+  const newWord = split.join("")
+  return newWord
+}
+
+const clearName = (name) => {
+  const modifiedName = name.replace("-", " ")
+  const upperCased = upperCaseFirstLetter(modifiedName)
+  return upperCased
 }
 
 
 const inputValidation  = (e) => {
  addInLocalStorage(e.name, e.value)
- const checkIfaOrAn = e.name === "email" ? "an" : "a"
+   const name = clearName(e.name)
  hideShowError(
-   e,
-   `You have to enter ${checkIfaOrAn} ${e.name}`,
+   e, `${name} is required`,
    verifyIfInputEmpty
  )
 
@@ -108,14 +117,11 @@ form.addEventListener("submit", (e) => {
 
 
     if (label.classList.contains("error") || span.classList.contains("show")) {
-      console.log("mai incearca")
       e.preventDefault()
     }
   }
 
 })
-
-
 
 // toggle for showing password
 
@@ -146,7 +152,7 @@ eyeButton.addEventListener("click", (e) => {
 // )
 
 
-// last version of code for adding functionality 
+// last version of code for adding functionality  just in case you need to reuse or change
 
   //  input.addEventListener("keyup", (e) => {
   //   //  console.log(target.e)
