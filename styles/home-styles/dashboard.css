@@ -236,7 +236,10 @@ label {
   border: none;
   cursor: pointer;
   fill: #FFFFFF;
-  width: 40px;
+  width: 45px;
+}
+.navigation > .container button svg {
+  pointer-events: none;
 }
 .navigation > .container button:hover {
   fill: #D87D4A;

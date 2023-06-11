@@ -4,8 +4,6 @@ const password = document.getElementById("password")
 const conditionTerms = document.getElementById("condition-terms")
 // const termsSpan = document.body.querySelector(".terms span")
 
-
-
 const loadInputs = () => {
   for (const input of inputs) {
     const inputName = input.getAttribute("name")
@@ -23,7 +21,6 @@ const addInLocalStorage = (key, value) => {
 const getSpanElement = (element) => {
   return element.parentNode.querySelector("span")
 }
-
 
 const verifyIfInputEmpty = (value) => {
   return value.length === 0
@@ -78,7 +75,7 @@ const namesValidation = (name) => {
 }
 
 const checkBoxValidation = () => {
-    return !conditionTerms.checked
+  return !conditionTerms.checked
 }
 
 const passwordErrorMessages = [
@@ -90,14 +87,12 @@ const passwordErrorMessages = [
   "error",
 ]
 
-
 const confirmErrorMsg = (input, span, label, errorMessage) => {
   input.classList.add("error")
   span.classList.replace("hide", "show")
   label.classList.add("show")
   span.textContent = errorMessage
 }
-
 
 const hideShowError = (input, errorMessage, func) => {
   const span = getSpanElement(input)
@@ -171,9 +166,14 @@ const clearName = (name) => {
 const inputValidation = (e) => {
   addInLocalStorage(e.name, e.value)
   const name = clearName(e.name)
+  console.log(e.name)
+  const msg =
+    e.name === "repeated-password"
+      ? "Please confirm password"
+      : `${name} is required`
 
-  if(e.name !== "condition-term"){
-      hideShowError(e, `${name} is required`, verifyIfInputEmpty)
+  if (e.name !== "condition-term") {
+    hideShowError(e, msg, verifyIfInputEmpty)
   }
 
   if (e.value.length !== 0) {
@@ -194,32 +194,31 @@ const inputValidation = (e) => {
     }
 
     if (e.name === "condition-term") {
-    hideShowError(
+      hideShowError(
         e,
-        "You must agree with terms and conditions",
+        "Accepting terms and conditions is required",
         checkBoxValidation
-    )
+      )
     }
   }
 }
 
 const addEventsOnInputs = () => {
   for (const input of inputs) {
-        if (input.name !== "condition-term"){
-            input.addEventListener("input", (e) => {
-              inputValidation(e.target)
-            })
-        } else {
-            input.addEventListener("click", (e) => {
-                inputValidation(e.target)
-            })
-        }
-   
+    if (input.name !== "condition-term") {
+      input.addEventListener("input", (e) => {
+        inputValidation(e.target)
+      })
+    } 
+    // else {
+    //   input.addEventListener("click", (e) => {
+    //     inputValidation(e.target)
+    //   })
+    // }
   }
 }
 
 addEventsOnInputs()
-
 
 form.addEventListener("submit", (e) => {
   // e.preventDefault()
@@ -227,9 +226,9 @@ form.addEventListener("submit", (e) => {
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
     const span = getSpanElement(input)
- 
+
     inputValidation(input)
-    if (label.classList.contains("error") || span.classList.contains("show") ) {
+    if (label.classList.contains("error") || span.classList.contains("show")) {
       e.preventDefault()
     }
   }

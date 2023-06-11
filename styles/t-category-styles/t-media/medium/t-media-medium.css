@@ -265,7 +265,7 @@ label {
     justify-content: space-around;
     flex-wrap: unset;
     flex-direction: unset;
-    gap: 10px;
+    gap: 0.625rem;
   }
   .categories .container article {
     width: 100%;

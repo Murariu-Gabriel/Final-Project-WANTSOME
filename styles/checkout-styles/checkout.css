@@ -236,7 +236,10 @@ label {
   border: none;
   cursor: pointer;
   fill: #FFFFFF;
-  width: 40px;
+  width: 45px;
+}
+.navigation > .container button svg {
+  pointer-events: none;
 }
 .navigation > .container button:hover {
   fill: #D87D4A;
@@ -416,22 +419,47 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
-.checkout .container form .about-payment .payment .subtitle {
+.checkout .container form .about-payment .payment div:not(.payment-method) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.checkout .container form .about-payment .payment div .subtitle {
   margin: 2rem 0 1rem 0;
+  width: 100%;
 }
-.checkout .container form .about-payment .payment label {
-  font-size: 0.75rem;
+.checkout .container form .about-payment .payment div span {
+  margin-left: auto;
 }
-.checkout .container form .about-payment .payment:nth-of-type(3) span {
+.checkout .container form .about-payment .payment div .show {
+  display: initial;
+  color: #CD2C2C;
+}
+.checkout .container form .about-payment .payment div .hide {
+  display: none;
+}
+.checkout .container form .about-payment .payment div .error {
+  border: 2px solid #CD2C2C;
+}
+.checkout .container form .about-payment .payment .payment-method label {
+  width: 100%;
+  height: 25px;
+}
+.checkout .container form .about-payment .payment .payment-method .subtitle-extra {
+  align-items: center;
+}
+.checkout .container form .about-payment .payment .payment-method .subtitle-extra p {
+  margin: 0;
   font-weight: 700;
   text-transform: capitalize;
 }
-.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button {
+.checkout .container form .about-payment .payment .payment-method .radio-button {
   margin-top: 1rem;
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
 }
-.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button input {
+.checkout .container form .about-payment .payment .payment-method .radio-button input {
   width: 5px;
   margin: 0 1.25rem;
   padding: 0.3rem 0.3rem;
@@ -444,11 +472,27 @@ body {
   /* And by creating a box-shadow with no offset and no blur, we have an outer circle */
   box-shadow: 0 0 0 1px gray;
 }
-.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button input:checked {
+.checkout .container form .about-payment .payment .payment-method .radio-button input:checked {
   background-color: #D87D4A;
 }
-.checkout .container form .about-payment .payment:nth-of-type(3) .radio-button input:checked.radio-button {
-  border: 1px solid red;
+.checkout .container form .about-payment .payment .payment-method .checked {
+  border-color: #D87D4A;
+}
+.checkout .container form .about-payment .payment div.on-delivery-message {
+  width: unset;
+  flex-direction: unset;
+  justify-content: center;
+}
+.checkout .container form .about-payment .payment div.on-delivery-message svg {
+  margin: 1rem;
+}
+.checkout .container form .about-payment .payment div.on-delivery-message p {
+  width: unset;
+  margin: 0;
+}
+.checkout .container form .about-payment .payment div.display {
+  background-color: red;
+  display: none;
 }
 .checkout .container form .summary {
   background-color: #FFFFFF;

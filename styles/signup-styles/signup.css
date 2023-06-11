@@ -248,14 +248,12 @@ section .container form h2 {
 section .container form div {
   margin-top: 1rem;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
 }
 section .container form div:not(.names) {
   flex-direction: row;
   flex-wrap: wrap;
-}
-section .container form div span {
-  margin-left: auto;
 }
 section .container form div .show {
   display: initial;
@@ -269,6 +267,7 @@ section .container form div .error {
 }
 section .container form .terms {
   margin-top: 1rem;
+  justify-content: unset;
 }
 section .container form .terms a {
   color: #000000;
@@ -277,6 +276,9 @@ section .container form .terms a {
 }
 section .container form .terms a:hover {
   color: #FBAF85;
+}
+section .container form .terms span {
+  width: 100%;
 }
 section .container form .buttons {
   margin: 2rem 0;

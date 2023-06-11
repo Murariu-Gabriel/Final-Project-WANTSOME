@@ -1,22 +1,34 @@
 // Nav toggle
 
 const headerNav = document.getElementById("header-nav")
-const hamburgerButton = document.getElementById("h-button")
-const closeButton = document.getElementById("x-button")
+const buttons = document.querySelectorAll("header button")
 
-hamburgerButton.addEventListener("click", () => {
-  headerNav.classList.toggle("nav-toggle")
-  hamburgerButton.classList.toggle("display-none")
-  closeButton.classList.toggle("display-none")
-})
+const addToggleFunctionality = () => {
+  for (const button of buttons) {
+    if (button.classList.contains("display-none")) {
+      button.classList.toggle("display-none")
+    }
+  }
+}
 
-closeButton.addEventListener("click", () => {
-  closeButton.classList.toggle("display-none")
-  hamburgerButton.classList.toggle("display-none")
-  headerNav.classList.toggle("nav-toggle")
-})
+const addButtonEvent = () => {
+  for (const button of buttons) {
+    const id = button.getAttribute("id")
 
+    if (id) {
+      button.addEventListener("click", (e) => {
+        headerNav.classList.toggle("nav-toggle")
+        const eventButton = e.target
 
+        addToggleFunctionality()
+
+        eventButton.classList.toggle("display-none")
+      })
+    }
+  }
+}
+
+addButtonEvent()
 // BUTTON Increment part
 
 const productCounter = document.getElementById("product-counter")

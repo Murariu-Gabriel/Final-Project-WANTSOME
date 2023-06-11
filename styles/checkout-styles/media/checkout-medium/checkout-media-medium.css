@@ -265,7 +265,7 @@ label {
     justify-content: space-around;
     flex-wrap: unset;
     flex-direction: unset;
-    gap: 10px;
+    gap: 0.625rem;
   }
   .categories .container article {
     width: 100%;
@@ -349,10 +349,9 @@ label {
   }
   .checkout .container form .about-payment .payment div {
     margin-top: 1.5rem;
-    width: 49%;
   }
-  .checkout .container form .about-payment .payment div label {
-    width: 100%;
+  .checkout .container form .about-payment .payment div:not(.on-delivery-message) {
+    width: 49%;
   }
   .checkout .container form .about-payment .payment:nth-of-type(2) div:first-of-type {
     width: 100%;
@@ -362,8 +361,20 @@ label {
     flex-direction: column;
     width: 100%;
   }
+  .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method .subtitle-extra {
+    width: 100%;
+  }
   .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method .radio-button {
     align-self: flex-end;
     align-items: center;
+  }
+  .checkout .container form .about-payment .payment:nth-of-type(3) div.on-delivery-message {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .checkout .container form .about-payment .payment:nth-of-type(3) div.on-delivery-message svg {
+    width: 150px;
+    margin: 0;
   }
 }/*# sourceMappingURL=checkout-media-medium.css.map */

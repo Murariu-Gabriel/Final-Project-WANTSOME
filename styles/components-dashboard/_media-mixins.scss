@@ -54,7 +54,7 @@
     .container {
       margin: 0 auto;
       @include flex(space-around, unset, unset, unset);
-      gap: 10px;
+      gap: $s-gap;
       article {
         div {
           .subtitle {

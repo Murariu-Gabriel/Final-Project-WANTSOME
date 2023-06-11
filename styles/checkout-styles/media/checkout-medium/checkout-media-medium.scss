@@ -14,9 +14,8 @@
             gap: 2%;
             div{
               margin-top: 1.5rem;
-              width: 49%;
-              label{
-                width: 100%;
+              &:not(.on-delivery-message){
+                width: 49%;
               }
             }
 
@@ -34,11 +33,26 @@
                 flex-direction: column;
                 width: 100%;
                 
+                .subtitle-extra{
+                  width: 100%;
+                }
+                
                 .radio-button{
                   align-self: flex-end;
                   align-items: center;
-                  // padding: 15px;
-                  
+                }
+
+              }
+              
+              div.on-delivery-message{
+                flex-wrap: nowrap;
+                // flex-direction: row;
+                // justify-content: unset;
+                align-items: center;
+                gap: $base-spacing;
+                svg{
+                  width: 150px;
+                  margin: 0;
                 }
               }
             }

@@ -21,8 +21,10 @@
             border: none;
             cursor: pointer;
             fill: $white;
-            width: 40px;
-
+            width: 45px;
+            svg{
+                pointer-events:none
+            }
             &:hover {
                 fill: $orange;
             }

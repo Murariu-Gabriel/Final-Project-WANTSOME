@@ -28,16 +28,18 @@ section{
       div {
         margin-top: $base-spacing ;
         display: flex;
+        justify-content: space-between;
         flex-direction: column;
 
+        
         &:not(.names){
           flex-direction: row;
-                            flex-wrap: wrap;
+          flex-wrap: wrap;
         }
  
-        span{
-          margin-left: auto;
-        }
+        // span{
+        //   // margin-left: auto;
+        // }
          
         .show{
           display: initial;
@@ -56,6 +58,7 @@ section{
 
       .terms {
         margin-top: $base-spacing;;
+        justify-content: unset;
           a{
             color: $black;
             font-weight: bold;
@@ -66,11 +69,14 @@ section{
             }
           }
 
+          span{
+            width: 100%;
+          }
+
       }
   
       .buttons {
         margin: $m-spacing 0 ;
- 
         button, a{
           width: 50%;
         }
