@@ -9,6 +9,8 @@ const cardInputs = document.body.querySelectorAll(".card")
 
 console.log(onDeliveryInput)
 
+// Local storage loading
+
 const loadInputs = () => {
   for (const input of inputs) {
     const inputName = input.getAttribute("name")
@@ -25,12 +27,11 @@ const addInLocalStorage = (key, value) => {
 
 const getSpanElement = (element) => {
   const span = element.parentNode.querySelector("span")
-  if(span) {
+  if (span) {
     return span
   } else {
     return element.parentNode.parentNode.querySelector("span")
   }
-
 }
 
 // NavBar toggle functionality
@@ -39,7 +40,6 @@ const addToggleFunctionality = () => {
   for (const button of buttons) {
     if (button.classList.contains("display-none")) {
       button.classList.toggle("display-none")
-  
     }
   }
 }
@@ -51,10 +51,10 @@ const addButtonEvent = () => {
     if (id) {
       button.addEventListener("click", (e) => {
         headerNav.classList.toggle("nav-toggle")
-        
+
         const eventButton = e.target
 
-        addToggleFunctionality() 
+        addToggleFunctionality()
         eventButton.classList.toggle("display-none")
       })
     }
@@ -63,19 +63,14 @@ const addButtonEvent = () => {
 
 addButtonEvent()
 
-// Validation functions
-
-const verifyIfInputEmpty = (value) => {
-  return value.length === 0
-}
-
 // Checking for invalid inputs
 
 const hideShowError = (input, errorMessage, func) => {
   const span = getSpanElement(input)
   const label = span.parentNode.firstElementChild
-
-  if (func(input.value)) {
+  const funcAdaptation = typeof func === "boolean" ? func : func(input.value)
+  console.log(funcAdaptation)
+  if (funcAdaptation) {
     input.classList.add("error")
     span.classList.replace("hide", "show")
     label.classList.add("show")
@@ -97,18 +92,15 @@ const removeCardNumbers = () => {
   for (const input of cardInputs) {
     const span = getSpanElement(input)
     const label = span.parentNode.firstElementChild
-   
+
     const inputContainer = input.parentNode
     inputContainer.classList.toggle("display")
 
-    
     label.classList.remove("show")
     input.classList.remove("error")
     span.classList.replace("show", "hide")
   }
-
 }
-
 
 const removeStyleToRadioInputs = () => {
   for (const input of radioInputs) {
@@ -136,8 +128,17 @@ addFunctionalityToRadio()
 
 // Adding and checking validation
 
+const verifyIfInputEmpty = (value) => {
+  if (value === "") {
+    return value.length === 0
+  }
+  return false
+}
+
 const namesValidation = (name) => {
   const regex = /[\d!@#$%^&*()\-=_+[\]{};':"\\|,.<>/?]/
+  // const specialCharacters = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?"
+  // const test = name.includes(specialCharacters)
   const test = regex.test(name)
   return test
 }
@@ -150,10 +151,11 @@ const emailValidation = (email) => {
 }
 
 const ifTypeNumberValidation = (value) => {
+  if (value.includes(" ")) {
+    return true
+  }
   return isNaN(value)
 }
-
-// console.log(ifTypeNumberValidation("1123"))
 
 const spliceWord = (word, beginning, end) => {
   const splitWord = word.split("")
@@ -162,46 +164,6 @@ const spliceWord = (word, beginning, end) => {
 
   return joinedWord
 }
-
-console.log(spliceWord('banane', 0, 3))
-
-const lengthValidation = (input) => {
-  const phoneNumberMaxLength = 11
-  const zipCodeMaxLength = 5
-  const pinMaxLength = 4
-  const eMoneyMaxLength = 9
-
-  if(input.name === "phone-number"){
-    if(input.value.length > 11){
-      const inputValue = spliceWord(input.value, 0, phoneNumberMaxLength)
-      input.value = inputValue
-      return false
-    }
-  }
-
-  if (input.name === "zip-code") {
-    if (input.value.length > 5) {
-      input.value = input.value.substring(0, zipCodeMaxLength)
-      return false
-    }
-  }
-
-  if (input.name === "card-pin") {
-    if (input.value.length > 4) {
-      input.value = input.value.substring(0, pinMaxLength)
-      return false
-    }
-  }
-
-  if (input.name === "card-number") {
-    if (input.value.length > 9) {
-      input.value = input.value.substring(0, eMoneyMaxLength)
-      return false
-    }
-  }
-
-}
-
 
 // name clearing
 
@@ -212,91 +174,160 @@ const upperCaseFirstLetter = (name) => {
   return newWord
 }
 
-
 const clearName = (name) => {
   const modifiedName = name.replace("-", " ")
   const upperCased = upperCaseFirstLetter(modifiedName)
   return upperCased
 }
 
-const inputValidation = (e) => {
+// generate hideShowError for input length
+
+const checkLength = (value, minLength) => {
+  return value.length < minLength
+}
+
+const returnHideShowError = (input, minLength, func) => {
+    hideShowError(
+      input,
+      `Insert ${minLength} characters`,
+      func(input.value, minLength)
+    )
+}
+
+const inputsLengthValidation = (input) => {
+  
+
+  if (input.name === "phone-number" || input.name === "card-number") {
+    returnHideShowError(input, 9, checkLength)
+  }
+
+  if (input.name === "city") {
+    returnHideShowError(input, 6, checkLength)
+  }
+
+  if (input.name === "zip-code") {
+    returnHideShowError(input, 5, checkLength)
+  }
+
+  if (
+    input.name === "city" ||
+    input.name === "country" ||
+    input.name === "card-pin"
+  ) {
+    returnHideShowError(input, 4, checkLength)
+  }
+
+}
+
+// Function that checks type of input, then checks validation
+
+const insertInputValidation = (e) => {
   addInLocalStorage(e.name, e.value)
   const name = clearName(e.name)
-  console.log(name)
-  if (e.name !== "payment-method"){
+  // console.log(name)
+  if (e.name !== "payment-method") {
     hideShowError(e, `${name} is required`, verifyIfInputEmpty)
   }
 
-  
-
   if (e.value.length !== 0) {
+    
+    inputsLengthValidation(e)
+
+
     if (e.name === "email") {
       hideShowError(e, `Email address is not valid`, emailValidation)
     }
 
     if (e.name === "full-name") {
       hideShowError(e, `Wrong format`, namesValidation)
-    }
 
-    if (
-      e.name.includes("number") ||
-      e.name.includes("zip") ||
-      e.name.includes("pin")
-    ) {
-      hideShowError(e, `Wrong format`, ifTypeNumberValidation)
+      if(!e.classList.contains("error")){
+        returnHideShowError(e, 6, checkLength)
+      }
     }
   }
 }
 
+// Functions helping with adding events
+
+const noNumbersTypeEvent = (input) => {
+  input.addEventListener("keydown", (e) => {
+    console.log(e.key)
+    if (!isNaN(e.key) && e.key !== "Backspace" && e.key !== " ") {
+      e.preventDefault()
+    }
+  })
+}
+
+const limitNumTypeEvent = (limit, input) => {
+  input.addEventListener("keydown", (e) => {
+    const value = e.target.value
+    if (value.length >= limit && e.key !== "Backspace") {
+      e.preventDefault()
+    }
+
+    if (ifTypeNumberValidation(e.key) && e.key !== "Backspace") {
+      e.preventDefault()
+    }
+  })
+}
+
+// Main event loader
+
 const addEventsOnInputs = () => {
   for (const input of inputs) {
-    // console.log(input.name.includes("name"))
-    // console.log(input.name)
     if (input.name !== "payment-method") {
       input.addEventListener("input", (e) => {
-        inputValidation(e.target)
+        insertInputValidation(e.target)
       })
     }
 
-     if (
-      input.name.includes("number") ||
-      input.name.includes("zip") ||
-      input.name.includes("pin")
-    ) {
-       input.addEventListener("input", (e) => {
-         lengthValidation(e.target)
-       })
+    if (input.name === "phone-number") {
+      limitNumTypeEvent(11, input)
+    }
+
+    if (input.name === "zip-code") {
+      limitNumTypeEvent(5, input)
+    }
+
+    if (input.name === "card-number") {
+      limitNumTypeEvent(9, input)
+    }
+
+    if (input.name === "card-pin") {
+      limitNumTypeEvent(4, input)
+    }
+
+    if (input.getAttribute("id") === "city") {
+      noNumbersTypeEvent(input)
+    }
+
+    if (input.getAttribute("id") === "country") {
+      noNumbersTypeEvent(input)
     }
   }
 }
 
 addEventsOnInputs()
 
+// Form
 form.addEventListener("submit", (e) => {
   // e.preventDefault()
+  e.stopPropagation()
 
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
     const span = getSpanElement(input)
 
-    //daca cash on delivery este checked atunci nu verifica e money num si emoney pin
     console.log(onDeliveryInput.checked)
-    if (onDeliveryInput.checked){
+    if (onDeliveryInput.checked) {
       if (input.id !== "card-number" || input.id !== "card-pin") {
-        inputValidation(input)
+        insertInputValidation(input)
       }
-      break;
+      break
     } else {
-      inputValidation(input)
+      insertInputValidation(input)
     }
-      // if (input.id === "cash-on-delivery") {
-      //   if (input.checked) {
-      //     console.log(input)
-      //     if (input.id !== "card-number" || input.id !== "card-pin") {
-      //       inputValidation(input)
-      //     }
-      //   }
-      // }
 
     if (label.classList.contains("error") || span.classList.contains("show")) {
       e.preventDefault()
@@ -304,43 +335,44 @@ form.addEventListener("submit", (e) => {
   }
 })
 
+// old solution for validating length
 
+// const lengthValidation = (input) => {
+//   const phoneNumberMaxLength = 11
+//   const zipCodeMaxLength = 5
+//   const pinMaxLength = 4
+//   const eMoneyMaxLength = 9
 
+//   if(input.name === "phone-number"){
+//     if(input.value.length > 11){
+//       const inputValue = spliceWord(input.value, 0, phoneNumberMaxLength)
+//       input.value = inputValue
+//       return false
+//     }
+//   }
 
+//   if (input.name === "zip-code") {
+//     if (input.value.length > 5) {
+//       input.value = input.value.substring(0, zipCodeMaxLength)
+//       return false
+//     }
+//   }
 
+//   if (input.name === "card-pin") {
+//     if (input.value.length > 4) {
+//       input.value = input.value.substring(0, pinMaxLength)
+//       return false
+//     }
+//   }
 
+//   if (input.name === "card-number") {
+//     if (input.value.length > 9) {
+//       input.value = input.value.substring(0, eMoneyMaxLength)
+//       return false
+//     }
+//   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// }
 
 // previous methods of styling when payment method was checked
 
@@ -361,8 +393,6 @@ form.addEventListener("submit", (e) => {
 //   eMoneyContainer.style.borderColor = "#F1F1F1"
 // })
 
-
-
 // Nav toggle
 
 // const payment = document.getElementsByName("payment-method")
@@ -382,12 +412,10 @@ form.addEventListener("submit", (e) => {
 //   })
 // }
 
-
 // simple way
 
 // const hamburgerButton = document.getElementById("h-button")
 // const closeButton = document.getElementById("x-button")
-
 
 // hamburgerButton.addEventListener("click", () => {
 //   headerNav.classList.toggle("nav-toggle")
