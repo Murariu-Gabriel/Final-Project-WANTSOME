@@ -1,7 +1,7 @@
 const form = document.querySelector("form")
 const inputs = document.body.querySelectorAll("div input")
-const password = document.getElementById("password")
-const conditionTerms = document.getElementById("condition-terms")
+const password = document.getElementById("signup_password")
+const conditionTerms = document.getElementById("condition_terms")
 // const termsSpan = document.body.querySelector(".terms span")
 
 const loadInputs = () => {
@@ -87,66 +87,56 @@ const passwordErrorMessages = [
   "error",
 ]
 
-const confirmErrorMsg = (input, span, label, errorMessage) => {
+// VALIDATOR FUNCTION FOR PASSWORD
+
+const multipleConditionPasswordValidator = (input) => {
+  const span = getSpanElement(input)
+  const label = span.parentNode.firstElementChild
+  if (passwordValidation(input.value, containsSpecialChar)) {
+    showError(
+      input,
+      span,
+      label,
+      "Password should contain at least 1 special character"
+    )
+  } else if (passwordValidation(input.value, containsUpperCase)) {
+    showError(
+      input,
+      span,
+      label,
+      "Password should contain at least one upper case letter"
+    )
+  } else if (passwordValidation(input.value, containsNum)) {
+    showError(input, span, label, "Password should contain at least 1 number")
+  } else if (passwordValidation(input.value, verifyIfLengthUnder8)) {
+    showError(input, span, label, "Length should be at least 8 characters")
+  } else {
+    hideError(input, span, label)
+  }
+}
+
+// ERROR DISPLAY FUNCTIONS
+
+const showError = (input, span, label, errorMessage) => {
   input.classList.add("error")
   span.classList.replace("hide", "show")
   label.classList.add("show")
   span.textContent = errorMessage
 }
 
+const hideError = (input, span, label) => {
+  label.classList.remove("show")
+  input.classList.remove("error")
+  span.classList.replace("show", "hide")
+}
+
 const hideShowError = (input, errorMessage, func) => {
   const span = getSpanElement(input)
   const label = span.parentNode.firstElementChild
-
-  if (input.name !== "password") {
-    if (func(input.value)) {
-      input.classList.add("error")
-      span.classList.replace("hide", "show")
-      label.classList.add("show")
-      span.textContent = errorMessage
-    } else {
-      label.classList.remove("show")
-      input.classList.remove("error")
-      span.classList.replace("show", "hide")
-    }
-  }
-
-  if (input.name === "password") {
-    if (func(input.value, verifyIfInputEmpty)) {
-      confirmErrorMsg(input, span, label, "Password is required")
-    } else if (func(input.value, containsSpecialChar)) {
-      confirmErrorMsg(
-        input,
-        span,
-        label,
-        "Password should contain at least 1 special character"
-      )
-    } else if (func(input.value, containsNum)) {
-      confirmErrorMsg(
-        input,
-        span,
-        label,
-        "Password should contain at least 1 number"
-      )
-    } else if (func(input.value, containsUpperCase)) {
-      confirmErrorMsg(
-        input,
-        span,
-        label,
-        "Password should contain at least one upper case letter"
-      )
-    } else if (func(input.value, verifyIfLengthUnder8)) {
-      confirmErrorMsg(
-        input,
-        span,
-        label,
-        "Length should be at least 8 characters"
-      )
-    } else {
-      label.classList.remove("show")
-      input.classList.remove("error")
-      span.classList.replace("show", "hide")
-    }
+  if (func(input.value)) {
+    showError(input, span, label, errorMessage)
+  } else {
+    hideError(input, span, label)
   }
 }
 
@@ -158,30 +148,33 @@ const upperCaseFirstLetter = (name) => {
 }
 
 const clearName = (name) => {
-  const modifiedName = name.replace("-", " ")
+  let modifiedName = name.replace("_", " ")
+  if (name === "signup_password") {
+    modifiedName = name.replace("signup_", "")
+  }
   const upperCased = upperCaseFirstLetter(modifiedName)
+  console.log(upperCased)
   return upperCased
 }
 
 const inputValidation = (e) => {
   addInLocalStorage(e.name, e.value)
   const name = clearName(e.name)
-  console.log(e.name)
+  // console.log(e.name)
   const msg =
-    e.name === "repeated-password"
+    e.name ===  e.name === "signup_password"
       ? "Please confirm password"
       : `${name} is required`
 
-  if (e.name !== "condition-term") {
-    hideShowError(e, msg, verifyIfInputEmpty)
-  }
+  hideShowError(e, msg, verifyIfInputEmpty)
 
+  // console.log(e.checked)
   if (e.value.length !== 0) {
     if (e.name === "email") {
       hideShowError(e, `This email adress is not valid`, emailValidation)
     }
 
-    if (e.name === "repeated-password") {
+    if (e.name === "repeated_password") {
       hideShowError(e, `Password not matching`, repeatPasswordValidation)
     }
 
@@ -189,47 +182,87 @@ const inputValidation = (e) => {
       hideShowError(e, `Wrong format`, namesValidation)
     }
 
-    if (e.name === "password") {
-      hideShowError(e, passwordErrorMessages, passwordValidation)
+    if (e.name === "signup_password") {
+      multipleConditionPasswordValidator(e)
     }
+  }
 
-    if (e.name === "condition-term") {
-      hideShowError(
-        e,
-        "Accepting terms and conditions is required",
-        checkBoxValidation
-      )
+  if (e.name === "condition_terms") {
+    if (e.checked) {
+      addInLocalStorage(e.name, "true")
     }
+    hideShowError(
+      e,
+      "Accepting terms and conditions is required",
+      checkBoxValidation
+    )
   }
 }
 
 const addEventsOnInputs = () => {
   for (const input of inputs) {
-    if (input.name !== "condition-term") {
-      input.addEventListener("input", (e) => {
-        inputValidation(e.target)
-      })
-    } 
-    // else {
-    //   input.addEventListener("click", (e) => {
-    //     inputValidation(e.target)
-    //   })
+    // console.log(input.name)
+    // if (input.name !== "condition_terms") {
+    input.addEventListener("input", (e) => {
+      inputValidation(e.target)
+    })
     // }
   }
 }
 
-addEventsOnInputs()
-
-form.addEventListener("submit", (e) => {
-  // e.preventDefault()
+const checkIfValid = (e) => {
+  let noError = false
+  const errors = []
 
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
     const span = getSpanElement(input)
 
     inputValidation(input)
+  
     if (label.classList.contains("error") || span.classList.contains("show")) {
+      errors.push("error")
       e.preventDefault()
+      noError = false
+    } else {
+      errors.push("valid")
     }
+
+  }
+
+  if (errors.includes("error")){
+    noError = false
+    return noError
+  } 
+
+  noError = true
+  console.log(errors)
+  return noError
+}
+
+addEventsOnInputs()
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  const formData = new FormData(e.currentTarget)
+  const entries = [...formData.entries()]
+
+  const formObject = Object.fromEntries(formData)
+  const user = JSON.stringify(formObject)
+
+  // ON SUBMIT it checks if the data is valid
+
+  const isValid = checkIfValid(e)
+
+  // !Parola12
+  if (isValid) {
+    localStorage.clear()
+    e.currentTarget.reset()
+    console.log(formObject)
+    localStorage.setItem("users", user)
+    console.log(formObject.last_name)
   }
 })
+// localStorage.clear()
+// console.log(JSON.parse(localStorage.getItem("users")))

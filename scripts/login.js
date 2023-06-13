@@ -14,6 +14,24 @@ const loadInputs = () => {
 
 loadInputs()
 
+// toggle for showing password
+
+eyeButton.addEventListener("click", (e) => {
+ const eyeShow = eyeButton.children[0]
+ const eyeHide = eyeButton.children[1]
+  if (password.getAttribute("type") === "password") {
+    
+    password.setAttribute("type", "text")
+    eyeHide.classList.toggle("hide")
+    eyeShow.classList.toggle("hide")
+  } else {
+
+    password.setAttribute("type", "password")
+    eyeHide.classList.toggle("hide")
+    eyeShow.classList.toggle("hide")
+  }
+})
+
 const addInLocalStorage = (key, value) => {
   localStorage.setItem(key, value)
 }
@@ -26,14 +44,14 @@ const emailValidation = (string) => {
   return !isValidEmail
 }
 
-const passwordValidation = (string) => {
-  const specialCharsRegex = /^(?=.*[!@#$%^&*]).{8,}$/
-  const hasSpecialChars = specialCharsRegex.test(string)
+// const passwordValidation = (string) => {
+//   const specialCharsRegex = /^(?=.*[!@#$%^&*]).{8,}$/
+//   const hasSpecialChars = specialCharsRegex.test(string)
 
-  console.log(hasSpecialChars)
+//   console.log(hasSpecialChars)
 
-  return !hasSpecialChars
-}
+//   return !hasSpecialChars
+// }
 
 const getSpanElement = (element) => {
   return element.parentNode.querySelector("span")
@@ -90,9 +108,9 @@ const inputValidation  = (e) => {
      hideShowError(e, `This email adress is not valid`, emailValidation)
    }
 
-   if (e.name === "password") {
-     hideShowError(e, `Incorrect password`, passwordValidation)
-   }
+  //  if (e.name === "password") {
+  //    hideShowError(e, `Incorrect password`, passwordValidation)
+  //  }
  }
 }
 
@@ -123,23 +141,7 @@ form.addEventListener("submit", (e) => {
 
 })
 
-// toggle for showing password
 
-eyeButton.addEventListener("click", (e) => {
- const eyeShow = eyeButton.children[0]
- const eyeHide = eyeButton.children[1]
-  if (password.getAttribute("type") === "password") {
-    
-    password.setAttribute("type", "text")
-    eyeHide.classList.toggle("hide")
-    eyeShow.classList.toggle("hide")
-  } else {
-
-    password.setAttribute("type", "password")
-    eyeHide.classList.toggle("hide")
-    eyeShow.classList.toggle("hide")
-  }
-})
 
 
 // code from from for loop in case you want to change it ans use it later
