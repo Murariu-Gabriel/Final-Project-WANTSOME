@@ -2,8 +2,15 @@ const form = document.querySelector("form")
 const inputs = document.body.querySelectorAll("div input")
 const password = document.getElementById("signup_password")
 const conditionTerms = document.getElementById("condition_terms")
-// const termsSpan = document.body.querySelector(".terms span")
 
+
+// First part for getting and and adding user || rest of the code is at form event
+const existingUsers = localStorage.getItem("users")
+const users = existingUsers ? JSON.parse(existingUsers) : []
+
+
+
+// Aici trebuie sa faci guard function si probabil sa refaci cum adaugi elementele
 const loadInputs = () => {
   for (const input of inputs) {
     const inputName = input.getAttribute("name")
@@ -13,6 +20,9 @@ const loadInputs = () => {
 }
 
 loadInputs()
+
+
+
 
 const addInLocalStorage = (key, value) => {
   localStorage.setItem(key, value)
@@ -257,12 +267,18 @@ form.addEventListener("submit", (e) => {
 
   // !Parola12
   if (isValid) {
+    //Clearing local storage of inputs
     localStorage.clear()
+    // Resetting inputs
     e.currentTarget.reset()
-    console.log(formObject)
-    localStorage.setItem("users", user)
-    console.log(formObject.last_name)
+
+    // Second part | adds user in array and then sends it to local storage
+    users.push(user)
+    const newUsers = JSON.stringify(users)
+    localStorage.setItem("users", newUsers)
+
   }
 })
 // localStorage.clear()
 // console.log(JSON.parse(localStorage.getItem("users")))
+// !AMS1euoparola
