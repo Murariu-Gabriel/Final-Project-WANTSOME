@@ -7,23 +7,16 @@ const deliveryMessage = document.body.querySelector(".on-delivery-message")
 const onDeliveryInput = document.getElementById("cash-on-delivery")
 const cardInputs = document.body.querySelectorAll(".card")
 
-console.log(onDeliveryInput)
 
-// Local storage loading
+// console.log(onDeliveryInput)
 
-const loadInputs = () => {
-  for (const input of inputs) {
-    const inputName = input.getAttribute("name")
-    const localStorageValue = localStorage.getItem(inputName)
-    input.value = localStorageValue
-  }
-}
+// Local storage loading from shared script
 
-loadInputs()
+loadInputs(inputs)
 
-const addInLocalStorage = (key, value) => {
-  localStorage.setItem(key, value)
-}
+// const addInLocalStorage = (key, value) => {
+//   localStorage.setItem(key, value)
+// }
 
 const getSpanElement = (element) => {
   const span = element.parentNode.querySelector("span")
@@ -32,6 +25,11 @@ const getSpanElement = (element) => {
   } else {
     return element.parentNode.parentNode.querySelector("span")
   }
+}
+
+const getLabelElement = (element) => {
+ const label = element.parentNode.querySelector("label")
+ return label
 }
 
 // NavBar toggle functionality
@@ -67,7 +65,8 @@ addButtonEvent()
 
 const hideShowError = (input, errorMessage, func) => {
   const span = getSpanElement(input)
-  const label = span.parentNode.firstElementChild
+  const label = getLabelElement(input)
+  console.log(label)
   const funcAdaptation = typeof func === "boolean" ? func : func(input.value)
   console.log(funcAdaptation)
   if (funcAdaptation) {
@@ -334,6 +333,10 @@ form.addEventListener("submit", (e) => {
     }
   }
 })
+
+
+
+
 
 // old solution for validating length
 

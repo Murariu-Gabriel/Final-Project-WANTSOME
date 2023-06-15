@@ -52,10 +52,10 @@
           </a>
           <nav class="a" id="header-nav">
             <ul>
-              <li><a href="">home</a></li>
-              <li><a href="">workout</a></li>
-              <li><a href="">sleep</a></li>
-              <li><a href="">health</a></li>
+              <li><a class="link" href="/html-pages/dashboard.html">home</a></li>
+              <li><a class="link" href="/html-pages/t-category.html?category=smart-watch">watches</a></li>
+              <li><a class="link" href="/html-pages/t-category.html?category=smart-band">bands</a></li>
+              <li><a class="link" href="/html-pages/t-category.html?category=smart-strap">straps</a></li>
             </ul>
           </nav>
           <button>
@@ -89,29 +89,26 @@
 
     <section class="product">
       <div class="container">
-        <p>
-          <a href="">go back</a>
+        <p class="link">
+          <a  id="go-back">go back</a>
         </p>
         <article>
           <div class="image-container">
             <img
-              src="../assets/Images/Devices/Xiaomi/Smart-Watches/Mi-watch-S1-Pro/product/s1-pro-2.png"
-              alt="Xiaomi Mi Watch-Pro"
+              src=""
+              alt=""
             />
           </div>
 
           <div class="product-info">
-            <p class="overline">new product</p>
-            <h2>xiaomi mi watch-pro</h2>
+            <p class="overline"></p>
+            <h2 id="title"></h2>
             <p>
-              Introducing the classic wrist watch design with a sophisticated
-              look and a large screen with ultra-narrow bezel, a strap for every
-              occasion, and the next-level smart watch experience.
             </p>
-            <p>$ 213</p>
-            <form action="">
+            <strong>$ <span></span></strong>
+            <form id="count-form">
               <div class="input-steper">
-                <button id="decrement" type="button" onclick="counter(this)">
+                <button id="decrement" type="button">
                   -
                 </button>
                 <input
@@ -122,7 +119,7 @@
                   max="100"
                   readonly
                 />
-                <button id="increment" type="button" onclick="counter(this)">
+                <button id="increment" type="button" >
                   +
                 </button>
               </div>
@@ -132,52 +129,34 @@
         </article>
 
         <article>
-          <div class="features">
+          <div class="features" id="features">
             <h2>features</h2>
   
             <p>
-              The smartwatch features a 1.47 inches AMOLED display that provides a
-              resolution of 480 x 480 pixels. The PPI density is 462 and it is
-              built with a sapphire crystal front, stainless steel frame, sapphire
-              crystal (heart rate zone), and plastic back.
-            </p>
-  
-            <p>
-              Xiaomi Watch S1 Pro is Waterproof (5ATM) and the device can be
-              paired with the help of Bluetooth 5.2. It is available in various
-              colors such as Black and Silver. The device is fueled with a
-              Non-removable Li-Ion 500 mAh battery.
             </p>
           </div>
 
           <div class="inside-box">
             <h2>in the box</h2>
-            <div>
-              <p><span>x1</span> Mi Watch</p>
-  
-              <p><span>x1</span> Wireless Charging Dock</p>
-  
-              <p><span>x1</span> User Manual</p>
-  
-              <p><span>x1</span>Warranty Notice</p>
+            <div id="box-items">
             </div>
           </div>
         </article>
 
 
-        <div class="prezentation-images">
+        <div class="presentation-images">
           <div>
             <img
-              src="/assets/Images/Devices/Huawei/Band-7/presentation-pictures/presentation-1.jpg"
+              src=""
               alt=""
             />
             <img
-              src="/assets/Images/Devices/Huawei/Band-7/presentation-pictures/presentation-2.jpg"
+              src=""
               alt=""
             />
           </div>
           <img
-            src="/assets/Images/Devices/Huawei/Band-7/presentation-pictures/presentation-3.jpg"
+            src=""
             alt=""
           />
         </div>
@@ -234,24 +213,23 @@
       </div>
     </section>
 
-    <section class="categories">
+     <section class="categories">
       <div class="container">
         <article>
           <div>
+            <img
+              class="category-image"
+              src="/assets/Images/Devices/Huawei/Gt-runner/product/Gt-Runner-category.png"
+              alt="Huawei Gt Runner"
+            />
+            <h3 class="subtitle">Smart watches</h3>
+            <a href="/html-pages/t-category.html?category=smart-watch" class="button-3">
+              shop
               <img
-                class="category-image"
-                src="/assets/Images/Devices/Huawei/Gt-runner/product/Gt-Runner-category.png"
-                alt="Huawei Gt Runner"
+                src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
+                alt="button-arrow"
               />
-              <h3 class="subtitle">Workout Tracking</h3>
-              <a href="" class="button-3">
-                shop
-                <img
-                  src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
-                  alt="button-arrow"
-                />
-              </a>
-          
+            </a>
           </div>
         </article>
 
@@ -262,8 +240,8 @@
               src="/assets/Images/Devices/Fit-Bit/fitbit-inspire/product/fitbit-inspire-category.png"
               alt="Fitbit Inspire 3"
             />
-            <h3 class="subtitle">Sleep Tracking</h3>
-            <a href="" class="button-3">
+            <h3 class="subtitle">Smart bands</h3>
+            <a href="/html-pages/t-category.html?category=smart-band" class="button-3">
               shop
               <img
                 src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
@@ -280,8 +258,8 @@
               src="/assets/Images/Devices/Whoop-strap-4/product/whoopstrap-category.png"
               alt="Whoop strap 4"
             />
-            <h3 class="subtitle">Health Tracking</h3>
-            <a href="" class="button-3">
+            <h3 class="subtitle">smart strap</h3>
+            <a  href="/html-pages/t-category.html?category=smart-strap" class="button-3">
               shop
               <img
                 src="/assets/from-project-assets/shared/desktop/icon-arrow-right.svg"
@@ -292,6 +270,7 @@
         </article>
       </div>
     </section>
+
 
     <section class="about">
       <div class="container">
@@ -320,10 +299,10 @@
         </a>
         <nav>
           <ul>
-            <li><a href="">home</a></li>
-            <li><a href="">workout</a></li>
-            <li><a href="">sleep</a></li>
-            <li><a href="">health</a></li>
+            <li><a class="link" href="/html-pages/dashboard.html">home</a></li>
+            <li><a class="link" href="/html-pages/t-category.html?category=smart-watch">watches</a></li>
+            <li><a class="link" href="/html-pages/t-category.html?category=smart-band">bands</a></li>
+            <li><a class="link" href="/html-pages/t-category.html?category=smart-strap">straps</a></li>
           </ul>
         </nav>
 

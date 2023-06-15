@@ -1,13 +1,52 @@
 @use "../abstracts/" as *;
 
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .success-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 20rem;
+    height: 20rem;
+    background-color: white;
+
+    svg{
+      height: 5rem;
+      width: 5rem;
+    }
+
+    strong {
+      font-size: $l-font;
+      text-transform: capitalize;
+    }
+
+    a{
+      all: unset;
+    }
+  }
+}
+
+
 body {
   @include flex(center, unset, unset, unset);
   background-color: $light-gray;
-
-  
+  position: relative;
 }
 
-section{
+section {
   height: 100vh;
   @include flex(unset, center, unset, unset);
 
@@ -17,79 +56,62 @@ section{
     border-radius: $base-border-radius;
     background-color: $white;
     form {
-  
       h2 {
         text-align: center;
         margin: 0;
         padding: $m-spacing;
       }
-  
-  
+
       div {
-        margin-top: $base-spacing ;
+        margin-top: $base-spacing;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
 
-        
-        &:not(.names){
+        &:not(.names) {
           flex-direction: row;
           flex-wrap: wrap;
         }
- 
+
         // span{
         //   // margin-left: auto;
         // }
-         
-        .show{
-          display: initial;
-          color: #CD2C2C;
-        }
 
-        .hide{
-          display: none;
+        .error {
+          border: 2px solid #cd2c2c;
         }
-
-         .error{
-           border: 2px solid #CD2C2C;
-        }
-
       }
 
       .terms {
-        margin-top: $base-spacing;;
+        margin-top: $base-spacing;
         justify-content: unset;
-          a{
-            color: $black;
-            font-weight: bold;
-            color: $orange;
-            
-            &:hover{
-              color: $light-orange;
-            }
-          }
+        a {
+          color: $black;
+          font-weight: bold;
+          color: $orange;
 
-          span{
-            width: 100%;
+          &:hover {
+            color: $light-orange;
           }
+        }
 
+        span {
+          width: 100%;
+        }
       }
-  
+
       .buttons {
-        margin: $m-spacing 0 ;
-        button, a{
+        margin: $m-spacing 0;
+        button,
+        a {
           width: 50%;
         }
 
-        .button-3{
-          background-color: inherit; 
+        .button-3 {
+          background-color: inherit;
           padding: $base-spacing $m-spacing;
-          
         }
       }
-  
     }
   }
-
-}  
-
+}

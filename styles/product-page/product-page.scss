@@ -17,6 +17,11 @@
       margin-bottom: 1.5rem;
       a {
         color: $out-of-color-palette-gray;
+        cursor: pointer;
+          transition: color 0.3s ease-in-out;
+        &:hover{
+          color: $orange;
+        }
       }
     }
 
@@ -38,15 +43,20 @@
           max-width: 340px;
           p {
             margin: 10% 0;
-            &:last-of-type {
-              font-weight: 700;
-              font-size: 1.3rem;
-            }
+            // &:last-of-type {
+            //   font-weight: 700;
+            //   font-size: 1.3rem;
+            // }
+          }
+
+          strong{
+           margin: $base-spacing 0;
+           display: block;
           }
   
           h2 {
             font-size: $l-font;
-            width: 60%;
+            // width: 90%;
           }
   
           form {
@@ -113,7 +123,7 @@
       }
     }
 
-    .prezentation-images {
+    .presentation-images {
       padding-bottom: $s-section-spacing;
         display: flex;
         flex-direction: row;

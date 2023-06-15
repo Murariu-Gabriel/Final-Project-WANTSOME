@@ -15,11 +15,20 @@ ul {
 }
 
 a {
+  text-decoration: none;
+  color: black;
+}
+
+.link {
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-a:hover {
+.link:hover {
+  color: #D87D4A;
+}
+
+.hover-link:hover {
   color: #D87D4A;
 }
 
@@ -37,6 +46,15 @@ a:hover {
 
 img {
   display: block;
+}
+
+.show {
+  display: initial;
+  color: #cd2c2c;
+}
+
+.hide {
+  display: none;
 }
 
 body {
@@ -268,15 +286,11 @@ section .container form div label {
 section .container form div span {
   margin: 0 0 0 auto;
 }
-section .container form div .show {
-  display: initial;
-  color: #CD2C2C;
-}
 section .container form div input {
   width: 100%;
 }
 section .container form div .error {
-  border: 2px solid #CD2C2C;
+  border: 2px solid #cd2c2c;
 }
 section .container form a {
   margin-left: auto;
@@ -293,6 +307,7 @@ section .container form .sh-password {
 }
 section .container form .sh-password svg {
   transition: color 0.3s ease-in-out;
+  cursor: pointer;
 }
 section .container form .sh-password svg:hover[stroke] {
   color: #D87D4A;

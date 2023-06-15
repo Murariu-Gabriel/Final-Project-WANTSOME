@@ -33,12 +33,14 @@
             padding-bottom: $xxl-spacing;
             text-align: center;
            
+
             .image-container{
                 background-color: $gray;
                 padding: $s-spacing;
                 margin-bottom: $l-spacing;
-                
-
+                border-radius: $base-border-radius;
+                display: block;
+                cursor: pointer;
 
                 img{
                     width: 100%;
@@ -64,7 +66,7 @@
 
             h2{
                 font-size: $l-font;
-                width: 250px;
+                // width: 50%;
 
                 &:first-of-type{
                     margin-top: 0;
@@ -73,7 +75,12 @@
 
             &:last-of-type{
                 padding-bottom: $l-spacing;
+
+                // &:hover{
+                //     fill: none;
+                // }
             }
+          
            
         }
     }

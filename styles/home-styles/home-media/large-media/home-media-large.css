@@ -15,11 +15,20 @@ ul {
 }
 
 a {
+  text-decoration: none;
+  color: black;
+}
+
+.link {
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-a:hover {
+.link:hover {
+  color: #D87D4A;
+}
+
+.hover-link:hover {
   color: #D87D4A;
 }
 
@@ -37,6 +46,15 @@ a:hover {
 
 img {
   display: block;
+}
+
+.show {
+  display: initial;
+  color: #cd2c2c;
+}
+
+.hide {
+  display: none;
 }
 
 body {
@@ -350,7 +368,7 @@ label {
     padding: 0 0 2rem 4rem;
     margin: 0;
   }
-  .products-display .container article:last-of-type div:last-of-type button {
+  .products-display .container article:last-of-type div:last-of-type a {
     margin: 0 0 0 4rem;
   }
   .about {
@@ -377,6 +395,9 @@ label {
   .about .container div:last-of-type h2,
 .about .container div:last-of-type p {
     width: 80%;
+  }
+  footer .container .back-to-top {
+    bottom: 150px;
   }
   footer .container img {
     order: 1;

@@ -11,6 +11,34 @@ footer {
 
     text-align: center;
 
+    .back-to-top{
+      color: white;
+      background: none;
+      height: 48px;
+      width: 48px;
+      border: none;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      position: fixed;
+      // bottom: 80px;
+      // bottom: 25px;
+      // right: 22px;
+      bottom: 3.5%;
+      right: 3.5%;
+      z-index: 99;
+      transition: color 0.3s ease-in-out;
+
+      svg{
+        font-size: 2rem;
+      }
+
+      &:hover{
+        color: $orange;
+      }
+    }
+
+
     &::before {
       content: "";
       width: 101px;

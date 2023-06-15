@@ -4,15 +4,14 @@ const password = document.getElementById("password")
 const inputs = document.body.getElementsByTagName("input")
 const eyeButton = document.getElementById("eye-button")
 
-const loadInputs = () => {
-  for (const input of inputs) {
-    const inputName = input.getAttribute("name")
-    const localStorageValue = localStorage.getItem(inputName)
-    input.value = localStorageValue
-  }
-}
 
-loadInputs()
+const users = localStorage.getItem("users")
+const parsedUsers = JSON.parse(users)
+
+// console.log(JSON.parse(parsedUsers[0]))
+
+// FUNCTION from sharedScript
+loadInputs(inputs)
 
 // toggle for showing password
 
@@ -32,26 +31,51 @@ eyeButton.addEventListener("click", (e) => {
   }
 })
 
-const addInLocalStorage = (key, value) => {
-  localStorage.setItem(key, value)
+// VALIDATION FUNCTIONS
+
+const getUser = (email) => {
+
+  if(!parsedUsers){
+    return false
+  }
+  
+  for (let user of parsedUsers) {
+    const parsedUser = JSON.parse(user)
+    if (parsedUser.email === email) {
+      return parsedUser
+    }
+  }
 }
+
+const userExistenceValidation = (emailValidation) => {
+  if (getUser(emailValidation)) {
+    return !true
+  }
+
+  return !false
+}
+
+const checkUserPassword = (password) => {
+  const user = getUser(email.value)
+  // console.log(user.signup_password)
+  if(user){
+    if (user.signup_password === password) {
+      return !true
+    }
+  } 
+  return !false
+}
+
 
 const emailValidation = (string) => {
   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
   const isValidEmail = emailRegex.test(string)
-  console.log(isValidEmail)
+  // console.log(isValidEmail)
 
   return !isValidEmail
 }
 
-// const passwordValidation = (string) => {
-//   const specialCharsRegex = /^(?=.*[!@#$%^&*]).{8,}$/
-//   const hasSpecialChars = specialCharsRegex.test(string)
 
-//   console.log(hasSpecialChars)
-
-//   return !hasSpecialChars
-// }
 
 const getSpanElement = (element) => {
   return element.parentNode.querySelector("span")
@@ -98,25 +122,25 @@ const clearName = (name) => {
 const inputValidation  = (e) => {
  addInLocalStorage(e.name, e.value)
    const name = clearName(e.name)
- hideShowError(
-   e, `${name} is required`,
-   verifyIfInputEmpty
- )
+  hideShowError(e, `${name} is required`,verifyIfInputEmpty)
 
  if (e.value.length !== 0) {
-   if (e.name === "email") {
-     hideShowError(e, `This email adress is not valid`, emailValidation)
-   }
 
-  //  if (e.name === "password") {
-  //    hideShowError(e, `Incorrect password`, passwordValidation)
-  //  }
+  if(e.name === "email"){
+    if (e.value.includes(".") && e.value.includes("@")) {
+      hideShowError(e, "This mail is not registered", userExistenceValidation)
+    }
+
+  }
+   if (e.name === "password") {
+     hideShowError(e, `Incorrect password`, checkUserPassword)
+   }
  }
 }
 
 const addEventsOnInputs = () => {
   for (const input of inputs) {
-    input.addEventListener("input", (e) => {
+    input.addEventListener("blur", (e) => {
       inputValidation(e.target)
     })
   
@@ -126,18 +150,28 @@ const addEventsOnInputs = () => {
 addEventsOnInputs()
 
 form.addEventListener("submit", (e) => {
-  // e.preventDefault()
+  e.preventDefault()
+   let noError = false
+   const errors = []
 
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
     const span = input.parentElement.children[1]
     inputValidation(input)
 
-
-    if (label.classList.contains("error") || span.classList.contains("show")) {
-      e.preventDefault()
-    }
+     if (label.classList.contains("error") || span.classList.contains("show")) {
+       errors.push("error")
+       e.preventDefault()
+       noError = false
+     } else {
+       errors.push("valid")
+     }
   }
+
+   if (!errors.includes("error")) {
+    
+     window.location.assign("http://127.0.0.1:5500/html-pages/dashboard.html")
+   } 
 
 })
 
@@ -176,3 +210,15 @@ form.addEventListener("submit", (e) => {
   //   hideShowError(e.target, "Password not safe", passwordValidation)
   // }
 
+
+
+// In case you want to use this password validation
+
+// const passwordValidation = (string) => {
+//   const specialCharsRegex = /^(?=.*[!@#$%^&*]).{8,}$/
+//   const hasSpecialChars = specialCharsRegex.test(string)
+
+//   console.log(hasSpecialChars)
+
+//   return !hasSpecialChars
+// }

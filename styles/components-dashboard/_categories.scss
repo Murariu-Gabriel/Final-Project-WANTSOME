@@ -40,6 +40,7 @@
         a {
           background-color: $gray;
           padding-bottom: $base-padding;
+          transition: color 0.3s ease-in-out;
         }
       }
     }

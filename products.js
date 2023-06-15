@@ -1,4 +1,4 @@
-export const products = [
+ const products = [
   {
     id: 1,
     slug: "Mi-watch-1",
@@ -613,3 +613,7 @@ export const products = [
     ],
   },
 ]
+
+
+
+

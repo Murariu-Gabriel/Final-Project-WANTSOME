@@ -15,11 +15,20 @@ ul {
 }
 
 a {
+  text-decoration: none;
+  color: black;
+}
+
+.link {
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-a:hover {
+.link:hover {
+  color: #D87D4A;
+}
+
+.hover-link:hover {
   color: #D87D4A;
 }
 
@@ -37,6 +46,15 @@ a:hover {
 
 img {
   display: block;
+}
+
+.show {
+  display: initial;
+  color: #cd2c2c;
+}
+
+.hide {
+  display: none;
 }
 
 body {
@@ -328,6 +346,9 @@ label {
     flex-direction: unset;
     text-align: unset;
     padding: 2rem 0;
+  }
+  footer .container .back-to-top {
+    bottom: 80px;
   }
   footer .container nav:first-of-type {
     width: 100%;

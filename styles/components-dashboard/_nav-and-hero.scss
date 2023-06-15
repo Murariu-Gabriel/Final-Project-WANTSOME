@@ -12,23 +12,34 @@
     @include flex(center, center, unset, unset);
 
     .container {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
         max-width: 500px;
+        // height: 70%;
         color: $white;
         text-align: center;
         margin: 0 auto;
         .overline {
             color: $white;
+            padding: 0;
         }
 
         h1 {
             font-size: $xl-font;
             line-height: 2.5rem;
-            margin: $m-spacing 0;
+            margin: $s-spacing
 
         }
 
-        button {
-            margin-top: $s-spacing;
+        p {
+            padding-bottom: $m-spacing;
+            margin: 0;
+        }
+
+        .button-1 {
+            // width: 165px;
+            // font-size: 1rem;
         }
     }
 }

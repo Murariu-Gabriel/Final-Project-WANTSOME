@@ -2,31 +2,59 @@ const form = document.querySelector("form")
 const inputs = document.body.querySelectorAll("div input")
 const password = document.getElementById("signup_password")
 const conditionTerms = document.getElementById("condition_terms")
-
-
+const popupContainer = document.body.querySelector(".popup")
+const popupButton = document.body.querySelector(".popup button")
+console.log(popupButton)
+// popupContainer.classList.toggle("hide")
+// localStorage.clear()
 // First part for getting and and adding user || rest of the code is at form event
 const existingUsers = localStorage.getItem("users")
-const users = existingUsers ? JSON.parse(existingUsers) : []
+const parsedUsers = JSON.parse(existingUsers)
+const users = existingUsers ? parsedUsers : []
+// Note you will have to parse it twice =))))
+// console.log(JSON.parse(JSON.parse(existingUsers)[0]))
+
+console.log(users)
+// Function from shared script
+loadInputs(inputs)
 
 
+// for(let user of parsedUsers){
+//   const parsedUser = JSON.parse(user)
+//   console.log(parsedUser.email)
+// }
 
-// Aici trebuie sa faci guard function si probabil sa refaci cum adaugi elementele
-const loadInputs = () => {
-  for (const input of inputs) {
-    const inputName = input.getAttribute("name")
-    const localStorageValue = localStorage.getItem(inputName)
-    input.value = localStorageValue
+//
+// validation functions
+
+const getUser = (email) => {
+  if(users.length > 0){
+    for (let user of users) {
+      const parsedUser = JSON.parse(user)
+      if (parsedUser.email === email) {
+        return parsedUser
+      }
+    }
   }
 }
 
-loadInputs()
+const userExistenceValidation = (emailValidation) => {
+  if (getUser(emailValidation)) {
+    return true
+  }
 
-
-
-
-const addInLocalStorage = (key, value) => {
-  localStorage.setItem(key, value)
+  return false
 }
+
+// const checkUserPassword = (password) => {
+//   const user = getUser(email.value)
+//   if (user.signup_password === password) {
+//     return !true
+//   }
+
+//   return !false
+// }
+
 
 const getSpanElement = (element) => {
   return element.parentNode.querySelector("span")
@@ -87,7 +115,7 @@ const namesValidation = (name) => {
 const checkBoxValidation = () => {
   return !conditionTerms.checked
 }
-
+// !Amparola1
 const passwordErrorMessages = [
   "Password is required",
   "Password should contain at least 1 special character",
@@ -97,7 +125,7 @@ const passwordErrorMessages = [
   "error",
 ]
 
-// VALIDATOR FUNCTION FOR PASSWORD
+//MULTIPLE ERROR VALIDATOR FUNCTION FOR PASSWORD
 
 const multipleConditionPasswordValidator = (input) => {
   const span = getSpanElement(input)
@@ -125,6 +153,35 @@ const multipleConditionPasswordValidator = (input) => {
   }
 }
 
+// MULTIPLE ERROR VALIDATION FOR MAIL
+
+const multipleConditionMailValidator = (input) => {
+  const span = getSpanElement(input)
+  const label = span.parentNode.firstElementChild
+
+  if(emailValidation(input.value)){
+      showError(
+        input,
+        span,
+        label,
+        "Email not valid"
+      )
+  } else if (userExistenceValidation(input.value)) {
+      showError(input, span, label, "Email is already registered")
+   } else {
+    hideError(input, span, label)
+   }
+}
+
+
+
+
+
+
+
+
+
+
 // ERROR DISPLAY FUNCTIONS
 
 const showError = (input, span, label, errorMessage) => {
@@ -143,6 +200,7 @@ const hideError = (input, span, label) => {
 const hideShowError = (input, errorMessage, func) => {
   const span = getSpanElement(input)
   const label = span.parentNode.firstElementChild
+  
   if (func(input.value)) {
     showError(input, span, label, errorMessage)
   } else {
@@ -180,8 +238,21 @@ const inputValidation = (e) => {
 
   // console.log(e.checked)
   if (e.value.length !== 0) {
-    if (e.name === "email") {
-      hideShowError(e, `This email adress is not valid`, emailValidation)
+    // if (e.name === "email") {
+    //   hideShowError(e, `This email address is not valid`, emailValidation)
+       
+    // }
+
+    if(e.name === "email"){
+      // hideShowError(e, `This email address is not valid`, emailValidation)
+      multipleConditionMailValidator(e)
+      //  if (e.value.includes(".") && e.value.includes("@")) {
+      //    hideShowError(
+      //      e,
+      //      "This mail is already registered",
+      //      userExistenceValidation
+      //    )
+      //  }
     }
 
     if (e.name === "repeated_password") {
@@ -219,6 +290,8 @@ const addEventsOnInputs = () => {
     // }
   }
 }
+
+// Validation function for the form
 
 const checkIfValid = (e) => {
   let noError = false
@@ -276,7 +349,9 @@ form.addEventListener("submit", (e) => {
     users.push(user)
     const newUsers = JSON.stringify(users)
     localStorage.setItem("users", newUsers)
+    popupContainer.classList.toggle("hide")
 
+    // !Password1
   }
 })
 // localStorage.clear()

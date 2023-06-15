@@ -54,6 +54,7 @@
 
     .hero {
       .container {
+        
         h1 {
           font-size: $h1-font-size;
           margin: $m-spacing  0;
@@ -156,6 +157,9 @@
       text-align: unset;
       padding: $m-spacing 0;
 
+       .back-to-top{
+        bottom: 80px;
+      }
       // &::after {
       //   left: 2%; 
       // }

@@ -29,6 +29,71 @@ const addButtonEvent = () => {
 addButtonEvent()
 
 
+// FETCHING DATA AN MAKING IT USABLE
+
+const getProducts = async () => {
+  try {
+    const response = await fetch("http://127.0.0.1:5500/products.json")
+    const data = await response.json()
+    const storableData = JSON.stringify(data)
+
+    const existingData = storableData ? storableData : []
+
+    localStorageLoadData("products", existingData)
+
+  } catch (error) {
+    console.log(error)
+  }
+ 
+}
+
+const localStorageLoadData = (name, data) => {
+  localStorage.setItem(name, data)
+}
+
+getProducts()
+
+// localStorage.clear()
+
+const users = localStorage.getItem("products")
+const parsedProducts = JSON.parse(users)
+
+console.log(parsedProducts)
+
+
+// Back to top
+
+const toTopBtn = document.getElementById("back-to-top")
+
+window.onscroll = () => {
+  if(document.body.scrollTop > 10 || document.documentElement.scrollTop > 100){
+    toTopBtn.style.display = "block"
+  } else {
+    toTopBtn.style.display = "none"
+  }
+}
+
+toTopBtn.addEventListener("click", () => {
+  document.body.scrollTop = 0
+  document.documentElement.scrollTop = 0
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // IN cazul in care te razgandesti la nav toggle
 

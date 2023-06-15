@@ -160,7 +160,7 @@
                 margin: 0;
               }
 
-              button {
+              a {
                 margin: 0 0 0 $xl-spacing;
               }
             }
@@ -174,7 +174,6 @@
     padding-top: $m-section-spacing;
     .container {
       flex-direction: row;
-      //  flex-wrap: wrap;
       div {
         width: 50%;
         &:first-of-type {
@@ -200,6 +199,11 @@
 
   footer {
     .container {
+
+       .back-to-top{
+        bottom: 150px;
+      }
+   
       img {
         order: 1;
       }

@@ -53,22 +53,22 @@ section {
           margin: 0 0 0 auto;
         }
 
-        .show{
-          display: initial;
-          color: #CD2C2C;
-        }
+        // .show{
+        //   display: initial;
+        //   color: #CD2C2C;
+        // }
 
         input{
           width: 100%;
           // &:invalid{
-          //   color: red;
+          //   // color: red;
           //   border-color: red;
           // }
 
         }
 
-        .error{
-           border: 2px solid #CD2C2C;
+        .error {
+          border: 2px solid #cd2c2c;
         }
       }
 
@@ -79,7 +79,6 @@ section {
 
       .sh-password{
         position: absolute;
-       
         top: 42%;
         right: 4%;
         padding:0 ;
@@ -89,6 +88,7 @@ section {
         z-index: 1;
         svg{
           transition: color 0.3s ease-in-out;
+          cursor: pointer;
           // pointer-events:none;
           // background-color: red;
         

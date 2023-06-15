@@ -41,8 +41,9 @@
 
                 div{
                     &:last-of-type{
+                        // background-color: red;
                         width: 30%;
-                        min-width: 445px;
+                        min-width: 460px;
                         align-items: flex-start;
                     }
                 }
@@ -52,7 +53,7 @@
                     margin-top: 0;
                 }
 
-                &:nth-of-type(2){
+                &:nth-of-type(even){
                     .image-container{
                         order: 1;
                     }

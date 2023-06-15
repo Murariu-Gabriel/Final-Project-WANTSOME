@@ -15,11 +15,20 @@ ul {
 }
 
 a {
+  text-decoration: none;
+  color: black;
+}
+
+.link {
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-a:hover {
+.link:hover {
+  color: #D87D4A;
+}
+
+.hover-link:hover {
   color: #D87D4A;
 }
 
@@ -37,6 +46,15 @@ a:hover {
 
 img {
   display: block;
+}
+
+.show {
+  display: initial;
+  color: #cd2c2c;
+}
+
+.hide {
+  display: none;
 }
 
 body {
@@ -217,6 +235,41 @@ label {
     opacity: 1;
   }
 }
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup .success-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 20rem;
+  height: 20rem;
+  background-color: white;
+}
+.popup .success-popup svg {
+  height: 5rem;
+  width: 5rem;
+}
+.popup .success-popup strong {
+  font-size: 1.75rem;
+  text-transform: capitalize;
+}
+.popup .success-popup a {
+  all: unset;
+}
+
 body {
   display: flex;
   align-items: unset;
@@ -224,6 +277,7 @@ body {
   flex-wrap: unset;
   flex-direction: unset;
   background-color: #FAFAFA;
+  position: relative;
 }
 
 section {
@@ -255,15 +309,8 @@ section .container form div:not(.names) {
   flex-direction: row;
   flex-wrap: wrap;
 }
-section .container form div .show {
-  display: initial;
-  color: #CD2C2C;
-}
-section .container form div .hide {
-  display: none;
-}
 section .container form div .error {
-  border: 2px solid #CD2C2C;
+  border: 2px solid #cd2c2c;
 }
 section .container form .terms {
   margin-top: 1rem;
@@ -283,7 +330,8 @@ section .container form .terms span {
 section .container form .buttons {
   margin: 2rem 0;
 }
-section .container form .buttons button, section .container form .buttons a {
+section .container form .buttons button,
+section .container form .buttons a {
   width: 50%;
 }
 section .container form .buttons .button-3 {

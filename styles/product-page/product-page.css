@@ -15,11 +15,20 @@ ul {
 }
 
 a {
+  text-decoration: none;
+  color: black;
+}
+
+.link {
   color: #FFFFFF;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
-a:hover {
+.link:hover {
+  color: #D87D4A;
+}
+
+.hover-link:hover {
   color: #D87D4A;
 }
 
@@ -37,6 +46,15 @@ a:hover {
 
 img {
   display: block;
+}
+
+.show {
+  display: initial;
+  color: #cd2c2c;
+}
+
+.hide {
+  display: none;
 }
 
 body {
@@ -397,6 +415,7 @@ label {
 .categories .container article div a {
   background-color: #F1F1F1;
   padding-bottom: 1rem;
+  transition: color 0.3s ease-in-out;
 }
 
 .about {
@@ -443,6 +462,27 @@ footer .container {
   gap: 2rem;
   text-align: center;
 }
+footer .container .back-to-top {
+  color: white;
+  background: none;
+  height: 48px;
+  width: 48px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  position: fixed;
+  bottom: 3.5%;
+  right: 3.5%;
+  z-index: 99;
+  transition: color 0.3s ease-in-out;
+}
+footer .container .back-to-top svg {
+  font-size: 2rem;
+}
+footer .container .back-to-top:hover {
+  color: #D87D4A;
+}
 footer .container::before {
   content: "";
   width: 101px;
@@ -478,6 +518,11 @@ footer .container nav .socials {
 }
 .product .container p a {
   color: gray;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+.product .container p a:hover {
+  color: #D87D4A;
 }
 .product .container article {
   padding-bottom: 4rem;
@@ -497,13 +542,12 @@ footer .container nav .socials {
 .product .container article:first-of-type .product-info p {
   margin: 10% 0;
 }
-.product .container article:first-of-type .product-info p:last-of-type {
-  font-weight: 700;
-  font-size: 1.3rem;
+.product .container article:first-of-type .product-info strong {
+  margin: 1rem 0;
+  display: block;
 }
 .product .container article:first-of-type .product-info h2 {
   font-size: 1.75rem;
-  width: 60%;
 }
 .product .container article:first-of-type .product-info form {
   display: flex;
@@ -551,18 +595,18 @@ footer .container nav .socials {
   color: #D87D4A;
   margin-right: 1rem;
 }
-.product .container .prezentation-images {
+.product .container .presentation-images {
   padding-bottom: 7.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.625rem;
 }
-.product .container .prezentation-images img {
+.product .container .presentation-images img {
   border-radius: 8px;
   width: 100%;
 }
-.product .container .prezentation-images div {
+.product .container .presentation-images div {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
