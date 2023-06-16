@@ -12,7 +12,6 @@
   .nav-and-hero {
     .navigation{
       >.container {
-        padding: $base-spacing 0;
   
         header {
           @include flex(unset, unset, unset, unset);
@@ -33,7 +32,7 @@
           }
   
          .nav-toggle{
-            top: 5.1rem;
+            top: 4.15rem;
             width: 200px;
             left: 4%; 
             border-bottom-left-radius: $base-border-radius;
@@ -47,6 +46,13 @@
               }
             }
           }
+        }
+      }
+
+      .shopping-container{
+        .shopping-cart{
+          margin: 0 0 0 auto;
+
         }
       }
 

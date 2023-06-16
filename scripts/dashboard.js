@@ -13,7 +13,7 @@ const addButtonEvent = () => {
   for (const button of buttons) {
     const id = button.getAttribute("id")
 
-    if (id) {
+    if (id !== "cart-button") {
       button.addEventListener("click", (e) => {
         headerNav.classList.toggle("nav-toggle")
         const eventButton = e.target
@@ -27,6 +27,18 @@ const addButtonEvent = () => {
 }
 
 addButtonEvent()
+
+// CART TOGGLE
+
+const cartButton = document.getElementById("cart-button")
+const cartContainer = document.getElementById("cart-container")
+
+console.log(cartButton)
+
+cartButton.addEventListener("click", () => {
+  cartContainer.classList.toggle("show-cart")
+  document.body.classList.toggle("stop-scroll")
+})
 
 
 // FETCHING DATA AN MAKING IT USABLE
@@ -61,21 +73,73 @@ const parsedProducts = JSON.parse(users)
 console.log(parsedProducts)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Back to top
 
 const toTopBtn = document.getElementById("back-to-top")
 
-window.onscroll = () => {
-  if(document.body.scrollTop > 10 || document.documentElement.scrollTop > 100){
-    toTopBtn.style.display = "block"
+// window.onscroll = () => {
+//   if(document.body.scrollTop > 10 || document.documentElement.scrollTop > 10){
+//     toTopBtn.classList.remove("hide")
+//   } else {
+//     toTopBtn.classList.add("hide")
+//   }
+// }
+
+window.addEventListener("scroll", (e) => {
+  if(window.scrollY > 10){
+  // toTopBtn.classList.remove("hide")
+  toTopBtn.style.display = "block"
   } else {
+  // toTopBtn.classList.add("hide")
     toTopBtn.style.display = "none"
   }
-}
+})
 
+
+// {top: 0, behavior: "smooth"} would look nicer but it s not supported on MAC
 toTopBtn.addEventListener("click", () => {
-  document.body.scrollTop = 0
-  document.documentElement.scrollTop = 0
+  window.scrollTo(0, 0)
 })
 
 

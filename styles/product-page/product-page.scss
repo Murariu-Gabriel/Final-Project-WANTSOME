@@ -62,42 +62,6 @@
           form {
             display: flex;
             gap: 1.25rem;
-  
-            .input-steper {
-              display: flex;
-  
-              input {
-                all: revert;
-                text-align: center;
-                border: none;
-                background-color: $gray;
-                &::-webkit-inner-spin-button {
-                  -webkit-appearance: none;
-                  margin: 0;
-                }
-                &::-webkit-outer-spin-button {
-                  -webkit-appearance: none;
-                  margin: 0;
-                }
-                &:focus {
-                  outline: none;
-                }
-              }
-  
-              button {
-                color: $out-of-color-palette-gray;
-                background-color: $gray;
-                font-size: 1rem;
-                border: none;
-                cursor: pointer;
-                padding: 0.625rem;
-                padding: $base-spacing;
-  
-                &:hover {
-                  color: orange;
-                }
-              }
-            }
           }
 
         }

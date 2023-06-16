@@ -13,3 +13,5 @@ const loadInputs = (inputs) => {
 const addInLocalStorage = (key, value) => {
   localStorage.setItem(key, value)
 }
+
+// Shared cart toggle

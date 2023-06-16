@@ -46,7 +46,7 @@ const addButtonEvent = () => {
   for (const button of buttons) {
     const id = button.getAttribute("id")
 
-    if (id) {
+    if (id !== "cart-button") {
       button.addEventListener("click", (e) => {
         headerNav.classList.toggle("nav-toggle")
 
@@ -60,6 +60,20 @@ const addButtonEvent = () => {
 }
 
 addButtonEvent()
+
+
+// CART TOGGLE
+
+const cartButton = document.getElementById("cart-button")
+const cartContainer = document.getElementById("cart-container")
+
+console.log(cartButton)
+
+cartButton.addEventListener("click", () => {
+  cartContainer.classList.toggle("show-cart")
+  document.body.classList.toggle("stop-scroll")
+})
+
 
 // Checking for invalid inputs
 

@@ -5,9 +5,9 @@
     
     >.container {
         border-bottom: 1px solid $out-of-color-palette-gray;
-        padding: $base-spacing;
+        padding: $base-spacing 0;
         // width: 100vw
-
+        position: relative;
         .display-none {
             display: none;
         }
@@ -33,6 +33,7 @@
         header {
             @include flex(space-between, unset, wrap, unset);
             gap: $base-spacing;
+            position: relative;
 
             a {
                 align-self: center;
@@ -56,14 +57,15 @@
                 justify-content: center;
                 width: 100%;
                 position: absolute;
-                top: 8rem;
-                left: 0px;
+                top: 7.35rem;
+                left: 0;
+                right: 0;
                 background-color: $orange;
                 animation: pop-out 0.3s ease-in-out;
                 transform-origin: top;
                 border-bottom-left-radius: $base-border-radius;
                 border-bottom-right-radius: $base-border-radius;
-                
+                z-index: 1;
                 ul {
                     width: 100%;
                     align-items: center;
@@ -152,7 +154,131 @@
                         }
                     }
                 }
+            }  
+        }
+
+    }
+
+     // SHOPPING CART
+     // THE ENTIRE NAV/HERO WILL NEED REWRITING this is to hairy and repetitive but time is short for now
+     // this is basically copying and making another div classed container I have 3 in the nav section not looking good
+        .cart-container{
+            display: none;
+            .shopping-container{
+                width: 90%;
+                margin: 0 auto;
+                padding: 0;
+                max-width: 1100px;
+                padding-top: $s-spacing;
+                
+                .shopping-cart{
+                    margin: 0 auto;
+                    border-radius: $base-border-radius;
+                    background-color: $white;
+                    max-width: 377px;
+                    max-height: 488px;
+                    // height: unset;
+                    padding: $xs-padding;
+                    // height: fit-content;
+        
+                    display: flex;
+                    flex-direction: column;
+                    // flex-wrap: wrap;
+                    flex-grow: 1;
+        
+                    h6{
+                        margin: 0;
+                    }
+        
+                    >div, >p{
+                        display: flex;   
+                        justify-content: space-between;   
+                        // align-items: center;              
+                    }
+        
+                    >p{
+                        padding: $base-padding 0;
+                        margin-top: auto;
+        
+                        >span{
+                            color: $out-of-color-palette-gray;
+                            text-transform: uppercase;
+                            
+                        }
+                    }
+        
+                    >div{
+                        margin:0 0 $s-spacing 0;
+                    }
+        
+                    .cart-list{ 
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        overflow: scroll;
+        
+                        li{
+                            display: flex;
+                            gap: $s-spacing;
+                            align-items: center;
+        
+                            .img-container{
+                                
+                                width: 64px;
+                                height: 64px;
+                                background-color: $gray;
+                                border-radius: $base-border-radius ;
+        
+                                img{
+                                    width: 36px;
+                                }
+                                
+                            }
+        
+                            p{
+                                strong{
+                                    display: block;
+                                   
+                                }
+                            }
+        
+                            .input-stepper{
+                                margin-left: auto;
+        
+                                .product-counter{
+                                    width: 30px;
+                                    padding: 0;
+                                }
+                                button{
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 8px 15px; 
+                                    
+                                }
+                            }
+                        }
+                    }
+                }    
             }
         }
-    }
+
+        .show-cart{
+          display: initial;
+        }
+    
+        .overlay {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+            // top: 500px;
+            // t: 0;
+            // top: 0;
+            // right: 0;
+        }
+    
+
+
 }
+

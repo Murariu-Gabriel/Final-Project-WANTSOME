@@ -29,7 +29,7 @@
 
         .nav-toggle {
           z-index: 1;
-          top: 5.1rem;
+          top: 4.15rem;
           width: 200px;
           left: 4%;
           border-bottom-left-radius: $base-border-radius;
@@ -45,6 +45,16 @@
         }
       }
     }
+
+    .cart-container{
+      .shopping-container{
+          .shopping-cart{
+            margin: 0 0 0 auto;
+          }
+        }
+
+    }
+
   }
 
   .categories {
