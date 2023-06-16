@@ -304,37 +304,13 @@ label {
     margin-left: 0;
   }
   .nav-and-hero .navigation > .container header .nav-toggle {
-    all: revert;
+    display: none;
+  }
+  .nav-and-hero .navigation > .container header nav:not(.visual-nav) {
     display: inline-block;
     flex-grow: 2;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: none;
-    flex-direction: row;
-    gap: 2rem;
-    font-size: 1rem;
-  }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li {
-    padding: 0;
-    width: auto;
-  }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li:hover {
-    background-color: transparent;
-  }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li a {
-    padding: 0;
-  }
-  .nav-and-hero .navigation > .container header .nav-toggle ul li a:hover {
-    color: #D87D4A;
-  }
-  .nav-and-hero .navigation > .container header nav {
-    display: inline-block;
-    flex-grow: 2;
-  }
-  .nav-and-hero .navigation > .container header nav ul {
+  .nav-and-hero .navigation > .container header nav:not(.visual-nav) ul {
     display: flex;
     align-items: center;
     justify-content: center;

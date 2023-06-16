@@ -311,16 +311,16 @@ label {
     margin-left: auto;
   }
   .navigation > .container header .nav-toggle {
-    z-index: 1;
-    top: 4.15rem;
-    width: 200px;
-    left: 4%;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    top: 5.15rem;
   }
-  .navigation > .container header .nav-toggle ul li:last-of-type {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+  .navigation > .container header .nav-toggle .special-nav {
+    padding: 6rem 5% 4rem 5%;
+    flex-direction: row;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  .navigation > .container header .nav-toggle .special-nav li {
+    flex-grow: 1;
   }
   .navigation .cart-container .shopping-container .shopping-cart {
     margin: 0 0 0 auto;
@@ -395,6 +395,9 @@ label {
     flex-direction: unset;
     text-align: unset;
     padding: 2rem 0;
+  }
+  footer .container .back-to-top {
+    bottom: 80px;
   }
   footer .container nav:first-of-type {
     width: 100%;

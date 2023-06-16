@@ -32,17 +32,16 @@
           }
   
          .nav-toggle{
-            top: 4.15rem;
-            width: 200px;
-            left: 4%; 
-            border-bottom-left-radius: $base-border-radius;
-            border-bottom-right-radius: $base-border-radius;
-            ul{
+            top: 5.15rem;
+
+            .special-nav{
+            
+              padding: 6rem 5% 4rem 5%;
+              flex-direction: row;
+              margin: 0 auto;
+              gap: 1rem;
               li{
-                &:last-of-type{
-                  border-bottom-left-radius: $base-border-radius;
-                 border-bottom-right-radius: $base-border-radius;
-                }
+                flex-grow: 1;
               }
             }
           }

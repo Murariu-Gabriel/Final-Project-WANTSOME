@@ -38,6 +38,7 @@ const addToggleFunctionality = () => {
   for (const button of buttons) {
     if (button.classList.contains("display-none")) {
       button.classList.toggle("display-none")
+      document.body.classList.toggle("stop-scroll")
     }
   }
 }

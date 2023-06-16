@@ -25,35 +25,18 @@
   
           // NAV REVERTION
           .nav-toggle{ 
-            all: revert;
-            display: inline-block;
-             flex-grow: 2;
-             ul {
-              @include flex(center, center, none, row);
-              gap: $m-spacing;
-              font-size: $s-font;
-              li{
-                &:hover{
-                  background-color: transparent;
-                }
-                padding: 0;
-                width:auto;
-                a {
-                  padding: 0;
-                  &:hover{
-                    color: $orange;
-                  }
-                }
-              }
-            }
+            display: none;
           }
   
           nav {
-            display: inline-block;
-            flex-grow: 2;
-            ul {
-              @include flex(center, center, none, row);
-              gap: $m-spacing;
+            &:not(.visual-nav){
+              display: inline-block;
+              flex-grow: 2;
+              ul {
+                @include flex(center, center, none, row);
+                gap: $m-spacing;
+              }
+
             }
           }
   

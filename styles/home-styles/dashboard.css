@@ -290,8 +290,7 @@ label {
 }
 .navigation > .container {
   border-bottom: 1px solid gray;
-  padding: 1rem 0;
-  position: relative;
+  padding: 1rem;
 }
 .navigation > .container .display-none {
   display: none;
@@ -320,7 +319,6 @@ label {
   flex-wrap: wrap;
   flex-direction: unset;
   gap: 1rem;
-  position: relative;
 }
 .navigation > .container header a {
   align-self: center;
@@ -336,56 +334,85 @@ label {
   display: none;
 }
 .navigation > .container header .nav-toggle {
+  overflow: scroll;
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   position: absolute;
-  top: 7.35rem;
+  top: 8.4rem;
   left: 0;
-  right: 0;
-  background-color: #D87D4A;
   -webkit-animation: pop-out 0.3s ease-in-out;
           animation: pop-out 0.3s ease-in-out;
   transform-origin: top;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   z-index: 1;
+  padding-bottom: 8rem;
 }
-.navigation > .container header .nav-toggle ul {
-  width: 100%;
-  align-items: center;
+.navigation > .container header .nav-toggle .special-nav {
   display: flex;
+  align-items: unset;
+  justify-content: center;
+  flex-wrap: unset;
   flex-direction: column;
-  font-size: 1.3rem;
-  text-align: center;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #FFFFFF;
+  padding: 4rem 5% 2rem 5%;
+  gap: 4rem;
 }
-.navigation > .container header .nav-toggle ul li {
+.navigation > .container header .nav-toggle .special-nav li {
   width: 100%;
 }
-.navigation > .container header .nav-toggle ul li:not(:first-of-type) {
-  border-top: 1px solid #000000;
+.navigation > .container header .nav-toggle .special-nav li:hover {
+  z-index: 1;
 }
-.navigation > .container header .nav-toggle ul li:last-of-type {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+.navigation > .container header .nav-toggle .special-nav li div {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  border: none;
+  padding-bottom: 1rem;
+  height: 160px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: unset;
+  flex-direction: column;
+  background-color: #F1F1F1;
 }
-.navigation > .container header .nav-toggle ul li:hover {
-  background-color: #FBAF85;
+.navigation > .container header .nav-toggle .special-nav li div:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+  border-radius: 8px;
 }
-.navigation > .container header .nav-toggle ul li a {
-  display: block;
-  padding: 1rem;
-  -webkit-animation: fade 0.7s ease-in-out;
-          animation: fade 0.7s ease-in-out;
+.navigation > .container header .nav-toggle .special-nav li div .category-image {
+  width: 100px;
 }
-.navigation > .container header .nav-toggle ul li a:hover {
-  color: #FFFFFF;
+.navigation > .container header .nav-toggle .special-nav li div .subtitle {
+  color: #000000;
+  font-size: 1rem;
+}
+.navigation > .container header .nav-toggle .special-nav li div a:not(.big-link) {
+  position: relative;
+  z-index: 2;
+  background-color: #F1F1F1;
+  transition: color 0.3s ease-in-out;
+  width: 10%;
+}
+.navigation > .container header .nav-toggle .special-nav li div .big-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 .navigation > .container header .toggle-close svg {
   display: flex;
   align-items: center;
-  fill: white;
+  fill: #FFFFFF;
 }
 .navigation > .container header .toggle-close svg:hover {
   fill: #D87D4A;
@@ -558,8 +585,10 @@ label {
   z-index: 1;
 }
 .categories .container article div {
+  position: relative;
   transition: transform 0.2s ease-in-out;
   border: none;
+  padding-bottom: 1rem;
   height: 160px;
   border-radius: 8px;
   display: flex;
@@ -581,10 +610,19 @@ label {
   color: #000000;
   font-size: 1rem;
 }
-.categories .container article div a {
+.categories .container article div a:not(.big-link) {
+  position: relative;
+  z-index: 2;
   background-color: #F1F1F1;
-  padding-bottom: 1rem;
   transition: color 0.3s ease-in-out;
+}
+.categories .container article div .big-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .products-display {

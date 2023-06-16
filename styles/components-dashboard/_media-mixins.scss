@@ -27,19 +27,17 @@
           margin-left: auto;
         }
 
-        .nav-toggle {
-          z-index: 1;
-          top: 4.15rem;
-          width: 200px;
-          left: 4%;
-          border-bottom-left-radius: $base-border-radius;
-          border-bottom-right-radius: $base-border-radius;
-          ul {
-            li {
-              &:last-of-type {
-                border-bottom-left-radius: $base-border-radius;
-                border-bottom-right-radius: $base-border-radius;
-              }
+        .nav-toggle{
+          top: 5.15rem;
+
+          .special-nav{
+            padding: 6rem 5% 4rem 5%;
+            flex-direction: row;
+            margin: 0 auto;
+            gap: 1rem;
+
+            li{
+              flex-grow: 1;
             }
           }
         }
@@ -149,6 +147,10 @@
       text-align: unset;
       padding: $m-spacing 0;
 
+      .back-to-top{
+        bottom: 80px;
+      }
+
       // &::after {
       //   left: 2%;
       // }
@@ -193,39 +195,22 @@
           }
         }
 
-        // NAV REVERTION
-        .nav-toggle {
-          all: revert;
-          display: inline-block;
-          flex-grow: 2;
-          ul {
-            @include flex(center, center, none, row);
-            gap: $m-spacing;
-            font-size: $s-font;
-            li {
-              &:hover {
-                background-color: transparent;
+       // NAV REVERTION
+          .nav-toggle{ 
+            display: none;
+          }
+  
+          nav {
+            &:not(.visual-nav){
+              display: inline-block;
+              flex-grow: 2;
+              ul {
+                @include flex(center, center, none, row);
+                gap: $m-spacing;
               }
-              padding: 0;
-              width: auto;
-              a {
-                padding: 0;
-                &:hover {
-                  color: $orange;
-                }
-              }
+
             }
           }
-        }
-
-        nav {
-          display: inline-block;
-          flex-grow: 2;
-          ul {
-            @include flex(center, center, none, row);
-            gap: $m-spacing;
-          }
-        }
       }
     }
   }
@@ -366,9 +351,9 @@
 
   footer {
     .container {
-      // .back-to-top{
-      //   bottom: 80px;
-      // }
+      .back-to-top{
+        bottom: 150px;
+      }
 
       img {
         order: 1;
