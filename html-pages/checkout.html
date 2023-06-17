@@ -16,11 +16,11 @@
       href="/styles/checkout-styles/media/checkout-large/checkout-media-large.css"
       media="screen and (min-width: 990px)"
     />
-    <script src="/scripts/checkout.js" async></script>
-    <script src="../scripts/sharedScript.js"></script>
+    <script src="../scripts/checkout.js" async></script>
+    <script src="../scripts/sharedScript.js" defer></script>
   </head>
   <body>
-    <section class="navigation">
+       <section class="navigation">
       <div class="container">
         <header>
           <button id="h-button">
@@ -51,12 +51,12 @@
             />
           </a>
           <nav>
-             <ul>
-                <li><a class="link" href="/html-pages/dashboard.html">home</a></li>
-                <li><a class="link" href="/html-pages/t-category.html?category=smart-watch">watches</a></li>
-                <li><a class="link" href="/html-pages/t-category.html?category=smart-band">bands</a></li>
-                <li><a class="link" href="/html-pages/t-category.html?category=smart-strap">straps</a></li>
-              </ul>
+           <ul>
+              <li><a class="link" href="/html-pages/dashboard.html">home</a></li>
+              <li><a class="link" href="/html-pages/t-category.html?category=smart-watch">watches</a></li>
+              <li><a class="link" href="/html-pages/t-category.html?category=smart-band">bands</a></li>
+              <li><a class="link" href="/html-pages/t-category.html?category=smart-strap">straps</a></li>
+            </ul>
           </nav>
             <nav class="visual-nav overlay" id="header-nav">
               <ul class="special-nav ">
@@ -150,47 +150,24 @@
         </header>
       </div>
 
-      
-          <div class="cart-container overlay" id="cart-container">
-            <div class="shopping-container ">
-             <form class="shopping-cart" id="count-form">
-                <div> 
-                  <h6>Cart (<span>3</span>)</h2> 
-                    <button class="button">Remove all</button>
-                </div>
-              
-                <ul class="cart-list">
-                  <li>
-                    <div class="img-container">
-                      <img src="" alt="" />
-                    </div>
 
-                    <p>
-                      <strong>s1 active</strong>
-                      <span>$ price</span>
-                    </p>
-
-                    <div class="input-stepper">
-                      <button id="decrement" type="button">-</button>
-                      <input
-                        type="number"
-                        class="product-counter"
-                        value="1"
-                        min="1"
-                        max="100"
-                        readonly
-                      />
-                      <button id="increment" type="button">+</button>
-                    </div>
-                  </li>
-                </ul>
-                <p><span>total</span> <strong>$ <span>1234</span></strong></p>
-                
+       <div class="cart-container overlay" id="cart-container">
+          <div class="shopping-container ">
+            <form class="shopping-cart" id="count-form">
+              <div> 
+                  <h6>Cart (<span id="cart-counter">0</span>)</h6> 
+                  <button class="button">Remove all</button>
+              </div>
+            
+              <ul class="cart-list" id="cart-list">
+              </ul>
+              <p><span>total</span> <strong>$ <span id="total-price">0</span></strong></p>
               
-                <button type="submit" class="button-1">checkout</button>
-              </form>
-            </div>
+            
+              <button type="submit" class="button-1">checkout</button>
+            </form>
           </div>
+        </div>
     </section>
 
     <section class="checkout">

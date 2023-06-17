@@ -1,48 +1,3 @@
-// Nav functionality
-
-const headerNav = document.getElementById("header-nav")
-const buttons = document.querySelectorAll("header button")
-
-const addToggleFunctionality = () => {
-  for (const button of buttons) {
-    if (button.classList.contains("display-none")) {
-      button.classList.toggle("display-none")
-      document.body.classList.toggle("stop-scroll")
-    }
-  }
-}
-
-const addButtonEvent = () => {
-  for (const button of buttons) {
-    const id = button.getAttribute("id")
-
-    if (id !== "cart-button") {
-      button.addEventListener("click", (e) => {
-        headerNav.classList.toggle("nav-toggle")
-        const eventButton = e.target
-
-        addToggleFunctionality()
-
-        eventButton.classList.toggle("display-none")
-      })
-    }
-  }
-}
-
-addButtonEvent()
-
-// CART TOGGLE
-
-const cartButton = document.getElementById("cart-button")
-const cartContainer = document.getElementById("cart-container")
-
-
-
-cartButton.addEventListener("click", () => {
-  cartContainer.classList.toggle("show-cart")
-  document.body.classList.toggle("stop-scroll")
-})
-
 // checking nav param window category
 
 const searchParams = new URLSearchParams(window.location.search)
@@ -143,33 +98,6 @@ if(categoryProducts.length > 0){
 
 
 
-// Back to top
-
-const toTopBtn = document.getElementById("back-to-top")
-
-// window.onscroll = () => {
-//   if(document.body.scrollTop > 10 || document.documentElement.scrollTop > 10){
-//     toTopBtn.classList.remove("hide")
-//   } else {
-//     toTopBtn.classList.add("hide")
-//   }
-// }
-
-window.addEventListener("scroll", (e) => {
-  if(window.scrollY > 10){
-  // toTopBtn.classList.remove("hide")
-  toTopBtn.style.display = "block"
-  } else {
-  // toTopBtn.classList.add("hide")
-    toTopBtn.style.display = "none"
-  }
-})
-
-
-// {top: 0, behavior: "smooth"} would look nicer but it s not supported on MAC
-toTopBtn.addEventListener("click", () => {
-  window.scrollTo(0, 0)
-})
 
 
 

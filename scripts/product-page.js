@@ -120,28 +120,28 @@ const countButtons = document.body.querySelectorAll(
   "#counter-form button:not(.button-1)"
 )
 
-const addCountFunctionality = () => {
-  for (let button of countButtons) {
+const addCountFunctionality = (list) => {
+  for (let button of list) {
     button.addEventListener("click", (e) => {
-      counter(e.target)
+      counter(e.target, productCounter)
     })
   }
 }
 
-addCountFunctionality()
+addCountFunctionality(countButtons)
 
-const counter = (element) => {
+const counter = (element, counter) => {
   const id = element.getAttribute("id")
-  const min = productCounter.getAttribute("min")
-  const max = productCounter.getAttribute("max")
-  const value = productCounter.value
+  const min = counter.getAttribute("min")
+  const max = counter.getAttribute("max")
+  const value = counter.value
   const currentNum = parseInt(value)
   const add = currentNum + 1
   const substract = currentNum - 1
   const newValue = id === "increment" ? add : substract
 
   if (newValue >= min && newValue <= max) {
-    productCounter.setAttribute("value", newValue)
+    counter.setAttribute("value", newValue)
   }
 }
 
@@ -154,7 +154,9 @@ const cartContainer = document.getElementById("cart-container")
 cartButton.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")
   document.body.classList.toggle("stop-scroll")
-  console.log(calculateTotal(cartList.children))
+  cartCounter.innerText = cartList.children.length
+calculateTotal(cartList.children)
+// console.log(cartList.children)
 })
 
 // CART FUNCTIONALITY
@@ -201,7 +203,7 @@ const calculateTotal = (list) => {
     const elPrice = el.querySelector("p span:nth-of-type(2)")
     const inputValue = parseInt(elInput.value)
     const productPrice = parseInt(elPrice.innerText)
-    total = inputValue * productPrice
+    total = total + (inputValue * productPrice)
     console.log(inputValue)
   }
   totalPrice.innerText = total
@@ -210,105 +212,6 @@ const calculateTotal = (list) => {
 //  cart.push("productInfo")
 //  const newProducts = JSON.stringify(cart)
 //  localStorage.setItem("cart-products", newProducts)
-
-
-addToCart.addEventListener("click", () => {
-  
-  const listEl = addListEl(
-    product.id,
-    product.images.display.first,
-    product.name,
-    product.slug,
-    product.price,
-    productCounter.value
-  )
-
-  if (verifyIfIdExists(cartList.children, product.id)) {
-    addProductCount(cartList.children, product.id)
-  } else {
-    cartList.appendChild(listEl)
-    cartCounter.innerText = cartList.children.length
-  }
-
-  const newCartProduct = {
-    id: product.id,
-    count: productCounter.value,
-  }
-
-  // cart.push(newCartProduct)
-  // const newProducts = JSON.stringify(cart)
-  // localStorage.setItem("cart-products", newProducts)
-  addToLocalStorage(newCartProduct, product.id, productCounter.value)
-})
-// localStorage.removeItem("cart-products")
-
-
-const returnEL = (list, id) => {
-  for(const el of list){
-    if(el.id === id){
-      return el
-    }
-  }
-
-}
-
-const returnValue = (list, id) => {
-  for (const el of list) {
-    if (el.id === id) {
-      return el.count
-    }
-  }
-}
-
-const addToLocalStorage = (object, idea, value) => {
-  if(cart.length === 0){
-    cart.push(object)
-  } else {
-    if(verifyIfIdExists(cart, object.id)){
-      const element = returnEL(cart, object.id)
-      element.count = parseInt(returnValue(cart, object.id)) + parseInt(productCounter.value)
-    } else {
-       object.count = 1
-        cart.push(object)
-    }
-  }
-  //   for(const element of cart){
-  //     console.log(object.id)
-  //     if (element.id === product.id) {
-  //       element.count = parseInt(element.count) + parseInt(object.count)
-  //     } else{
-  //       object.count = 1
-  //       cart.push(object)
-  //     }
-  //   }
-  // }
-
-  // if (cart.length === 0) {
-  // } else {
-  //   for (const el of cart) {
-  //     console.log(object.id === el.id)
-  //     if (el.id === object.id) {
-      
-  //      
-  //       // console.log(el)
-  //       // break
-  //     } else {
-  //       cart.push(object)
-    
-
-  //   }
-  // }
-  const newProducts = JSON.stringify(cart)
-  localStorage.setItem("cart-products", newProducts)
-}
-
-// lista
-// intru in ea daca e goala adaug ceva
-// daca nu e goala verific fiecare element in parte
-// daca elementul respectiv exista atunci acutalizez valoarea
-// daca nu exista atunci il adaug
-
-// console.log(addToLocalStorage())
 
 const addListEl = (
   productId,
@@ -346,32 +249,162 @@ const addListEl = (
   return li
 }
 
+console.log(cart)
+
+const loadCart = () => {
+
+  cart.forEach(cartEl => {
+    const product = productList.find((element) => element.id === cartEl.id)
+
+    const listEL = addListEl(
+    product.id,
+    product.images.display.first,
+    product.name,
+    product.slug,
+    product.price,
+    cartEl.count
+  )
+    cartList.appendChild(listEL)
+
+  })
+}
+
+loadCart()
+
+// pana acum ca sa adaug pe toate paginile load cart trebuie sa transfer load cart, cartList selector addListEL
+// localStorage.removeItem("cart-products")
+
+addToCart.addEventListener("click", () => {
+  
+  const listEl = addListEl(
+    product.id,
+    product.images.display.first,
+    product.name,
+    product.slug,
+    product.price,
+    productCounter.value
+  )
+
+  if (verifyIfIdExists(cartList.children, product.id)) {
+    addProductCount(cartList.children, product.id)
+  } else {
+    cartList.appendChild(listEl)
+  }
+
+  const newCartProduct = {
+    id: product.id,
+    count: productCounter.value,
+  }
+
+  // cart.push(newCartProduct)
+  // const newProducts = JSON.stringify(cart)
+  // localStorage.setItem("cart-products", newProducts)
+  addToLocalStorage(newCartProduct, product.id, productCounter.value)
+})
+// localStorage.removeItem("cart-products")
+
+
+const returnEL = (list, id) => {
+  for(const el of list){
+    if(el.id === id){
+      return el
+    }
+  }
+
+}
+
+const returnValue = (list, id) => {
+  for (const el of list) {
+    if (el.id === id) {
+      return el.count
+    }
+  }
+}
+
+const addToLocalStorage = (object) => {
+  if(cart.length === 0){
+    cart.push(object)
+  } else {
+    if(verifyIfIdExists(cart, object.id)){
+      const element = returnEL(cart, object.id)
+      element.count = parseInt(returnValue(cart, object.id)) + parseInt(productCounter.value)
+    } else {
+       object.count = 1
+        cart.push(object)
+    }
+  }
+  const newProducts = JSON.stringify(cart)
+  localStorage.setItem("cart-products", newProducts)
+}
+
+// console.log(addToLocalStorage())
 // console.log(cartCounter)
 // console.log(totalPrice)
 
-const listElement = ` <li>
-    <div class="img-container">
-      <img src="" alt="" />
-    </div>
+// CART LIST ELEMENT FUNCTIONALITY 
+//cartList
 
-    <p>
-      <strong>s1 active</strong>
-      <span>$ price</span>
-    </p>
+const cartInputs = cartList.querySelectorAll(".input-stepper")
+// console.log(cartInputs)
+for(const container of cartInputs){
+  const containerButtons = container.querySelectorAll("button")
+  const input = container.querySelector(".product-counter")
+  for(const button of containerButtons){
+    button.addEventListener("click", (e) => {
+       counter(e.target, input)
+       calculateTotal(cartList.children)
+      //  console.log(input)
+    })
+  }
+}
 
-    <div class="input-stepper">
-      <button id="decrement" type="button">-</button>
-      <input
-        type="number"
-        class="product-counter"
-        value="1"
-        min="1"
-        max="100"
-        readonly
-      />
-      <button id="increment" type="button">+</button>
-    </div>
-  </li>`
+// console.log(cartInputs)
+
+// const productCounter = document.getElementById("product-counter")
+// const countButtons = document.body.querySelectorAll(
+//   "#counter-form button:not(.button-1)"
+// )
+
+// const addCountFunctionality = (list) => {
+//   for (let button of list) {
+//     button.addEventListener("click", (e) => {
+//       counter(e.target)
+//     })
+//   }
+// }
+
+// addCountFunctionality(countButtons)
+
+// const counter = (element) => {
+//   const id = element.getAttribute("id")
+//   const min = productCounter.getAttribute("min")
+//   const max = productCounter.getAttribute("max")
+//   const value = productCounter.value
+//   const currentNum = parseInt(value)
+//   const add = currentNum + 1
+//   const substract = currentNum - 1
+//   const newValue = id === "increment" ? add : substract
+
+//   if (newValue >= min && newValue <= max) {
+//     productCounter.setAttribute("value", newValue)
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Back to top
 

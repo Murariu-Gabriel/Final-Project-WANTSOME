@@ -1,6 +1,3 @@
-const headerNav = document.getElementById("header-nav")
-const buttons = document.querySelectorAll("header button")
-
 const form = document.getElementById("checkout-form")
 const inputs = document.body.querySelectorAll("#checkout-form input")
 const deliveryMessage = document.body.querySelector(".on-delivery-message")
@@ -11,6 +8,14 @@ const cardInputs = document.body.querySelectorAll(".card")
 // console.log(onDeliveryInput)
 
 // Local storage loading from shared script
+
+const loadInputs = (inputs) => {
+  for (const input of inputs) {
+    const inputName = input.getAttribute("name")
+    const localStorageValue = localStorage.getItem(inputName)
+    input.value = localStorageValue
+  }
+}
 
 loadInputs(inputs)
 
@@ -32,48 +37,48 @@ const getLabelElement = (element) => {
  return label
 }
 
-// NavBar toggle functionality
+// // NavBar toggle functionality
 
-const addToggleFunctionality = () => {
-  for (const button of buttons) {
-    if (button.classList.contains("display-none")) {
-      button.classList.toggle("display-none")
-      document.body.classList.toggle("stop-scroll")
-    }
-  }
-}
+// const addToggleFunctionality = () => {
+//   for (const button of buttons) {
+//     if (button.classList.contains("display-none")) {
+//       button.classList.toggle("display-none")
+//       document.body.classList.toggle("stop-scroll")
+//     }
+//   }
+// }
 
-const addButtonEvent = () => {
-  for (const button of buttons) {
-    const id = button.getAttribute("id")
+// const addButtonEvent = () => {
+//   for (const button of buttons) {
+//     const id = button.getAttribute("id")
 
-    if (id !== "cart-button") {
-      button.addEventListener("click", (e) => {
-        headerNav.classList.toggle("nav-toggle")
+//     if (id !== "cart-button") {
+//       button.addEventListener("click", (e) => {
+//         headerNav.classList.toggle("nav-toggle")
 
-        const eventButton = e.target
+//         const eventButton = e.target
 
-        addToggleFunctionality()
-        eventButton.classList.toggle("display-none")
-      })
-    }
-  }
-}
+//         addToggleFunctionality()
+//         eventButton.classList.toggle("display-none")
+//       })
+//     }
+//   }
+// }
 
-addButtonEvent()
+// addButtonEvent()
 
 
 // CART TOGGLE
 
-const cartButton = document.getElementById("cart-button")
-const cartContainer = document.getElementById("cart-container")
+// const cartButton = document.getElementById("cart-button")
+// const cartContainer = document.getElementById("cart-container")
 
-console.log(cartButton)
+// console.log(cartButton)
 
-cartButton.addEventListener("click", () => {
-  cartContainer.classList.toggle("show-cart")
-  document.body.classList.toggle("stop-scroll")
-})
+// cartButton.addEventListener("click", () => {
+//   cartContainer.classList.toggle("show-cart")
+//   document.body.classList.toggle("stop-scroll")
+// })
 
 
 // Checking for invalid inputs

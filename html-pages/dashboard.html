@@ -22,7 +22,8 @@
       media="screen and (min-width: 990px)"
     />
 
-    <script src="../scripts/dashboard.js" defer></script>
+    <script src="../scripts/dashboard.js" async></script>
+    <script src="../scripts/sharedScript.js" async></script>
     <title>WT-Home</title>
   </head>
   <body>
@@ -181,36 +182,13 @@
           <div class="shopping-container ">
             <form class="shopping-cart" id="count-form">
               <div> 
-                <h6>Cart (<span>3</span>)</h2> 
+                  <h6>Cart (<span id="cart-counter">0</span>)</h6> 
                   <button class="button">Remove all</button>
               </div>
             
-              <ul class="cart-list">
-                <li>
-                  <div class="img-container">
-                    <img src="" alt="" />
-                  </div>
-
-                  <p>
-                    <strong>s1 active</strong>
-                    <span>$ price</span>
-                  </p>
-
-                  <div class="input-stepper">
-                    <button id="decrement" type="button">-</button>
-                    <input
-                      type="number"
-                      class="product-counter"
-                      value="1"
-                      min="1"
-                      max="100"
-                      readonly
-                    />
-                    <button id="increment" type="button">+</button>
-                  </div>
-                </li>
+              <ul class="cart-list" id="cart-list">
               </ul>
-              <p><span>total</span> <strong>$ <span>1234</span></strong></p>
+              <p><span>total</span> <strong>$ <span id="total-price">0</span></strong></p>
               
             
               <button type="submit" class="button-1">checkout</button>
