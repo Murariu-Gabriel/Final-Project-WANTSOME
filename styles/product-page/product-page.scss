@@ -42,7 +42,7 @@
         .product-info{
           max-width: 340px;
           p {
-            margin: 10% 0;
+            margin: $m-spacing 0;
             // &:last-of-type {
             //   font-weight: 700;
             //   font-size: 1.3rem;
@@ -50,8 +50,9 @@
           }
 
           strong{
-           margin: $base-spacing 0;
+           margin-bottom: $m-spacing;
            display: block;
+           font-size: $m-font;
           }
   
           h2 {

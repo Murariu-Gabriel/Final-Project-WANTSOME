@@ -257,14 +257,16 @@
                             align-items: center;
         
                             .img-container{
-                                
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
                                 width: 64px;
                                 height: 64px;
                                 background-color: $gray;
                                 border-radius: $base-border-radius ;
         
                                 img{
-                                    width: 36px;
+                                    width: 50px;
                                 }
                                 
                             }
@@ -272,7 +274,6 @@
                             p{
                                 strong{
                                     display: block;
-                                   
                                 }
                             }
         

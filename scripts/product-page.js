@@ -1,3 +1,9 @@
+// Loading cart
+
+const existingCartProducts = localStorage.getItem("cart-products")
+const parsedCartProducts = JSON.parse(existingCartProducts)
+const cart = parsedCartProducts ? parsedCartProducts : []
+
 // Nav toggle
 
 const headerNav = document.getElementById("header-nav")
@@ -31,67 +37,20 @@ const addButtonEvent = () => {
 
 addButtonEvent()
 
-
-// CART TOGGLE
-
-const cartButton = document.getElementById("cart-button")
-const cartContainer = document.getElementById("cart-container")
-
-console.log(cartButton)
-
-cartButton.addEventListener("click", () => {
-  cartContainer.classList.toggle("show-cart")
-  document.body.classList.toggle("stop-scroll")
-})
-
 // GOING BACK
 
 const backButton = document.getElementById("go-back")
 
-  backButton.addEventListener("click", () => {
-    history.back()
-  })
-
-// BUTTON Increment part
-
-const productCounter = document.getElementById("product-counter")
-const countButtons = document.body.querySelectorAll(
-  "#count-form button:not(.button-1)"
-)
-
-const addCountFunctionality = () => {
-  for (let button of countButtons) {
-    button.addEventListener("click", (e) => {
-      counter(e.target)
-    })
-  }
-}
-
-addCountFunctionality()
-
-const counter = (element) => {
-  const id = element.getAttribute("id")
-  const min = productCounter.getAttribute("min")
-  const max = productCounter.getAttribute("max")
-  const value = productCounter.value
-  const currentNum = parseInt(value)
-  const add = currentNum + 1
-  const substract = currentNum - 1
-  const newValue = id === "increment" ? add : substract
-
-  if (newValue >= min && newValue <= max) {
-    productCounter.setAttribute("value", newValue)
-  }
-}
-
-
+backButton.addEventListener("click", () => {
+  history.back()
+})
 
 // getting id from window and then searching the item in products
+
 const searchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(searchParams.entries())
 
 const productListString = localStorage.getItem("products")
-
 
 // Guard IF
 if (!productListString) {
@@ -110,7 +69,9 @@ if (!product) {
   const productImg = document.body.querySelector(".image-container img")
   const newProduct = document.body.querySelector(".product-info p.overline")
   const productTitle = document.getElementById("title")
-  const productDescription = document.body.querySelector(".product-info p:not(.overline)")
+  const productDescription = document.body.querySelector(
+    ".product-info p:not(.overline)"
+  )
   const productPrice = document.body.querySelector(".product-info strong span")
   const productFeatures = document.body.querySelector("#features p")
 
@@ -121,7 +82,6 @@ if (!product) {
   )
 
   // Loading product info in the page
-  console.log(product)
   if (!product.new) {
     newProduct.classList.add("hide")
   }
@@ -149,33 +109,269 @@ if (!product) {
     img.setAttribute("src", productPresentation[index].img)
     // img
   })
-
-
-
 }
 
 // localStorage.clear()
 
+// BUTTON Increment part
+
+const productCounter = document.getElementById("product-counter")
+const countButtons = document.body.querySelectorAll(
+  "#counter-form button:not(.button-1)"
+)
+
+const addCountFunctionality = () => {
+  for (let button of countButtons) {
+    button.addEventListener("click", (e) => {
+      counter(e.target)
+    })
+  }
+}
+
+addCountFunctionality()
+
+const counter = (element) => {
+  const id = element.getAttribute("id")
+  const min = productCounter.getAttribute("min")
+  const max = productCounter.getAttribute("max")
+  const value = productCounter.value
+  const currentNum = parseInt(value)
+  const add = currentNum + 1
+  const substract = currentNum - 1
+  const newValue = id === "increment" ? add : substract
+
+  if (newValue >= min && newValue <= max) {
+    productCounter.setAttribute("value", newValue)
+  }
+}
+
+// CART TOGGLE
+
+const cartButton = document.getElementById("cart-button")
+const cartContainer = document.getElementById("cart-container")
+
+// Decided that I want to calculate total amount only when I open cart
+cartButton.addEventListener("click", () => {
+  cartContainer.classList.toggle("show-cart")
+  document.body.classList.toggle("stop-scroll")
+  console.log(calculateTotal(cartList.children))
+})
+
+// CART FUNCTIONALITY
+
+const cartList = document.getElementById("cart-list")
+const cartCounter = document.getElementById("cart-counter") // car5 counter este lungimea listei de produse
+const addToCart = document.getElementById("add-to-cart")
+const counterForm = document.getElementById("counter-form")
+const totalPrice = document.getElementById("total-price")
+
+counterForm.addEventListener("submit", (e) => {
+  // e.preventDefault()
+})
+
+console.log(product)
+
+const verifyIfIdExists = (list, id) => {
+  for (const el of list) {
+    if (el.id.includes(id)) {
+      return true
+    }
+  }
+  return false
+}
+
+const addProductCount = (list, id) => {
+  for (const el of list) {
+    if (el.id.includes(id)) {
+      const elInput = el.querySelector("input")
+      let inputValue = parseInt(elInput.value)
+      let addValue = parseInt(productCounter.value)
+      if (inputValue + addValue < 100) {
+        elInput.value = inputValue + addValue
+      }
+      break
+    }
+  }
+}
+
+const calculateTotal = (list) => {
+  let total = 0
+  for (const el of list) {
+    const elInput = el.querySelector("input")
+    const elPrice = el.querySelector("p span:nth-of-type(2)")
+    const inputValue = parseInt(elInput.value)
+    const productPrice = parseInt(elPrice.innerText)
+    total = inputValue * productPrice
+    console.log(inputValue)
+  }
+  totalPrice.innerText = total
+}
+
+//  cart.push("productInfo")
+//  const newProducts = JSON.stringify(cart)
+//  localStorage.setItem("cart-products", newProducts)
 
 
+addToCart.addEventListener("click", () => {
+  
+  const listEl = addListEl(
+    product.id,
+    product.images.display.first,
+    product.name,
+    product.slug,
+    product.price,
+    productCounter.value
+  )
+
+  if (verifyIfIdExists(cartList.children, product.id)) {
+    addProductCount(cartList.children, product.id)
+  } else {
+    cartList.appendChild(listEl)
+    cartCounter.innerText = cartList.children.length
+  }
+
+  const newCartProduct = {
+    id: product.id,
+    count: productCounter.value,
+  }
+
+  // cart.push(newCartProduct)
+  // const newProducts = JSON.stringify(cart)
+  // localStorage.setItem("cart-products", newProducts)
+  addToLocalStorage(newCartProduct, product.id, productCounter.value)
+})
+// localStorage.removeItem("cart-products")
 
 
+const returnEL = (list, id) => {
+  for(const el of list){
+    if(el.id === id){
+      return el
+    }
+  }
 
+}
 
+const returnValue = (list, id) => {
+  for (const el of list) {
+    if (el.id === id) {
+      return el.count
+    }
+  }
+}
 
+const addToLocalStorage = (object, idea, value) => {
+  if(cart.length === 0){
+    cart.push(object)
+  } else {
+    if(verifyIfIdExists(cart, object.id)){
+      const element = returnEL(cart, object.id)
+      element.count = parseInt(returnValue(cart, object.id)) + parseInt(productCounter.value)
+    } else {
+       object.count = 1
+        cart.push(object)
+    }
+  }
+  //   for(const element of cart){
+  //     console.log(object.id)
+  //     if (element.id === product.id) {
+  //       element.count = parseInt(element.count) + parseInt(object.count)
+  //     } else{
+  //       object.count = 1
+  //       cart.push(object)
+  //     }
+  //   }
+  // }
 
+  // if (cart.length === 0) {
+  // } else {
+  //   for (const el of cart) {
+  //     console.log(object.id === el.id)
+  //     if (el.id === object.id) {
+      
+  //      
+  //       // console.log(el)
+  //       // break
+  //     } else {
+  //       cart.push(object)
+    
 
+  //   }
+  // }
+  const newProducts = JSON.stringify(cart)
+  localStorage.setItem("cart-products", newProducts)
+}
 
+// lista
+// intru in ea daca e goala adaug ceva
+// daca nu e goala verific fiecare element in parte
+// daca elementul respectiv exista atunci acutalizez valoarea
+// daca nu exista atunci il adaug
 
+// console.log(addToLocalStorage())
 
+const addListEl = (
+  productId,
+  productImg,
+  productAlt,
+  productName,
+  productPrice,
+  productCount
+) => {
+  const li = document.createElement("li")
+  li.setAttribute("id", `list-${productId}`)
+  li.innerHTML = `<div class="img-container">
+      <img src=${productImg} alt=${productAlt} />
+    </div>
 
+    <p>
+      <strong>${productName}</strong>
+      <span>$</span>
+      <span>${productPrice}</span>
+    </p>
 
+    <div class="input-stepper">
+      <button id="decrement" type="button">-</button>
+      <input
+        type="number"
+        class="product-counter"
+        value="${productCount}"
+        min="1"
+        max="100"
+        readonly
+      />
+      <button id="increment" type="button">+</button>
+    </div>`
 
+  return li
+}
 
+// console.log(cartCounter)
+// console.log(totalPrice)
 
+const listElement = ` <li>
+    <div class="img-container">
+      <img src="" alt="" />
+    </div>
 
+    <p>
+      <strong>s1 active</strong>
+      <span>$ price</span>
+    </p>
 
-
+    <div class="input-stepper">
+      <button id="decrement" type="button">-</button>
+      <input
+        type="number"
+        class="product-counter"
+        value="1"
+        min="1"
+        max="100"
+        readonly
+      />
+      <button id="increment" type="button">+</button>
+    </div>
+  </li>`
 
 // Back to top
 
@@ -190,27 +386,19 @@ const toTopBtn = document.getElementById("back-to-top")
 // }
 
 window.addEventListener("scroll", (e) => {
-  if(window.scrollY > 10){
-  // toTopBtn.classList.remove("hide")
-  toTopBtn.style.display = "block"
+  if (window.scrollY > 10) {
+    // toTopBtn.classList.remove("hide")
+    toTopBtn.style.display = "block"
   } else {
-  // toTopBtn.classList.add("hide")
+    // toTopBtn.classList.add("hide")
     toTopBtn.style.display = "none"
   }
 })
-
 
 // {top: 0, behavior: "smooth"} would look nicer but it s not supported on MAC
 toTopBtn.addEventListener("click", () => {
   window.scrollTo(0, 0)
 })
-
-
-
-
-
-
-
 
 // In case I need increment button selectors
 

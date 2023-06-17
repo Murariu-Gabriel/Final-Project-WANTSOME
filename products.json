@@ -1,7 +1,7 @@
 [
   {
     "id": "item-1",
-    "slug": "Mi-watch-1",
+    "slug": "Mi-watch",
     "name": "Xiaomi Mi Watch",
     "images": {
       "display": {
@@ -42,7 +42,7 @@
   },
   {
     "id": "item-2",
-    "slug": "Mi-watch-S1-Active",
+    "slug": "S1-Active",
     "name": "Xiaomi Mi Watch S1 Active",
     "images": {
       "display": {
@@ -87,7 +87,7 @@
   },
   {
     "id": "item-3",
-    "slug": "Mi-watch-S1-Pro",
+    "slug": "S1-Pro",
     "name": "Xiaomi Mi Watch S1 Pro",
     "images": {
       "display": {
@@ -132,7 +132,7 @@
   },
   {
     "id": "item-4",
-    "slug": "Smart-Band-7",
+    "slug": "Mi-Band-7",
     "name": "Xiaomi Smart Band 7 NFC",
     "images": {
       "display": {
@@ -177,7 +177,7 @@
   },
   {
     "id": "item-5",
-    "slug": "fit-bit-charge",
+    "slug": "Fb-charge",
     "name": "Fitbit Charge 5",
     "images": {
       "display": {
@@ -218,7 +218,7 @@
   },
   {
     "id": "item-6",
-    "slug": "fit-bit-inspire",
+    "slug": "fb-inspire",
     "name": "Fitbit inspire 3",
     "images": {
       "display": {
@@ -259,7 +259,7 @@
   },
   {
     "id": "item-7",
-    "slug": "Garmin-vivomove",
+    "slug": "Vivomove",
     "name": "Garmin vivomove Sport",
     "images": {
       "display": {
@@ -300,7 +300,7 @@
   },
   {
     "id": "item-8",
-    "slug": "Garmin-vivomove-trend",
+    "slug": "Vivomove-trend",
     "name": "Garmin vivomove trend",
     "images": {
       "display": {
@@ -341,7 +341,7 @@
   },
   {
     "id": "item-9",
-    "slug": "Garmin-venu-2",
+    "slug": "Venu-2",
     "name": "Garmin Venu 2",
     "images": {
       "display": {
@@ -382,7 +382,7 @@
   },
   {
     "id": "item-10",
-    "slug": "Huawei-gt-runner",
+    "slug": "Gt-runner",
     "name": "Huawei gt runner",
     "images": {
       "display": {
@@ -435,7 +435,7 @@
   },
   {
     "id": "item-11",
-    "slug": "Huawei-band-7",
+    "slug": "H-band-7",
     "name": "Huawei band 7",
     "images": {
       "display": {

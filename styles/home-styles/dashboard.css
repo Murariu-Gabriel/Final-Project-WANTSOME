@@ -504,13 +504,16 @@ label {
   align-items: center;
 }
 .navigation .cart-container .shopping-container .shopping-cart .cart-list li .img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 64px;
   height: 64px;
   background-color: #F1F1F1;
   border-radius: 8px;
 }
 .navigation .cart-container .shopping-container .shopping-cart .cart-list li .img-container img {
-  width: 36px;
+  width: 50px;
 }
 .navigation .cart-container .shopping-container .shopping-cart .cart-list li p strong {
   display: block;
