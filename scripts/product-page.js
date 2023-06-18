@@ -107,11 +107,8 @@ if (!product) {
   const productPresentation = product.images.gallery
   displayImages.forEach((img, index) => {
     img.setAttribute("src", productPresentation[index].img)
-    // img
   })
 }
-
-// localStorage.clear()
 
 // BUTTON Increment part
 
@@ -119,6 +116,7 @@ const productCounter = document.getElementById("product-counter")
 const countButtons = document.body.querySelectorAll(
   "#counter-form button:not(.button-1)"
 )
+
 
 const addCountFunctionality = (list) => {
   for (let button of list) {
@@ -136,25 +134,46 @@ const counter = (element, counter) => {
   const max = counter.getAttribute("max")
   const value = counter.value
   const currentNum = parseInt(value)
+  console.log(currentNum)
   const add = currentNum + 1
   const substract = currentNum - 1
+  console.log(substract)
   const newValue = id === "increment" ? add : substract
-
   if (newValue >= min && newValue <= max) {
     counter.setAttribute("value", newValue)
+    console.log("da")
   }
 }
+
+// const liCounter = (element, counter) => {
+//   const id = element.getAttribute("id")
+//   const min = counter.getAttribute("min")
+//   const max = counter.getAttribute("max")
+//   const value = counter.value
+//   const currentNum = parseInt(value)
+//   const add = currentNum + 1
+//   const substract = currentNum - 1
+//   const newValue = id === "increment" ? add : substract
+//   console.log(newValue)
+//   if (newValue >= min && newValue <= max) {
+//     counter.setAttribute("value", newValue)
+//   }
+// }
 
 // CART TOGGLE
 
 const cartButton = document.getElementById("cart-button")
 const cartContainer = document.getElementById("cart-container")
 
+const updateCounter = () => {
+  cartCounter.innerText = cartList.children.length
+}
+
 // Decided that I want to calculate total amount only when I open cart
 cartButton.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")
   document.body.classList.toggle("stop-scroll")
-  cartCounter.innerText = cartList.children.length
+  updateCounter()
 calculateTotal(cartList.children)
 // console.log(cartList.children)
 })
@@ -182,6 +201,16 @@ const verifyIfIdExists = (list, id) => {
   return false
 }
 
+const verifyIfIdExistsForCart = (list, id) => {
+  for (const el of list) {
+    if (el.id === id) {
+      return true
+    }
+  }
+  return false
+}
+
+
 const addProductCount = (list, id) => {
   for (const el of list) {
     if (el.id.includes(id)) {
@@ -189,8 +218,10 @@ const addProductCount = (list, id) => {
       let inputValue = parseInt(elInput.value)
       let addValue = parseInt(productCounter.value)
       if (inputValue + addValue < 100) {
-        elInput.value = inputValue + addValue
+        const sum = inputValue + addValue
+        elInput.setAttribute("value", sum)
       }
+      console.log(elInput)
       break
     }
   }
@@ -204,7 +235,7 @@ const calculateTotal = (list) => {
     const inputValue = parseInt(elInput.value)
     const productPrice = parseInt(elPrice.innerText)
     total = total + (inputValue * productPrice)
-    console.log(inputValue)
+    // console.log(inputValue)
   }
   totalPrice.innerText = total
 }
@@ -239,7 +270,7 @@ const addListEl = (
         type="number"
         class="product-counter"
         value="${productCount}"
-        min="1"
+        min="0"
         max="100"
         readonly
       />
@@ -251,55 +282,32 @@ const addListEl = (
 
 console.log(cart)
 
-const loadCart = () => {
 
-  cart.forEach(cartEl => {
-    const product = productList.find((element) => element.id === cartEl.id)
-
-    const listEL = addListEl(
-    product.id,
-    product.images.display.first,
-    product.name,
-    product.slug,
-    product.price,
-    cartEl.count
-  )
-    cartList.appendChild(listEL)
-
-  })
-}
-
-loadCart()
 
 // pana acum ca sa adaug pe toate paginile load cart trebuie sa transfer load cart, cartList selector addListEL
 // localStorage.removeItem("cart-products")
 
 addToCart.addEventListener("click", () => {
   
-  const listEl = addListEl(
-    product.id,
-    product.images.display.first,
-    product.name,
-    product.slug,
-    product.price,
-    productCounter.value
-  )
-
   if (verifyIfIdExists(cartList.children, product.id)) {
     addProductCount(cartList.children, product.id)
   } else {
+
+    const listEl = addListEl(
+      product.id,
+      product.images.display.first,
+      product.name,
+      product.slug,
+      product.price,
+      productCounter.value
+    )
+
+
+    cartListFunctionality(listEl)
     cartList.appendChild(listEl)
   }
-
-  const newCartProduct = {
-    id: product.id,
-    count: productCounter.value,
-  }
-
-  // cart.push(newCartProduct)
-  // const newProducts = JSON.stringify(cart)
-  // localStorage.setItem("cart-products", newProducts)
-  addToLocalStorage(newCartProduct, product.id, productCounter.value)
+ 
+  addToLocalStorage(product.id, productCounter.value) 
 })
 // localStorage.removeItem("cart-products")
 
@@ -321,77 +329,151 @@ const returnValue = (list, id) => {
   }
 }
 
-const addToLocalStorage = (object) => {
-  if(cart.length === 0){
-    cart.push(object)
-  } else {
-    if(verifyIfIdExists(cart, object.id)){
-      const element = returnEL(cart, object.id)
-      element.count = parseInt(returnValue(cart, object.id)) + parseInt(productCounter.value)
-    } else {
-       object.count = 1
-        cart.push(object)
-    }
+//  addToLocalStorage(newCartProduct, product.id, productCounter.value)
+
+// THIS IS WEIRD I HAVE TO ACCESS INDIVIDUALLY LOCAL STORAGE
+const deleteFromStorage = (identification) => {
+  const getLocal = localStorage.getItem("cart-products")
+  const cartProducts = JSON.parse(getLocal)
+
+  if (verifyIfIdExistsForCart(cartProducts, identification)) {
+    const newCart = cartProducts.filter((el) => {
+      return el.id !== identification
+    })
+    const newCartItems = JSON.stringify(newCart)
+    localStorage.setItem("cart-products", newCartItems)
   }
+}
+
+// THIS IS WEIRD I HAVE TO ACCESS INDIVIDUALLY LOCAL STORAGE
+
+const addToLocalStorage = (productId, ProductValue, operation) => {
+
+const existingCartProducts = localStorage.getItem("cart-products")
+const parsedCartProducts = JSON.parse(existingCartProducts)
+const cart = parsedCartProducts ? parsedCartProducts : []
+
+  const object = {
+    id: productId,
+    count: parseInt(ProductValue),
+  }
+
+  console.log(object.count)
+   
+    if(cart.length === 0){
+      cart.push(object)
+    } else {
+     if (verifyIfIdExistsForCart(cart, object.id)) {
+        console.log(verifyIfIdExistsForCart(cart, object.id))
+        console.log(cart, object.id)
+        const element = returnEL(cart, object.id)
+        element.count =
+          parseInt(returnValue(cart, object.id)) +
+          parseInt(productCounter.value)
+      } 
+      else {
+        object.count = 1
+        cart.push(object)
+      }
+
+       if (operation === "decrement") {
+        console.log(cart, object.id)
+        if (verifyIfIdExists(cart, object.id)) {
+          const element = returnEL(cart, object.id)
+          element.count = parseInt(object.count)
+        }
+      } 
+    }
+  
+
   const newProducts = JSON.stringify(cart)
   localStorage.setItem("cart-products", newProducts)
 }
 
-// console.log(addToLocalStorage())
-// console.log(cartCounter)
-// console.log(totalPrice)
+
+
+
+
 
 // CART LIST ELEMENT FUNCTIONALITY 
-//cartList
+// localStorage.removeItem("cart-products")
 
-const cartInputs = cartList.querySelectorAll(".input-stepper")
-// console.log(cartInputs)
-for(const container of cartInputs){
-  const containerButtons = container.querySelectorAll("button")
-  const input = container.querySelector(".product-counter")
-  for(const button of containerButtons){
-    button.addEventListener("click", (e) => {
-       counter(e.target, input)
-       calculateTotal(cartList.children)
-      //  console.log(input)
-    })
+
+const cartButtonsEvent = (e) => {
+      const id = e.target.parentNode.parentNode.id.slice(5,12)
+      const input = e.target.parentNode.querySelector(".product-counter")
+      if(parseInt(input.value) !== 0){
+        console.log(input)
+        counter(e.target, input)
+        calculateTotal(cartList.children)
+        addToLocalStorage(id, input.value, e.target.id)
+      } else {
+          deleteFromStorage(id)
+      }
+      if(parseInt(input.value) === 0){
+        const otherButton = e.target.parentNode.querySelector("#increment")
+        const listElement = e.target.parentNode.parentNode
+        e.target.removeEventListener("click", cartButtonsEvent)
+        otherButton.removeEventListener("click", cartButtonsEvent)
+        listElement.remove()
+        deleteFromStorage(id)
+      }
+      updateCounter()
+}
+
+
+const cartListFunctionality = (parent) => {
+   const containerButtons = parent.querySelectorAll("button")
+   console.log(containerButtons)
+   for (const button of containerButtons) {
+     button.addEventListener("click", cartButtonsEvent)
+   }
+}
+
+const removeCartListFunctionality = (parent) => {
+  const containerButtons = parent.querySelectorAll("button")
+  console.log(containerButtons)
+  for (const button of containerButtons) {
+    button.removeEventListener("click", cartButtonsEvent)
   }
 }
 
-// console.log(cartInputs)
+const loadCart = () => {
+  cart.forEach((cartEl) => {
+    const product = productList.find((element) => element.id === cartEl.id)
 
-// const productCounter = document.getElementById("product-counter")
-// const countButtons = document.body.querySelectorAll(
-//   "#counter-form button:not(.button-1)"
-// )
+    const listEL = addListEl(
+      product.id,
+      product.images.display.first,
+      product.name,
+      product.slug,
+      product.price,
+      cartEl.count
+    )
+    cartListFunctionality(listEL)
+    cartList.appendChild(listEL)
+  })
+}
 
-// const addCountFunctionality = (list) => {
-//   for (let button of list) {
-//     button.addEventListener("click", (e) => {
-//       counter(e.target)
-//     })
-//   }
-// }
-
-// addCountFunctionality(countButtons)
-
-// const counter = (element) => {
-//   const id = element.getAttribute("id")
-//   const min = productCounter.getAttribute("min")
-//   const max = productCounter.getAttribute("max")
-//   const value = productCounter.value
-//   const currentNum = parseInt(value)
-//   const add = currentNum + 1
-//   const substract = currentNum - 1
-//   const newValue = id === "increment" ? add : substract
-
-//   if (newValue >= min && newValue <= max) {
-//     productCounter.setAttribute("value", newValue)
-//   }
-// }
+loadCart()
 
 
+const cartDeleteAll = document.getElementById("remove-cart-all")
 
+cartDeleteAll.addEventListener("click", (e) => {
+  e.preventDefault()
+  const cartItems = cartList.children
+ 
+  for(const item of cartItems){
+    removeCartListFunctionality(item)
+  }
+
+  cartList.innerHTML = ""
+
+  localStorage.removeItem("cart-products")
+  calculateTotal(cartList.children)
+  updateCounter()
+})
 
 
 

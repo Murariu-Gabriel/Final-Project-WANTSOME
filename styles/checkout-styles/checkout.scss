@@ -1,5 +1,4 @@
 @use "../abstracts/" as *;
-
 @use "../components-dashboard/header"; 
 @use "../components-dashboard/footer";
 
@@ -146,27 +145,48 @@ body{
                     font-size: $m-font;
                 }
 
-                article{
-                    display: flex;
-                    align-items: center;
-                    gap: $s-spacing;
-                    
-                        img{
-                            width: 64px;
-                            height: 64px;
-                            background-color: gray;
-                            border-radius: $base-border-radius;
-                        }
-                        div{
+                .summary-list{
+                      display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        overflow-x: scroll;
+                        max-height: 864px;
+                        
+                      
+        
+                        li{
+                            display: flex;
+                            gap: $s-spacing;
+                            align-items: center;
+        
+                            .img-container{
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 64px;
+                                height: 64px;
+                                background-color: $gray;
+                                border-radius: $base-border-radius ;
+        
+                                img{
+                                    width: 50px;
+                                }
+                                
+                            }
+        
                             p{
                                 margin: 0;
+                                strong{
+                                    display: block;
+                                }
+                            }
+
+                            span{
+                                margin-top: 0.4rem;
+                                align-self: flex-start;
+                                margin-left: auto;
                             }
                         }
-
-                    p{
-                        align-self: flex-start;
-                        margin-left: auto;
-                    }
                 }
             }
 

@@ -17,7 +17,7 @@
       media="screen and (min-width: 990px)"
     />
     <script src="../scripts/checkout.js" async></script>
-    <script src="../scripts/sharedScript.js" defer></script>
+    <script src="../scripts/sharedScript.js" async></script>
   </head>
   <body>
        <section class="navigation">
@@ -156,7 +156,7 @@
             <form class="shopping-cart" id="count-form">
               <div> 
                   <h6>Cart (<span id="cart-counter">0</span>)</h6> 
-                  <button class="button">Remove all</button>
+                   <button class="button" id="remove-cart-all">Remove all</button>
               </div>
             
               <ul class="cart-list" id="cart-list">
@@ -164,7 +164,7 @@
               <p><span>total</span> <strong>$ <span id="total-price">0</span></strong></p>
               
             
-              <button type="submit" class="button-1">checkout</button>
+              <a href="/html-pages/checkout.html" class="button-1">checkout</a>
             </form>
           </div>
         </div>
@@ -329,58 +329,29 @@
           <div class="summary">
             <h2>summary</h2>
 
-            <article >
-              <img src="" alt="" />
+            <ul class="summary-list"  id="summary-list"> 
 
-              <div>
-                <p>name</p>
-                <p>$ price</p>
-              </div>
-
-              <p>x1</p>
-            </article>
-
-            <article >
-              <img src="" alt="" />
-
-              <div>
-                <p>name</p>
-                <p>$ price</p>
-              </div>
-
-              <p>x1</p>
-            </article>
-
-            <article >
-              <img src="" alt="" />
-
-              <div>
-                <p>name</p>
-                <p>$ price</p>
-              </div>
-
-              <p>x1</p>
-            </article>
+            </ul>
 
             <div class="total">
               <div>
                 <p>total</p>
-                <p>$ sum</p>
+                <p>$ <span id="total">total</span></p>
               </div>
 
               <div>
                 <p>shipping</p>
-                <p>$ sum</p>
+                <p>$ <span id="shipping">0sdf</span></p>
               </div>
 
               <div>
                 <p>vat (included)</p>
-                <p>$ sum</p>
+                <p>$ <span id="vat">0sdf</span></p>
               </div>
 
               <div>
                 <p>grand total</p>
-                <p>$ sum</p>
+                <p>$ <span id="grand-total">0sdf</span></p>
               </div>
             </div>
             

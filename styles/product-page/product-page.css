@@ -467,7 +467,7 @@ label {
   margin: 0 auto;
   border-radius: 8px;
   background-color: #FFFFFF;
-  max-width: 377px;
+  max-width: 387px;
   max-height: 488px;
   padding: 1.5rem;
   display: flex;
@@ -496,7 +496,13 @@ label {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar-button {
+  display: none;
+}
+.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar-button {
+  display: none;
 }
 .navigation .cart-container .shopping-container .shopping-cart .cart-list li {
   display: flex;
@@ -529,6 +535,9 @@ label {
   display: flex;
   align-items: center;
   padding: 8px 15px;
+}
+.navigation .cart-container .shopping-container .shopping-cart .button-1 {
+  text-align: center;
 }
 .navigation .show-cart {
   display: initial;

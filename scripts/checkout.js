@@ -37,50 +37,6 @@ const getLabelElement = (element) => {
  return label
 }
 
-// // NavBar toggle functionality
-
-// const addToggleFunctionality = () => {
-//   for (const button of buttons) {
-//     if (button.classList.contains("display-none")) {
-//       button.classList.toggle("display-none")
-//       document.body.classList.toggle("stop-scroll")
-//     }
-//   }
-// }
-
-// const addButtonEvent = () => {
-//   for (const button of buttons) {
-//     const id = button.getAttribute("id")
-
-//     if (id !== "cart-button") {
-//       button.addEventListener("click", (e) => {
-//         headerNav.classList.toggle("nav-toggle")
-
-//         const eventButton = e.target
-
-//         addToggleFunctionality()
-//         eventButton.classList.toggle("display-none")
-//       })
-//     }
-//   }
-// }
-
-// addButtonEvent()
-
-
-// CART TOGGLE
-
-// const cartButton = document.getElementById("cart-button")
-// const cartContainer = document.getElementById("cart-container")
-
-// console.log(cartButton)
-
-// cartButton.addEventListener("click", () => {
-//   cartContainer.classList.toggle("show-cart")
-//   document.body.classList.toggle("stop-scroll")
-// })
-
-
 // Checking for invalid inputs
 
 const hideShowError = (input, errorMessage, func) => {
@@ -332,7 +288,7 @@ addEventsOnInputs()
 // Form
 form.addEventListener("submit", (e) => {
   // e.preventDefault()
-  e.stopPropagation()
+  // e.stopPropagation()
 
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
@@ -343,7 +299,7 @@ form.addEventListener("submit", (e) => {
       if (input.id !== "card-number" || input.id !== "card-pin") {
         insertInputValidation(input)
       }
-      break
+      // break // TAKE CARE YOU MIGHT JUST NOT NEED THIS
     } else {
       insertInputValidation(input)
     }
@@ -353,6 +309,169 @@ form.addEventListener("submit", (e) => {
     }
   }
 })
+
+
+
+
+
+
+const addSumEl = (
+  productId,
+  productImg,
+  productAlt,
+  productName,
+  productPrice,
+  productCount
+) => {
+  const li = document.createElement("li")
+  li.setAttribute("id", `list-${productId}`)
+  li.innerHTML = `
+  
+    <div class="img-container">
+      <img src=${productImg} alt=${productAlt} />
+    </div>
+
+    <p>
+      <strong>${productName}</strong>
+      <span>$</span>
+      <span id="price">${productPrice}</span>
+    </p>
+
+    <span>x <span id="sum-count">${productCount}</span></span>
+    </div>`
+
+  return li
+}
+
+const cartProductsForSummary = localStorage.getItem("cart-products")
+const parsedCartProductsForSummary = JSON.parse(cartProductsForSummary)
+const summaryCart = parsedCartProductsForSummary ? parsedCartProductsForSummary : []
+
+
+const summaryList = document.getElementById("summary-list")
+const allProducts = localStorage.getItem("products")
+const allProductList = JSON.parse(allProducts)
+
+const loadSummary = () => {
+  summaryCart.forEach((cartEl) => {
+    const product = allProductList.find((element) => element.id === cartEl.id)
+
+    const listEL = addSumEl(
+      product.id,
+      product.images.display.first,
+      product.name,
+      product.slug,
+      product.price,
+      cartEl.count
+    )
+    summaryList.appendChild(listEL)
+  })
+}
+
+loadSummary();
+
+
+
+// console.log(
+  
+  // shipping,
+  // vat,
+  // grandTotal
+  
+  // )
+  const cartListSum = document.getElementById("cart-list")
+  const shipping = document.getElementById("shipping")
+  const vat = document.getElementById("vat")
+  const grandTotal = document.getElementById("grand-total")
+
+// summaryList
+
+// IF CART DOES NOT WORK PROPERLY MEANING DOESN T LOAD I NEED TO REWRITE THIS
+const totalSum = document.getElementById('total')
+
+
+const calculateSummaryTotal = (list) => {
+  let total = 0
+  for (const el of list) {
+    const elCount = el.querySelector("#sum-count")
+    const elPrice = el.querySelector("#price")
+    const price = parseInt(elCount.innerText)
+    const count = parseInt(elPrice.innerText)
+    total = total + (price * count)
+    console.log(total)
+  }
+  
+  totalSum.innerText = total 
+  const ship = total > 300 ? "free" : 40 
+  shipping.innerText = ship
+  const calc = total * 0.1
+  vat.innerText = calc
+  grandTotal.innerText = calc + total + (typeof ship === "string" ? 0 : ship)
+}
+
+calculateSummaryTotal(summaryList.children) 
+
+
+// const calculateSummaryTotal = (list) => {
+//   let total = 0
+//   for (const el of list) {
+//     const elInput = el.querySelector("input")
+//     const elPrice = el.querySelector("p span:nth-of-type(2)")
+//     const inputValue = parseInt(elInput.value)
+//     const productPrice = parseInt(elPrice.innerText)
+//     total = total + (inputValue * productPrice)
+//     console.log(total)
+//   }
+
+//   totalSum.innerText = total // :)) another use case for ;
+// };
+
+// calculateSummaryTotal(cartListSum.children);
+
+// cartListSum.innerText = "";
+// shipping.innerText = "";
+// vat.innerText = "";
+// grandTotal.innerText = "";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
