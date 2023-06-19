@@ -1,9 +1,35 @@
-const form = document.getElementById("checkout-form")
+const cartProductsForSummary = localStorage.getItem("cart-products")
+const parsedCartProductsForSummary = JSON.parse(cartProductsForSummary)
+const summaryCart = parsedCartProductsForSummary
+  ? parsedCartProductsForSummary
+  : []
+
+
+
+  // aici fac un if else mare foarte mare
+  // daca summary cart.length e mai mic ca 0 atunci sterg tot ce e pe pagina si fac load la un mesaj
+  // daca este mai mare ca 0 atunci facem load la tot
+  // sterg formularul si in locul lui apendez alt element care are rol de eroare
+  
+  const form = document.getElementById("checkout-form")
+  const checkoutContainer = document.getElementById("checkout-container")
+  console.log(checkoutContainer)
+
+  if(summaryCart.length === 0){
+    form.remove()
+    const message = document.createElement("div")
+    message.classList.add("message")
+
+    message.innerHTML = "<h2>Sorry your cart is empty</h2>"
+
+
+    checkoutContainer.appendChild(message)
+  } 
+
 const inputs = document.body.querySelectorAll("#checkout-form input")
 const deliveryMessage = document.body.querySelector(".on-delivery-message")
 const onDeliveryInput = document.getElementById("cash-on-delivery")
 const cardInputs = document.body.querySelectorAll(".card")
-
 
 // console.log(onDeliveryInput)
 
@@ -33,8 +59,8 @@ const getSpanElement = (element) => {
 }
 
 const getLabelElement = (element) => {
- const label = element.parentNode.querySelector("label")
- return label
+  const label = element.parentNode.querySelector("label")
+  return label
 }
 
 // Checking for invalid inputs
@@ -42,9 +68,7 @@ const getLabelElement = (element) => {
 const hideShowError = (input, errorMessage, func) => {
   const span = getSpanElement(input)
   const label = getLabelElement(input)
-  console.log(label)
   const funcAdaptation = typeof func === "boolean" ? func : func(input.value)
-  console.log(funcAdaptation)
   if (funcAdaptation) {
     input.classList.add("error")
     span.classList.replace("hide", "show")
@@ -126,6 +150,7 @@ const emailValidation = (email) => {
 }
 
 const ifTypeNumberValidation = (value) => {
+  console.log(value.includes(" "))
   if (value.includes(" ")) {
     return true
   }
@@ -162,16 +187,14 @@ const checkLength = (value, minLength) => {
 }
 
 const returnHideShowError = (input, minLength, func) => {
-    hideShowError(
-      input,
-      `Insert ${minLength} characters`,
-      func(input.value, minLength)
-    )
+  hideShowError(
+    input,
+    `Insert ${minLength} characters`,
+    func(input.value, minLength)
+  )
 }
 
 const inputsLengthValidation = (input) => {
-  
-
   if (input.name === "phone-number" || input.name === "card-number") {
     returnHideShowError(input, 9, checkLength)
   }
@@ -191,7 +214,6 @@ const inputsLengthValidation = (input) => {
   ) {
     returnHideShowError(input, 4, checkLength)
   }
-
 }
 
 // Function that checks type of input, then checks validation
@@ -205,9 +227,7 @@ const insertInputValidation = (e) => {
   }
 
   if (e.value.length !== 0) {
-    
     inputsLengthValidation(e)
-
 
     if (e.name === "email") {
       hideShowError(e, `Email address is not valid`, emailValidation)
@@ -216,7 +236,7 @@ const insertInputValidation = (e) => {
     if (e.name === "full-name") {
       hideShowError(e, `Wrong format`, namesValidation)
 
-      if(!e.classList.contains("error")){
+      if (!e.classList.contains("error")) {
         returnHideShowError(e, 6, checkLength)
       }
     }
@@ -285,35 +305,63 @@ const addEventsOnInputs = () => {
 
 addEventsOnInputs()
 
+const cleanLocalStorage = () => {
+  for(let i = 0; i < localStorage.length; i++){
+    const key = localStorage.key(i)
+    if (key !== "products" &&  key !== "users" && key !== "debug") {
+      localStorage.removeItem(key)
+    }
+  }
+}
+
+// console.log(localStorage.getItem(localStorage.key(2)))
+
+
+
+
 // Form
 form.addEventListener("submit", (e) => {
-  // e.preventDefault()
+  e.preventDefault()
   // e.stopPropagation()
+
+  const formData = new FormData(e.currentTarget)
+  const entries = [...formData.entries()]
+
+  const formObject = Object.fromEntries(formData)
+  const userData = JSON.stringify(formObject)
+
+  const errors = []
 
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
     const span = getSpanElement(input)
 
-    console.log(onDeliveryInput.checked)
+    // console.log(onDeliveryInput.checked)
     if (onDeliveryInput.checked) {
-      if (input.id !== "card-number" || input.id !== "card-pin") {
+      if (
+        input.getAttribute("id") !== "card-number" &&
+        input.getAttribute("id") !== "card-pin"
+      ) {
+        console.log(input.id)
         insertInputValidation(input)
       }
-      // break // TAKE CARE YOU MIGHT JUST NOT NEED THIS
     } else {
       insertInputValidation(input)
     }
 
     if (label.classList.contains("error") || span.classList.contains("show")) {
       e.preventDefault()
-    }
+      errors.push("invalid")
+    } 
+  }
+
+  if(!errors.includes("invalid")){
+    const orderSuccessPop = document.getElementById("order-success")
+    orderSuccessPop.classList.toggle("hide")
+    document.body.classList.toggle("stop-scroll")
+    cleanLocalStorage()
   }
 })
-
-
-
-
-
 
 const addSumEl = (
   productId,
@@ -343,11 +391,6 @@ const addSumEl = (
   return li
 }
 
-const cartProductsForSummary = localStorage.getItem("cart-products")
-const parsedCartProductsForSummary = JSON.parse(cartProductsForSummary)
-const summaryCart = parsedCartProductsForSummary ? parsedCartProductsForSummary : []
-
-
 const summaryList = document.getElementById("summary-list")
 const allProducts = localStorage.getItem("products")
 const allProductList = JSON.parse(allProducts)
@@ -368,27 +411,24 @@ const loadSummary = () => {
   })
 }
 
-loadSummary();
-
-
+loadSummary()
 
 // console.log(
-  
-  // shipping,
-  // vat,
-  // grandTotal
-  
-  // )
-  const cartListSum = document.getElementById("cart-list")
-  const shipping = document.getElementById("shipping")
-  const vat = document.getElementById("vat")
-  const grandTotal = document.getElementById("grand-total")
+
+// shipping,
+// vat,
+// grandTotal
+
+// )
+const cartListSum = document.getElementById("cart-list")
+const shipping = document.getElementById("shipping")
+const vat = document.getElementById("vat")
+const grandTotal = document.getElementById("grand-total")
 
 // summaryList
 
 // IF CART DOES NOT WORK PROPERLY MEANING DOESN T LOAD I NEED TO REWRITE THIS
-const totalSum = document.getElementById('total')
-
+const totalSum = document.getElementById("total")
 
 const calculateSummaryTotal = (list) => {
   let total = 0
@@ -397,85 +437,67 @@ const calculateSummaryTotal = (list) => {
     const elPrice = el.querySelector("#price")
     const price = parseInt(elCount.innerText)
     const count = parseInt(elPrice.innerText)
-    total = total + (price * count)
+    total = total + price * count
     console.log(total)
   }
-  
-  totalSum.innerText = total 
-  const ship = total > 300 ? "free" : 40 
-  shipping.innerText = ship
-  const calc = total * 0.1
+
+  totalSum.innerText = total
+  const ship = total > 300 ? "free" : 40
+  shipping.innerText = `$ ${ship}`
+  const calc = Math.floor(total * 0.1)
   vat.innerText = calc
-  grandTotal.innerText = calc + total + (typeof ship === "string" ? 0 : ship)
+  grandTotal.innerText = total + (typeof ship === "string" ? 0 : ship)
 }
 
-calculateSummaryTotal(summaryList.children) 
+if (summaryCart.length > 0) {
+  calculateSummaryTotal(summaryList.children)
+}
 
+// GOING BACK
 
-// const calculateSummaryTotal = (list) => {
-//   let total = 0
-//   for (const el of list) {
-//     const elInput = el.querySelector("input")
-//     const elPrice = el.querySelector("p span:nth-of-type(2)")
-//     const inputValue = parseInt(elInput.value)
-//     const productPrice = parseInt(elPrice.innerText)
-//     total = total + (inputValue * productPrice)
-//     console.log(total)
-//   }
+const backButton = document.getElementById("go-back")
+console.log(backButton)
 
-//   totalSum.innerText = total // :)) another use case for ;
-// };
+backButton.addEventListener("click", () => {
+  history.back()
+})
 
-// calculateSummaryTotal(cartListSum.children);
+// ORDER SUCCESSFUL
 
-// cartListSum.innerText = "";
-// shipping.innerText = "";
-// vat.innerText = "";
-// grandTotal.innerText = "";
+if (summaryCart.length > 0) {
+  // const orderSuccessPop = document.getElementById("order-success")
+  const orderUl = document.getElementById("order-item-list")
+  const orderParagraph = document.body.querySelector("#order p")
+  const ItemsOrdered = document.getElementById("items-ordered")
+  const plural = document.getElementById("plural")
+  const orderGrandTotal = document.getElementById("order-grand-total")
+  // orderSuccessPop.classList.toggle("hide")
+  // document.body.classList.toggle("stop-scroll")
 
+  const product = allProductList.find(
+    (element) => element.id === summaryCart[0].id
+  )
 
+  const listEL = addSumEl(
+    product.id,
+    product.images.display.first,
+    product.name,
+    product.slug,
+    product.price,
+    summaryCart[0].count
+  )
+  orderUl.appendChild(listEL)
 
+  if (summaryCart.length === 1) {
+    orderParagraph.remove()
+  }
 
+  const itemsRemaining = summaryCart.length - 1
+  ItemsOrdered.innerText = itemsRemaining
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  plural.innerText = itemsRemaining === 1 ? "item" : "items"
+  orderGrandTotal.innerHTML = `$ ${grandTotal.innerText}`
+}
 
 // old solution for validating length
 

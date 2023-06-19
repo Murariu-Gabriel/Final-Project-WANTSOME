@@ -15,7 +15,21 @@ const users = existingUsers ? parsedUsers : []
 // console.log(JSON.parse(JSON.parse(existingUsers)[0]))
 
 console.log(users)
-// Function from shared script
+
+
+
+const addInLocalStorage = (key, value) => {
+  localStorage.setItem(key, value)
+}
+
+
+ const loadInputs = (inputs) => {
+   for (const input of inputs) {
+     const inputName = input.getAttribute("name")
+     const localStorageValue = localStorage.getItem(inputName)
+     input.value = localStorageValue
+   }
+ }
 loadInputs(inputs)
 
 
@@ -325,6 +339,15 @@ const checkIfValid = (e) => {
 
 addEventsOnInputs()
 
+const cleanLocalStorage = () => {
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i)
+    if (key !== "products" && key !== "users" && key !== "debug") {
+      localStorage.removeItem(key)
+    }
+  }
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault()
 
@@ -341,7 +364,7 @@ form.addEventListener("submit", (e) => {
   // !Parola12
   if (isValid) {
     //Clearing local storage of inputs
-    localStorage.clear()
+    cleanLocalStorage()
     // Resetting inputs
     e.currentTarget.reset()
 

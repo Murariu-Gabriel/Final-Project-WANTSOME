@@ -8,9 +8,20 @@ const eyeButton = document.getElementById("eye-button")
 const users = localStorage.getItem("users")
 const parsedUsers = JSON.parse(users)
 
+const addInLocalStorage = (key, value) => {
+  localStorage.setItem(key, value)
+}
+
 // console.log(JSON.parse(parsedUsers[0]))
 
-// FUNCTION from sharedScript
+const loadInputs = (inputs) => {
+  for (const input of inputs) {
+    const inputName = input.getAttribute("name")
+    const localStorageValue = localStorage.getItem(inputName)
+    input.value = localStorageValue
+  }
+}
+
 loadInputs(inputs)
 
 // toggle for showing password

@@ -37,6 +37,21 @@ const addButtonEvent = () => {
 
 addButtonEvent()
 
+const closeButton = document.getElementById("x-button")
+const popButton = document.getElementById("h-button")
+const secondNav = document.getElementById("visual-nav")
+
+headerNav.addEventListener("click", () => {
+  closeButton.classList.toggle("display-none")
+  popButton.classList.toggle("display-none")
+  headerNav.classList.toggle("nav-toggle")
+  document.body.classList.toggle("stop-scroll")
+})
+
+secondNav.addEventListener("click", (e) => {
+  e.stopPropagation()
+})
+
 // GOING BACK
 
 const backButton = document.getElementById("go-back")
@@ -164,11 +179,29 @@ const counter = (element, counter) => {
 
 const cartButton = document.getElementById("cart-button")
 const cartContainer = document.getElementById("cart-container")
+const cartForm = document.getElementById("count-form")
+
+cartContainer.addEventListener("click", () => {
+  cartContainer.classList.toggle("show-cart")
+  document.body.classList.toggle("stop-scroll")
+  //  cartContainer.classList.toggle.
+})
+
+cartForm.addEventListener("click", (e) => {
+  e.stopPropagation()
+})
+
+const hideRemoveAll = (num) => {
+  if (num === 0) {
+    cartDeleteAll.classList.toggle("hide")
+  }
+}
 
 const updateCounter = () => {
   cartCounter.innerText = cartList.children.length
-}
 
+  hideRemoveAll(cartList.children.length)
+}
 // Decided that I want to calculate total amount only when I open cart
 cartButton.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")

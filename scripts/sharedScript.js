@@ -1,3 +1,7 @@
+// cart remove button
+
+const cartDeleteAll = document.getElementById("remove-cart-all")
+
 // SHARED NAV TOGGLE
 
 const headerNav = document.getElementById("header-nav")
@@ -31,10 +35,20 @@ const addButtonEvent = () => {
 
 addButtonEvent()
 
+const closeButton = document.getElementById("x-button")
+const popButton = document.getElementById("h-button")
+const secondNav = document.getElementById("visual-nav")
 
+headerNav.addEventListener("click", () => {
+  closeButton.classList.toggle("display-none")
+   popButton.classList.toggle("display-none")
+   headerNav.classList.toggle("nav-toggle")
+  document.body.classList.toggle("stop-scroll")
+})
 
-
-
+secondNav.addEventListener("click", (e) => {
+  e.stopPropagation()
+})
 
 // CHECKING PAGE
 
@@ -68,9 +82,29 @@ const addInLocalStorage = (key, value) => {
 const cartButton = document.getElementById("cart-button")
 const cartContainer = document.getElementById("cart-container")
 const cartCounter = document.getElementById("cart-counter")
+const cartForm = document.getElementById("count-form")
+
+cartContainer.addEventListener("click", () => {
+cartContainer.classList.toggle("show-cart")
+document.body.classList.toggle("stop-scroll")
+  //  cartContainer.classList.toggle. 
+
+})
+
+cartForm.addEventListener("click", (e) => {
+  e.stopPropagation()
+})
+
+const hideRemoveAll = (num) => {
+  if(num === 0){
+    cartDeleteAll.classList.toggle("hide")
+  }
+}
 
 const updateCounter = () => {
   cartCounter.innerText = cartList.children.length
+
+  hideRemoveAll(cartList.children.length)
 }
 
 console.log(cartButton)
@@ -387,10 +421,12 @@ const calculateTotal = (list) => {
 
 
 
-const cartDeleteAll = document.getElementById("remove-cart-all")
+
+
 
 cartDeleteAll.addEventListener("click", (e) => {
   e.preventDefault()
+  
   const cartItems = cartList.children
 
   for (const item of cartItems) {

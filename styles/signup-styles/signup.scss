@@ -12,21 +12,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   .success-popup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
+    border-radius: $base-border-radius;
+    gap: 2rem;
     width: 20rem;
     height: 20rem;
     background-color: white;
 
-    svg{
-      height: 5rem;
-      width: 5rem;
-    }
+  
 
     strong {
       font-size: $l-font;

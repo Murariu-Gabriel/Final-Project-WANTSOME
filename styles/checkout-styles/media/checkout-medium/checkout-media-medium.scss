@@ -2,55 +2,86 @@
 @use "../../../abstracts/" as *;
 
 @media screen and (min-width: 550px) {
-  @include medium-media; 
+  @include medium-media;
 
-  .checkout{
-    .container{
-      form{
-        .about-payment{
-          .payment{
+  .popup {
+    .success-popup {
+     
+      padding: 2.5rem;
+      gap: $l-gap;
 
+      >strong{
+        font-size: 2rem;
+        line-height: 2.25rem;
+      }
+
+      .order {
+        display: flex;
+
+        .order-total, .order-container{
+          padding: 1rem;
+        }
+
+        .order-total{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          border-radius: 0 $base-border-radius  $base-border-radius 0;
+          width: 40%;
+        }
+        .order-container{
+          width: 60%
+
+        }
+      }
+    }
+  }
+
+  .checkout {
+    .container {
+      form {
+        .about-payment {
+          .payment {
             @include flex(unset, flex-end, wrap, unset);
             gap: 2%;
-            div{
+            div {
               margin-top: 1.5rem;
-              &:not(.on-delivery-message){
+              &:not(.on-delivery-message) {
                 width: 49%;
               }
             }
 
-            &:nth-of-type(2){
-              div{
-                &:first-of-type{
+            &:nth-of-type(2) {
+              div {
+                &:first-of-type {
                   width: 100%;
                 }
               }
             }
 
-            &:nth-of-type(3){
-               .payment-method{
+            &:nth-of-type(3) {
+              .payment-method {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                
-                .subtitle-extra{
+
+                .subtitle-extra {
                   width: 100%;
                 }
-                
-                .radio-button{
+
+                .radio-button {
                   align-self: flex-end;
                   align-items: center;
                 }
-
               }
-              
-              div.on-delivery-message{
+
+              div.on-delivery-message {
                 flex-wrap: nowrap;
                 // flex-direction: row;
                 // justify-content: unset;
                 align-items: center;
                 gap: $base-spacing;
-                svg{
+                svg {
                   width: 150px;
                   margin: 0;
                 }
@@ -61,4 +92,4 @@
       }
     }
   }
-} 
+}

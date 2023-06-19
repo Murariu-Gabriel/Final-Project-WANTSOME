@@ -61,6 +61,10 @@ img {
   display: none;
 }
 
+.show-flex {
+  display: flex;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   font-size: 15px;

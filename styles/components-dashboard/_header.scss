@@ -73,7 +73,7 @@
                     height: fit-content;
                     background-color: $white;
                     padding: 4rem 5% 2rem 5%;
-                    gap: 4rem;
+                    gap: 5rem;
                     li {
                         width: 100%;
 
@@ -86,7 +86,7 @@
                             transition: transform 0.2s ease-in-out;
                             border: none;
                             padding-bottom: $base-padding;
-                            height: 160px;
+                            height: 130px;
                             border-radius: $base-border-radius;
                             @include flex(flex-end, center, unset, column);
                             background-color: $gray;
@@ -99,7 +99,7 @@
 
                             
                             .category-image {
-                            width: 100px;
+                            width: 80px;
                            
                             }
 

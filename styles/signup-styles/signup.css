@@ -61,6 +61,10 @@ img {
   display: none;
 }
 
+.show-flex {
+  display: flex;
+}
+
 body {
   font-family: "Manrope", sans-serif;
   font-size: 15px;
@@ -303,14 +307,11 @@ label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  border-radius: 8px;
+  gap: 2rem;
   width: 20rem;
   height: 20rem;
   background-color: white;
-}
-.popup .success-popup svg {
-  height: 5rem;
-  width: 5rem;
 }
 .popup .success-popup strong {
   font-size: 1.75rem;
