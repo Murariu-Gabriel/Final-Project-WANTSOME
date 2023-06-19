@@ -6,6 +6,24 @@ const params = Object.fromEntries(searchParams.entries())
 const paramsCategory = params.category
 
 
+const categoryTitle = document.getElementById("page-category")
+console.log(paramsCategory)
+
+const updateCategoryTitle = (category) =>{
+  if (category.includes("strap")) {
+    categoryTitle.innerText = "smart straps"
+
+  } else if (category.includes("watch")) {
+    categoryTitle.innerText = "smart watches"
+
+  } else if (category.includes("band")) {
+    categoryTitle.innerText = "smart bands"
+  }
+
+}
+
+updateCategoryTitle(paramsCategory)
+
 // const category = productList.find(function (element) {
 //   return element.id === params.productId
 // })
