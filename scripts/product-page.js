@@ -525,7 +525,7 @@ const recommendedProduct = (productImage, productName, productId, secondImage) =
     <div>
       <div class="img-container">
         <img
-          class="category-image"
+          class="category-image image-1"
           src=${productImage}
           alt=${productName}
         />
@@ -537,9 +537,9 @@ const recommendedProduct = (productImage, productName, productId, secondImage) =
   `
 
   article.addEventListener("mouseenter", (e) => {
-  const img = e.target.querySelector("img")
-  img.setAttribute("src", secondImage)
-  img.style.transform = " scale(1.1)" 
+    const img = e.target.querySelector("img")
+    img.setAttribute("src", secondImage)
+    img.style.transform = " scale(1.1)"
   })
   
   article.addEventListener("mouseleave", (e) => {
@@ -547,6 +547,7 @@ const recommendedProduct = (productImage, productName, productId, secondImage) =
       img.setAttribute("src", productImage)
       img.style.transform = " scale(1)"
   })
+  
   return article
 }
 

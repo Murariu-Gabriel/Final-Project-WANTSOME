@@ -83,6 +83,29 @@
           
            
         }
+
+        .pagination-list{
+            padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            li{
+                padding: 1rem;
+                font-size: 1.5rem;
+                cursor: pointer;
+                border: 1px solid $black;
+                transition: background-color 0.3s ease-in-out;
+                &:hover{
+                    background-color: $black;
+                    color: $white;
+                }
+            }
+        }
+
+
+
+
     }
 }
 

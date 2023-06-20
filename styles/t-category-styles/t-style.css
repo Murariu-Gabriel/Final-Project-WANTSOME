@@ -765,4 +765,22 @@ footer .container nav .socials {
 }
 .template-category .container article:last-of-type {
   padding-bottom: 3rem;
+}
+.template-category .container .pagination-list {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.template-category .container .pagination-list li {
+  padding: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 1px solid #000000;
+  transition: background-color 0.3s ease-in-out;
+}
+.template-category .container .pagination-list li:hover {
+  background-color: #000000;
+  color: #FFFFFF;
 }/*# sourceMappingURL=t-style.css.map */
