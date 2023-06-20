@@ -250,14 +250,18 @@
                         flex-direction: column;
                         gap: 1rem;
                         overflow-y: scroll;
+
+                         &::-webkit-scrollbar {
+                            display: none;
+                        }
             
-                        &::-webkit-scrollbar-button {
-                        display: none;
-                        }
+                        // &::-webkit-scrollbar-button {
+                        // display: none;
+                        // }
                         
-                        &::-webkit-scrollbar-button {
-                        display: none;
-                        }
+                        // &::-webkit-scrollbar-button {
+                        // display: none;
+                        // }
 
                       
                         li{

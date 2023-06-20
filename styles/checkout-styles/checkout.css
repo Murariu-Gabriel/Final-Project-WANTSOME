@@ -518,10 +518,7 @@ label {
   gap: 1rem;
   overflow-y: scroll;
 }
-.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar-button {
-  display: none;
-}
-.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar-button {
+.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar {
   display: none;
 }
 .navigation .cart-container .shopping-container .shopping-cart .cart-list li {
@@ -851,8 +848,11 @@ body .hide {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow-x: scroll;
+  overflow-y: scroll;
   max-height: 864px;
+}
+.checkout .container form .summary .summary-list::-webkit-scrollbar {
+  display: none;
 }
 .checkout .container form .summary .summary-list li {
   display: flex;

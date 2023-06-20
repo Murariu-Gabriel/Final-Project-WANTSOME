@@ -518,10 +518,7 @@ label {
   gap: 1rem;
   overflow-y: scroll;
 }
-.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar-button {
-  display: none;
-}
-.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar-button {
+.navigation .cart-container .shopping-container .shopping-cart .cart-list::-webkit-scrollbar {
   display: none;
 }
 .navigation .cart-container .shopping-container .shopping-cart .cart-list li {
