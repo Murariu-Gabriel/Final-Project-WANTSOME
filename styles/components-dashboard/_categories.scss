@@ -19,7 +19,6 @@
         position: relative;
         transition: transform 0.2s ease-in-out;
         border: none;
-        padding-bottom: $base-padding;
         &:hover {
           transform: scale(1.1);
           box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);

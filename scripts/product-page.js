@@ -508,13 +508,88 @@ cartDeleteAll.addEventListener("click", (e) => {
   updateCounter()
 })
 
+// YOU MAY ALSO LIKE
+
+const recommendedProducts = document.getElementById("recommended-products")
+
+// din lista actuala ia un element random si fa-i push in
+
+
+const itemsWithoutCurrentOne = productList.filter((element) => element.id !== params.productId)
 
 
 
+const recommendedProduct = (productImage, productName, productId, secondImage) => {
+  const article = document.createElement("article")
+  article.innerHTML = `
+    <div>
+      <div class="img-container">
+        <img
+          class="category-image"
+          src=${productImage}
+          alt=${productName}
+        />
+      </div>
+      <h3>${productName}</h3>
+      <a href="/html-pages/product-page.html?productId=${productId}" class="button-1">see product</a>
+    </div>
+    <a href="/html-pages/product-page.html?productId=${productId}" class="big-link"></a> 
+  `
+
+  article.addEventListener("mouseenter", (e) => {
+  const img = e.target.querySelector("img")
+  img.setAttribute("src", secondImage)
+  img.style.transform = " scale(1.1)" 
+  })
+  
+  article.addEventListener("mouseleave", (e) => {
+      const img = e.target.querySelector("img")
+      img.setAttribute("src", productImage)
+      img.style.transform = " scale(1)"
+  })
+  return article
+}
 
 
 
+// itemsWithoutCurrentOne.length
+const randomNum = (max) => {
+  return Math.floor(Math.random() * max)
+}
 
+console.log(randomNum(itemsWithoutCurrentOne.length))
+
+
+ 
+
+const addRecommended = () => {
+  const itemsPositions = []
+
+  for(let i = 0; i < 3; i++){
+    const randNum = randomNum(itemsWithoutCurrentOne.length)
+    const randomItem = itemsWithoutCurrentOne[randNum]
+    
+
+     if(itemsPositions.includes(randNum)){
+      i--
+      continue
+    }
+
+    const product = recommendedProduct(
+      randomItem.images.display.first,
+      randomItem.name,
+      randomItem.id,
+      randomItem.images.display.second
+    )
+    recommendedProducts.appendChild(product)
+
+    itemsPositions.push(randNum)
+  }
+
+  return itemsPositions
+}
+
+console.log(addRecommended())
 
 
 

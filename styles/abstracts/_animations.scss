@@ -15,3 +15,12 @@
     opacity: 1;
   }
 }
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
