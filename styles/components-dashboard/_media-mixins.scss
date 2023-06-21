@@ -9,7 +9,7 @@
 
   .navigation {
     >.container {
-      padding: $base-spacing 0;
+      padding: $base-spacing;
 
       header {
         @include flex(unset, unset, unset, unset);

@@ -9,7 +9,6 @@
     padding: 0;
 
     article {
-      
 
       &:hover {
         z-index: 1;
@@ -44,7 +43,8 @@
             position: relative;
             z-index: 2;
             background-color: $gray;
-            
+            padding-bottom: $base-padding;
+
             transition: color 0.3s ease-in-out;  
           }
         }

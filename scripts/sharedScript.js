@@ -85,11 +85,11 @@ const cartCounter = document.getElementById("cart-counter")
 const cartForm = document.getElementById("count-form")
 
 cartContainer.addEventListener("click", () => {
-cartContainer.classList.toggle("show-cart")
-document.body.classList.toggle("stop-scroll")
-  //  cartContainer.classList.toggle. 
-
+  cartContainer.classList.toggle("show-cart")
+  document.body.classList.toggle("stop-scroll")
 })
+
+
 
 cartForm.addEventListener("click", (e) => {
   e.stopPropagation()
@@ -107,13 +107,14 @@ const updateCounter = () => {
   hideRemoveAll(cartList.children.length)
 }
 
-console.log(cartButton)
+
 cartButton.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")
   document.body.classList.toggle("stop-scroll")
   calculateTotal(cartList.children)
   updateCounter()
 })
+
 
 
 const productListString = localStorage.getItem("products")

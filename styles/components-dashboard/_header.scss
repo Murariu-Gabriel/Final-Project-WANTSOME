@@ -1,5 +1,17 @@
 @use "../abstracts/" as *;
 
+body{
+    // position: relative;
+}
+
+// .overlay {
+// position: absolute;
+// background: rgba(0, 0, 0, 0.5);
+// width: 100%;
+// height: 100%;
+// z-index: 999;
+// }
+
 .navigation{
     background-color: $black;
     
@@ -54,9 +66,9 @@
             // here I ve added a lot of padding because I wanted to make the container bigger because I needed more overflow so I can scroll to the bottom
             // I thought that phones with smaller height would benefit
             .nav-toggle {
-                overflow: scroll;
                 display: flex;
-                width: 100%;
+                height: 100%;
+                overflow-y: scroll;
                 position: absolute;
                 top: 8.4rem;
                 left: 0;
@@ -66,14 +78,15 @@
                 border-bottom-right-radius: $base-border-radius;
                 z-index: 1;
                 padding-bottom: 8rem;
-
+                
                 .special-nav {
                     @include flex(center, unset, unset, column);
                     width: 100%;
                     height: fit-content;
                     background-color: $white;
-                    padding: 4rem 5% 2rem 5%;
+                    padding: 5rem 5% 2rem 5%;
                     gap: 5rem;
+
                     li {
                         width: 100%;
 
@@ -188,7 +201,15 @@
                         }
                     }
                 }
+
             }  
+            .overlay {
+                position: absolute;
+                background: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                z-index: 999;
+            }
         }
 
     }
