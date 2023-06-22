@@ -3,14 +3,8 @@
 
 * {
   box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  padding: 0;
-  // background-color: ;
   
-
   &::-webkit-scrollbar {
     // background-color: $black;
     width: 1rem;
@@ -42,6 +36,14 @@ body {
     }
     
   }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  // background-color: ;
+  
+
   
 
   

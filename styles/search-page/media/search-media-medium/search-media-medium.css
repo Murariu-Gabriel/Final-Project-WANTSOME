@@ -2,22 +2,22 @@
 * {
   box-sizing: border-box;
 }
+*::-webkit-scrollbar {
+  width: 1rem;
+}
+*::-webkit-scrollbar-track:hover {
+  background-color: #e4e4e4;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(105, 104, 104);
+}
 
 body {
   margin: 0;
   padding: 0;
-}
-body::-webkit-scrollbar {
-  width: 1rem;
-}
-body::-webkit-scrollbar-track:hover {
-  background-color: #e4e4e4;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: gray;
-}
-body::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(105, 104, 104);
 }
 
 .stop-scroll {

@@ -2,22 +2,22 @@
 * {
   box-sizing: border-box;
 }
+*::-webkit-scrollbar {
+  width: 1rem;
+}
+*::-webkit-scrollbar-track:hover {
+  background-color: #e4e4e4;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(105, 104, 104);
+}
 
 body {
   margin: 0;
   padding: 0;
-}
-body::-webkit-scrollbar {
-  width: 1rem;
-}
-body::-webkit-scrollbar-track:hover {
-  background-color: #e4e4e4;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: gray;
-}
-body::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(105, 104, 104);
 }
 
 .stop-scroll {
@@ -513,9 +513,13 @@ label {
   max-width: 450px;
 }
 .navigation > .container header .search-container .form-content .input-container input {
+  position: relative;
   box-sizing: border-box;
   width: 100%;
   padding: 0.5rem;
+}
+.navigation > .container header .search-container .form-content .input-container input:focus {
+  outline: none;
 }
 .navigation > .container header .search-container .form-content .input-container button {
   position: absolute;
@@ -544,7 +548,42 @@ label {
   width: 90%;
 }
 .navigation > .container header .search-container .top {
+  border-radius: 8px;
   top: 5.12rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.navigation > .container header .search-container .top input {
+  border: 2px solid #D87D4A;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+.navigation > .container header .search-container .top::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4.5px;
+  height: 1px;
+  width: 90%; /* or 100px */
+  transform: translate(-50%, -50%);
+  border-bottom: 2px solid #F1F1F1;
+}
+.navigation > .container header .search-container div ul {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 2px solid #D87D4A;
+  z-index: -1;
+  padding: 1rem;
+  top: 29px;
+  width: 100%;
+  position: absolute;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .navigation > .container header .overlay {
   position: absolute;
