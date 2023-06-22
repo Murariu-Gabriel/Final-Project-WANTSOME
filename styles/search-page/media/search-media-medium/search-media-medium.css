@@ -458,66 +458,23 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
-  .popup .success-popup {
-    padding: 2.5rem;
-    gap: 1.875rem;
+  .navigation .container:last-of-type {
+    padding: 2rem 0;
   }
-  .popup .success-popup > strong {
-    font-size: 2rem;
-    line-height: 2.25rem;
+  .navigation .container:last-of-type h2 {
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 2.5rem;
+    border-bottom: none;
   }
-  .popup .success-popup .order {
-    display: flex;
+  .template-category {
+    padding-top: 8rem;
   }
-  .popup .success-popup .order .order-total, .popup .success-popup .order .order-container {
-    padding: 1rem;
+  .template-category .container article {
+    padding-bottom: 8rem;
   }
-  .popup .success-popup .order .order-total {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 0 8px 8px 0;
-    width: 40%;
+  .template-category .container article h2 {
+    font-size: 2.5rem;
+    width: 380px;
   }
-  .popup .success-popup .order .order-container {
-    width: 60%;
-  }
-  .checkout .container form .about-payment .payment {
-    display: flex;
-    align-items: flex-end;
-    justify-content: unset;
-    flex-wrap: wrap;
-    flex-direction: unset;
-    gap: 2%;
-  }
-  .checkout .container form .about-payment .payment div {
-    margin-top: 1.5rem;
-  }
-  .checkout .container form .about-payment .payment div:not(.on-delivery-message) {
-    width: 49%;
-  }
-  .checkout .container form .about-payment .payment:nth-of-type(2) div:first-of-type {
-    width: 100%;
-  }
-  .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method .subtitle-extra {
-    width: 100%;
-  }
-  .checkout .container form .about-payment .payment:nth-of-type(3) .payment-method .radio-button {
-    align-self: flex-end;
-    align-items: center;
-  }
-  .checkout .container form .about-payment .payment:nth-of-type(3) div.on-delivery-message {
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 1rem;
-  }
-  .checkout .container form .about-payment .payment:nth-of-type(3) div.on-delivery-message svg {
-    width: 150px;
-    margin: 0;
-  }
-}/*# sourceMappingURL=checkout-media-medium.css.map */
+}/*# sourceMappingURL=search-media-medium.css.map */

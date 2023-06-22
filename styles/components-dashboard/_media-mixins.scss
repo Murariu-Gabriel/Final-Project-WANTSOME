@@ -9,23 +9,53 @@
 
   .navigation {
     >.container {
-      padding: $base-spacing;
+      padding: $base-spacing 0;
 
       header {
         @include flex(unset, unset, unset, unset);
         padding: 0;
         gap: $m-spacing;
 
-        button {
-          &:last-of-type {
-            order: 1;
-          }
+       
+        .cart-button {
+          order: 1;
         }
+        
+        .user-account{
+          order: 1;
+          display: block;
+        }
+        
+        
+        // .cart-button{
+        //   margin-left: auto
+        // }
 
-        .search-container {
-          margin: 0;
-          margin-left: auto;
-        }
+       
+          .search-container {
+            margin: 0;
+            margin-left: auto;
+
+            .form-content{
+                &:not(.input-container){
+                  // margin: 0 1rem;
+                }
+             .input-container{
+                // margin: 0;
+                // margin-left: auto;
+             }
+            }
+
+             .contend-width{
+                // width: 90%;
+                padding: 1.5rem 0;
+              }
+
+               .top{
+                    top: 0;
+                }
+          }
+        
 
         .nav-toggle{
           top: 5.15rem;
@@ -38,6 +68,10 @@
 
             li{
               flex-grow: 1;
+            }
+
+            .user-element{
+              display: none;
             }
           }
         }
@@ -190,9 +224,9 @@
           &:nth-of-type(2) {
             display: none;
           }
-          &:last-of-type {
-            margin-left: 0;
-          }
+          // &:last-of-type { // this has been written in medium media
+          //   margin-left: 0;
+          // }
         }
 
        // NAV REVERTION
@@ -201,6 +235,7 @@
           }
   
           nav {
+            margin-right: auto; /// this is for re styling
             &:not(.visual-nav){
               display: inline-block;
               flex-grow: 2;

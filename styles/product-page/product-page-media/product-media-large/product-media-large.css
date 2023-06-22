@@ -332,11 +332,11 @@ label {
   .navigation > .container header > button:nth-of-type(2) {
     display: none;
   }
-  .navigation > .container header > button:last-of-type {
-    margin-left: 0;
-  }
   .navigation > .container header .nav-toggle {
     display: none;
+  }
+  .navigation > .container header nav {
+    margin-right: auto;
   }
   .navigation > .container header nav:not(.visual-nav) {
     display: inline-block;

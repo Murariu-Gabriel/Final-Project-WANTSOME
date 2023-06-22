@@ -1,0 +1,34 @@
+@use "../../../components-dashboard/media-mixins" as *;
+@use "../../../abstracts/" as *;
+
+@media screen and (min-width: 550px) {
+  @include medium-media; 
+  
+  .navigation{
+      .container{
+          &:last-of-type{
+            padding: $m-spacing 0;
+              h2{
+                text-align: center; 
+                color: $white;
+                font-size: $h2-font-size;
+                border-bottom: none; 
+              }
+          }
+      }
+  }
+
+  .template-category{ 
+    padding-top: $xxl-spacing;
+    .container{
+        article{
+          padding-bottom: $xxl-spacing;
+
+           h2{
+                font-size: $h2-font-size;
+                width: 380px;
+            }
+        }
+    }
+  }
+} 

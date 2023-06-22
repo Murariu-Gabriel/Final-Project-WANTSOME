@@ -336,7 +336,7 @@ label {
   border: none;
   cursor: pointer;
   fill: #FFFFFF;
-  width: 45px;
+  width: 47px;
 }
 .navigation > .container button svg {
   pointer-events: none;
@@ -351,6 +351,9 @@ label {
   flex-wrap: wrap;
   flex-direction: unset;
   gap: 1rem;
+}
+.navigation > .container header .user-account {
+  display: none;
 }
 .navigation > .container header a {
   align-self: center;
@@ -431,6 +434,9 @@ label {
   z-index: 2;
   background-color: #F1F1F1;
   transition: color 0.3s ease-in-out;
+  width: 30%;
+}
+.navigation > .container header .nav-toggle .special-nav li div a:not(.big-link) img {
   width: 10%;
 }
 .navigation > .container header .nav-toggle .special-nav li div .big-link {
@@ -449,6 +455,13 @@ label {
 .navigation > .container header .toggle-close svg:hover {
   fill: #D87D4A;
 }
+.navigation > .container header .dummy {
+  max-width: 350px;
+  width: 350px;
+  margin-left: auto;
+  height: 35px;
+  width: 100%;
+}
 .navigation > .container header .search-container {
   align-self: center;
   position: relative;
@@ -456,16 +469,27 @@ label {
   max-width: 350px;
   margin: 0 auto;
 }
-.navigation > .container header .search-container input {
+.navigation > .container header .search-container .form-content {
+  max-width: 1100px;
+  align-self: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.navigation > .container header .search-container .form-content .input-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 450px;
+}
+.navigation > .container header .search-container .form-content .input-container input {
   box-sizing: border-box;
   width: 100%;
   padding: 0.5rem;
 }
-.navigation > .container header .search-container button {
+.navigation > .container header .search-container .form-content .input-container button {
   position: absolute;
   background-color: transparent;
-  fill: black;
-  height: 100%;
+  fill: #000000;
+  height: 35px;
   width: 50px;
   top: 0;
   right: 0;
@@ -473,24 +497,39 @@ label {
   border-top-right-radius: 8px;
   transition: background-color 0.2s ease-in-out;
 }
-.navigation > .container header .search-container button svg {
+.navigation > .container header .search-container .form-content .input-container button svg {
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
-  background-color: white;
   transition: background-color 0.2s ease-in-out;
 }
-.navigation > .container header .search-container button:hover {
+.navigation > .container header .search-container .form-content .input-container button:hover {
   background-color: #D87D4A;
 }
-.navigation > .container header .search-container button:hover svg {
+.navigation > .container header .search-container .form-content .input-container button:hover svg {
   background-color: #D87D4A;
+}
+.navigation > .container header .search-container .contend-width {
+  width: 90%;
+}
+.navigation > .container header .search-container .top {
+  top: 5.12rem;
 }
 .navigation > .container header .overlay {
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-index: 4;
+}
+.navigation > .container header .overlay2 {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  z-index: 4;
+  top: 0;
+  left: 0;
 }
 .navigation .cart-container {
   display: none;

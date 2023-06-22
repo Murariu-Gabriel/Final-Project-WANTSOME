@@ -20,7 +20,7 @@ const addButtonEvent = () => {
   for (const button of buttons) {
     const id = button.getAttribute("id")
 
-    if (id !== "cart-button") {
+    if (id !== "cart-button" && id !== "search-button") {
       button.addEventListener("click", (e) => {
         headerNav.classList.toggle("nav-toggle")
         const eventButton = e.target

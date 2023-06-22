@@ -774,16 +774,6 @@ footer .container nav .socials {
   gap: 1rem;
 }
 
-.navigation .container:last-of-type {
-  padding: 0;
-}
-.navigation .container:last-of-type h2 {
-  text-align: center;
-  color: #FFFFFF;
-  font-size: 1.75rem;
-  border-bottom: none;
-}
-
 .template-category {
   padding-top: 4rem;
 }
@@ -839,4 +829,4 @@ footer .container nav .socials {
 .template-category .container .pagination-list li:hover {
   background-color: #000000;
   color: #FFFFFF;
-}/*# sourceMappingURL=t-style.css.map */
+}/*# sourceMappingURL=search-bar.css.map */
