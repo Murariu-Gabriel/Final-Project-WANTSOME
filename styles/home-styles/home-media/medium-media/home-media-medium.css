@@ -317,6 +317,38 @@ label {
     transform: scale(1.1);
   }
 }
+@-webkit-keyframes search {
+  0% {
+    max-width: 0;
+  }
+  100% {
+    width: 100vh;
+  }
+}
+@keyframes search {
+  0% {
+    max-width: 0;
+  }
+  100% {
+    width: 100vh;
+  }
+}
+@-webkit-keyframes search-bar {
+  0% {
+    max-width: 0;
+  }
+  100% {
+    max-width: 450px;
+  }
+}
+@keyframes search-bar {
+  0% {
+    max-width: 0;
+  }
+  100% {
+    max-width: 450px;
+  }
+}
 @media screen and (min-width: 550px) {
   .container {
     width: 90%;

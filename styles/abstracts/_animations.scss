@@ -24,3 +24,23 @@
     transform: scale(1.1);
   }
 }
+
+@keyframes search {
+  0% {
+    max-width: 0;
+  }
+
+  100% {
+    width: 100vh;
+  }
+}
+
+@keyframes search-bar {
+  0% {
+    max-width: 0;
+  }
+
+  100% {
+    max-width: 450px;
+  }
+}

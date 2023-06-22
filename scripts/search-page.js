@@ -10,9 +10,9 @@ const formContent = document.getElementById("form-content")
 searchInput.addEventListener("click", (e) => {
     searchContainer.classList.toggle("overlay2")
     inputContainer.classList.toggle("top")
+    inputContainer.classList.toggle("search-animation")
     formContent.classList.toggle("contend-width")
     dummy.classList.toggle("hide")
-    
     // if (window.innerWidth > 550) {
     //   for (const dummy of dummies) {
     //     dummy.classList.toggle("hide")
