@@ -161,7 +161,7 @@ const addEventsOnInputs = () => {
 addEventsOnInputs()
 
 form.addEventListener("submit", (e) => {
-  e.preventDefault()
+  // e.preventDefault()
    let noError = false
    const errors = []
 
@@ -179,10 +179,10 @@ form.addEventListener("submit", (e) => {
      }
   }
 
-   if (!errors.includes("error")) {
+  //  if (!errors.includes("error")) {
     
-     window.location.assign("http://127.0.0.1:5500/html-pages/dashboard.html")
-   } 
+  //    window.location.assign("http://127.0.0.1:5500/html-pages/dashboard.html")
+  //  } 
 
 })
 

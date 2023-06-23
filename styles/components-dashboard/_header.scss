@@ -212,11 +212,12 @@ body{
                             margin: 0 auto;
                             // margin-left: auto;
                             max-width: 450px;
+                            
                             input {
                                 position: relative;
                                 box-sizing: border-box;
                                 width: 100%;
-                                padding: 0.5rem;
+                                padding: 0.5rem ;
                                 // max-width: 350px;
                                &:focus{
                                 outline:none;
@@ -243,10 +244,31 @@ body{
             
                                 &:hover {
                                     background-color: $orange;
-                                    svg {
-                                        background-color: $orange;
-                                    }
+                                    fill: $white;
+                                    // svg {
+                                    //     background-color: $orange;
+                                    // }
                                 }
+
+                                
+                            }
+                            .close-search{
+                                right: 50px;
+                                width: 30px;
+                                border-radius: 0;
+                                
+                                svg{
+                                    width: 15px;
+                                }
+
+                                &:hover{
+                                    background-color: rgba($color: $orange, $alpha: 0.5);
+                                }
+
+                            }
+
+                            .hide{
+                                display: none;
                             }
                         }
                 }
@@ -255,8 +277,8 @@ body{
                     width: 90%;
                     // border: 1px solid black;
 
-                    .search-input, button{
-                  
+                    .input-container button{
+                        border-bottom-right-radius: 0;
                     }
                    
                 }
@@ -273,42 +295,81 @@ body{
                         border-bottom: none;
 
                     }
-                    &::after{
-                        content : "";
-                        
-                        position: absolute;
-                        left    : 50%;
-                        bottom  : -4.5px;
-                        height  : 1px;
-                        width   : 90%;  /* or 100px */
-                        transform: translate(-50%, -50%);
-                        border-bottom: 2px solid $gray;
-                    }
 
                    
                     
                 }
 
-                div{  // NEXT AREA TO WORK ON
-                    
-                    
-                    ul{
-                        height: fit-content;
-                        max-height: 400px;
-                        overflow-y: scroll;
-                        border: 2px solid $orange;
-                        z-index: -1;
-                        padding: 1rem;
-                        top: 29px;
-                        width: 100%;
-                        position: absolute;
+                .search-results{  // NEXT AREA TO WORK ON
+                    background-color: $white;
+                    max-width: 450px;
+                    overflow-y: scroll;
+                    border: 2px solid $orange;
+                    border-top: none;
+                    border-bottom-left-radius: $base-border-radius;
+                    border-bottom-right-radius: $base-border-radius;
+                    max-height: 400px;
+
+                        &::before{
+                            content : "";
+                            
+                            position: absolute;
+                            left: 50%;
+                            top: 35px;
+                            height: 1px;
+                            width: 90%;  /* or 100px */
+                            transform: translate(-50%, -50%);
+                            border-bottom: 2px solid $gray;
+                        }
+
+                        .suggestion{
+                            padding: 0.5rem 1rem;
+                            font-weight: 800;
+                            margin: 0;
+                        }
+
                         
-                        border-bottom-left-radius: $base-border-radius;
-                        border-bottom-right-radius: $base-border-radius;
-                        // z-index: -1;
-                        // background: rgba(0, 0, 0, 0.5);
+                        &::-webkit-scrollbar{
+                            width: 0.7rem;
+                            border-radius: $base-border-radius;
+                        } 
+
+                        &::-webkit-scrollbar-track{
+                            margin-top: 2px;
+                            border-radius: $base-border-radius;
+                            
+                        }
+                        &::-webkit-scrollbar-thumb{
+                            border-radius: $base-border-radius;
+                        }
+
+                          
+                    ul{
+                        padding-bottom: 1rem;
+                        border-radius: $base-border-radius;
+                        li{
+                            position: relative;
+                            // padding: 0.5rem 0;
+                            a{
+                                display: flex;
+                                padding: 0.5rem 1rem;
+                                align-items: center;
+                                // width: 100%;
+                                // height: 100%;
+
+                                svg{
+                                    fill: gray;
+                                }
+
+                                &:hover{
+                                    background-color: $gray;
+                                }
+                            }
+                        }
                         
                     }
+                    
+                  
                 }
 
             }  

@@ -378,6 +378,13 @@ label {
     margin: 0;
     margin-left: auto;
   }
+  .navigation > .container header .search-container .form-content .input-container .close-search {
+    right: 50px;
+    width: 40px;
+  }
+  .navigation > .container header .search-container .form-content .input-container .close-search svg {
+    width: 20px;
+  }
   .navigation > .container header .search-container .contend-width {
     padding: 1.5rem 0;
   }
