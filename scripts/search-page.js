@@ -54,41 +54,71 @@ const listResults = searchResults.querySelector("ul")
 const searchTitle = document.getElementById("search-title")
 const searchButton = document.getElementById("search-button")
 
+const searchValidation = (value) => {
+  if (value.includes(" ") || value.length > 2) {
+    let letters = 0
+
+    for (const letter of value) {
+      if (letter !== " ") {
+        letters++
+      }
+    }
+
+    return letters >= 2
+  } 
+
+}
+
+
+
 const noMatterSearch = (windowKey) => {
-        if (windowKey !== "") {
+        if (searchValidation(windowKey)) {
           searches.unshift(windowKey)
+
+           window.location.assign(
+             `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}"`
+           )
         }
 
-        const firstFourElements = searches.filter((element, index) => {
-          if (index < 4) {
-            return element
-          }
-        })
+ 
+        const firstFourElements = searches.filter((element, index) => index < 4)
 
         console.log(firstFourElements)
 
         const stringSearches = JSON.stringify(firstFourElements)
         localStorage.setItem("recent-searches", stringSearches)
-
-    if(windowKey !== ""){
-      window.location.assign(
-        `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}"`
-      )
-    }
 }
 
-searchInput.addEventListener("keydown", (e) => {
-    // console.log(e.key)
-    
+searchInput.addEventListener("keyup", (e) => {
+    const value = e.target.value
+    listResults.innerHTML = ""
+    searchTitle.innerText = "Search suggestions"
+
+    console.log(value.length)
+    if(value.length < 2){
+        searchTitle.innerText = "Recent searches"
+        fillRecentSearches()
+    }
+
+    console.log(e.key)
     if(e.key === "Escape"){
         removeSearchToggle()
     } 
     if (e.key === "Enter") {
-        e.preventDefault() // Prevent the default form submission
-        // Handle the Enter key press as desired
+      e.preventDefault()
+   
     }
 
- 
+    // NEXT 
+
+    // on key input verify if input exists in products.name || products.category
+    // if any of them match return an array with the products
+    // take that array and render in the ul the names
+
+    // when you get search results you want your placeholder to have in it the first result as a placeholder that can be seen while writing
+
+    // somehow each li inserted should contain the input words highlighted with irange
+
 })
 
 
@@ -100,16 +130,17 @@ searchButton.addEventListener("click", (e) => {
 })
 
 document.body.addEventListener("keydown", (e) => {
-  console.log(e.key)
+//   console.log(e.key)
   if (e.key === "Enter") {
     noMatterSearch(searchInput.value)
+    e.preventDefault()
   }
 })
 
 
 const generateListElement = (content) => {
     const element = document.createElement("li")
-    console.log(content)
+    // console.log(content)
     element.innerHTML = `
         <a href="/html-pages/search.html?search=${content}">
             <svg
