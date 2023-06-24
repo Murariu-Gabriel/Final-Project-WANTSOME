@@ -5,7 +5,7 @@ const ITEMS_PER_PAGE = 4
 const searchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(searchParams.entries())
 
-const paramsCategory = params.category
+const paramsCategory = params.category.replace("-", " ")
 
 const categoryTitle = document.getElementById("page-category")
 console.log(paramsCategory)

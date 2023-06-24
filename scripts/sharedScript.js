@@ -159,6 +159,9 @@ const addListEl = (
   return li
 }
 
+
+// I m sure most of these can be made info filters or find functions
+
 const returnEL = (list, id) => {
   for (const el of list) {
     if (el.id === id) {

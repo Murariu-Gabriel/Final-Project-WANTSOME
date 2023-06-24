@@ -11,6 +11,14 @@ const parsedRecentSearches = JSON.parse(recentSearches)
 const searches = parsedRecentSearches ? parsedRecentSearches : []
 // const searches = recentSearches ? recentSearches : []
 
+const getProductsData = () => {
+ const allProducts = localStorage.getItem("products")
+ const parsedAllProducts = JSON.parse(allProducts)
+ const products = parsedAllProducts ? parsedAllProducts : []
+
+ return products
+}
+
 
 
 
@@ -55,7 +63,7 @@ const searchTitle = document.getElementById("search-title")
 const searchButton = document.getElementById("search-button")
 
 const searchValidation = (value) => {
-  if (value.includes(" ") || value.length > 2) {
+  if (value.includes(" ") || value.length >= 2) {
     let letters = 0
 
     for (const letter of value) {
@@ -90,7 +98,7 @@ const noMatterSearch = (windowKey) => {
 }
 
 searchInput.addEventListener("keyup", (e) => {
-    const value = e.target.value
+    const value = e.target.value.toLowerCase()
     listResults.innerHTML = ""
     searchTitle.innerText = "Search suggestions"
 
@@ -100,16 +108,21 @@ searchInput.addEventListener("keyup", (e) => {
         fillRecentSearches()
     }
 
-    console.log(e.key)
-    if(e.key === "Escape"){
-        removeSearchToggle()
-    } 
+    // console.log(e.key)
+    // if(e.key === "Escape"){
+    //     removeSearchToggle()
+    // } 
     if (e.key === "Enter") {
       e.preventDefault()
    
     }
 
     // NEXT 
+
+    const products = getProductsData()
+    console.log(value)
+    const searchResult = products.filter(product => product.name.includes(value) || product.category.includes(value))
+    console.log(searchResult)
 
     // on key input verify if input exists in products.name || products.category
     // if any of them match return an array with the products
@@ -122,7 +135,7 @@ searchInput.addEventListener("keyup", (e) => {
 })
 
 
-
+// localStorage.clear()
 // localStorage.removeItem("recent-searches")
 
 searchButton.addEventListener("click", (e) => {
@@ -135,6 +148,11 @@ document.body.addEventListener("keydown", (e) => {
     noMatterSearch(searchInput.value)
     e.preventDefault()
   }
+
+   if (e.key === "Escape") {
+    searchInput.blur()
+     removeSearchToggle()
+   } 
 })
 
 
