@@ -364,11 +364,11 @@ label {
   .nav-and-hero .navigation > .container header > button:nth-of-type(2) {
     display: none;
   }
-  .nav-and-hero .navigation > .container header > button:last-of-type {
-    margin-left: 0;
-  }
   .nav-and-hero .navigation > .container header .nav-toggle {
     display: none;
+  }
+  .nav-and-hero .navigation > .container header nav {
+    margin-right: auto;
   }
   .nav-and-hero .navigation > .container header nav:not(.visual-nav) {
     display: inline-block;

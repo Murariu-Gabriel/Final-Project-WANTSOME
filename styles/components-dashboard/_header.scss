@@ -217,11 +217,25 @@ body{
                                 position: relative;
                                 box-sizing: border-box;
                                 width: 100%;
-                                padding: 0.5rem ;
+                                padding: 0.5rem 1rem;
                                 // max-width: 350px;
                                &:focus{
                                 outline:none;
                                }
+                               font-family: inherit;
+                            }
+                            
+                            .place-holder{
+                                position: absolute;
+                                // z-index: ;
+                                // padding: 0.3rem 1.1rem;
+                                
+                                top: 0.4rem;
+                                left: 1.08rem;
+                                margin: 0;
+                                font-size: 0.84rem;
+                                font-weight: 700;
+                                color: rgba($color: $out-of-color-palette-gray, $alpha: 0.3);
                             }
             
                             button {
@@ -335,7 +349,7 @@ body{
                         } 
 
                         &::-webkit-scrollbar-track{
-                            margin-top: 2px;
+                            padding-top: 2px;
                             border-radius: $base-border-radius;
                             
                         }

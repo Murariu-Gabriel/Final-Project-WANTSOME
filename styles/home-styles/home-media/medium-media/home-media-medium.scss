@@ -19,29 +19,58 @@
           gap: $m-spacing;
   
       
+        .cart-button {
+          order: 1;
+        }
+        
+        .user-account{
+          order: 1;
+          display: block;
+        }
+        
   
-          button {
-            &:last-of-type {
-              order: 1;
+        .search-container {
+          margin: 0;
+          margin-left: auto;
+
+          .form-content{
+
+            .input-container{
+            
+              .close-search{
+                right: 50px;
+                width: 40px;
+                  svg{
+                    width: 20px;
+                  }
+              }
             }
           }
-  
-          .search-container{
-            margin: 0 ;
-            margin-left: auto;
+
+          .contend-width{
+            // width: 90%;
+            padding: 1.5rem 0;
           }
+
+          .top{
+            top: 0;
+          }
+        }
   
          .nav-toggle{
             top: 5.15rem;
 
             .special-nav{
-            
               padding: 6rem 5% 4rem 5%;
               flex-direction: row;
               margin: 0 auto;
               gap: 1rem;
               li{
                 flex-grow: 1;
+              }
+
+              .user-element{
+                display: none;
               }
             }
           }

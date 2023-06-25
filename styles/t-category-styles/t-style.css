@@ -516,10 +516,20 @@ label {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
 }
 .navigation > .container header .search-container .form-content .input-container input:focus {
   outline: none;
+}
+.navigation > .container header .search-container .form-content .input-container .place-holder {
+  position: absolute;
+  top: 0.4rem;
+  left: 1.08rem;
+  margin: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: rgba(128, 128, 128, 0.3);
 }
 .navigation > .container header .search-container .form-content .input-container button {
   position: absolute;
@@ -605,7 +615,7 @@ label {
   border-radius: 8px;
 }
 .navigation > .container header .search-container .search-results::-webkit-scrollbar-track {
-  margin-top: 2px;
+  padding-top: 2px;
   border-radius: 8px;
 }
 .navigation > .container header .search-container .search-results::-webkit-scrollbar-thumb {
