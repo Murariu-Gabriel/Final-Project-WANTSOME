@@ -540,6 +540,7 @@ const addSearchToggle = (e) => {
   dummy.classList.remove("hide")
   searchResults.classList.remove("hide")
   closeSearch.classList.remove("hide")
+  document.body.classList.add("stop-scroll")
 }
 
 const removeSearchToggle = (e) => {
@@ -554,6 +555,7 @@ const removeSearchToggle = (e) => {
   dummy.classList.add("hide")
   searchResults.classList.add("hide")
   closeSearch.classList.add("hide")
+  document.body.classList.remove("stop-scroll")
 }
 
 searchInput.addEventListener("click", addSearchToggle)
@@ -597,8 +599,61 @@ const noMatterSearch = (windowKey) => {
   localStorage.setItem("recent-searches", stringSearches)
 }
 
+
+
+const placeHolderAssist = (text, value) => {
+  const splitWord = text.split("")
+  const wordStart = text.indexOf(value)
+  const wordEnd = text.lastIndexOf(value)
+  const whiteSpace = splitWord.splice(0, value.length, value)
+  // const wordConversion = `<span class="highlight">${value}</span>`
+
+  // splitWord.splice(wordStart, value.length,)
+//  const restOfSentence = text.substring(wordEnd, text.length)
+  // console.log(restOfSentence)
+  console.log(splitWord)
+  console.log(text)
+  // return whiteSpace + restOfSentence
+  return splitWord.join("")
+}
+
+const cutBehindWord = (sentence, word) => {
+  const startingWord = " " + word
+  const start = sentence.indexOf(startingWord)
+  // const whiteSpace = sentence.slice(0, start).replace(/./g, " ")
+  if (start < 0) {
+    return ""
+  }
+  const restOfSentence = sentence.substring(start, sentence.length)
+  return restOfSentence
+}
+
+console.log(placeHolderAssist("garmin venu 2", "GARrmin venu"))
+ 
+
+const highlight = (element, searchedWord) => {
+  const span = element.querySelector("#list-text")
+  const elementText = span.innerText
+
+    const highlightAssist = () => {
+        if (elementText.includes(searchedWord)) {
+          const splitWord = elementText.split("")
+          const wordStart = elementText.indexOf(searchedWord) 
+          const wordConversion = `<span class="highlight">${searchedWord}</span>`
+
+          splitWord.splice(wordStart, searchedWord.length, wordConversion)
+
+          console.log(splitWord)
+          return splitWord.join("")
+        }
+    }
+  span.innerHTML = highlightAssist()
+}
+
 searchInput.addEventListener("keyup", (e) => {
+  const normalValue = e.target.value
   const value = e.target.value.toLowerCase()
+  // e.target.value = value
   listResults.innerHTML = ""
   searchTitle.innerText = "Search suggestions"
 
@@ -633,23 +688,38 @@ searchInput.addEventListener("keyup", (e) => {
   const cleanCategories = [...setCategories]
   console.log(cleanCategories)
 
+ 
+  placeHolder.innerText = ""
+  
+
   if (value.length >= 2) {
     inputSearchResult.forEach((element, index) =>{
-      if(element.name.startsWith(value)){
-        listResults.appendChild(generateListElement(element.name))
+      if(element.name.includes(value)){
+        const listElement = generateListElement(element.name)
+        highlight(listElement, value)
+        listResults.appendChild(listElement)
+        const cutWord = cutBehindWord(inputSearchResult[0].name, value)
+
+        placeHolder.innerText = inputSearchResult[0].name.startsWith(value)
+          ? placeHolderAssist(inputSearchResult[0]?.name, normalValue) || ""
+          : placeHolderAssist(cutWord.replace(" ", ""), normalValue)
+        placeHolder.classList.remove("hide")
+
       } else if(index < cleanCategories.length){
-         listResults.appendChild(generateListElement(cleanCategories[index]))
+        const listElement = generateListElement(cleanCategories[index])
+        highlight(listElement, value)
+        listResults.appendChild(listElement)
+        placeHolder.innerText = placeHolderAssist(cleanCategories[0], normalValue)
+        placeHolder.classList.remove("hide")
+
       } else {
         return
       }
 
   })
 
-    placeHolder.innerText = inputSearchResult[0]?.name || ""
-    placeHolder.classList.remove("hide")
   }
 
-  // somehow each li inserted should contain the input words highlighted with irange
 })
 
 // localStorage.clear()
@@ -689,7 +759,7 @@ const generateListElement = (content) => {
             d="M19.023,16.977c-0.513-0.488-1.004-0.997-1.367-1.384c-0.372-0.378-0.596-0.653-0.596-0.653l-2.8-1.337 C15.34,12.37,16,10.763,16,9c0-3.859-3.14-7-7-7S2,5.141,2,9s3.14,7,7,7c1.763,0,3.37-0.66,4.603-1.739l1.337,2.8 c0,0,0.275,0.224,0.653,0.596c0.387,0.363,0.896,0.854,1.384,1.367c0.494,0.506,0.988,1.012,1.358,1.392 c0.362,0.388,0.604,0.646,0.604,0.646l2.121-2.121c0,0-0.258-0.242-0.646-0.604C20.035,17.965,19.529,17.471,19.023,16.977z M9,14 c-2.757,0-5-2.243-5-5s2.243-5,5-5s5,2.243,5,5S11.757,14,9,14z"
         >
         </path>
-        </svg>${content}</a>
+        </svg><span id="list-text">${content}</span></a>
     `
 
   return element
@@ -705,3 +775,45 @@ fillListWithData(searches)
 
 
 
+
+
+
+
+// OLD VERSION FOR HIGHLIGHTING TEXT JUST IN CASE YOU WILL NEED IT AT SOME POINT
+
+
+// const highlight = (element, searchedWord) => {
+//   console.log(searchedWord)
+//   const span = element.querySelector("#list-text")
+//   const elementText = span.innerText
+//   // const wordStart = elementText.indexOf(word)
+//   const textArray = elementText.split(/\s+/g)
+//   const highlightedText = textArray.map((word) => {
+//     console.log(word.includes(searchedWord))
+//     if (word.includes(searchedWord)) {
+//       const splitWord = word.split("")
+//       const wordStart = word.indexOf(searchedWord) // searchedWord.length
+//       const wordConversion2 = `<span class="highlight">${searchedWord}</span>`
+
+//       const splicedWord = splitWord.splice(
+//         wordStart,
+//         searchedWord.length,
+//         `<span class="highlight" >${searchedWord}</span>`
+//       )
+//       // const wordConversion = `<span class="highlight" >${splicedWord.join("")}</span>`
+//       // splitWord.splice(wordStart, 0, wordConversion)
+
+//       console.log(splitWord)
+//       return splitWord.join("")
+//     }
+
+//     return word
+//   })
+
+//   const text = highlightedText.join(" ")
+//   console.log(text)
+//   span.innerHTML = text
+//   console.log(span)
+
+//   return text
+// }

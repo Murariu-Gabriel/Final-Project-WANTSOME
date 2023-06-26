@@ -22,7 +22,7 @@ const addButtonEvent = () => {
   for (const button of buttons) {
     const id = button.getAttribute("id")
 
-    if (id !== "cart-button") {
+    if (id === "h-button" || id === "x-button") {
       button.addEventListener("click", (e) => {
         headerNav.classList.toggle("nav-toggle")
         const eventButton = e.target
@@ -51,7 +51,6 @@ headerNav.addEventListener("click", () => {
 secondNav.addEventListener("click", (e) => {
   e.stopPropagation()
 })
-
 // GOING BACK
 
 const backButton = document.getElementById("go-back")
@@ -623,6 +622,294 @@ window.addEventListener("scroll", (e) => {
 toTopBtn.addEventListener("click", () => {
   window.scrollTo(0, 0)
 })
+
+// SEARCH FUNCTIONALITY
+
+
+
+const searchContainer = document.getElementById("search-container")
+const inputContainer = document.getElementById("input-container")
+const dummy = document.getElementById("dummy")
+const searchInput = document.getElementById("search-input")
+const formContent = document.getElementById("form-content")
+const searchResults = document.getElementById("search-results")
+const closeSearch = document.getElementById("close-search")
+const placeHolder = document.getElementById("place-holder")
+
+const recentSearches = localStorage.getItem("recent-searches")
+const parsedRecentSearches = JSON.parse(recentSearches)
+const searches = parsedRecentSearches ? parsedRecentSearches : []
+// const searches = recentSearches ? recentSearches : []
+
+const getProductsData = () => {
+  const allProducts = localStorage.getItem("products")
+  const parsedAllProducts = JSON.parse(allProducts)
+  const products = parsedAllProducts ? parsedAllProducts : []
+
+  return products
+}
+
+const addSearchToggle = (e) => {
+  if (e) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+  searchContainer.classList.add("overlay2")
+  inputContainer.classList.add("top")
+  inputContainer.classList.add("search-animation")
+  formContent.classList.add("contend-width")
+  dummy.classList.remove("hide")
+  searchResults.classList.remove("hide")
+  closeSearch.classList.remove("hide")
+  document.body.classList.add("stop-scroll")
+}
+
+const removeSearchToggle = (e) => {
+  if (e) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+  searchContainer.classList.remove("overlay2")
+  inputContainer.classList.remove("top")
+  inputContainer.classList.remove("search-animation")
+  formContent.classList.remove("contend-width")
+  dummy.classList.add("hide")
+  searchResults.classList.add("hide")
+  closeSearch.classList.add("hide")
+  document.body.classList.remove("stop-scroll")
+}
+
+searchInput.addEventListener("click", addSearchToggle)
+
+closeSearch.addEventListener("click", (e) => {
+  removeSearchToggle(e)
+})
+
+const listResults = searchResults.querySelector("ul")
+const searchTitle = document.getElementById("search-title")
+const searchButton = document.getElementById("search-button")
+
+const searchValidation = (value) => {
+  if (value.includes(" ") || value.length >= 2) {
+    let letters = 0
+
+    for (const letter of value) {
+      if (letter !== " ") {
+        letters++
+      }
+    }
+
+    return letters >= 2
+  }
+}
+
+const noMatterSearch = (windowKey) => {
+  if (searchValidation(windowKey)) {
+    searches.unshift(windowKey)
+
+    window.location.assign(
+      `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}"`
+    )
+  }
+
+  const firstFourElements = searches.filter((element, index) => index < 4)
+
+  console.log(firstFourElements)
+
+  const stringSearches = JSON.stringify(firstFourElements)
+  localStorage.setItem("recent-searches", stringSearches)
+}
+
+const placeHolderAssist = (text, value) => {
+  const splitWord = text.split("")
+  const wordStart = text.indexOf(value)
+  const wordEnd = text.lastIndexOf(value)
+  const whiteSpace = splitWord.splice(0, value.length, value)
+  // const wordConversion = `<span class="highlight">${value}</span>`
+
+  // splitWord.splice(wordStart, value.length,)
+  //  const restOfSentence = text.substring(wordEnd, text.length)
+  // console.log(restOfSentence)
+  console.log(splitWord)
+  console.log(text)
+  // return whiteSpace + restOfSentence
+  return splitWord.join("")
+}
+
+const cutBehindWord = (sentence, word) => {
+  const startingWord = " " + word
+  const start = sentence.indexOf(startingWord)
+  // const whiteSpace = sentence.slice(0, start).replace(/./g, " ")
+  if (start < 0) {
+    return ""
+  }
+  const restOfSentence = sentence.substring(start, sentence.length)
+  return restOfSentence
+}
+
+console.log(placeHolderAssist("garmin venu 2", "GARrmin venu"))
+
+const highlight = (element, searchedWord) => {
+  const span = element.querySelector("#list-text")
+  const elementText = span.innerText
+
+  const highlightAssist = () => {
+    if (elementText.includes(searchedWord)) {
+      const splitWord = elementText.split("")
+      const wordStart = elementText.indexOf(searchedWord)
+      const wordConversion = `<span class="highlight">${searchedWord}</span>`
+
+      splitWord.splice(wordStart, searchedWord.length, wordConversion)
+
+      console.log(splitWord)
+      return splitWord.join("")
+    }
+  }
+  span.innerHTML = highlightAssist()
+}
+
+searchInput.addEventListener("keyup", (e) => {
+  const normalValue = e.target.value
+  const value = e.target.value.toLowerCase()
+  // e.target.value = value
+  listResults.innerHTML = ""
+  searchTitle.innerText = "Search suggestions"
+
+  console.log(value.length)
+  if (value.length < 2) {
+    searchTitle.innerText = "Recent searches"
+    fillListWithData(searches)
+    placeHolder.classList.add("hide")
+  }
+
+  // console.log(e.key)
+  // if(e.key === "Escape"){
+  //     removeSearchToggle()
+  // }
+  if (e.key === "Enter") {
+    e.preventDefault()
+  }
+
+  // NEXT
+
+  const products = getProductsData()
+  console.log(value)
+  const inputSearchResult = products.filter((product) => {
+    return product.name.includes(value) || product.category.includes(value)
+    //  return product.name.startsWith(value) || product.category.startsWith(value)
+  })
+  const inputCategories = inputSearchResult.map((product) => product.category)
+  const setCategories = new Set(inputCategories)
+  const cleanCategories = [...setCategories]
+  console.log(cleanCategories)
+
+  placeHolder.innerText = ""
+
+  if (value.length >= 2) {
+    inputSearchResult.forEach((element, index) => {
+      if (element.name.includes(value)) {
+        const listElement = generateListElement(element.name)
+        highlight(listElement, value)
+        listResults.appendChild(listElement)
+        const cutWord = cutBehindWord(inputSearchResult[0].name, value)
+
+        placeHolder.innerText = inputSearchResult[0].name.startsWith(value)
+          ? placeHolderAssist(inputSearchResult[0]?.name, normalValue) || ""
+          : placeHolderAssist(cutWord.replace(" ", ""), normalValue)
+        placeHolder.classList.remove("hide")
+      } else if (index < cleanCategories.length) {
+        const listElement = generateListElement(cleanCategories[index])
+        highlight(listElement, value)
+        listResults.appendChild(listElement)
+        placeHolder.innerText = placeHolderAssist(
+          cleanCategories[0],
+          normalValue
+        )
+        placeHolder.classList.remove("hide")
+      } else {
+        return
+      }
+    })
+  }
+})
+
+// localStorage.clear()
+// localStorage.removeItem("recent-searches")
+
+searchButton.addEventListener("click", (e) => {
+  noMatterSearch(searchInput.value)
+})
+
+document.body.addEventListener("keydown", (e) => {
+  //   console.log(e.key)
+  if (e.key === "Enter") {
+    noMatterSearch(searchInput.value)
+    e.preventDefault()
+  }
+
+  if (e.key === "Escape") {
+    searchInput.blur()
+    removeSearchToggle()
+  }
+})
+
+const generateListElement = (content) => {
+  const element = document.createElement("li")
+  // console.log(content)
+  element.innerHTML = `
+        <a href="/html-pages/search.html?search=${content}">
+            <svg
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 24 24"
+        height="20"
+        width="30"
+        xmlns="http://www.w3.org/2000/svg"
+        >
+        <path
+            d="M19.023,16.977c-0.513-0.488-1.004-0.997-1.367-1.384c-0.372-0.378-0.596-0.653-0.596-0.653l-2.8-1.337 C15.34,12.37,16,10.763,16,9c0-3.859-3.14-7-7-7S2,5.141,2,9s3.14,7,7,7c1.763,0,3.37-0.66,4.603-1.739l1.337,2.8 c0,0,0.275,0.224,0.653,0.596c0.387,0.363,0.896,0.854,1.384,1.367c0.494,0.506,0.988,1.012,1.358,1.392 c0.362,0.388,0.604,0.646,0.604,0.646l2.121-2.121c0,0-0.258-0.242-0.646-0.604C20.035,17.965,19.529,17.471,19.023,16.977z M9,14 c-2.757,0-5-2.243-5-5s2.243-5,5-5s5,2.243,5,5S11.757,14,9,14z"
+        >
+        </path>
+        </svg><span id="list-text">${content}</span></a>
+    `
+
+  return element
+}
+
+const fillListWithData = (array) => {
+  searches.forEach((element) => {
+    listResults.appendChild(generateListElement(element))
+  })
+}
+
+fillListWithData(searches)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // In case I need increment button selectors
 
