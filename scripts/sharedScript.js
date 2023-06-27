@@ -11,7 +11,6 @@ const addToggleFunctionality = () => {
   for (const button of buttons) {
     if (button.classList.contains("display-none")) {
       button.classList.toggle("display-none")
-      document.body.classList.toggle("stop-scroll")
     }
   }
 }
@@ -24,8 +23,14 @@ const addButtonEvent = () => {
       button.addEventListener("click", (e) => {
         headerNav.classList.toggle("nav-toggle")
         const eventButton = e.target
-
         addToggleFunctionality()
+
+        if(id === "h-button"){
+            document.body.classList.add("stop-scroll")
+            cartContainer.classList.remove("show-cart")
+        } else {
+          document.body.classList.remove("stop-scroll")
+        }
 
         eventButton.classList.toggle("display-none")
       })
@@ -87,6 +92,7 @@ const cartForm = document.getElementById("count-form")
 cartContainer.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")
   document.body.classList.toggle("stop-scroll")
+
 })
 
 
@@ -113,6 +119,15 @@ cartButton.addEventListener("click", () => {
   document.body.classList.toggle("stop-scroll")
   calculateTotal(cartList.children)
   updateCounter()
+
+     if (headerNav.classList.contains("nav-toggle")) {
+       closeButton.classList.add("display-none")
+       popButton.classList.remove("display-none")
+       headerNav.classList.remove("nav-toggle")
+        document.body.classList.add("stop-scroll")
+     }
+
+
 })
 
 
@@ -541,7 +556,18 @@ const addSearchToggle = (e) => {
   searchResults.classList.remove("hide")
   closeSearch.classList.remove("hide")
   document.body.classList.add("stop-scroll")
+
+  if(!cartContainer.classList.contains("hide")){
+    cartContainer.classList.remove("show-cart")
+  }
+
+  if (headerNav.classList.contains("nav-toggle")){
+    closeButton.classList.toggle("display-none")
+   popButton.classList.toggle("display-none")
+   headerNav.classList.toggle("nav-toggle")
+  }
 }
+console.log(headerNav.classList.contains("nav-toggle"))
 
 const removeSearchToggle = (e) => {
   if (e) {
@@ -739,6 +765,14 @@ document.body.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     searchInput.blur()
     removeSearchToggle()
+    cartContainer.classList.remove("show-cart")
+
+    closeButton.classList.add("display-none")
+    popButton.classList.remove("display-none")
+    headerNav.classList.remove("nav-toggle")
+
+
+
   }
 })
 

@@ -2,33 +2,37 @@
 @use "../../../abstracts/" as *;
 
 @media screen and (min-width: 550px) {
-  @include medium-media; 
-  
-  .navigation{
-      .container{
-          &:last-of-type{
-            padding: $m-spacing 0;
-              h2{
-                text-align: center; 
-                color: $white;
-                font-size: $h2-font-size;
-                border-bottom: none; 
-              }
-          }
-      }
-  }
+  @include medium-media;
 
-  .template-category{ 
-    padding-top: $xxl-spacing;
-    .container{
-        article{
-          padding-bottom: $xxl-spacing;
 
-           h2{
-                font-size: $h2-font-size;
-                width: 380px;
+  .generated-search-result {
+    .container {
+       padding: 0;
+      .display-search-results {
+        .about-filters {
+          flex-wrap: nowrap;
+
+          button {
+            &:last-of-type {
+              display: block;
             }
+          }
         }
+      }
     }
   }
-} 
+
+  .template-category {
+    padding-top: $xxl-spacing;
+    .container {
+      article {
+        padding-bottom: $xxl-spacing;
+
+        h2 {
+          font-size: $h2-font-size;
+          width: 380px;
+        }
+      }
+    }
+  }
+}

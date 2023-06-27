@@ -368,7 +368,7 @@ label {
     gap: 2rem;
   }
   .navigation > .container header .cart-button {
-    order: 1;
+    order: 2;
   }
   .navigation > .container header .user-account {
     order: 1;
@@ -497,14 +497,14 @@ label {
   footer .container nav:last-of-type {
     margin-left: auto;
   }
-  .navigation .container:last-of-type {
-    padding: 2rem 0;
+  .generated-search-result .container {
+    padding: 0;
   }
-  .navigation .container:last-of-type h2 {
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 2.5rem;
-    border-bottom: none;
+  .generated-search-result .container .display-search-results .about-filters {
+    flex-wrap: nowrap;
+  }
+  .generated-search-result .container .display-search-results .about-filters button:last-of-type {
+    display: block;
   }
   .template-category {
     padding-top: 8rem;

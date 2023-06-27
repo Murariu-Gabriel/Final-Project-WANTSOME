@@ -78,7 +78,8 @@ body{
             // I thought that phones with smaller height would benefit
             .nav-toggle {
                 display: flex;
-                height: 100%;
+                // height: 100%;
+                // width: 100%;
                 overflow-y: scroll;
                 position: absolute;
                 top: 8.4rem;
@@ -89,6 +90,14 @@ body{
                 border-bottom-right-radius: $base-border-radius;
                 z-index: 1;
                 padding-bottom: 8rem;
+
+                &::-webkit-scrollbar {
+                    width: 0; 
+                    height: 0;
+                }
+
+
+
                 
                 .special-nav {
                     @include flex(center, unset, unset, column);
@@ -229,6 +238,7 @@ body{
                             
                             .place-holder{
                                 position: absolute;
+                                 pointer-events: none;
                                 // white-space: break-spaces;
                                 // z-index: ;
                                 // padding: 0.3rem 1.1rem;

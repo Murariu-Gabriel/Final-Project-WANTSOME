@@ -402,7 +402,6 @@ label {
 }
 .navigation > .container header .nav-toggle {
   display: flex;
-  height: 100%;
   overflow-y: scroll;
   position: absolute;
   top: 8.4rem;
@@ -414,6 +413,10 @@ label {
   border-bottom-right-radius: 8px;
   z-index: 1;
   padding-bottom: 8rem;
+}
+.navigation > .container header .nav-toggle::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 .navigation > .container header .nav-toggle .special-nav {
   display: flex;
@@ -524,6 +527,7 @@ label {
 }
 .navigation > .container header .search-container .form-content .input-container .place-holder {
   position: absolute;
+  pointer-events: none;
   top: 0.4rem;
   left: 1.08rem;
   margin: 0;

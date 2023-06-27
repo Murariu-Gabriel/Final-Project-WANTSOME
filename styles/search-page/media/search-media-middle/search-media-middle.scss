@@ -1,0 +1,36 @@
+@use "../../../abstracts/" as *;
+
+@media screen and (min-width: 770px) {
+  .generated-search-result {
+    // padding-top: $s-top-category-section;
+    .container {
+      display: flex;
+      .filters {
+        all: unset;
+        display: block;
+        width: 30%;
+
+        .filter-navigation{
+            display: none;
+        }
+      }
+
+      .display-search-results {
+        width: 100%;
+
+        .about-filters{
+            .select-pagination {
+              display: block;
+            }
+
+        }
+
+        button {
+          &:first-of-type {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -368,7 +368,7 @@ label {
     gap: 2rem;
   }
   .navigation > .container header .cart-button {
-    order: 1;
+    order: 2;
   }
   .navigation > .container header .user-account {
     order: 1;
