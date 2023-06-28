@@ -62,14 +62,9 @@ window.addEventListener("resize", () => {
 
   if(screenWidth > 979){
       if (headerNav.classList.contains("nav-toggle")) {
-    
         document.body.classList.remove("stop-scroll")
       }
-
-
-
     } else {
-
       if (headerNav.classList.contains("nav-toggle")){
         document.body.classList.add("stop-scroll")
         window.scrollTo({
@@ -805,8 +800,11 @@ document.body.addEventListener("keydown", (e) => {
     popButton.classList.remove("display-none")
     headerNav.classList.remove("nav-toggle")
 
-
-
+    if (typeof filtersContainer !== "undefined" ){
+      filtersContainer.classList.toggle("display")
+      filtersContainer.classList.toggle("overlay")
+      document.body.classList.remove("stop-scroll")
+    }
   }
 })
 

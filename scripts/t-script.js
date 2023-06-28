@@ -110,15 +110,16 @@ const generatePagination = (list) => {
     const li = document.createElement("li")
     li.classList.add("pagination-element")
     li.textContent = i
-    li.addEventListener("click", (event) => {
+    li.addEventListener("click", (e) => {
       productsContainer.innerHTML = ""
    
-      const count = parseInt(event.target.textContent)
+      const count = parseInt(e.target.textContent)
 
       const start = ITEMS_PER_PAGE * (count - 1)
       const end = ITEMS_PER_PAGE * count
       console.log(start, end)
       loadProducts(list, start, end - 1)
+      window.scrollTo(0, 0)
     })
     ol.appendChild(li)
   }

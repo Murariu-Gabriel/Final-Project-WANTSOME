@@ -34,7 +34,6 @@ displayResult.addEventListener("click", () => {
      document.body.classList.remove("stop-scroll")
 })
 
-
 // TOGGLE FOR VIEW STYLE
 
 changeStyleButton.addEventListener("click", (e) => {

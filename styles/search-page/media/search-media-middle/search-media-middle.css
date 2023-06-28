@@ -357,7 +357,7 @@ label {
   .generated-search-result .container .filters {
     all: unset;
     display: block;
-    width: 45%;
+    max-width: 250px;
   }
   .generated-search-result .container .filters .filter-navigation {
     display: none;
@@ -374,15 +374,10 @@ label {
   .generated-search-result .container .display-search-results {
     width: 100%;
   }
-  .generated-search-result .container .display-search-results .manipulate-result {
-    background-color: #F1F1F1;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-  }
   .generated-search-result .container .display-search-results .manipulate-result .about-filters .select-pagination {
     display: block;
   }
-  .generated-search-result .container .display-search-results button:first-of-type {
+  .generated-search-result .container .display-search-results .filter-button {
     display: none;
   }
 }/*# sourceMappingURL=search-media-middle.css.map */
