@@ -300,12 +300,23 @@
           <div class="generated-filters">
 
             <div class="filter-container">
+              <span id="filter-container-name">All items</span>
+                <div>
+                  <input id="garmin" type="checkbox" />
+                  <label for="garmin" name="garmin">items<span>(24)</span> </label>
+                </div>
+            </div>
+
+
+            <div class="filter-container">
+
+
               <span id="filter-container-name">Brand</span>
               <div>
                 <input id="garmin" type="checkbox" />
                 <label for="garmin" name="garmin">garmin <span>(2)</span> </label>
               </div>
-              
+
               <div>
                 <input id="xiaomi" type="checkbox" />
                 <label for="xiaomi" name="xiaomi">xiaomi <span id="filter-product-count">(2)</span> </label>
@@ -323,9 +334,17 @@
                 <input id="50-100" type="checkbox" />
                 <label for="50-100" name="50-100">50 - 100 <span id="filter-product-count">(2)</span> </label>
               </div>
+
+              <div>
+                <input id="price-interval" type="checkbox" />
+                <label for="price-interval" name="price-interval">Price Interval <span id="filter-product-count"></span>
+                  
+                  <input type="range"  min="1" max="100">
+              </div>
+
             </div>
 
-             <div class="filter-container">
+            <div class="filter-container">
               <span id="filter-container-name">Brand</span>
               <div>
                 <input id="garmin" type="checkbox" />
@@ -355,6 +374,8 @@
             <span id="from-search">Garmin</span>
           </p>
 
+          <ul class="list-of-filters"></ul>
+
           <div class="about-filters">
             <button class="button-1" id="filter-button">Filter</button>
             <!-- <button id="order-button">Order After</button> -->
@@ -372,8 +393,8 @@
             <div class="select-box select-pagination">
               <p class="select">Pagination</p>
               <ul class="select-menu hide" id="select-pagination">
-                <li>10</li>
-                <li>20</li>
+                <li>10 on page</li>
+                <li>20 on page</li>
               </ul>
               <span></span>
             </div>
