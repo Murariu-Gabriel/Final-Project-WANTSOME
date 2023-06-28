@@ -606,7 +606,7 @@ label {
   left: 50%;
   top: 39px;
   height: 1px;
-  width: 90%; /* or 100px */
+  width: 90%;
   transform: translate(-50%, -50%);
   border-bottom: 2px solid #F1F1F1;
 }

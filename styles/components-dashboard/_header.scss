@@ -1,16 +1,5 @@
 @use "../abstracts/" as *;
 
-body{
-    // position: relative;
-}
-
-// .overlay {
-// position: absolute;
-// background: rgba(0, 0, 0, 0.5);
-// width: 100%;
-// height: 100%;
-// z-index: 999;
-// }
 
 .navigation{
     background-color: $black;
@@ -21,8 +10,6 @@ body{
     >.container {
         border-bottom: 1px solid $out-of-color-palette-gray;
         padding: $base-spacing;
-        // width: 100vw
-        // position: relative;
         .display-none {
             display: none;
         }
@@ -45,14 +32,9 @@ body{
             }
         }
 
-        // .cart-button{
-        //     margin-left: auto
-        // }
-
         header {
             @include flex(space-between, unset, wrap, unset);
             gap: $base-spacing;
-            // position: relative;
            
            .user-account{
             display: none;
@@ -78,8 +60,6 @@ body{
             // I thought that phones with smaller height would benefit
             .nav-toggle {
                 display: flex;
-                // height: 100%;
-                // width: 100%;
                 overflow-y: scroll;
                 position: absolute;
                 top: 8.4rem;
@@ -104,7 +84,6 @@ body{
                     width: 100%;
                     height: fit-content;
                     background-color: $white;
-                    // padding-top: 4rem;
 
                     padding: 5rem 5% 2rem 5%;
                     gap: 5rem;
@@ -147,7 +126,6 @@ body{
                                     position: relative;
                                     z-index: 2;
                                     background-color: $gray;
-                                    // margin-bottom: $base-padding;
                                     transition: color 0.3s ease-in-out;
                                     width: 30%;
 
@@ -217,11 +195,9 @@ body{
                     width: 100%;
                     margin: 0 auto;
                     
-                    // height: 30px;
                     .input-container{
                             position: relative;
                             margin: 0 auto;
-                            // margin-left: auto;
                             max-width: 450px;
                             
                             input {
@@ -238,11 +214,7 @@ body{
                             
                             .place-holder{
                                 position: absolute;
-                                 pointer-events: none;
-                                // white-space: break-spaces;
-                                // z-index: ;
-                                // padding: 0.3rem 1.1rem;
-                                
+                                pointer-events: none;
                                 top: 0.4rem;
                                 left: 1.08rem;
                                 margin: 0;
@@ -272,9 +244,6 @@ body{
                                 &:hover {
                                     background-color: $orange;
                                     fill: $white;
-                                    // svg {
-                                    //     background-color: $orange;
-                                    // }
                                 }
 
                                 
@@ -302,7 +271,6 @@ body{
 
                 .contend-width{
                     width: 90%;
-                    // border: 1px solid black;
 
                     .input-container button{
                         border-bottom-right-radius: 0;
@@ -311,7 +279,6 @@ body{
                 }
                 
                 .top{
-                    // border: 2px solid $orange;
                     border-radius: $base-border-radius;
                     top: 5.12rem;
                     height: fit-content;
@@ -320,14 +287,10 @@ body{
                         border-bottom-left-radius: 0;
                         border-bottom-right-radius: 0 ;
                         border-bottom: none;
-
                     }
-
-                   
-                    
                 }
 
-                .search-results{  // NEXT AREA TO WORK ON
+                .search-results{
                     background-color: $white;
                     margin-top: -1px;
                     max-width: 450px;
@@ -345,7 +308,7 @@ body{
                             left: 50%;
                             top: 39px;
                             height: 1px;
-                            width: 90%;  /* or 100px */
+                            width: 90%; 
                             transform: translate(-50%, -50%);
                             border-bottom: 2px solid $gray;
                         }
@@ -377,13 +340,11 @@ body{
                         border-radius: $base-border-radius;
                         li{
                             position: relative;
-                            // padding: 0.5rem 0;
+
                             a{
                                 display: flex;
                                 padding: 0.5rem 1rem;
                                 align-items: center;
-                                // width: 100%;
-                                // height: 100%;
 
                                 svg{
                                     fill: gray;
@@ -441,139 +402,126 @@ body{
      // SHOPPING CART
      // THE ENTIRE NAV/HERO WILL NEED REWRITING this is to hairy and repetitive but time is short for now
      // this is basically copying and making another div classed container I have 3 in the nav section not looking good
-        .cart-container{
-            display: none;
-            .shopping-container{
-                width: 90%;
+    .cart-container{
+        display: none;
+        .shopping-container{
+            width: 90%;
+            margin: 0 auto;
+            padding: 0;
+            max-width: 1100px;
+            padding-top: $s-spacing;
+            
+            .shopping-cart{
                 margin: 0 auto;
-                padding: 0;
-                max-width: 1100px;
-                padding-top: $s-spacing;
-                
-                .shopping-cart{
-                    margin: 0 auto;
-                    border-radius: $base-border-radius;
-                    background-color: $white;
-                    max-width: 387px;
-                    max-height: 488px;
-                    // height: unset;
-                    padding: $xs-padding;
-                    // height: fit-content;
-        
+                border-radius: $base-border-radius;
+                background-color: $white;
+                max-width: 387px;
+                max-height: 488px;
+                padding: $xs-padding;
+                // height: fit-content;
+    
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+    
+                h6{
+                    margin: 0;
+                }
+    
+                >div, >p{
+                    display: flex;   
+                    justify-content: space-between;                
+                }
+    
+                >p{
+                    padding: $base-padding 0;
+                    margin-top: auto;
+    
+                    >span{
+                        color: $out-of-color-palette-gray;
+                        text-transform: uppercase;
+                        
+                    }
+                }
+    
+                >div{
+                    margin:0 0 $s-spacing 0;
+                }
+    
+                .cart-list{ 
                     display: flex;
                     flex-direction: column;
-                    // flex-wrap: wrap;
-                    flex-grow: 1;
-        
-                    h6{
-                        margin: 0;
+                    gap: 1rem;
+                    overflow-y: scroll;
+
+                        &::-webkit-scrollbar {
+                        display: none;
                     }
-        
-                    >div, >p{
-                        display: flex;   
-                        justify-content: space-between;   
-                        // align-items: center;              
-                    }
-        
-                    >p{
-                        padding: $base-padding 0;
-                        margin-top: auto;
-        
-                        >span{
-                            color: $out-of-color-palette-gray;
-                            text-transform: uppercase;
+
+                    
+                    li{
+                        display: flex;
+                        gap: $s-spacing;
+                        align-items: center;
+    
+                        .img-container{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 64px;
+                            height: 64px;
+                            background-color: $gray;
+                            border-radius: $base-border-radius ;
+    
+                            img{
+                                width: 50px;
+                            }
                             
                         }
-                    }
-        
-                    >div{
-                        margin:0 0 $s-spacing 0;
-                    }
-        
-                    .cart-list{ 
-                        display: flex;
-                        flex-direction: column;
-                        gap: 1rem;
-                        overflow-y: scroll;
-
-                         &::-webkit-scrollbar {
-                            display: none;
+    
+                        p{
+                            strong{
+                                display: block;
+                            }
                         }
-            
-                        // &::-webkit-scrollbar-button {
-                        // display: none;
-                        // }
-                        
-                        // &::-webkit-scrollbar-button {
-                        // display: none;
-                        // }
-
-                      
-                        li{
-                            display: flex;
-                            gap: $s-spacing;
-                            align-items: center;
-        
-                            .img-container{
+    
+                        .input-stepper{
+                            margin-left: auto;
+    
+                            .product-counter{
+                                width: 30px;
+                                padding: 0;
+                            }
+                            button{
                                 display: flex;
                                 align-items: center;
-                                justify-content: center;
-                                width: 64px;
-                                height: 64px;
-                                background-color: $gray;
-                                border-radius: $base-border-radius ;
-        
-                                img{
-                                    width: 50px;
-                                }
+                                padding: 8px 15px; 
                                 
                             }
-        
-                            p{
-                                strong{
-                                    display: block;
-                                }
-                            }
-        
-                            .input-stepper{
-                                margin-left: auto;
-        
-                                .product-counter{
-                                    width: 30px;
-                                    padding: 0;
-                                }
-                                button{
-                                    display: flex;
-                                    align-items: center;
-                                    padding: 8px 15px; 
-                                    
-                                }
-                            }
                         }
-
                     }
-                    
-                    .button-1{
-                        text-align: center;
-                    }
-                }    
-            }
-        }
 
-        .show-cart{
-          display: initial;
+                }
+                
+                .button-1{
+                    text-align: center;
+                }
+            }    
         }
-    
-        .overlay {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.5);
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-            // top: 500px;
-            // t: 0;
-        }
-    
+    }
+
+    .show-cart{
+        display: initial;
+    }
+
+    .overlay {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+
 
 
 }

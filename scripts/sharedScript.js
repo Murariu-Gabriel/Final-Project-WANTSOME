@@ -55,6 +55,37 @@ secondNav.addEventListener("click", (e) => {
   e.stopPropagation()
 })
 
+// DISABLE NAV IF VIEWPORT IS BIG
+
+window.addEventListener("resize", () => {
+  const screenWidth = window.innerWidth
+
+  if(screenWidth > 979){
+      if (headerNav.classList.contains("nav-toggle")) {
+    
+        document.body.classList.remove("stop-scroll")
+      }
+
+
+
+    } else {
+
+      if (headerNav.classList.contains("nav-toggle")){
+        document.body.classList.add("stop-scroll")
+        window.scrollTo({
+          top: 0,
+          // behavior: "smooth", // Add smooth scrolling animation
+        })
+
+        
+      }
+
+    }
+
+})
+
+
+
 // CHECKING PAGE
 
 const searchParameters = new URLSearchParams(window.location)
@@ -511,9 +542,12 @@ if(parameters.pathname !== "/html-pages/checkout.html"){
   })
   
   
-  // {top: 0, behavior: "smooth"} would look nicer but it s not supported on MAC
+  // {top: 0, behavior: "smooth"}  not supported on MAC
   toTopBtn.addEventListener("click", () => {
-    window.scrollTo(0, 0)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Add smooth scrolling animation
+    })
   })
 
 }  
@@ -567,7 +601,7 @@ const addSearchToggle = (e) => {
    headerNav.classList.toggle("nav-toggle")
   }
 }
-console.log(headerNav.classList.contains("nav-toggle"))
+// console.log(headerNav.classList.contains("nav-toggle"))
 
 const removeSearchToggle = (e) => {
   if (e) {

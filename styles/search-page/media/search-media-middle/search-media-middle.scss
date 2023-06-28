@@ -5,22 +5,44 @@
     // padding-top: $s-top-category-section;
     .container {
       display: flex;
+      gap: 1rem;
       .filters {
         all: unset;
         display: block;
-        width: 30%;
+        width: 45%;
+         
 
         .filter-navigation{
             display: none;
+            
+        }
+
+        .filter-container{
+            background-color: $gray;
+            border-radius: $base-border-radius;
+            padding:0.5rem 1rem;
+         
+        }
+
+        .generated-filters{
+            background: none;
+            padding: 0;
         }
       }
 
       .display-search-results {
         width: 100%;
+        
+        .manipulate-result{
+            background-color: $gray;
+            padding:0.5rem 1rem;
+            border-radius: $base-border-radius;
 
-        .about-filters{
-            .select-pagination {
-              display: block;
+            .about-filters{
+                .select-pagination {
+                  display: block;
+                }
+    
             }
 
         }

@@ -302,8 +302,8 @@
             <div class="filter-container">
               <span id="filter-container-name">All items</span>
                 <div>
-                  <input id="garmin" type="checkbox" />
-                  <label for="garmin" name="garmin">items<span>(24)</span> </label>
+                  <input id="all-items" type="checkbox" />
+                  <label for="all-items" name="all-items">items<span>(24)</span> </label>
                 </div>
             </div>
 
@@ -324,9 +324,24 @@
             </div>
 
             <div class="filter-container">
+              <span id="filter-container-name">Category</span>
+              <div>
+                <input id="smart-watch" type="checkbox" />
+                <label for="smart-watch" name="smart-watch">Smart watch <span id="filter-product-count">(2)</span> </label>
+              </div>
+
+              <div>
+                <input id="smart-band" type="checkbox" />
+                <label for="smart-band" name="smart-band">smart Band <span id="filter-product-count">(2)</span> </label>
+              </div>
+            </div>
+
+
+
+            <div class="filter-container">
               <span id="filter-container-name">price</span>
               <div>
-                <input id="50-100" type="checkbox" />
+                <input id="0-50" type="checkbox" />
                 <label for="0-50" name="0-50">0 - 50 <span id="filter-product-count">(2)</span> </label>
               </div>
 
@@ -335,82 +350,88 @@
                 <label for="50-100" name="50-100">50 - 100 <span id="filter-product-count">(2)</span> </label>
               </div>
 
-              <div>
+              <div class="price-by-range">
                 <input id="price-interval" type="checkbox" />
-                <label for="price-interval" name="price-interval">Price Interval <span id="filter-product-count"></span>
+                <label for="price-interval" name="price-interval">Price Interval <span id="filtered-products-count"></span>
                   
-                  <input type="range"  min="1" max="100">
+                <div class="price-input">
+                  <input type="number" class="input-min" value="0">
+  
+                  <span class="separator">-</span>
+  
+                  <input type="number" class="input-min" value="1000">
+                  
+                  <button class="button">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 22 24" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z">
+                      </path>
+                    </svg>
+                  </button>
+                </div>
+  
+                <div class="range-slider">
+                  <span class="progress"></span>
+                  <div class="range-input">
+                    <input type="range" class="range-min" min="0" max="1000" value="0">
+                    <input type="range" class="range-max" min="0" max="1000" value="10000">
+                  </div>
+                </div>
               </div>
+
 
             </div>
-
-            <div class="filter-container">
-              <span id="filter-container-name">Brand</span>
-              <div>
-                <input id="garmin" type="checkbox" />
-                <label for="garmin" name="garmin">garmin <span id="filter-product-count">(2)</span> </label>
-              </div>
-
-              <div>
-                <input id="xiaomi" type="checkbox" />
-                <label for="xiaomi" name="xiaomi">xiaomi <span id="filter-product-count">(2)</span> </label>
-              </div>
-            </div>
-
+            
 
 
           </div>
-
-
-
-
-
-
         </div>
 
         <div class="display-search-results" id="display-search-results">
-          <p class="search-text-result" id="searh-text-result">
-            <span id="result-count">100</span> results for
-            <span id="from-search">Garmin</span>
-          </p>
+          <div class="manipulate-result">
+            <p class="search-text-result" id="searh-text-result">
+              <span id="result-count">100</span> results for
+              <span id="from-search">Garmin</span>
+            </p>
+  
+            <ul class="list-of-filters"></ul>
+  
+            <div class="about-filters">
+              <button class="button-1" id="filter-button">Filter</button>
+              <!-- <button id="order-button">Order After</button> -->
+  
+              <div class="select-box">
+                <p class="select">Order after</p>
+                <ul class="select-menu hide" id="select-menu">
+                  <li>Increasing price</li>
+                  <li>Decreasing price</li>
+                  <li>New products</li>
+                </ul>
+                <span></span>
+              </div>
+  
+              <div class="select-box select-pagination">
+                <p class="select">Pagination</p>
+                <ul class="select-menu hide" id="select-pagination">
+                  <li>10 on page</li>
+                  <li>20 on page</li>
+                </ul>
+                <span></span>
+              </div>
+  
+              <button class="button" id="change-style-button">
+                <svg class="" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 -40 512 512" height="2.5rem" width="2.5rem" xmlns="http://www.w3.org/2000/svg"><path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path></svg>
+                <svg class="hide" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 -1 16 16" height="2.5rem" width="2.5rem" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M1 2.5A1.5 1.5 0 012.5 1h3A1.5 1.5 0 017 2.5v3A1.5 1.5 0 015.5 7h-3A1.5 1.5 0 011 5.5v-3zm8 0A1.5 1.5 0 0110.5 1h3A1.5 1.5 0 0115 2.5v3A1.5 1.5 0 0113.5 7h-3A1.5 1.5 0 019 5.5v-3zm-8 8A1.5 1.5 0 012.5 9h3A1.5 1.5 0 017 10.5v3A1.5 1.5 0 015.5 15h-3A1.5 1.5 0 011 13.5v-3zm8 0A1.5 1.5 0 0110.5 9h3a1.5 1.5 0 011.5 1.5v3a1.5 1.5 0 01-1.5 1.5h-3A1.5 1.5 0 019 13.5v-3z" clip-rule="evenodd"></path></svg>
 
-          <ul class="list-of-filters"></ul>
-
-          <div class="about-filters">
-            <button class="button-1" id="filter-button">Filter</button>
-            <!-- <button id="order-button">Order After</button> -->
-
-            <div class="select-box">
-              <p class="select">Order after</p>
-              <ul class="select-menu hide" id="select-menu">
-                <li>Increasing price</li>
-                <li>Decreasing price</li>
-                <li>New products</li>
-              </ul>
-              <span></span>
+              </button>
             </div>
-
-            <div class="select-box select-pagination">
-              <p class="select">Pagination</p>
-              <ul class="select-menu hide" id="select-pagination">
-                <li>10 on page</li>
-                <li>20 on page</li>
-              </ul>
-              <span></span>
-            </div>
-
-            <button class="button">
-              <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg">
-                <g fill-rule="evenodd">
-                  <path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z" />
-                </g>
-              </svg>
-            </button>
           </div>
 
           <div class="generated-products" id="generated-products">
             <article class="product">
-              <div>asljdhaskdj</div>
+              <a>
+                <img src="" alt="">
+                
+              </a>
             </article>
           </div>
 
