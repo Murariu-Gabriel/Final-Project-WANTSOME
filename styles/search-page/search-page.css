@@ -1062,7 +1062,17 @@ footer .container nav .socials {
 }
 .generated-search-result .container .display-search-results .search-text-result {
   font-size: 1.5rem;
-  margin: 0 0 1rem 0;
+  padding: 1rem 0;
+  margin: 0;
+  word-spacing: 0.4rem;
+  border-bottom: 1px solid #000000;
+}
+.generated-search-result .container .display-search-results .search-text-result .result-count {
+  font-size: 1.8rem;
+}
+.generated-search-result .container .display-search-results .search-text-result .result-text {
+  font-weight: 800;
+  font-size: 2rem;
 }
 .generated-search-result .container .display-search-results .about-filters {
   display: flex;
@@ -1070,7 +1080,6 @@ footer .container nav .socials {
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 3px solid #F1F1F1;
   align-items: center;
 }
 .generated-search-result .container .display-search-results .about-filters button:first-of-type {
@@ -1178,7 +1187,7 @@ footer .container nav .socials {
   transition: box-shadow 0.3s ease-in-out;
 }
 .generated-search-result .container .display-search-results .generated-products-line article img {
-  width: 120px;
+  width: 130px;
 }
 .generated-search-result .container .display-search-results .generated-products-line article div {
   width: 100%;
@@ -1214,6 +1223,7 @@ footer .container nav .socials {
   font-size: 1.5rem;
   margin: 0;
   width: 100%;
+  padding-top: 1rem;
 }
 .generated-search-result .container .display-search-results .generated-products-line article div button {
   position: relative;
@@ -1248,6 +1258,8 @@ footer .container nav .socials {
 }
 .generated-search-result .container .display-search-results .generated-products article {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: #F1F1F1;
   border-radius: 8px;
   padding: 0.8rem;
@@ -1258,7 +1270,10 @@ footer .container nav .socials {
   max-width: 250px;
 }
 .generated-search-result .container .display-search-results .generated-products article div {
-  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .generated-search-result .container .display-search-results .generated-products article .overline {
   padding: 0.3rem 0.3rem 0.3rem 0.7rem;
@@ -1275,10 +1290,12 @@ footer .container nav .socials {
 }
 .generated-search-result .container .display-search-results .generated-products article h3 {
   font-size: 1.2rem;
+  text-align: center;
 }
 .generated-search-result .container .display-search-results .generated-products article span {
   display: block;
   padding-bottom: 1rem;
+  margin-top: auto;
 }
 .generated-search-result .container .display-search-results .generated-products article span strong {
   font-size: 1.5rem;

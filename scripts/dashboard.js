@@ -31,8 +31,12 @@ console.log(parsedProducts)
 
 
 
+/// Left this here so you just know 
 
 
+// import { faker } from "https://cdn.skypack.dev/@faker-js/faker"
+
+// console.log(faker.person.fullName())
 
 
 

@@ -642,7 +642,7 @@ const noMatterSearch = (windowKey) => {
     searches.unshift(windowKey)
 
     window.location.assign(
-      `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}"`
+      `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}`
     )
   }
 
@@ -683,7 +683,7 @@ const cutBehindWord = (sentence, word) => {
   return restOfSentence
 }
 
-console.log(placeHolderAssist("garmin venu 2", "GARrmin venu"))
+// console.log(placeHolderAssist("garmin venu 2", "GARrmin venu"))
  
 
 const highlight = (element, searchedWord) => {
