@@ -26,6 +26,7 @@ filterButton.addEventListener("click", () => {
     filtersContainer.classList.toggle("display")
     filtersContainer.classList.toggle("overlay")
     document.body.classList.add("stop-scroll")
+    window.scrollTo(0, 0)
 })
 
 displayResult.addEventListener("click", () => {
@@ -60,10 +61,7 @@ window.addEventListener("resize", () => {
   } else {
     if (filtersContainer.classList.contains("overlay")) {
       document.body.classList.add("stop-scroll")
-      window.scrollTo({
-        top: 0,
-        // behavior: "smooth", // Add smooth scrolling animation
-      })
+      window.scrollTo(0,0)
     }
   }
 })

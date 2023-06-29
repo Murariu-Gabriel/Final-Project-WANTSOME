@@ -12,7 +12,7 @@
   .nav-and-hero {
     .navigation{
       >.container {
-  
+       padding: $base-spacing 0;
         header {
           @include flex(unset, unset, unset, unset);
           padding: 0;

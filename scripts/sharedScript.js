@@ -541,7 +541,7 @@ if(parameters.pathname !== "/html-pages/checkout.html"){
   toTopBtn.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Add smooth scrolling animation
+      // behavior: "smooth", // Add smooth scrolling animation
     })
   })
 

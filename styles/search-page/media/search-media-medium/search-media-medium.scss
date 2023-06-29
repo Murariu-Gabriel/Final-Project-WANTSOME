@@ -22,6 +22,10 @@
             }
           }
         }
+
+        .generated-products{
+          grid-template-columns: repeat(auto-fill , minmax(198px, 1fr));
+        }
       }
     }
   }

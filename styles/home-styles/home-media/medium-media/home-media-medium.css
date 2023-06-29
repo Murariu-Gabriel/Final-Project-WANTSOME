@@ -355,6 +355,9 @@ label {
     margin: 0 auto;
     padding: 0;
   }
+  .nav-and-hero .navigation > .container {
+    padding: 1rem 0;
+  }
   .nav-and-hero .navigation > .container header {
     display: flex;
     align-items: unset;

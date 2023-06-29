@@ -222,7 +222,7 @@
                         font-size: 1.2rem;
                         padding: 0.5rem;
                         color: $black;
-                        border: 3px solid $black;
+                        border: 2px solid $black;
                         text-transform: capitalize;
                         background: none ;
 
@@ -331,20 +331,188 @@
                 border-radius: $base-border-radius;
             }
 
-            .generated-products{
-                
-                .square-product{
-                    position: relative;
+            .generated-products-line{
+                 margin-top: $base-spacing;
+                display: grid;
+                // display: flex;
+                grid-template-columns: 1;
+                gap: 1rem;
 
+                article{
+                    position: relative;
+                    display: flex;
+                    // align-items: center;
+                    // justify-content: center;
+                    // flex-direction: column;
+                    background-color: $gray;
+                    border-radius: $base-border-radius;
+                    padding: 0.8rem;
+                    transition: box-shadow 0.3s ease-in-out;
+                    // transition: transform 0.2s ease-in-out;
                     img{
-                        width: 400px;
+                        // width: 100%;
+                        width: 120px;
+                        // margin-right: auto;
+                        
                     }
+                    
+                    
+                    div{
+                        width: 100%;  
+                        
+                        padding-left: 1.5rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        // flex-direction: column;
+                        flex-wrap: wrap;
+                        gap: 1rem;
+
+
+                        .overline{
+                            padding: 0.3rem 0.3rem 0.3rem 0.7rem;
+                            margin: 0;
+                            position: absolute;
+                            width: fit-content;
+                            letter-spacing: 0.4rem;
+                            top: 0rem;
+                            right: 0;
+                            background-color: $orange;
+                            color: white;
+                            font-size: 0.8rem;
+                            border-radius: $base-border-radius;
+                        }
+
+                        span{
+                            display: inline;
+                            // padding-bottom: 1rem;
+                            // align-self: flex-start;
+                            // margin-left: auto;
+                            strong{
+                               font-size: 1.5rem;
+                            }
+                        }
+
+                        h3{
+                            font-size: 1.5rem;
+                            margin: 0;
+                            width: 100%;
+                            // text-align: center;
+                        }
+
+                        button{
+                            position: relative;
+                            // padding: 0.3rem 0.5rem 0.3rem 2.5rem;
+                            padding: 0.2rem 0.5rem 0.2rem 3rem;
+                            border: 2px solid $black;
+                           
+                            // width: 100%;
+                            // width: ;
+                            transition: background-color 0.3s ease-in-out;
+                        
+                            svg{
+                                fill: $white;
+                                position: absolute;
+                                background-color: $black;
+                                border-top-right-radius: $base-border-radius;
+                                border-bottom-right-radius: $base-border-radius;
+                                top: 0;
+                                left: 0;
+                            }
+
+                            &:hover{
+                                background-color: $orange;
+                                color: $white;
+                            }
+                        }
+
+                    }
+
+                    a{
+                        position: absolute;
+                        height: 100%;
+                        width: 30%;
+                        top: 0;
+  
+                    }
+
+                }
+            }
+
+
+
+            .generated-products{
+                margin-top: $base-spacing;
+                display: grid;
+                // display: flex;
+                grid-template-columns: repeat(auto-fill , minmax(160px, 1fr));
+                gap: 1rem;
+                // gap: $base-spacing;
+                // flex-wrap: wrap;
+                // justify-content: space-between;
+
+                article{
+                    position: relative;
+                    // display: flex;
+                    // align-items: center;
+                    // flex-direction: column;
+                    background-color: $gray;
+                    border-radius: $base-border-radius;
+                    padding: 0.8rem;
+                    transition: box-shadow 0.3s ease-in-out;
+                    // transition: transform -.2s ease-in-out;
+                    img{
+                        width: 100%;
+                        max-width: 250px;
+                        
+                    }
+                    
+                    
+                    div{
+                        width: 100%;  
+                    }
+
+                    .overline{
+                        padding: 0.3rem 0.3rem 0.3rem 0.7rem;
+                        margin: 0;
+                        text-align: center;
+                        position: absolute;
+                        letter-spacing: 0.4rem;
+                        top: 0rem;
+                        left: 0;
+                        background-color: $orange;
+                        color: white;
+                        font-size: 0.8rem;
+                        border-radius: $base-border-radius;
+                        // width: 100%;
+                    }
+
+                    h3{
+                        font-size: 1.2rem;
+                        // color: $black;
+                        //  align-self: flex-start;
+                    }
+                    
+                    span{
+                        display: block;
+                        padding-bottom: 1rem;
+                        // align-self: flex-start;
+                        
+                        strong{
+                        font-size: 1.5rem;
+                        }
+                    }
+
+
 
                     button{
                         position: relative;
-                        padding: 0.3rem 1rem 0.3rem 2.5rem;
+                        padding: 0.3rem 0.5rem 0.3rem 2.5rem;
+                        // padding: 0.2rem 0 0.2rem 1.7rem;
                         border: 2px solid $black;
+                        width: 100%;
                         transition: background-color 0.3s ease-in-out;
+                        
                         svg{
                             fill: $white;
                             position: absolute;
@@ -360,13 +528,25 @@
                             color: $white;
                         }
                     }
+
+                    a{
+                        position: absolute;
+                        width: 100%;
+                        height: 80%;
+                        top: 0;
+                        left: 0;
+                        // background-color: rebeccapurple;
+                    }
+
+                    &:hover{
+                        // transform: scale(1.05);
+                        box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+                        
+                    }
+
+
                 }
 
-                .line{
-
-                }
-
-           
             }
 
 
@@ -377,7 +557,8 @@
 
         .overlay {
             position: absolute;
-            background: rgba(0, 0, 0, 0.5);
+            // background: rgba(0, 0, 0, 0.5);
+            background: $gray;
             width: 100%;
             max-width: 100vw;
             height: 100vh;
