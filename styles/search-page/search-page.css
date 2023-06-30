@@ -911,6 +911,13 @@ footer .container nav .socials {
 .generated-search-result {
   padding-top: 3rem;
 }
+.generated-search-result .container .search-err {
+  text-transform: lowercase;
+  margin: 0 auto;
+}
+.generated-search-result .container .search-err span {
+  color: rgb(249, 81, 81);
+}
 .generated-search-result .container .filters {
   display: none;
   overflow-y: scroll;
@@ -1076,7 +1083,6 @@ footer .container nav .socials {
 }
 .generated-search-result .container .display-search-results .about-filters {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem 0;
@@ -1097,6 +1103,7 @@ footer .container nav .socials {
 }
 .generated-search-result .container .display-search-results .about-filters button:last-of-type {
   display: none;
+  margin-left: auto;
 }
 .generated-search-result .container .display-search-results .about-filters button:last-of-type svg {
   pointer-events: none;
@@ -1348,7 +1355,7 @@ footer .container nav .socials {
   justify-content: center;
 }
 .generated-search-result .container .pagination-list li {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   border: 1px solid #000000;

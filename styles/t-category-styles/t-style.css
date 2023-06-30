@@ -964,7 +964,7 @@ footer .container nav .socials {
   justify-content: center;
 }
 .template-category .container .pagination-list li {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   border: 1px solid #000000;

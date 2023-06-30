@@ -162,7 +162,7 @@ const productListString = localStorage.getItem("products")
 const productList = JSON.parse(productListString)
 
 const cartList = document.getElementById("cart-list")
-console.log(cartList)
+// console.log(cartList)
 
 const addListEl = (
   productId,
@@ -575,7 +575,7 @@ const getProductsData = () => {
 const addSearchToggle = (e) => {
   if (e) {
     e.preventDefault()
-    e.stopPropagation()
+    // e.stopPropagation()
   }
   searchContainer.classList.add("overlay2")
   inputContainer.classList.add("top")
@@ -647,10 +647,12 @@ const noMatterSearch = (windowKey) => {
   }
 
   const firstFourElements = searches.filter((element, index) => index < 4)
+  const set = new Set(firstFourElements)
+  const newArray = Array.from(set)
 
-  console.log(firstFourElements)
+  console.log(newArray)
 
-  const stringSearches = JSON.stringify(firstFourElements)
+  const stringSearches = JSON.stringify(newArray)
   localStorage.setItem("recent-searches", stringSearches)
 }
 
@@ -741,7 +743,7 @@ searchInput.addEventListener("keyup", (e) => {
   const inputCategories = inputSearchResult.map(product => product.category)
   const setCategories = new Set(inputCategories)
   const cleanCategories = [...setCategories]
-  console.log(cleanCategories)
+  // console.log(inputSearchResult)
 
  
   placeHolder.innerText = ""
@@ -838,7 +840,7 @@ const fillListWithData = (array) => {
 }
 
 fillListWithData(searches)
-
+// console.log(searches)
 
 
 

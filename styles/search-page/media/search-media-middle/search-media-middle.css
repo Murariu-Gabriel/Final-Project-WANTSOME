@@ -377,6 +377,9 @@ label {
   .generated-search-result .container .display-search-results .manipulate-result .about-filters .select-pagination {
     display: block;
   }
+  .generated-search-result .container .display-search-results .manipulate-result .about-filters .select-box {
+    max-width: 250px;
+  }
   .generated-search-result .container .display-search-results .filter-button {
     display: none;
   }

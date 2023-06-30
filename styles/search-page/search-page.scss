@@ -12,6 +12,17 @@
 .generated-search-result{ 
     padding-top: $l-spacing;
     .container{ 
+
+        .search-err{
+            text-transform: lowercase;
+            margin: 0 auto;
+            span{
+                color: rgb(249, 81, 81);
+            }
+        }
+
+
+
         .filters{
             display: none;
             overflow-y: scroll;
@@ -218,7 +229,7 @@
 
             .about-filters{
                 display: flex;
-                justify-content: space-between;
+                // justify-content: space-between;
                 flex-wrap: wrap;
                 // align-items: center;
                 gap: 1rem;
@@ -246,6 +257,7 @@
                     &:last-of-type{
                          display: none;
                         //  border: 2px solid $black;
+                        margin-left: auto;
                         svg{
                             pointer-events: none;
                             path{
@@ -607,7 +619,7 @@
             gap: 1rem;
             justify-content: center;
             li{
-                padding: 1rem;
+                padding: 0.5rem 1rem;
                 font-size: 1.5rem;
                 cursor: pointer;
                 border: 1px solid $black;

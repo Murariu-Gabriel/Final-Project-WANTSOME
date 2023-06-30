@@ -12,6 +12,10 @@ const resultText = document.getElementById("result-text")
 const searchBarInput = document.body.querySelector(".search-input")
 const searchPageContainer = document.getElementById("search-page-container")
 
+const selectPagination = document.getElementById("select-pagination")
+const selectOrder = document.getElementById("select-order")
+
+
 // FILTER AND SELECT TOGGLES TOGGLES
 
 // VA TREBUII SA FACI TOGGLE OFF PENTRU CAND DAI CLICK INAFARA LOR
@@ -20,7 +24,8 @@ const addSelectEvent = () => {
   selectContainers.forEach((element) => {
     const select = element.querySelector("p")
     const list = element.querySelector("ul")
-    select.addEventListener("click", () => {
+    select.addEventListener("click", (e) => {
+      e.stopPropagation()
       list.classList.toggle("hide")
     })
     // aici va trebuii sa ma gandesc cum sa adaug event listeners pe li-uri ca in momentul in care le apas sa se face toggle off si doar contanerul cu produse sa isi faca reload cu filtrarea ceruta
@@ -29,6 +34,24 @@ const addSelectEvent = () => {
 }
 
 addSelectEvent()
+
+// WHEN USER CLICKS OUT OF SELECT BOXES
+
+document.body.addEventListener("click", (e) => {
+    console.log('DA')
+      
+    if (!selectPagination.classList.contains("hide")) {
+        selectPagination.classList.add("hide")
+    }
+
+    if (!selectOrder.classList.contains("hide")) {
+      selectOrder.classList.add("hide")
+    }
+})
+
+
+
+// FILTER BTN
 
 filterButton.addEventListener("click", () => {
   filtersContainer.classList.toggle("display")
@@ -155,17 +178,27 @@ const getSearchProducts = (search) => {
   return searchSpecificProducts
 }
 
-console.log(retrievedSearch)
+// console.log(retrievedSearch)
+
+// IMPORTANT VARIABLE CONTAINING SEARCH RESULT
 const currentSearch = getSearchProducts(retrievedSearch)
-console.log(currentSearch.length)
+
+
+// console.log(currentSearch.length)
 if (currentSearch.length === 0) {
-  searchPageContainer.innerHTML = `<h2>0 results for: ${retrievedSearch}</h2>`
+  searchPageContainer.innerHTML = `<h2 class="search-err"><span> 0 results for:</span> ${retrievedSearch}</h2>`
 }
 
+// UPDATING SEARCH DATA ON LOAD
 updateCount(currentSearch.length)
 resultText.innerText = `"${retrievedSearch}"`
 searchBarInput.value = retrievedSearch
-// localStorage.removeItem("products")
+
+
+// GENERATING PRODUCT AND PAGINATION
+
+ const  ITEMS_PER_PAGE = 9 - 1
+ const pagination = document.getElementById("pagination")
 
 const generateProduct = (
   productImage,
@@ -205,13 +238,100 @@ const generateProduct = (
   return product
 }
 
-const loadProducts = (searchResult) => {
-  searchResult.forEach((product) => {
+const loadProducts = (searchResult, start, end) => {
+  searchResult.forEach((product, index) => {
     const { images, new: ifNew, name, price, id } = product
-    generatedProductsContainer.appendChild(
-      generateProduct(images.display.first, name, ifNew, price, id)
-    )
+
+    if (index >= start && index <= end){
+        generatedProductsContainer.appendChild(
+          generateProduct(images.display.first, name, ifNew, price, id)
+        )
+    }
   })
 }
 
-loadProducts(currentSearch)
+
+// IMPORTANT
+loadProducts(currentSearch, 0, ITEMS_PER_PAGE)
+
+
+const generatePagination = (list, itemsPerPage) => {
+  let page = Math.floor(list.length / itemsPerPage)
+  const pageRest = list.length % itemsPerPage
+  if (pageRest > 0) {
+    page = page + 1
+  }
+
+  const ol = document.createElement("ol")
+  ol.classList.add("pagination-list")
+  for (let i = 1; i <= page; i++) {
+    const li = document.createElement("li")
+    li.classList.add("pagination-element")
+    li.textContent = i
+    li.addEventListener("click", (e) => {
+        generatedProductsContainer.innerHTML = ""
+        const count = parseInt(e.target.textContent)
+        
+        const start = itemsPerPage * (count - 1) 
+        const end = itemsPerPage * count
+        
+        const ifStartZero = start === 0 ? start  : start + 1
+        
+        console.log(ifStartZero, end)
+        loadProducts(list, ifStartZero, end)
+        window.scrollTo(0, 0)
+    })
+    ol.appendChild(li)
+  }
+
+  return ol
+}
+
+
+// IMPORTANT
+
+
+const generateOl = generatePagination(currentSearch, ITEMS_PER_PAGE)
+pagination.appendChild(generateOl)
+
+// PAGINATION OPTIONS
+
+
+const selectPaginationFunctionality = (list) => {
+    const listElements = selectPagination.children
+
+    for(element of listElements){
+        element.addEventListener("click", (e) => {
+            const elementValue =  parseInt(e.target.textContent.substring(0, 2)) - 1
+            console.log(elementValue)
+
+            const generateOl = generatePagination(list, elementValue)
+            pagination.innerHTML = ""
+            generatedProductsContainer.innerHTML = ""
+
+            loadProducts(list, 0, elementValue)
+            pagination.appendChild(generateOl)
+
+        })
+    }
+
+}
+
+
+// IMPORTANT
+selectPaginationFunctionality(currentSearch)
+
+
+
+
+
+// ORDER OPTIONS
+// const selectOrder = document.getElementById("select-order")
+
+
+
+
+
+
+
+
