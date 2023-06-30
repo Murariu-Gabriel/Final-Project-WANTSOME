@@ -322,16 +322,35 @@ const selectPaginationFunctionality = (list) => {
 selectPaginationFunctionality(currentSearch)
 
 
-
+/* ideea aici este asa, ca dupa primul array de la search se va modula tot dar dupa ce se apasa unul din butoanele din filtre va trebuii sa tot sa fie reincarcat dupa acel array */
 
 
 // ORDER OPTIONS
 // const selectOrder = document.getElementById("select-order")
 
+const selectOrderFunctionality = () => {
+    const orderList = selectOrder.children
+    
+    for (const element of orderList) {
+      element.addEventListener("click", (e) => {
+        console.log(e.target)
+        loadProducts(sort(currentSearch), 0, ITEMS_PER_PAGE)
+      })
+    }
+}
+
+selectOrderFunctionality()
 
 
 
+// PROBLEMA la event listener-urile de ordonnare acestea nu functioneaza cum trebuie desi am event-urile puse corect trebuie investigat
 
 
+const sort = (array) => {
+    
+  const sort = array.sort((a, b) => b.price - a.price)
 
+    return sort
+}
+console.log(sort(currentSearch))
 

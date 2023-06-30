@@ -843,10 +843,6 @@ fillListWithData(searches)
 // console.log(searches)
 
 
-
-
-
-
 // OLD VERSION FOR HIGHLIGHTING TEXT JUST IN CASE YOU WILL NEED IT AT SOME POINT
 
 
