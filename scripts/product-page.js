@@ -161,7 +161,7 @@ const counter = (element, counter) => {
   const newValue = id === "increment" ? add : substract
   if (newValue >= min && newValue <= max) {
     counter.setAttribute("value", newValue)
-    console.log("da")
+    console.log(newValue)
   }
 }
 
@@ -408,12 +408,10 @@ const cart = parsedCartProducts ? parsedCartProducts : []
       cart.push(object)
     } else {
      if (verifyIfIdExistsForCart(cart, object.id)) {
-        console.log(verifyIfIdExistsForCart(cart, object.id))
-        console.log(cart, object.id)
         const element = returnEL(cart, object.id)
-        element.count =
-          parseInt(returnValue(cart, object.id)) +
-          parseInt(productCounter.value)
+        const ifListIncrement = operation === "increment" ? 1 : parseInt(productCounter.value)
+        element.count = parseInt(returnValue(cart, object.id)) + ifListIncrement
+    
       } 
       else {
         object.count = 1
@@ -447,7 +445,7 @@ const cartButtonsEvent = (e) => {
       const id = e.target.parentNode.parentNode.id.slice(5,12)
       const input = e.target.parentNode.querySelector(".product-counter")
       if(parseInt(input.value) !== 0){
-        console.log(input)
+        console.log(input.value)
         counter(e.target, input)
         calculateTotal(cartList.children)
         addToLocalStorage(id, input.value, e.target.id)
@@ -523,7 +521,6 @@ cartDeleteAll.addEventListener("click", (e) => {
 
 const recommendedProducts = document.getElementById("recommended-products")
 
-// din lista actuala ia un element random si fa-i push in
 
 
 const itemsWithoutCurrentOne = productList.filter((element) => element.id !== params.productId)
