@@ -1,5 +1,5 @@
 
-
+const mainSection = document.body.querySelector(".generated-search-result")
 const selectContainers = document.body.querySelectorAll(".select-box")
 const filterButton = document.getElementById("filter-button")
 const filtersContainer = document.getElementById("filters")
@@ -18,8 +18,6 @@ const selectOrder = document.getElementById("select-order")
 
 // FILTER AND SELECT TOGGLES TOGGLES
 
-// VA TREBUII SA FACI TOGGLE OFF PENTRU CAND DAI CLICK INAFARA LOR
-
 const addSelectEvent = () => {
   selectContainers.forEach((element) => {
     const select = element.querySelector("p")
@@ -28,8 +26,6 @@ const addSelectEvent = () => {
       e.stopPropagation()
       list.classList.toggle("hide")
     })
-    // aici va trebuii sa ma gandesc cum sa adaug event listeners pe li-uri ca in momentul in care le apas sa se face toggle off si doar contanerul cu produse sa isi faca reload cu filtrarea ceruta
-    // console.log(list.children)
   })
 }
 
@@ -183,9 +179,9 @@ const getSearchProducts = (search) => {
 const currentSearch = getSearchProducts(retrievedSearch)
 
 
-if (currentSearch.length === 0) {
-  searchPageContainer.innerHTML = `<h2 class="search-err"><span> 0 results for:</span> ${retrievedSearch}</h2>`
-}
+
+
+
 
 // UPDATING SEARCH DATA ON LOAD
 updateCount(currentSearch.length)
@@ -371,6 +367,7 @@ for (const element of orderList) {
 selectOrderFunctionality(currentSearch)
 
 
+// toSort might not be the best approach here, but since my data has a small number there is no need for now for a better sorting solution. In the future or on other projects there is a big probability this might not be optimal and be in need of a different approach.
 
 
 // SORTING FUNCTION USING THE NEW SORT METHOD
@@ -379,4 +376,16 @@ const sort = (array, callback) => {
 
 return sort
 }
+
+// SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL, IT ALL LOGIC THEN SHOW RESULT
+
+if (currentSearch.length === 0) {
+  searchPageContainer.classList.remove("hide")
+
+  searchPageContainer.innerHTML = `<h2 class="search-err"><span> 0 results for:</span> ${retrievedSearch}</h2>`
+} else {
+  searchPageContainer.classList.remove("hide")
+}
+
+
 

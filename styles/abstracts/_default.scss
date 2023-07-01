@@ -47,8 +47,12 @@ body {
 
 
 .stop-scroll{
-   overflow-y: hidden;
+  //  overflow-y: hidden;
 //  overflow: hidden;
+ position: fixed; 
+  overflow-y:scroll;
+  width: 100%;
+
 }
 
 ul {
