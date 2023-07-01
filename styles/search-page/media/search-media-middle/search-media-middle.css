@@ -378,6 +378,7 @@ label {
     display: block;
   }
   .generated-search-result .container .display-search-results .manipulate-result .about-filters .select-box {
+    min-width: 190px;
     max-width: 250px;
   }
   .generated-search-result .container .display-search-results .filter-button {

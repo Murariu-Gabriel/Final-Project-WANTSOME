@@ -507,7 +507,7 @@ label {
     display: block;
   }
   .generated-search-result .container .display-search-results .generated-products {
-    grid-template-columns: repeat(auto-fill, minmax(198px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(197px, 1fr));
   }
   .template-category {
     padding-top: 8rem;

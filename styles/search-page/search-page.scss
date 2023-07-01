@@ -120,11 +120,34 @@
                   
 
                     .price-by-range{
-                        padding-bottom: 2rem;
-                        display: block;
+                            padding-bottom: 2rem;
+                            display: block;
 
-                        label{
-                            padding-left: 0.5rem;
+                            label{
+                                padding-left: 0.5rem;
+                            }
+
+                        .price-input{
+                            // display: flex;
+                            align-items: center;
+                            gap: 0.25rem;
+                            padding: 1rem 0;
+
+                            input{
+                                padding: 0.4rem 0.4rem;
+                                &::-webkit-inner-spin-button{
+                                    appearance: none;
+                                    margin: 0;
+                                }
+                            }
+
+                            button{
+                                display: flex;
+                                padding: 0.125rem;
+                                border: 2px solid $gray;
+                                border-radius: 50%;
+                                background-color: $white;
+                            }
                         }
 
                     }
@@ -134,28 +157,7 @@
                     }  
                 }
                 
-                .price-input{
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    padding: 1rem 0;
-
-                    input{
-                        padding: 0.4rem 0.8rem;
-                        &::-webkit-inner-spin-button{
-                            appearance: none;
-                            margin: 0;
-                        }
-                    }
-
-                    button{
-                        display: flex;
-                        padding: 0.125rem;
-                        border: 2px solid $gray;
-                        border-radius: 50%;
-                        background-color: $white;
-                    }
-                }
+                
 
                 .range-slider{
                     height: 5px;
@@ -304,10 +306,14 @@
                             &:hover{
                                 background-color: $gray;
                             }
+
+                            span{
+                                text-transform: capitalize;
+                            }
                         }
                     }
 
-                    span{
+                    .arrows{
                      position: absolute;
                     //  background-color: aliceblue;
                      top: 0;
@@ -357,16 +363,12 @@
             .generated-products-line{
                  margin-top: $base-spacing;
                 display: grid;
-                // display: flex;
                 grid-template-columns: 1;
                 gap: 1rem;
 
                 article{
                     position: relative;
                     display: flex;
-                    // align-items: center;
-                    // justify-content: center;
-                    // flex-direction: column;
                     background-color: $gray;
                     border-radius: $base-border-radius;
                     padding: 0.8rem;
@@ -376,6 +378,7 @@
                         // width: 100%;
                         width: 130px;
                         // margin-right: auto;
+                        
                         
                     }
                     
@@ -490,6 +493,7 @@
                     img{
                         width: 100%;
                         max-width: 250px;
+                        margin: 0 auto;
                         
                     }
                     

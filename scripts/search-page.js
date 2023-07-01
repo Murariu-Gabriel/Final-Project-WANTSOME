@@ -38,7 +38,6 @@ addSelectEvent()
 // WHEN USER CLICKS OUT OF SELECT BOXES
 
 document.body.addEventListener("click", (e) => {
-    console.log('DA')
       
     if (!selectPagination.classList.contains("hide")) {
         selectPagination.classList.add("hide")
@@ -184,7 +183,6 @@ const getSearchProducts = (search) => {
 const currentSearch = getSearchProducts(retrievedSearch)
 
 
-// console.log(currentSearch.length)
 if (currentSearch.length === 0) {
   searchPageContainer.innerHTML = `<h2 class="search-err"><span> 0 results for:</span> ${retrievedSearch}</h2>`
 }
@@ -239,10 +237,10 @@ const generateProduct = (
 }
 
 const loadProducts = (searchResult, start, end) => {
-  searchResult.forEach((product, index) => {
-    const { images, new: ifNew, name, price, id } = product
-
-    if (index >= start && index <= end){
+    searchResult.forEach((product, index) => {
+        const { images, new: ifNew, name, price, id } = product
+        
+        if (index >= start && index <= end){
         generatedProductsContainer.appendChild(
           generateProduct(images.display.first, name, ifNew, price, id)
         )
@@ -290,28 +288,41 @@ const generatePagination = (list, itemsPerPage) => {
 
 // IMPORTANT
 
+const updatePagination = (list, end = 8) => {
+    const generateOl = generatePagination(list, end)
+    pagination.innerHTML = ""
+    pagination.appendChild(generateOl)
 
-const generateOl = generatePagination(currentSearch, ITEMS_PER_PAGE)
-pagination.appendChild(generateOl)
+}
+
+updatePagination(currentSearch, ITEMS_PER_PAGE)
 
 // PAGINATION OPTIONS
+
+// HERE THERE WILL BE A FUNCTION THAT SETS GLOBAL PAGINATION AND IT WILL BE CALLED INSIDE SELECT PAGINATION FUNCTIONALITY
+
+// FUNCTION WILL CONTAIN LOCAL STORAGE UPDATE WITH A VALUE
+
+// ON LOAD THE PAGE WILL NEED TO CHECK IF THIS VALUE EXISTS IF NOT GO FOR DEFAULT PAGINATION
+
 
 
 const selectPaginationFunctionality = (list) => {
     const listElements = selectPagination.children
+    const text = selectPagination.parentNode.querySelector("p")
 
     for(element of listElements){
         element.addEventListener("click", (e) => {
+            text.innerText = e.target.innerText
             const elementValue =  parseInt(e.target.textContent.substring(0, 2)) - 1
             console.log(elementValue)
 
-            const generateOl = generatePagination(list, elementValue)
-            pagination.innerHTML = ""
+
+            
             generatedProductsContainer.innerHTML = ""
-
+            
             loadProducts(list, 0, elementValue)
-            pagination.appendChild(generateOl)
-
+            updatePagination(list, elementValue)
         })
     }
 
@@ -322,35 +333,50 @@ const selectPaginationFunctionality = (list) => {
 selectPaginationFunctionality(currentSearch)
 
 
-/* ideea aici este asa, ca dupa primul array de la search se va modula tot dar dupa ce se apasa unul din butoanele din filtre va trebuii sa tot sa fie reincarcat dupa acel array */
-
-
 // ORDER OPTIONS
-// const selectOrder = document.getElementById("select-order")
 
-const selectOrderFunctionality = () => {
+const selectOrderFunctionality = (list) => {
     const orderList = selectOrder.children
-    
-    for (const element of orderList) {
-      element.addEventListener("click", (e) => {
-        console.log(e.target)
-        loadProducts(sort(currentSearch), 0, ITEMS_PER_PAGE)
+
+const text = selectOrder.parentNode.querySelector("p")
+
+
+
+for (const element of orderList) {
+    element.addEventListener("click", (e) => {
+        let sorted = []
+        text.innerText = e.target.innerText
+        
+        if(orderList[0] === element){
+            sorted = sort(list, (a, b) => a.price - b.price)
+        }else if (orderList[1] === element) {
+            sorted = sort(list, (a, b) => b.price - a.price)
+        } else {
+            sorted = sort(list, (a, b) => b.new - a.new)
+        }
+
+
+        generatedProductsContainer.innerHTML = ""
+        // const sorted = sort(currentSearch, (a, b) => b.price - a.price)
+       
+
+        selectPaginationFunctionality(sorted)
+        loadProducts(sorted, 0, ITEMS_PER_PAGE)
+        updatePagination(sorted)
+       
       })
     }
 }
 
-selectOrderFunctionality()
+selectOrderFunctionality(currentSearch)
 
 
 
-// PROBLEMA la event listener-urile de ordonnare acestea nu functioneaza cum trebuie desi am event-urile puse corect trebuie investigat
 
+// SORTING FUNCTION USING THE NEW SORT METHOD
+const sort = (array, callback) => {
+    const sort = array.toSorted(callback)
 
-const sort = (array) => {
-    
-  const sort = array.sort((a, b) => b.price - a.price)
-
-    return sort
+return sort
 }
-console.log(sort(currentSearch))
 
