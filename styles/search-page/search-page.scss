@@ -15,7 +15,8 @@
 
         .search-err{
             text-transform: lowercase;
-            margin: 0 auto;
+            text-align: center;
+            word-break: break-all;
             span{
                 color: rgb(249, 81, 81);
             }
@@ -214,18 +215,18 @@
 
             
             .search-text-result{
-                font-size: 1.5rem;
+                font-size: 1rem;
                 padding: 1rem 0 ;
                 margin: 0;
-                word-spacing: 0.4rem;
+                word-spacing: 0.1rem;
                 border-bottom: 1px solid $black;
                 .result-count{
-                    font-size: 1.8rem;
+                    font-size: 1.2rem;
                 }
 
                 .result-text{
                     font-weight: 800;
-                    font-size: 2rem;
+                    font-size: 1.3rem;
                 }
             }
 
@@ -620,11 +621,13 @@
             padding: 0;
             list-style: none;
             display: flex;
+           
             gap: 1rem;
             justify-content: center;
-            li{
+            .pagination-element{
                 padding: 0.5rem 1rem;
                 font-size: 1.5rem;
+                 background: none;
                 cursor: pointer;
                 border: 1px solid $black;
                 transition: background-color 0.3s ease-in-out;
@@ -632,6 +635,8 @@
                     background-color: $black;
                     color: $white;
                 }
+
+               
             }
         }
 

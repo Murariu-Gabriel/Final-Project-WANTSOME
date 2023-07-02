@@ -11,10 +11,15 @@ const generatedProductsCount = document.getElementById("result-count")
 const resultText = document.getElementById("result-text")
 const searchBarInput = document.body.querySelector(".search-input")
 const searchPageContainer = document.getElementById("search-page-container")
+const plural = document.getElementById("plural")
 
 const selectPagination = document.getElementById("select-pagination")
 const selectOrder = document.getElementById("select-order")
 
+
+// const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 18" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>`
+
+// const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
 
 // FILTER AND SELECT TOGGLES TOGGLES
 
@@ -63,14 +68,20 @@ displayResult.addEventListener("click", () => {
 
 // TOGGLE FOR VIEW STYLE
 
-changeStyleButton.addEventListener("click", (e) => {
-  const svgs = e.target.children
+const buttonSvg = changeStyleButton.children 
 
-  for (const svg of svgs) {
-    svg.classList.contains("hide")
-      ? svg.classList.remove("hide")
-      : svg.classList.add("hide")
-  }
+const toggleBtnSvg = (svgs) => {
+for (const svg of buttonSvg) {
+  svg.classList.contains("hide")
+    ? svg.classList.remove("hide")
+    : svg.classList.add("hide")
+}
+}
+
+changeStyleButton.addEventListener("click", (e) => {
+
+    toggleBtnSvg(buttonSvg)
+  
 
   if (generatedProductsContainer.classList.contains("generated-products")) {
     generatedProductsContainer.classList.remove("generated-products")
@@ -95,6 +106,14 @@ window.addEventListener("resize", () => {
       document.body.classList.add("stop-scroll")
       window.scrollTo(0, 0)
     }
+  }
+
+  if (screenWidth < 550){
+    if(generatedProductsContainer.classList.contains("generated-products-line")){
+        generatedProductsContainer.setAttribute("class", "generated-products")
+        toggleBtnSvg(buttonSvg)
+    }
+    
   }
 })
 
@@ -187,19 +206,98 @@ const currentSearch = getSearchProducts(retrievedSearch)
 updateCount(currentSearch.length)
 resultText.innerText = `"${retrievedSearch}"`
 searchBarInput.value = retrievedSearch
-
+plural.innerText = currentSearch.length > 1 ? "items" : "item"
 
 // GENERATING PRODUCT AND PAGINATION
 
- const  ITEMS_PER_PAGE = 9 - 1
- const pagination = document.getElementById("pagination")
+const paginationText = selectPagination.parentNode.querySelector("p")
+const paginationPreference = localStorage.getItem("pagination")
+const ifPaginationExists = paginationPreference ? paginationPreference : 8
+
+const  ITEMS_PER_PAGE = ifPaginationExists
+paginationText.innerText = `${parseInt(paginationPreference) + 1} on page`
+
+const pagination = document.getElementById("pagination")
+
+const cartItems = document.getElementById("cart-list")
+
+
+// !!! CAUTION THE ADD TO CART FUNCTIONALITY SHARES FUNCTIONS WITH SHARED SCRIPT MEANING THAT SOME FUNCTION ARE NOT ON ThIS FILE THEY COME FROM SHARED SCRIPT
+
+// returnEl is one of them
+
+const verifyCartItemExistence = (list, id) => {
+  for (const el of list) {
+    if (el.id.includes(id)) {
+      return true
+    }
+  }
+  return false
+}
+
+const addCount = (list, id) => {
+  for (const el of list) {
+    if (el.id.includes(id)) {
+      const elInput = el.querySelector("input")
+      let inputValue = parseInt(elInput.value)
+      let addValue = 1
+      if (inputValue + addValue < 100) {
+        const sum = inputValue + addValue
+        elInput.setAttribute("value", sum)
+      }
+    //   console.log(elInput)
+      break
+    }
+  }
+}
+
+
+const addItemToLocalStorage = (productId, ProductValue, operation) => {
+  const existingCartProducts = localStorage.getItem("cart-products")
+  const parsedCartProducts = JSON.parse(existingCartProducts)
+  const cart = parsedCartProducts ? parsedCartProducts : []
+
+  const object = {
+    id: productId,
+    count: parseInt(ProductValue),
+  }
+
+  if (cart.length === 0) {
+    cart.push(object)
+  } else {
+    if (verifyIfIdExistsForCart(cart, object.id)) {
+      const element = returnEL(cart, object.id)
+      const ifListIncrement =
+        operation === "increment" ? 1 : 1
+      element.count = parseInt(returnValue(cart, object.id)) + ifListIncrement
+    } else {
+      object.count = 1
+      cart.push(object)
+    }
+
+    if (operation === "decrement") {
+      console.log(cart, object.id)
+      if (verifyCartItemExistence(cart, object.id)) {
+        const element = returnEL(cart, object.id)
+        element.count = parseInt(object.count)
+      }
+    }
+  }
+
+  const newProducts = JSON.stringify(cart)
+  localStorage.setItem("cart-products", newProducts)
+}
+
+
+
 
 const generateProduct = (
   productImage,
   productName,
   ifNew,
   productPrice,
-  productId
+  productId,
+  productSlug
 ) => {
   const product = document.createElement("article")
   const isNew = ifNew ? "<p class='overline'>new</p>" : ""
@@ -228,17 +326,41 @@ const generateProduct = (
         <a  class="big-link" href="/html-pages/product-page.html?productId=${productId}"></a>
     
     `
+   const addToCart = product.querySelector("button")
+
+   addToCart.addEventListener("click", () => {
+  
+  if (verifyCartItemExistence(cartItems.children, productId)) {
+    addCount(cartItems.children, productId)
+  } else {
+    const listEl = addListEl(
+      productId,
+      productImage,
+      productName,
+      productSlug,
+      productPrice,
+      1
+    )
+
+    cartListFunctionality(listEl)
+    cartList.appendChild(listEl)
+  }
+ 
+  addItemToLocalStorage(productId, 1) 
+})
+
+
 
   return product
 }
 
 const loadProducts = (searchResult, start, end) => {
     searchResult.forEach((product, index) => {
-        const { images, new: ifNew, name, price, id } = product
+        const { images, new: ifNew, name, price, id, slug} = product
         
         if (index >= start && index <= end){
         generatedProductsContainer.appendChild(
-          generateProduct(images.display.first, name, ifNew, price, id)
+          generateProduct(images.display.first, name, ifNew, price, id, slug)
         )
     }
   })
@@ -248,6 +370,18 @@ const loadProducts = (searchResult, start, end) => {
 // IMPORTANT
 loadProducts(currentSearch, 0, ITEMS_PER_PAGE)
 
+const createButton = (id, btnClass, content) => {
+    const btn = document.createElement("button")
+    btn.setAttribute("id", id)
+    btn.setAttribute("class", btnClass)
+    btn.classList.add("pagination-element")
+    btn.innerHTML = content
+
+    return btn
+}
+
+// arrowForward
+// arrowBackwards
 
 const generatePagination = (list, itemsPerPage) => {
   let page = Math.floor(list.length / itemsPerPage)
@@ -258,6 +392,7 @@ const generatePagination = (list, itemsPerPage) => {
 
   const ol = document.createElement("ol")
   ol.classList.add("pagination-list")
+  ol.appendChild(createButton("page-backwards", "page-backwards", "previous page"))
   for (let i = 1; i <= page; i++) {
     const li = document.createElement("li")
     li.classList.add("pagination-element")
@@ -277,6 +412,10 @@ const generatePagination = (list, itemsPerPage) => {
     })
     ol.appendChild(li)
   }
+   ol.appendChild(
+     createButton("page-forward", "page-forward", "next page")
+   )
+
 
   return ol
 }
@@ -303,13 +442,15 @@ updatePagination(currentSearch, ITEMS_PER_PAGE)
 
 
 
+
+
+
 const selectPaginationFunctionality = (list) => {
     const listElements = selectPagination.children
-    const text = selectPagination.parentNode.querySelector("p")
 
     for(element of listElements){
         element.addEventListener("click", (e) => {
-            text.innerText = e.target.innerText
+            paginationText.innerText = e.target.innerText
             const elementValue =  parseInt(e.target.textContent.substring(0, 2)) - 1
             console.log(elementValue)
 
@@ -319,6 +460,9 @@ const selectPaginationFunctionality = (list) => {
             
             loadProducts(list, 0, elementValue)
             updatePagination(list, elementValue)
+
+
+            localStorage.setItem("pagination", elementValue)
         })
     }
 

@@ -7,8 +7,28 @@
 
   .generated-search-result {
     .container {
-       padding: 0;
+      padding: 0;
       .display-search-results {
+
+
+           
+        .search-text-result{
+            font-size: 1.5rem;
+            padding: 1rem 0 ;
+            margin: 0;
+            word-spacing: 0.1rem;
+            border-bottom: 1px solid $black;
+            .result-count{
+                font-size: 1.8rem;
+            }
+
+            .result-text{
+                font-weight: 800;
+                font-size: 1.8rem;
+            }
+        }
+
+
         .about-filters {
           flex-wrap: nowrap;
 

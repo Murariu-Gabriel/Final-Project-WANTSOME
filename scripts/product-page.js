@@ -225,7 +225,7 @@ cartButton.addEventListener("click", () => {
 // CART FUNCTIONALITY
 
 const cartList = document.getElementById("cart-list")
-const cartCounter = document.getElementById("cart-counter") // car5 counter este lungimea listei de produse
+const cartCounter = document.getElementById("cart-counter") 
 const addToCart = document.getElementById("add-to-cart")
 const counterForm = document.getElementById("counter-form")
 const totalPrice = document.getElementById("total-price")

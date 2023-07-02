@@ -129,14 +129,19 @@ cartForm.addEventListener("click", (e) => {
 
 const hideRemoveAll = (num) => {
   if(num === 0){
-    cartDeleteAll.classList.toggle("hide")
+    cartDeleteAll.classList.add("hide")
+  } else {
+    cartDeleteAll.classList.remove("hide")
   }
+
+  console.log(num)
 }
 
 const updateCounter = () => {
-  cartCounter.innerText = cartList.children.length
+  const itemsCount = cartList.children.length
+  cartCounter.innerText = itemsCount
 
-  hideRemoveAll(cartList.children.length)
+  hideRemoveAll(itemsCount)
 }
 
 

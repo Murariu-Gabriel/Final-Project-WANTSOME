@@ -502,6 +502,20 @@ label {
   .generated-search-result .container {
     padding: 0;
   }
+  .generated-search-result .container .display-search-results .search-text-result {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    margin: 0;
+    word-spacing: 0.1rem;
+    border-bottom: 1px solid #000000;
+  }
+  .generated-search-result .container .display-search-results .search-text-result .result-count {
+    font-size: 1.8rem;
+  }
+  .generated-search-result .container .display-search-results .search-text-result .result-text {
+    font-weight: 800;
+    font-size: 1.8rem;
+  }
   .generated-search-result .container .display-search-results .about-filters {
     flex-wrap: nowrap;
   }
