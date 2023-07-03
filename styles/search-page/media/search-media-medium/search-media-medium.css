@@ -525,6 +525,9 @@ label {
   .generated-search-result .container .display-search-results .generated-products {
     grid-template-columns: repeat(auto-fill, minmax(197px, 1fr));
   }
+  .generated-search-result .container .pagination .pagination-list .pagination-element {
+    padding: 0.5rem 1rem;
+  }
   .template-category {
     padding-top: 8rem;
   }

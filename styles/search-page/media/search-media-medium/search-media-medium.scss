@@ -47,6 +47,15 @@
           grid-template-columns: repeat(auto-fill , minmax(197px, 1fr));
         }
       }
+
+      .pagination{
+        .pagination-list{
+          .pagination-element{
+            padding: 0.5rem 1rem;
+        
+          }
+        }
+      }
     }
   }
 

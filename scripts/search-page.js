@@ -17,9 +17,9 @@ const selectPagination = document.getElementById("select-pagination")
 const selectOrder = document.getElementById("select-order")
 
 
-// const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 18" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>`
+const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>`
 
-// const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
+const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
 
 // FILTER AND SELECT TOGGLES TOGGLES
 
@@ -375,6 +375,7 @@ const createButton = (id, btnClass, content) => {
     btn.setAttribute("id", id)
     btn.setAttribute("class", btnClass)
     btn.classList.add("pagination-element")
+    btn.classList.add("button")
     btn.innerHTML = content
 
     return btn
@@ -383,8 +384,36 @@ const createButton = (id, btnClass, content) => {
 // arrowForward
 // arrowBackwards
 
-const generatePagination = (list, itemsPerPage) => {
+const createListElement = (list, content, itemsPerPage) => {
+ const li = document.createElement("li")
+ li.classList.add("pagination-element")
+ li.textContent = content
+
+ li.addEventListener("click", (e) => {
+   generatedProductsContainer.innerHTML = ""
+   const count = parseInt(e.target.textContent)
+
+   document.querySelector(".current-page").classList.remove("current-page")
+   li.classList.add("current-page")
+
+   const start = itemsPerPage * (count - 1)
+   const end = itemsPerPage * count
+
+   const ifStartZero = start === 0 ? start : start + 1
+
+   console.log(ifStartZero, end)
+   loadProducts(list, ifStartZero, end)
+   window.scrollTo(0, 0)
+ })
+
+ return li
+
+}
+
+
+const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
   let page = Math.floor(list.length / itemsPerPage)
+    // let page = 9 
   const pageRest = list.length % itemsPerPage
   if (pageRest > 0) {
     page = page + 1
@@ -392,30 +421,46 @@ const generatePagination = (list, itemsPerPage) => {
 
   const ol = document.createElement("ol")
   ol.classList.add("pagination-list")
-  ol.appendChild(createButton("page-backwards", "page-backwards", "previous page"))
-  for (let i = 1; i <= page; i++) {
-    const li = document.createElement("li")
-    li.classList.add("pagination-element")
-    li.textContent = i
-    li.addEventListener("click", (e) => {
-        generatedProductsContainer.innerHTML = ""
-        const count = parseInt(e.target.textContent)
-        
-        const start = itemsPerPage * (count - 1) 
-        const end = itemsPerPage * count
-        
-        const ifStartZero = start === 0 ? start  : start + 1
-        
-        console.log(ifStartZero, end)
-        loadProducts(list, ifStartZero, end)
-        window.scrollTo(0, 0)
-    })
-    ol.appendChild(li)
-  }
-   ol.appendChild(
-     createButton("page-forward", "page-forward", "next page")
-   )
+  ol.appendChild(createButton("page-backwards", "page-backwards", arrowBackwards))
 
+
+
+    for (let i = 1; i <= page; i++) {
+        if(i > pagEnd){
+            break
+            }
+        const li = createListElement(list, i, itemsPerPage)
+       
+        ol.appendChild(li)
+    }
+
+      const listElements = ol.querySelectorAll("li")
+      listElements[0].classList.add("current-page")
+
+
+
+
+
+    ol.appendChild(
+    createButton("page-forward", "page-forward", arrowForward)
+    )
+    
+    const buttons = ol.querySelectorAll("button")
+    buttons.forEach(button => {
+        button.addEventListener("click", (e) => {
+        const listElements = ol.querySelectorAll("li")
+        const currentPage = ol.querySelector(".current-page")
+        const currentIndex = Array.prototype.indexOf.call(listElements, currentPage)
+        const incrementDecrement =
+        e.target.id === "page-forward" ? currentIndex + 1 : currentIndex - 1
+
+
+        if(incrementDecrement >= 0 && incrementDecrement <= listElements.length - 1)
+        listElements[incrementDecrement].click()
+        })
+
+
+    })
 
   return ol
 }
@@ -423,8 +468,8 @@ const generatePagination = (list, itemsPerPage) => {
 
 // IMPORTANT
 
-const updatePagination = (list, end = 8) => {
-    const generateOl = generatePagination(list, end)
+const updatePagination = (list, end = 8, listStart = 1, listEnd = 5) => {
+    const generateOl = generatePagination(list, end, listStart, listEnd)
     pagination.innerHTML = ""
     pagination.appendChild(generateOl)
 
@@ -439,8 +484,6 @@ updatePagination(currentSearch, ITEMS_PER_PAGE)
 // FUNCTION WILL CONTAIN LOCAL STORAGE UPDATE WITH A VALUE
 
 // ON LOAD THE PAGE WILL NEED TO CHECK IF THIS VALUE EXISTS IF NOT GO FOR DEFAULT PAGINATION
-
-
 
 
 
@@ -533,3 +576,31 @@ if (currentSearch.length === 0) {
 
 
 
+
+// PAGINATION GENERATION FOR MULTIPLE PAGES IN CASE YOU WANT TO CHANGE IT
+
+//    const listElements = ol.querySelectorAll("li")
+//    const currentPage = ol.querySelector(".current-page")
+//    const currentIndex = Array.prototype.indexOf.call(listElements, currentPage)
+//    const nextPage = currentIndex ? currentIndex + 1 : currentIndex - 1
+
+//    if (nextPage === listElements.length) {
+//      console.log("Da")
+//      updatePagination(
+//        currentSearch,
+//        end,
+//        listElements.length,
+//        listElements.length + 4
+//      )
+//      //   console.log(listElements[0])
+//      //   listElements[0].classList.add("current-page")
+//    }
+
+//    if (currentIndex === 0) {
+//      updatePagination(
+//        currentSearch,
+//        end,
+//        listElements.length - 5,
+//        listElements.length
+//      )
+//    }

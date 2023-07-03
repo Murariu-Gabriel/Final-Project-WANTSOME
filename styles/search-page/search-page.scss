@@ -98,14 +98,10 @@
                         }
 
                         label{
-                            &:not(:last-of-type){
-                                position:relative;
-                                width: 100%;
-                                height: 100%;
-
-                            }
+                            position:relative;
+                            width: 100%;
+                            height: 100%;
                             font-weight: normal;
-                            // z-index: 2;
                             cursor: pointer;
                         }
 
@@ -615,34 +611,59 @@
 
 
 
+        .pagination{
+            margin-top: $m-spacing;
 
-
-        .pagination-list{
-            padding: 0;
-            list-style: none;
-            display: flex;
-           
-            gap: 1rem;
-            justify-content: center;
-            .pagination-element{
-                padding: 0.5rem 1rem;
-                font-size: 1.5rem;
-                 background: none;
-                cursor: pointer;
+            .pagination-list{
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                // gap: 1rem;
+                padding: 0;
+                margin: 0 auto;
+                width: fit-content;
                 border: 1px solid $black;
-                transition: background-color 0.3s ease-in-out;
-                &:hover{
+                border-radius: 9px;
+    
+                .pagination-element{
+                    display: flex;
+                    align-items: center;
+                    padding: 0.5rem 0.65rem;
+                    // padding: 0;
+                    font-size: 1.5rem;
+                     background: none;
+                    cursor: pointer;
+                    border: 1px solid $black;
+                    transition: background-color 0.3s ease-in-out;
+                    &:hover{
+                        background-color: $black;
+                        color: $white;
+                    }
+                }
+
+                .current-page{
                     background-color: $black;
                     color: $white;
                 }
 
-               
+                button{
+
+                    svg{
+                        pointer-events: none;
+                    }
+
+                    &:first-of-type{
+                        border-top-left-radius: $base-border-radius;
+                        border-bottom-left-radius: $base-border-radius;
+                    }
+                    &:last-of-type{
+                        border-top-right-radius: $base-border-radius;
+                        border-bottom-right-radius: $base-border-radius;
+                    }
+                }
             }
+
         }
-
-
-
-
     }
 }
 
