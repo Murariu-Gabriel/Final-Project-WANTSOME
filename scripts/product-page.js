@@ -94,6 +94,7 @@ if (!product) {
   )
   const productPrice = document.body.querySelector(".product-info strong span")
   const productFeatures = document.body.querySelector("#features p")
+  const overline = document.body.querySelector('.overline')
 
   const boxItems = document.getElementById("box-items")
 
@@ -112,7 +113,7 @@ if (!product) {
   productDescription.innerText = product.description
   productPrice.innerText = product.price
   productFeatures.innerText = product.features
-
+  overline.innerText = product.new ? "new product" : ""
   // in the box
   const productItems = product.includes
   productItems.forEach((productItem) => {

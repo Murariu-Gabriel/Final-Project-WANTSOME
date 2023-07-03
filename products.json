@@ -238,7 +238,7 @@
       ]
     },
     "category": "smart band",
-    "new": false,
+    "new": true,
     "price": 100,
     "description": "Meet Fitbit Inspire 3™—the health & fitness tracker that helps you do what you love and feel your best. All you have to do is wear it.",
     "features": "\n        Inspire 3 is the tracker that helps you find your energy, do what you love and feel your best. All you have to do is wear it. Daily Readiness Score, Active Zone Minutes, all-day activity tracking and 24/7 heart rate, 20+ exercise modes, automatic exercise tracking and reminders to move. Always-on wellness tracking, daily Stress Management Score, mindfulness sessions, relax breathing sessions, irregular heart rhythm notification), SpO2, menstrual health tracking, resting heart rate and high/low heart rate notifications.\n        \nSleep better:  automatic sleep tracking, personalized Sleep Profile, daily detailed Sleep Score, smart wake vibrating alarm, sleep mode. Comfortably connected day and night: calls, texts & smartphone app notifications, color touchscreen with customizable clock faces, super lightweight and water resistant to 50 meters, up to 10 day battery life",
@@ -496,7 +496,7 @@
       ]
     },
     "category": "smart strap",
-    "new": false,
+    "new": true,
     "price": 50,
     "description": "Unlock yourself with WHOOP 4.0 – the latest, most advanced fitness and health wearable available. Monitor your recovery, sleep, training, and health, with personalized recommendations and coaching feedback.",
     "features": "\n      WHOOP monitors your sleep, recovery, and daily effort around the clock to deliver actionable insights on how you can optimize your performance. WHOOP analyzes your key metrics like HRV and resting heart rate to determine a daily recovery score, and shows you how specific lifestyle and training behaviors affect Recovery.\n\n     WHOOP measures and accumulates your training activities and daily effort with a Strain score that helps you understand when to rest or push.\n       ",
