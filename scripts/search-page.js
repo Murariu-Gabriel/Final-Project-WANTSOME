@@ -224,7 +224,7 @@ const cartItems = document.getElementById("cart-list")
 
 // !!! CAUTION THE ADD TO CART FUNCTIONALITY SHARES FUNCTIONS WITH SHARED SCRIPT MEANING THAT SOME FUNCTION ARE NOT ON ThIS FILE THEY COME FROM SHARED SCRIPT
 
-// returnEl is one of them
+// returnEl, addListEl are functions from shared script
 
 const verifyCartItemExistence = (list, id) => {
   for (const el of list) {
@@ -245,7 +245,6 @@ const addCount = (list, id) => {
         const sum = inputValue + addValue
         elInput.setAttribute("value", sum)
       }
-    //   console.log(elInput)
       break
     }
   }
@@ -381,39 +380,15 @@ const createButton = (id, btnClass, content) => {
     return btn
 }
 
-// arrowForward
-// arrowBackwards
 
-const createListElement = (list, content, itemsPerPage) => {
- const li = document.createElement("li")
- li.classList.add("pagination-element")
- li.textContent = content
 
- li.addEventListener("click", (e) => {
-   generatedProductsContainer.innerHTML = ""
-   const count = parseInt(e.target.textContent)
+// PAGINATION UPDATE ON CLICK
 
-   document.querySelector(".current-page").classList.remove("current-page")
-   li.classList.add("current-page")
-
-   const start = itemsPerPage * (count - 1)
-   const end = itemsPerPage * count
-
-   const ifStartZero = start === 0 ? start : start + 1
-
-   console.log(ifStartZero, end)
-   loadProducts(list, ifStartZero, end)
-   window.scrollTo(0, 0)
- })
-
- return li
-
-}
+// The idea here is that when i click on the pagination navigation buttons it clicks the next element for me
 
 
 const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
   let page = Math.floor(list.length / itemsPerPage)
-    // let page = 9 
   const pageRest = list.length % itemsPerPage
   if (pageRest > 0) {
     page = page + 1
@@ -425,42 +400,87 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
 
 
 
-    for (let i = 1; i <= page; i++) {
-        if(i > pagEnd){
-            break
-            }
-        const li = createListElement(list, i, itemsPerPage)
-       
-        ol.appendChild(li)
+  for (let i = pagStart; i <= page; i++) {
+    if(i > pagEnd){
+      break
     }
 
-      const listElements = ol.querySelectorAll("li")
-      listElements[0].classList.add("current-page")
+    const li = document.createElement("li")
+    li.classList.add("pagination-element")
+    li.textContent = i
 
+    li.addEventListener("click", (e) => {
+      generatedProductsContainer.innerHTML = ""
+      const count = parseInt(e.target.textContent)
 
+      document.querySelector(".current-page").classList.remove("current-page")
+      li.classList.add("current-page")
 
+      const start = itemsPerPage * (count - 1)
+      const end = itemsPerPage * count
 
+      const ifStartZero = start === 0 ? start : start + 1
 
-    ol.appendChild(
-    createButton("page-forward", "page-forward", arrowForward)
-    )
-    
-    const buttons = ol.querySelectorAll("button")
-    buttons.forEach(button => {
-        button.addEventListener("click", (e) => {
-        const listElements = ol.querySelectorAll("li")
-        const currentPage = ol.querySelector(".current-page")
-        const currentIndex = Array.prototype.indexOf.call(listElements, currentPage)
-        const incrementDecrement =
-        e.target.id === "page-forward" ? currentIndex + 1 : currentIndex - 1
+      console.log(ifStartZero, end)
+      loadProducts(list, ifStartZero, end)
+      window.scrollTo(0, 0)
 
+      const currentPage = parseInt(e.target.innerText)
 
-        if(incrementDecrement >= 0 && incrementDecrement <= listElements.length - 1)
-        listElements[incrementDecrement].click()
-        })
+      if (currentPage === pagEnd) {
+        updatePagination(list, ITEMS_PER_PAGE, pagStart + 4, pagEnd + 4)
+      }
 
+      if (currentPage === pagStart) {
+        if(currentPage > 1){
 
+          updatePagination(list, ITEMS_PER_PAGE, pagStart - 4, pagEnd - 4)
+          const olListElements = pagination.querySelectorAll("li")
+          olListElements[olListElements.length - 1].classList.add("current-page")
+          olListElements[0].classList.remove("current-page")
+        }
+
+        
+          
+        
+      }
     })
+
+
+
+    ol.appendChild(li)
+  }
+
+
+  const listElements = ol.querySelectorAll("li")
+  listElements[0].classList.add("current-page")
+  ol.appendChild(createButton("page-forward", "page-forward", arrowForward))
+  
+
+  
+  const buttons = ol.querySelectorAll("button")
+  buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+    const listElements = pagination.querySelectorAll("li")
+    const currentPage = pagination.querySelector(".current-page")
+    const currentIndex = Array.prototype.indexOf.call(listElements, currentPage)
+    let incrementDecrement =
+    e.target.id === "page-forward" ? currentIndex + 1 : currentIndex - 1
+
+   if(incrementDecrement < 0){
+    incrementDecrement = 0
+   }
+   if(incrementDecrement >= 5){
+    incrementDecrement = 4
+   }
+
+   console.log(currentIndex)
+   console.log(incrementDecrement)
+
+    if(incrementDecrement >= 0 && incrementDecrement <= listElements.length - 1)
+     listElements[incrementDecrement].click()
+    })
+  })
 
   return ol
 }
@@ -477,35 +497,23 @@ const updatePagination = (list, end = 8, listStart = 1, listEnd = 5) => {
 
 updatePagination(currentSearch, ITEMS_PER_PAGE)
 
-// PAGINATION OPTIONS
-
-// HERE THERE WILL BE A FUNCTION THAT SETS GLOBAL PAGINATION AND IT WILL BE CALLED INSIDE SELECT PAGINATION FUNCTIONALITY
-
-// FUNCTION WILL CONTAIN LOCAL STORAGE UPDATE WITH A VALUE
-
-// ON LOAD THE PAGE WILL NEED TO CHECK IF THIS VALUE EXISTS IF NOT GO FOR DEFAULT PAGINATION
-
-
-
 
 const selectPaginationFunctionality = (list) => {
     const listElements = selectPagination.children
 
     for(element of listElements){
         element.addEventListener("click", (e) => {
-            paginationText.innerText = e.target.innerText
-            const elementValue =  parseInt(e.target.textContent.substring(0, 2)) - 1
-            console.log(elementValue)
+          paginationText.innerText = e.target.innerText
+          const elementValue =
+            parseInt(e.target.textContent.substring(0, 2)) - 1
+          console.log(elementValue)
 
+          generatedProductsContainer.innerHTML = ""
 
-            
-            generatedProductsContainer.innerHTML = ""
-            
-            loadProducts(list, 0, elementValue)
-            updatePagination(list, elementValue)
+          loadProducts(list, 0, elementValue)
+          updatePagination(list, elementValue)
 
-
-            localStorage.setItem("pagination", elementValue)
+          localStorage.setItem("pagination", elementValue)
         })
     }
 
@@ -564,7 +572,7 @@ const sort = (array, callback) => {
 return sort
 }
 
-// SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL, IT ALL LOGIC THEN SHOW RESULT
+// SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL BECAUSE IF SEARCH DOEST NOT EXIST IT LOADS ALL LOGIC THEN SHOW FAULTY RESULT
 
 if (currentSearch.length === 0) {
   searchPageContainer.classList.remove("hide")
@@ -577,7 +585,7 @@ if (currentSearch.length === 0) {
 
 
 
-// PAGINATION GENERATION FOR MULTIPLE PAGES IN CASE YOU WANT TO CHANGE IT
+// PAGINATION GENERATION FOR MULTIPLE PAGES OLD BROKEN VERSION IN CASE YOU NEED IT
 
 //    const listElements = ol.querySelectorAll("li")
 //    const currentPage = ol.querySelector(".current-page")
