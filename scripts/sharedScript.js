@@ -848,6 +848,38 @@ fillListWithData(searches)
 // console.log(searches)
 
 
+// REMOVE CURRENT PAGE
+
+if(!parameters.pathname.includes("search")){
+  localStorage.removeItem("page")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // OLD VERSION FOR HIGHLIGHTING TEXT JUST IN CASE YOU WILL NEED IT AT SOME POINT
 
 

@@ -194,11 +194,24 @@ const getSearchProducts = (search) => {
 
 // console.log(retrievedSearch)
 
+
+
+
 // IMPORTANT VARIABLE CONTAINING SEARCH RESULT
 const currentSearch = getSearchProducts(retrievedSearch)
 
 
 
+
+// SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL BECAUSE IF SEARCH DOEST NOT EXIST IT LOADS ALL LOGIC THEN SHOW FAULTY RESULT
+
+if (currentSearch.length === 0) {
+  searchPageContainer.classList.remove("hide")
+
+ searchPageContainer.innerHTML = `<h2 class="search-err"><span> 0 results for:</span> ${retrievedSearch}</h2>`
+} else {
+  searchPageContainer.classList.remove("hide")
+}
 
 
 
@@ -439,11 +452,9 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
           olListElements[olListElements.length - 1].classList.add("current-page")
           olListElements[0].classList.remove("current-page")
         }
-
-        
-          
-        
       }
+
+      localStorage.setItem("page", li.textContent)
     })
 
 
@@ -496,6 +507,23 @@ const updatePagination = (list, end = 8, listStart = 1, listEnd = 5) => {
 }
 
 updatePagination(currentSearch, ITEMS_PER_PAGE)
+
+
+// RETURN TO THE LAST PAGE REST OF CODE IN SHAREDSCRIPT
+
+const currentPage = localStorage.getItem("page")
+
+if(currentPage != "1"){
+  const pages = pagination.querySelectorAll("li")
+  
+  for(element of pages){
+    if(element.innerText === currentPage){
+      element.click()
+    }
+  }
+}
+
+
 
 
 const selectPaginationFunctionality = (list) => {
@@ -572,15 +600,6 @@ const sort = (array, callback) => {
 return sort
 }
 
-// SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL BECAUSE IF SEARCH DOEST NOT EXIST IT LOADS ALL LOGIC THEN SHOW FAULTY RESULT
-
-if (currentSearch.length === 0) {
-  searchPageContainer.classList.remove("hide")
-
-  searchPageContainer.innerHTML = `<h2 class="search-err"><span> 0 results for:</span> ${retrievedSearch}</h2>`
-} else {
-  searchPageContainer.classList.remove("hide")
-}
 
 
 
