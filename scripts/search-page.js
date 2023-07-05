@@ -508,12 +508,11 @@ const updatePagination = (list, end = 8, listStart = 1, listEnd = 5) => {
 
 updatePagination(currentSearch, ITEMS_PER_PAGE)
 
-
 // RETURN TO THE LAST PAGE REST OF CODE IN SHAREDSCRIPT
 
 const currentPage = localStorage.getItem("page")
 
-if(currentPage != "1"){
+if(currentPage !== "1"){
   const pages = pagination.querySelectorAll("li")
   
   for(element of pages){
@@ -536,10 +535,10 @@ const selectPaginationFunctionality = (list) => {
             parseInt(e.target.textContent.substring(0, 2)) - 1
           console.log(elementValue)
 
-          generatedProductsContainer.innerHTML = ""
+            generatedProductsContainer.innerHTML = ""
 
-          loadProducts(list, 0, elementValue)
-          updatePagination(list, elementValue)
+            loadProducts(list, 0, elementValue)
+            updatePagination(list, elementValue)
 
           localStorage.setItem("pagination", elementValue)
         })
@@ -555,36 +554,36 @@ selectPaginationFunctionality(currentSearch)
 // ORDER OPTIONS
 
 const selectOrderFunctionality = (list) => {
-    const orderList = selectOrder.children
+  const orderList = selectOrder.children
 
-const text = selectOrder.parentNode.querySelector("p")
-
-
-
-for (const element of orderList) {
-    element.addEventListener("click", (e) => {
-        let sorted = []
-        text.innerText = e.target.innerText
-        
-        if(orderList[0] === element){
-            sorted = sort(list, (a, b) => a.price - b.price)
-        }else if (orderList[1] === element) {
-            sorted = sort(list, (a, b) => b.price - a.price)
-        } else {
-            sorted = sort(list, (a, b) => b.new - a.new)
-        }
+  const text = selectOrder.parentNode.querySelector("p")
 
 
-        generatedProductsContainer.innerHTML = ""
-        // const sorted = sort(currentSearch, (a, b) => b.price - a.price)
-       
 
-        selectPaginationFunctionality(sorted)
-        loadProducts(sorted, 0, ITEMS_PER_PAGE)
-        updatePagination(sorted)
-       
-      })
+  for (const element of orderList) {
+  element.addEventListener("click", (e) => {
+    let sorted = []
+    text.innerText = e.target.innerText
+    
+    if(orderList[0] === element){
+      sorted = sort(list, (a, b) => a.price - b.price)
+    }else if (orderList[1] === element) {
+      sorted = sort(list, (a, b) => b.price - a.price)
+    } else {
+      sorted = sort(list, (a, b) => b.new - a.new)
     }
+
+
+    generatedProductsContainer.innerHTML = ""
+
+  
+
+    selectPaginationFunctionality(sorted)
+    loadProducts(sorted, 0, ITEMS_PER_PAGE)
+    updatePagination(sorted)
+  
+    })
+  }
 }
 
 selectOrderFunctionality(currentSearch)
@@ -594,11 +593,115 @@ selectOrderFunctionality(currentSearch)
 
 
 // SORTING FUNCTION USING THE NEW SORT METHOD
+
 const sort = (array, callback) => {
     const sort = array.toSorted(callback)
 
 return sort
 }
+
+
+// On load, take the array with the search result
+// based on the searched result generate the filters that can be applied
+// brand category and price will generate option to click based on search result
+
+// currentSearch
+
+const getAllProducts = () => {
+    const allProducts = localStorage.getItem("products")
+    const parsedProducts = JSON.parse(allProducts)
+
+    return parsedProducts
+}
+
+
+// !IMPORTANT 
+const updatePaginationAndProducts = (items, itemsPerPage) => {
+  generatedProductsContainer.innerHTML = ""
+
+  loadProducts(items, 0, itemsPerPage)
+  updatePagination(items, itemsPerPage)
+  selectPaginationFunctionality(items)
+  selectOrderFunctionality(items)
+}
+
+
+const selectAllProducts = document.getElementById("all-items")
+const allProductsCount = document.getElementById("all-items-count")
+ allProductsCount.innerText = getAllProducts().length
+
+
+selectAllProducts.addEventListener("click", (e) => {
+  const products = getAllProducts()
+
+  if(e.target.checked){
+    updatePaginationAndProducts(products, ITEMS_PER_PAGE)
+  } else {
+    updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
+  }
+ 
+
+
+})
+
+
+
+
+// const generateFilters = () => {
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
