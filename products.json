@@ -21,6 +21,7 @@
       ]
     },
     "category": "smart watch",
+    "brand": "xiaomi",
     "new": false,
     "price": 100,
     "description": "Six all-new colors for the strap* and three for the watch case A watch with different, always changeable looksThe new beige watch case pairs with the skin-friendly, multiple color TPU strap selection. Adapt it to your style, whether it's street sports, fashion, or business.",
@@ -62,6 +63,7 @@
       ]
     },
     "category": "smart watch",
+    "brand": "xiaomi",
     "new": false,
     "price": 160,
     "description": "Broader view, clearer detailsThe bigger, clearer, 1.43 AMOLED display offers a more colorful smoother viewing experience. The always-on display* allows you to check the time more conveniently. Important notifications such as incoming calls, reminders, and sports notifications can be displayed with clarity, even in strong light.",
@@ -107,6 +109,7 @@
       ]
     },
     "category": "smart watch",
+    "brand": "xiaomi",
     "new": true,
     "price": 198,
     "description": "Introducing the classic wrist watch design with a sophisticated look and a large screen with ultra-narrow bezel, a strap for every occasion, and the next-level smart watch experience.",
@@ -152,6 +155,7 @@
       ]
     },
     "category": "smart band",
+    "brand": "xiaomi",
     "new": false,
     "price": 70,
     "description": "Too magnificent to miss 1.62'' AMOLED Display. The magnificent large AMOLED display debuts on your wrist, making it easy for you to read and control. Everything is presented in detail at high resolution. Even better, thanks to always-on mode, you can read date and time without lifting your wrist or using your fingers.",
@@ -197,6 +201,7 @@
       ]
     },
     "category": "smart band",
+    "brand": "fitbit",
     "new": false,
     "price": 150,
     "description": "Meet Fitbit Charge 5, our most advanced health and fitness tracker that helps you keep a pulse on your stress, physical readiness, heart health, and overall well-being",
@@ -238,6 +243,7 @@
       ]
     },
     "category": "smart band",
+    "brand": "fitbit",
     "new": true,
     "price": 100,
     "description": "Meet Fitbit Inspire 3™—the health & fitness tracker that helps you do what you love and feel your best. All you have to do is wear it.",
@@ -279,6 +285,7 @@
       ]
     },
     "category": "hybrid smart watch",
+    "brand": "garmin",
     "new": false,
     "price": 140,
     "description": "MORE THAN STYLISH This hybrid smartwatch combines the traditional look of an analog watch with the essential smart features you need to keep up with your busy life.",
@@ -320,6 +327,7 @@
       ]
     },
     "category": "hybrid smart watch",
+    "brand": "garmin",
     "new": false,
     "price": 200,
     "description": "GET A PERFECT LOOK AROUND THE CLOCK The vívomove Trend hybrid smartwatch gives you a classic analog style and essential smart features such as smartphone notifications and Garmin Pay™ contactless payments",
@@ -361,6 +369,7 @@
       ]
     },
     "category": "smart watch",
+    "brand": "garmin",
     "new": false,
     "price": 320,
     "description": "To you, healthy living is about being more in touch with your mind and your body. Get the GPS smartwatch with advanced health and fitness features to help get you there.",
@@ -402,6 +411,7 @@
       ]
     },
     "category": "smart watch",
+    "brand": "huawei",
     "new": false,
     "price": 180,
     "description": "HUAWEI Watch GT Runner supports a whole host of health monitoring functions, including abnormal heart-rate notifications, 24/7 blood-oxygen monitoring, sleep monitoring, and period management. A personalised health manager on your wrist",
@@ -455,6 +465,7 @@
       ]
     },
     "category": "smart band",
+    "brand": "huawei",
     "new": false,
     "price": 56,
     "description": "Put Your Best Face Forward With more than 4,000 exquisite watch faces to choose from,4 and the Always On Display (AOD) that shows key info when the display is off. The glimmer in your eye is always just a glimpse away!",
@@ -496,6 +507,7 @@
       ]
     },
     "category": "smart strap",
+    "brand": "whoop",
     "new": true,
     "price": 50,
     "description": "Unlock yourself with WHOOP 4.0 – the latest, most advanced fitness and health wearable available. Monitor your recovery, sleep, training, and health, with personalized recommendations and coaching feedback.",

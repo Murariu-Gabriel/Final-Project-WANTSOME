@@ -601,12 +601,6 @@ return sort
 }
 
 
-// On load, take the array with the search result
-// based on the searched result generate the filters that can be applied
-// brand category and price will generate option to click based on search result
-
-// currentSearch
-
 const getAllProducts = () => {
     const allProducts = localStorage.getItem("products")
     const parsedProducts = JSON.parse(allProducts)
@@ -636,20 +630,179 @@ selectAllProducts.addEventListener("click", (e) => {
 
   if(e.target.checked){
     updatePaginationAndProducts(products, ITEMS_PER_PAGE)
+    categoriesFunctionality(products)
   } else {
     updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
+     categoriesFunctionality(currentSearch)
   }
- 
-
 
 })
 
+// On load, take the array with the search result
+// based on the searched result generate the filters that can be applied
+// brand category and price will generate option to click based on search result
+
+// currentSearch
+
+
+const filterContainers = document.body.querySelectorAll(".filter-container")
+
+const returnFromSearch = (list, fromList) => {
+
+  const uniqueCategories = list.reduce((accumulator, currentValue) => {
+    if(!accumulator.find(element => element.name === currentValue[fromList])){
+    accumulator.push({name: currentValue[fromList], count: 0, products: []})
+    } 
+     accumulator.find((element) => {
+        if(element.name === currentValue[fromList]){
+          element.count++
+          element.products.push(currentValue)
+        }
+        
+      })
+    
+    return accumulator
+  }, [])
+
+  return uniqueCategories
+}
+
+// console.log(returnFromSearch(currentSearch, "category"))
 
 
 
-// const generateFilters = () => {
+const generateFilter = (name, count, list) => {
+  const editName = name.replace(" ", "-")
 
-// }
+  const container = document.createElement("div")
+  container.innerHTML = `
+  <input id=${editName} type="checkbox" />
+  <label for=${editName} name=${editName}>
+    ${editName}
+    <span>(${count})</span> 
+  </label>
+  `
+  const input = container.querySelector("input")
+
+  input.addEventListener("click", (e) => {
+    const options = e.target.parentNode.parentNode.querySelectorAll("input")
+    // const inputParent = e.target.parentNode.parentNode.parentNode.querySelector("#filter-container-name")
+    options.forEach(input => {
+      if(input !== e.target){
+        input.checked = false
+      }
+    })
+    // console.log(inputParent)
+
+    if (e.target.checked) {
+      updatePaginationAndProducts(list, ITEMS_PER_PAGE)
+      // categoriesFunctionality(list)
+    } else {
+      updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
+      // categoriesFunctionality(currentSearch)
+    }
+
+    
+  })
+
+
+  return container
+}
+
+const categoriesFunctionality = (list) => {
+  for (const [index, container] of filterContainers.entries()) {
+    if (index !== 0) {
+      const containerType = container.querySelector("span").innerText.toLowerCase()
+      const filterContainer = container.querySelector("aside") 
+
+      if(containerType === "category"){
+        const containerResults = returnFromSearch(list, "category")
+        filterContainer.innerHTML = ""
+        
+        containerResults.forEach(element => {
+          const {name, count, products} = element
+          const filter = generateFilter(name, count, products)
+          filterContainer.appendChild(filter)
+        })
+      }
+  
+      if(containerType === "brand"){
+        const containerResults = returnFromSearch(list, "brand")
+        filterContainer.innerHTML = ""
+        
+        containerResults.forEach((element) => {
+          const { name, count, products } = element
+          const filter = generateFilter(name, count, products)
+          filterContainer.appendChild(filter)
+        })
+      }
+  
+    }
+  }
+
+}
+
+categoriesFunctionality(currentSearch)
+
+
+// Probabil ca va trebuii sa sparg categories functionality in maim multe functii 
+// poi sa apelez acele functii inauntr-un event listenerelor din generate filter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -359,6 +359,7 @@ label {
   .generated-search-result .container .filters {
     all: unset;
     display: block;
+    min-width: 175px;
     max-width: 250px;
   }
   .generated-search-result .container .filters .filter-navigation {
