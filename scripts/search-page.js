@@ -227,8 +227,10 @@ const paginationText = selectPagination.parentNode.querySelector("p")
 const paginationPreference = localStorage.getItem("pagination")
 const ifPaginationExists = paginationPreference ? paginationPreference : 8
 
-const  ITEMS_PER_PAGE = ifPaginationExists
-paginationText.innerText = `${parseInt(paginationPreference) + 1} on page`
+
+
+const  ITEMS_PER_PAGE = parseInt(ifPaginationExists)
+paginationText.innerText = `${ITEMS_PER_PAGE + 1} on page`
 
 const pagination = document.getElementById("pagination")
 
@@ -402,8 +404,9 @@ const createButton = (id, btnClass, content) => {
 
 const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
   let page = Math.floor(list.length / itemsPerPage)
+
   const pageRest = list.length % itemsPerPage
-  if (pageRest > 0) {
+  if (pageRest > 1) {
     page = page + 1
   }
 
@@ -412,9 +415,10 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
   ol.appendChild(createButton("page-backwards", "page-backwards", arrowBackwards))
 
 
+  let i = pagStart
+  do {
 
-  for (let i = pagStart; i <= page; i++) {
-    if(i > pagEnd){
+    if (i > pagEnd) {
       break
     }
 
@@ -445,11 +449,12 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
       }
 
       if (currentPage === pagStart) {
-        if(currentPage > 1){
-
+        if (currentPage > 1) {
           updatePagination(list, ITEMS_PER_PAGE, pagStart - 4, pagEnd - 4)
           const olListElements = pagination.querySelectorAll("li")
-          olListElements[olListElements.length - 1].classList.add("current-page")
+          olListElements[olListElements.length - 1].classList.add(
+            "current-page"
+          )
           olListElements[0].classList.remove("current-page")
         }
       }
@@ -457,10 +462,9 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
       localStorage.setItem("page", li.textContent)
     })
 
-
-
     ol.appendChild(li)
-  }
+    i++
+  } while (i <= page)
 
 
   const listElements = ol.querySelectorAll("li")
@@ -553,7 +557,7 @@ selectPaginationFunctionality(currentSearch)
 
 // ORDER OPTIONS
 
-const selectOrderFunctionality = (list) => {
+const selectOrderFunctionality = (list, order) => {
   const orderList = selectOrder.children
 
   const text = selectOrder.parentNode.querySelector("p")
@@ -584,6 +588,13 @@ const selectOrderFunctionality = (list) => {
   
     })
   }
+
+  for(const element of orderList){
+    if(element.innerText === order){
+      element.click()
+    }
+  }
+
 }
 
 selectOrderFunctionality(currentSearch)
@@ -610,13 +621,13 @@ const getAllProducts = () => {
 
 
 // !IMPORTANT 
-const updatePaginationAndProducts = (items, itemsPerPage) => {
+const updatePaginationAndProducts = (items, itemsPerPage, order) => {
   generatedProductsContainer.innerHTML = ""
 
   loadProducts(items, 0, itemsPerPage)
   updatePagination(items, itemsPerPage)
   selectPaginationFunctionality(items)
-  selectOrderFunctionality(items)
+  selectOrderFunctionality(items, order)
 }
 
 
@@ -633,7 +644,7 @@ selectAllProducts.addEventListener("click", (e) => {
     categoriesFunctionality(products)
   } else {
     updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
-     categoriesFunctionality(currentSearch)
+    //  categoriesFunctionality(currentSearch)
   }
 
 })
@@ -648,18 +659,54 @@ selectAllProducts.addEventListener("click", (e) => {
 const filterContainers = document.body.querySelectorAll(".filter-container")
 
 const returnFromSearch = (list, fromList) => {
+   const biggestPrice = Math.max(...list.map((product) => product.price))
+   const smallestPrice = Math.min(...list.map((product) => product.price))
+
+   const numberTemplate = (min, max) =>{
+    let stepper = 50
+    const round = Math.ceil(max / 50) * 50
+
+    const priceRanges = []
+
+    for(let i = 0; i < round ; i++){
+      const rangeStart = min + i * stepper
+      const rangeEnd = rangeStart + stepper
+      if(rangeEnd > round){
+        break
+      }
+
+      priceRanges.push({priceRange:`${rangeStart} - ${rangeEnd}`, rangeMin: rangeStart, rangeMax: rangeEnd})
+      
+    }
+    
+
+    return priceRanges
+   }
+
+   console.log(numberTemplate(smallestPrice, biggestPrice))
+
+
 
   const uniqueCategories = list.reduce((accumulator, currentValue) => {
-    if(!accumulator.find(element => element.name === currentValue[fromList])){
-    accumulator.push({name: currentValue[fromList], count: 0, products: []})
-    } 
-     accumulator.find((element) => {
+    if(fromList !== "price"){
+      const value = accumulator.find(element => element.name === currentValue[fromList])
+      if (!value) {
+        accumulator.push({ name: currentValue[fromList], count: 0, products: [] })
+      } 
+
+      accumulator.forEach((element) => {
         if(element.name === currentValue[fromList]){
           element.count++
           element.products.push(currentValue)
         }
-        
+      
       })
+    } else {
+      const value = accumulator.filter((element) => element.price === currentValue[fromList])
+     
+      accumulator.push({ range: currentValue[fromList], count: 0, products: [] })
+      console.log(biggestPrice)
+    }
     
     return accumulator
   }, [])
@@ -667,9 +714,31 @@ const returnFromSearch = (list, fromList) => {
   return uniqueCategories
 }
 
-// console.log(returnFromSearch(currentSearch, "category"))
+console.log(returnFromSearch(currentSearch, "price"))
 
 
+
+const checkIfOrderSelected = () => {
+  const orderParent = selectOrder.parentNode.querySelector("p")
+  const orders = selectOrder.querySelectorAll("li")
+  const orderType = Array.from(orders).find(
+    (element) => element.innerText.includes(orderParent.innerText.toLowerCase())
+    
+  )
+
+  const orderText = orderType ? orderType.innerText : ""
+
+  return orderText
+}
+
+
+
+
+
+
+
+
+let currentFilterItems = []
 
 const generateFilter = (name, count, list) => {
   const editName = name.replace(" ", "-")
@@ -686,19 +755,47 @@ const generateFilter = (name, count, list) => {
 
   input.addEventListener("click", (e) => {
     const options = e.target.parentNode.parentNode.querySelectorAll("input")
-    // const inputParent = e.target.parentNode.parentNode.parentNode.querySelector("#filter-container-name")
-    options.forEach(input => {
-      if(input !== e.target){
-        input.checked = false
-      }
-    })
-    // console.log(inputParent)
+    const inputParent = e.target.parentNode.parentNode.parentNode.querySelector("aside")
+    
+    const selectedOrder = checkIfOrderSelected()
 
-    if (e.target.checked) {
-      updatePaginationAndProducts(list, ITEMS_PER_PAGE)
-      // categoriesFunctionality(list)
+    // needed for price
+    // options.forEach(input => {
+    //   // if(input !== e.target){
+    //   //   input.checked = false
+    //   // }
+    // }
+
+    if(e.target.checked){
+       
+      currentFilterItems.push(list)
+       
+       console.log(currentFilterItems)
     } else {
-      updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
+      currentFilterItems = currentFilterItems.filter(array => array !== list)
+    }
+
+    const currentListItems = [].concat(...currentFilterItems)
+    
+    if (e.target.checked) {
+      updatePaginationAndProducts(currentListItems, ITEMS_PER_PAGE, selectedOrder)
+      
+      // categoriesFunctionality(list)
+      // filterType(list, "brand", inputParent)
+    } else {
+      const selected = Array.from(options).filter(input => input.checked)
+      
+      
+      if(selected.length === 0){
+        updatePaginationAndProducts(
+          currentSearch,
+          ITEMS_PER_PAGE,
+          selectedOrder
+        )
+        
+      } else{
+        updatePaginationAndProducts(currentListItems, ITEMS_PER_PAGE, selectedOrder)
+      }
       // categoriesFunctionality(currentSearch)
     }
 
@@ -706,8 +803,22 @@ const generateFilter = (name, count, list) => {
   })
 
 
+ 
   return container
 }
+
+
+const filterType = (list, type, parent) => {
+   const containerResults = returnFromSearch(list, type)
+   parent.innerHTML = ""
+
+   containerResults.forEach((element) => {
+     const { name, count, products } = element
+     const filter = generateFilter(name, count, products)
+     parent.appendChild(filter)
+   })
+}
+
 
 const categoriesFunctionality = (list) => {
   for (const [index, container] of filterContainers.entries()) {
@@ -716,25 +827,11 @@ const categoriesFunctionality = (list) => {
       const filterContainer = container.querySelector("aside") 
 
       if(containerType === "category"){
-        const containerResults = returnFromSearch(list, "category")
-        filterContainer.innerHTML = ""
-        
-        containerResults.forEach(element => {
-          const {name, count, products} = element
-          const filter = generateFilter(name, count, products)
-          filterContainer.appendChild(filter)
-        })
+        filterType(list, "category", filterContainer)
       }
   
       if(containerType === "brand"){
-        const containerResults = returnFromSearch(list, "brand")
-        filterContainer.innerHTML = ""
-        
-        containerResults.forEach((element) => {
-          const { name, count, products } = element
-          const filter = generateFilter(name, count, products)
-          filterContainer.appendChild(filter)
-        })
+        filterType(list, "brand", filterContainer)
       }
   
     }
@@ -742,21 +839,27 @@ const categoriesFunctionality = (list) => {
 
 }
 
-categoriesFunctionality(currentSearch)
+
+// On load the filters will be generated considering all products first
+
+categoriesFunctionality(getAllProducts())
 
 
-// Probabil ca va trebuii sa sparg categories functionality in maim multe functii 
-// poi sa apelez acele functii inauntr-un event listenerelor din generate filter
+//STEPS LEFT TO MAKE
+
+// generarea price-range-urilor apoi folosirea lor in reduce pentru a putea fi selectabile
+
+// apoi brand si price trebuie sa se actualizeze dupa category
+
+// dupa care price are nevoie de selectare unice intre checkbox si range
 
 
 
 
+// va trebuii sa selecteez separat cutiile de filtare si cand apas inauntrul uneia sa se actualizeze alta
 
 
-
-
-
-
+// brand si price trebuie sa se actualzeze prima oara in functie de search
 
 
 

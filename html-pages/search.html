@@ -21,8 +21,7 @@
       href="/styles/search-page/media/search-media-large/search-media-large.css"
       media="screen and (min-width: 990px)"
     />
-    <script src="../scripts/search-page.js" async></script>
-    <script src="../scripts/sharedScript.js" async></script>
+    
   </head>
   <body class="">
     <section class="navigation" >
@@ -345,10 +344,12 @@
 
             <div class="filter-container">
               <span id="filter-container-name">price</span>
-              <div>
-                <input id="0-50" type="checkbox" />
-                <label for="0-50" name="0-50">0 - 50 <span id="filter-product-count">(2)</span> </label>
-              </div>
+              <aside>
+                <div>
+                  <input id="0-50" type="checkbox" />
+                  <label for="0-50" name="0-50">0 - 50 <span id="filter-product-count">(2)</span> </label>
+                </div>
+              </aside>
 
                <!-- <div>
                 <input id="50-100" type="checkbox" />
@@ -408,7 +409,7 @@
                 <p class="select">Order after</p>
                 <ul class="select-menu hide" id="select-order">
                   <li><span>increasing</span> price</li>
-                  <li> <span>decreasing</span> price</li>
+                  <li><span>decreasing</span> price</li>
                   <li><span>new</span> products</li>
                 </ul>
                 <span class="arrows"></span>
@@ -659,5 +660,8 @@
         </nav>
       </div>
     </footer>
+
+    <script src="../scripts/search-page.js" ></script>
+    <script src="../scripts/sharedScript.js" ></script>
   </body>
 </html>

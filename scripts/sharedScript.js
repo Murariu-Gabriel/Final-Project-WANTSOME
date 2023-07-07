@@ -659,6 +659,7 @@ const noMatterSearch = (windowKey) => {
 
   const stringSearches = JSON.stringify(newArray)
   localStorage.setItem("recent-searches", stringSearches)
+  localStorage.removeItem("page")
 }
 
 
@@ -690,7 +691,6 @@ const cutBehindWord = (sentence, word) => {
   return restOfSentence
 }
 
-// console.log(placeHolderAssist("garmin venu 2", "GARrmin venu"))
  
 
 const highlight = (element, searchedWord) => {
@@ -715,7 +715,7 @@ const highlight = (element, searchedWord) => {
 searchInput.addEventListener("keyup", (e) => {
   const normalValue = e.target.value
   const value = e.target.value.toLowerCase()
-  // e.target.value = value
+
   listResults.innerHTML = ""
   searchTitle.innerText = "Search suggestions"
 
@@ -748,9 +748,7 @@ searchInput.addEventListener("keyup", (e) => {
   const inputCategories = inputSearchResult.map(product => product.category)
   const setCategories = new Set(inputCategories)
   const cleanCategories = [...setCategories]
-  // console.log(inputSearchResult)
 
- 
   placeHolder.innerText = ""
   
 
