@@ -170,6 +170,18 @@ rangeInput.forEach((input) => {
   })
 })
 
+
+
+const updateFilterRange = (list) => {
+//   const biggestPrice = Math.max(...list.map((product) => product.price))
+//   const smallestPrice = Math.min(...list.map((product) => product.price))
+//   const round = Math.ceil(biggestPrice / 50) * 50
+
+}
+
+
+
+
 // GENERATE LIST OF SEARCHED PRODUCTS
 
 const searchParams = new URLSearchParams(window.location.search)
@@ -220,6 +232,7 @@ updateCount(currentSearch.length)
 resultText.innerText = `"${retrievedSearch}"`
 searchBarInput.value = retrievedSearch
 plural.innerText = currentSearch.length > 1 ? "items" : "item"
+
 
 // GENERATING PRODUCT AND PAGINATION
 
@@ -399,7 +412,7 @@ const createButton = (id, btnClass, content) => {
 
 // PAGINATION UPDATE ON CLICK
 
-// The idea here is that when i click on the pagination navigation buttons it clicks the next element for me
+// The idea here is that when I click on the pagination navigation buttons it clicks the next element for me
 
 
 const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
@@ -638,56 +651,25 @@ const allProductsCount = document.getElementById("all-items-count")
 
 selectAllProducts.addEventListener("click", (e) => {
   const products = getAllProducts()
+  const inputParent =
+    e.target.parentNode.parentNode.querySelector("span")
 
   if(e.target.checked){
     updatePaginationAndProducts(products, ITEMS_PER_PAGE)
-    categoriesFunctionality(products)
+    categoriesFunctionality(products, inputParent)
   } else {
     updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
-    //  categoriesFunctionality(currentSearch)
+     categoriesFunctionality(currentSearch, inputParent)
   }
 
 })
-
-// On load, take the array with the search result
-// based on the searched result generate the filters that can be applied
-// brand category and price will generate option to click based on search result
-
-// currentSearch
 
 
 const filterContainers = document.body.querySelectorAll(".filter-container")
 
 const returnFromSearch = (list, fromList) => {
-   const biggestPrice = Math.max(...list.map((product) => product.price))
-   const smallestPrice = Math.min(...list.map((product) => product.price))
-
-   const numberTemplate = (min, max) =>{
-    let stepper = 50
-    const round = Math.ceil(max / 50) * 50
-
-    const priceRanges = []
-
-    for(let i = 0; i < round ; i++){
-      const rangeStart = min + i * stepper
-      const rangeEnd = rangeStart + stepper
-      if(rangeEnd > round){
-        break
-      }
-
-      priceRanges.push({priceRange:`${rangeStart} - ${rangeEnd}`, rangeMin: rangeStart, rangeMax: rangeEnd})
-      
-    }
-    
-
-    return priceRanges
-   }
-
-   console.log(numberTemplate(smallestPrice, biggestPrice))
-
-
-
   const uniqueCategories = list.reduce((accumulator, currentValue) => {
+
     if(fromList !== "price"){
       const value = accumulator.find(element => element.name === currentValue[fromList])
       if (!value) {
@@ -702,19 +684,49 @@ const returnFromSearch = (list, fromList) => {
       
       })
     } else {
-      const value = accumulator.filter((element) => element.price === currentValue[fromList])
-     
-      accumulator.push({ range: currentValue[fromList], count: 0, products: [] })
-      console.log(biggestPrice)
+      const ranges = localStorage.getItem("price-ranges")
+      const priceRanges = JSON.parse(ranges)
+      
+      const filter = priceRanges.find(
+        (element) =>
+        element.rangeMin <= currentValue[fromList] &&
+        currentValue[fromList] < element.rangeMax
+        )
+        const rangeString = filter.priceRange
+        const minRange = filter.rangeMin
+        
+        const value = accumulator.find((element) => element.name === rangeString)
+
+      if(!value){
+
+        accumulator.push({
+          name: rangeString,
+          count: 0,
+          products: [],
+          min: minRange,
+        })
+      }
+      
+       accumulator.forEach((element) => {
+         if (element.name === rangeString) {
+           element.count++
+           element.products.push(currentValue)
+         }
+       })
+      
     }
     
     return accumulator
   }, [])
 
+  if (fromList === "price"){
+    const sortedRanges = uniqueCategories.sort((a, b) => a.min - b.min)
+    return sortedRanges
+  } 
   return uniqueCategories
 }
 
-console.log(returnFromSearch(currentSearch, "price"))
+// console.log(returnFromSearch(currentSearch, "price"))
 
 
 
@@ -733,12 +745,236 @@ const checkIfOrderSelected = () => {
 
 
 
+const deselectPriceFilters = (inputParent, options, e) => {
+    if (inputParent.innerText === "Price") {
+      options.forEach((input) => {
+        if (input !== e.target && input.checked) {
+          input.click()
+        }
+      })
+    }
+}
 
 
+const flattenArray = (array) => {
+  const newArray = [].concat(...array)
 
+  return newArray
+}
 
 
 let currentFilterItems = []
+
+const currentListItems = (isChecked, list) => {
+if (isChecked) {
+  currentFilterItems.push(list)
+
+ 
+} else {
+  currentFilterItems = currentFilterItems.filter((array) => array !== list)
+}
+
+const items = flattenArray(currentFilterItems)
+
+return items
+  
+}
+
+
+let currentFilterItems2 = []
+
+const currentListItems2 = (isChecked, list) => {
+  if (isChecked) {
+    // const newList = currentFilterItems2.filter(newList => newList !== list)
+    currentFilterItems2.push(list)
+
+ 
+  } else {
+    currentFilterItems2 = currentFilterItems2.filter((array) => array !== list)
+  
+  }
+
+  const items = [].concat(...currentFilterItems2)
+
+  return items
+}
+
+
+
+let lastUsedFilterArray = []
+
+
+const generateFilterFunctionality = (element, list) => {
+
+  const input = element.querySelector("input")
+
+  input.addEventListener("click", (e) => {
+    const options = e.target.parentNode.parentNode.querySelectorAll("input")
+    const inputParent = e.target.parentNode.parentNode.parentNode.querySelector("span")
+    const isChecked = e.target.checked
+
+    const selected = Array.from(options).filter((input) => input.checked)
+
+    const selectedOrder = checkIfOrderSelected()
+    // console.log(options)
+
+    deselectPriceFilters(inputParent, options, e)
+
+    if(inputParent.innerText === "Category"){
+      currentFilterItems2 = []
+      const currentList = currentListItems(isChecked, list)
+      lastUsedFilterArray = currentFilterItems
+  
+      if (isChecked) {
+        updatePaginationAndProducts(
+          currentList,
+          ITEMS_PER_PAGE,
+          selectedOrder
+        )
+  
+        categoriesFunctionality(currentList, inputParent)
+      }
+       else {
+          // console.log(selectAllProducts.checked, getAllProducts())
+  
+            console.log(currentList)
+
+        if (selectAllProducts.checked) {
+          updatePaginationAndProducts(
+            getAllProducts(),
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(getAllProducts(), inputParent)
+          return
+        }
+
+
+        if (currentList.length === 0) {
+          updatePaginationAndProducts(
+            currentSearch,
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(currentSearch, inputParent)
+          return
+        } else {
+          updatePaginationAndProducts(
+            currentList,
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(currentList, inputParent)
+        }
+  
+        // categoriesFunctionality(currentList, inputParent)
+      }
+    }
+
+
+
+    if (inputParent.innerText === "Brand") {
+      const currentList = currentListItems2(isChecked, list)
+      const categoryFilters = flattenArray(currentFilterItems)
+      lastUsedFilterArray = currentFilterItems2
+
+      if (isChecked) {
+        updatePaginationAndProducts(
+          currentList,
+          ITEMS_PER_PAGE,
+          selectedOrder
+        )
+
+        categoriesFunctionality(currentList, inputParent)
+      } else {
+
+        if (selectAllProducts.checked && categoryFilters.length === 0) {
+          updatePaginationAndProducts(
+            getAllProducts(),
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(getAllProducts(), inputParent)
+          return
+        }
+
+          console.log(currentList.length, categoryFilters.length)
+        if (currentList.length === 0 && categoryFilters.length !== 0) {
+          updatePaginationAndProducts(
+            categoryFilters,
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(categoryFilters, inputParent)
+          return
+        } 
+        else {
+          console.log("else", currentSearch)
+          updatePaginationAndProducts(
+            currentList,
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(currentList, inputParent)
+        }
+
+        if(currentList.length === 0 && categoryFilters.length === 0){
+
+          updatePaginationAndProducts(
+            currentSearch,
+            ITEMS_PER_PAGE,
+            selectedOrder
+          )
+          categoriesFunctionality(currentSearch, inputParent)
+        }
+      }
+    }
+
+    if(inputParent.innerText === "Price"){
+      if (isChecked) {
+        updatePaginationAndProducts(
+          list,
+          ITEMS_PER_PAGE,
+          selectedOrder
+        )
+  
+        // categoriesFunctionality(currentList, inputParent)
+      }
+       else {
+        const categoryFilters = flattenArray(currentFilterItems2)
+
+         if (selectAllProducts.checked && categoryFilters.length === 0) {
+           updatePaginationAndProducts(
+             getAllProducts(),
+             ITEMS_PER_PAGE,
+             selectedOrder
+           )
+           categoriesFunctionality(getAllProducts(), inputParent)
+           return
+         }
+
+
+
+
+        const whichToRender =
+          lastUsedFilterArray.length !== 0
+            ? flattenArray(lastUsedFilterArray)
+            : currentSearch
+        updatePaginationAndProducts(
+          whichToRender,
+          ITEMS_PER_PAGE,
+          selectedOrder
+        )
+
+      }
+    }
+  })
+}
+
+
+
+
+
 
 const generateFilter = (name, count, list) => {
   const editName = name.replace(" ", "-")
@@ -751,57 +987,8 @@ const generateFilter = (name, count, list) => {
     <span>(${count})</span> 
   </label>
   `
-  const input = container.querySelector("input")
-
-  input.addEventListener("click", (e) => {
-    const options = e.target.parentNode.parentNode.querySelectorAll("input")
-    const inputParent = e.target.parentNode.parentNode.parentNode.querySelector("aside")
-    
-    const selectedOrder = checkIfOrderSelected()
-
-    // needed for price
-    // options.forEach(input => {
-    //   // if(input !== e.target){
-    //   //   input.checked = false
-    //   // }
-    // }
-
-    if(e.target.checked){
-       
-      currentFilterItems.push(list)
-       
-       console.log(currentFilterItems)
-    } else {
-      currentFilterItems = currentFilterItems.filter(array => array !== list)
-    }
-
-    const currentListItems = [].concat(...currentFilterItems)
-    
-    if (e.target.checked) {
-      updatePaginationAndProducts(currentListItems, ITEMS_PER_PAGE, selectedOrder)
-      
-      // categoriesFunctionality(list)
-      // filterType(list, "brand", inputParent)
-    } else {
-      const selected = Array.from(options).filter(input => input.checked)
-      
-      
-      if(selected.length === 0){
-        updatePaginationAndProducts(
-          currentSearch,
-          ITEMS_PER_PAGE,
-          selectedOrder
-        )
-        
-      } else{
-        updatePaginationAndProducts(currentListItems, ITEMS_PER_PAGE, selectedOrder)
-      }
-      // categoriesFunctionality(currentSearch)
-    }
-
-    
-  })
-
+ 
+  generateFilterFunctionality(container, list)
 
  
   return container
@@ -820,46 +1007,92 @@ const filterType = (list, type, parent) => {
 }
 
 
-const categoriesFunctionality = (list) => {
-  for (const [index, container] of filterContainers.entries()) {
-    if (index !== 0) {
+
+// On initial render brand and price update after the search that has been made 
+
+let isInitialRender = true
+
+const categoriesFunctionality = (list, category) => {
+  for (const container of filterContainers) {
+    // if (index !== 0) {
       const containerType = container.querySelector("span").innerText.toLowerCase()
       const filterContainer = container.querySelector("aside") 
 
-      if(containerType === "category"){
-        filterType(list, "category", filterContainer)
+    //  console.log(container.innerText)
+
+      if (isInitialRender) {
+        console.log("INITIAL RENDER")
+        if (containerType === "brand") {
+          filterType(currentSearch, "brand", filterContainer)
+        }
+
+        if (containerType === "price") {
+          filterType(currentSearch, "price", filterContainer)
+        }
+
+        if (containerType === "category") {
+          filterType(list, "category", filterContainer)
+        }
+      } else if (category.innerText === "All Available Products"){
+        currentFilterItems = []
+
+        if (containerType === "brand") {
+          filterType(list, "brand", filterContainer)
+        }
+
+        if (containerType === "price") {
+          filterType(list, "price", filterContainer)
+        }
+
+        if (containerType === "category") {
+          filterType(list, "category", filterContainer)
+        }
+
+      } else {
+        // console.log(category)
+
+        if (category.innerText === "Category") {
+          if (containerType === "brand") {
+            filterType(list, "brand", filterContainer)
+          }
+
+          if (containerType === "price") {
+            filterType(list, "price", filterContainer)
+          }
+        }
+
+        if (category.innerText === "Brand") {
+          if (containerType === "price") {
+            filterType(list, "price", filterContainer)
+          }
+        }
+
+        // }
       }
-  
-      if(containerType === "brand"){
-        filterType(list, "brand", filterContainer)
-      }
-  
-    }
   }
 
+  isInitialRender = false
 }
 
 
-// On load the filters will be generated considering all products first
+// On load the category will be generated considering all products first
 
 categoriesFunctionality(getAllProducts())
 
 
 //STEPS LEFT TO MAKE
 
-// generarea price-range-urilor apoi folosirea lor in reduce pentru a putea fi selectabile
 
-// apoi brand si price trebuie sa se actualizeze dupa category
+// unique selection between price ranges and slide range needed
 
-// dupa care price are nevoie de selectare unice intre checkbox si range
 
+// line 573 the prefrence for  order need to remain valid while changing filters
+// only when i go for product page or refresh
 
 
 
-// va trebuii sa selecteez separat cutiile de filtare si cand apas inauntrul uneia sa se actualizeze alta
 
 
-// brand si price trebuie sa se actualzeze prima oara in functie de search
 
 
 
@@ -943,22 +1176,23 @@ categoriesFunctionality(getAllProducts())
 
 
 
+// A FAILED TRY TO GET PRICE RANGES FROM AN ARRAY JUSt iN CASE YOU NEED IT
 
+// const getPriceRanges = (list) => {
+//   const biggestPrice = Math.max(...list.map((product) => product.price))
+//   const smallestPrice = Math.min(...list.map((product) => product.price))
+//   const round = Math.ceil(biggestPrice / 50) * 50
 
+//   const ranges = localStorage.getItem("price-ranges")
+//   const priceRanges = JSON.parse(ranges)
 
+//   const filter = priceRanges.filter(element => element.rangeMin > smallestPrice && element.rangeMax < round)
 
+//  return priceRanges
 
+// }
 
-
-
-
-
-
-
-
-
-
-
+// console.log(getPriceRanges(currentSearch))
 
 
 

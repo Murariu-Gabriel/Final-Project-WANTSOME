@@ -22,7 +22,6 @@ const localStorageLoadData = (name, data) => {
 
 getProducts()
 
-// localStorage.clear()
 
 const users = localStorage.getItem("products")
 const parsedProducts = JSON.parse(users)
@@ -30,6 +29,35 @@ const parsedProducts = JSON.parse(users)
 console.log(parsedProducts)
 
 
+
+
+const firstResponse = (response) => {
+  if (response.ok && response.status === 200) {
+    return response.json()
+  }
+  console.log(response)
+  return Promise.reject("ERROR")
+}
+
+function error(error) {
+  alert(error)
+}
+
+fetch("../ranges.json")
+.then(firstResponse)
+.then((response) => {
+
+  const priceRanges = JSON.stringify(response)
+
+  localStorageLoadData("price-ranges", priceRanges)
+  console.log(response)
+
+
+})
+.catch(error)
+
+
+// localStorage.removeItem("price-ranges")
 
 /// Left this here so you just know 
 

@@ -1,0 +1,14 @@
+[
+  { "priceRange": "0 - 50", "rangeMin": 0, "rangeMax": 50 },
+  { "priceRange": "50 - 100", "rangeMin": 50, "rangeMax": 100 },
+  { "priceRange": "100 - 200", "rangeMin": 100, "rangeMax": 200 },
+  { "priceRange": "200 - 300", "rangeMin": 200, "rangeMax": 300 },
+  { "priceRange": "300 - 500", "rangeMin": 300, "rangeMax": 500 },
+  { "priceRange": "500 - 1000", "rangeMin": 500, "rangeMax": 1000 },
+  { "priceRange": "1000 - 1500", "rangeMin": 1000, "rangeMax": 1500 },
+  { "priceRange": "1500 - 2000", "rangeMin": 1500, "rangeMax": 2000 },
+  { "priceRange": "2000 - 3000", "rangeMin": 2000, "rangeMax": 3000 },
+  { "priceRange": "3000 - 4000", "rangeMin": 1500, "rangeMax": 2000 },
+  { "priceRange": "4000 - 5000", "rangeMin": 1500, "rangeMax": 2000 },
+  { "priceRange": "Above 5000", "rangeMin": 5000, "rangeMax": 10000000 }
+]
