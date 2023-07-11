@@ -93,8 +93,12 @@
                         gap: 0.625rem;
 
                         input{
+                            // position: absolute;
                             margin: 0;
                             text-align: center;
+                            cursor: pointer;
+                            // left: 20px;
+                            // transform: translate(50%, 50%);
                         }
 
                         label{
@@ -126,11 +130,12 @@
 
                         .price-input{
                             // display: flex;
-                            align-items: center;
                             gap: 0.25rem;
                             padding: 1rem 0;
-
+                            // align-items: center;
+                            
                             input{
+                                // text-align: center;
                                 padding: 0.4rem 0.4rem;
                                 &::-webkit-inner-spin-button{
                                     appearance: none;
@@ -144,6 +149,10 @@
                                 border: 2px solid $gray;
                                 border-radius: 50%;
                                 background-color: $white;
+                                
+                                svg{
+                                    pointer-events: none;
+                                }
                             }
                         }
 
@@ -532,8 +541,8 @@
                         display: block;
                         padding-bottom: 1rem;
                         margin-top: auto;
-                        // align-self: center;
-                       
+                        align-self: center;
+                        font-size: 1.3rem;
                         
                         strong{
                         font-size: 1.5rem;
@@ -633,7 +642,7 @@
                     font-size: 1.5rem;
                      background: none;
                     cursor: pointer;
-                    border: 1px solid $black;
+                    // border: 1px solid $black;
                     transition: background-color 0.3s ease-in-out;
                     &:hover{
                         background-color: $black;

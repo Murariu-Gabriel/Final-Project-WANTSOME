@@ -308,7 +308,12 @@ addEventsOnInputs()
 const cleanLocalStorage = () => {
   for(let i = 0; i < localStorage.length; i++){
     const key = localStorage.key(i)
-    if (key !== "products" &&  key !== "users" && key !== "debug") {
+    if (
+      key !== "products" &&
+      key !== "users" &&
+      key !== "debug" &&
+      key !== "recent-searches"
+    ) {
       localStorage.removeItem(key)
     }
   }

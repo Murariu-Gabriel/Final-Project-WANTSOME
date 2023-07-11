@@ -719,13 +719,18 @@ searchInput.addEventListener("keyup", (e) => {
   listResults.innerHTML = ""
   searchTitle.innerText = "Search suggestions"
 
+  
   console.log(value.length)
   if (value.length < 2) {
     searchTitle.innerText = "Recent searches"
     fillListWithData(searches)
     placeHolder.classList.add("hide")
   }
-
+  
+  if(listResults.children.length === 0){
+    const noResult = generateListElement(value)
+    listResults.appendChild(noResult)
+  }
   // console.log(e.key)
   // if(e.key === "Escape"){
   //     removeSearchToggle()
@@ -766,6 +771,7 @@ searchInput.addEventListener("keyup", (e) => {
         placeHolder.classList.remove("hide")
 
       } else if(index < cleanCategories.length){
+            
         const listElement = generateListElement(cleanCategories[index])
         highlight(listElement, value)
         listResults.appendChild(listElement)
@@ -773,6 +779,7 @@ searchInput.addEventListener("keyup", (e) => {
         placeHolder.classList.remove("hide")
 
       } else {
+  
         return
       }
 
@@ -850,6 +857,7 @@ fillListWithData(searches)
 
 if(!parameters.pathname.includes("search")){
   localStorage.removeItem("page")
+  localStorage.removeItem("order")
 }
 
 

@@ -117,68 +117,6 @@ window.addEventListener("resize", () => {
   }
 })
 
-// FILTER RANGE INTERACTIVE FUNCTIONALITY
-
-const rangeInput = document.querySelectorAll(".range-input input")
-const progress = document.querySelector(".range-slider .progress")
-
-const priceInput = document.querySelectorAll(".price-input input")
-
-const priceGap = 100
-
-priceInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    e.stopPropagation()
-    let minVal = parseInt(priceInput[0].value)
-    let maxVal = parseInt(priceInput[1].value)
-
-    if (maxVal - minVal >= priceGap) {
-      // (maxVal -minVal >= priceGap) && maxVal <= 10000
-      if (e.target.className === "input-min") {
-        rangeInput[0].value = minVal
-        progress.style.left = (minVal / rangeInput[0].max) * 100 + "%"
-      } else {
-        rangeInput[1].value = maxVal
-        progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%"
-      }
-    }
-
-    console.log(minVal, maxVal)
-  })
-})
-
-rangeInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    e.stopPropagation()
-    let minVal = parseInt(rangeInput[0].value)
-    let maxVal = parseInt(rangeInput[1].value)
-
-    if (maxVal - minVal < priceGap) {
-      if (e.target.className === "range-min") {
-        rangeInput[0].value = maxVal - priceGap
-      } else {
-        rangeInput[1].value = minVal + priceGap
-      }
-    } else {
-      priceInput[0].value = minVal
-      priceInput[1].value = maxVal
-      progress.style.left = (minVal / rangeInput[0].max) * 100 + "%"
-      progress.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%"
-    }
-
-    console.log(minVal, maxVal)
-  })
-})
-
-
-
-const updateFilterRange = (list) => {
-//   const biggestPrice = Math.max(...list.map((product) => product.price))
-//   const smallestPrice = Math.min(...list.map((product) => product.price))
-//   const round = Math.ceil(biggestPrice / 50) * 50
-
-}
-
 
 
 
@@ -213,7 +151,142 @@ const getSearchProducts = (search) => {
 const currentSearch = getSearchProducts(retrievedSearch)
 
 
+// FILTER RANGE INTERACTIVE FUNCTIONALITY
 
+const rangeInput = document.querySelectorAll(".range-input input")
+const progress = document.querySelector(".range-slider .progress")
+
+const priceInput = document.querySelectorAll(".price-input input")
+
+const priceGap = 25
+
+
+
+
+
+
+
+priceInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    e.stopPropagation()
+    let minVal = parseInt(priceInput[0].value)
+    let maxVal = parseInt(priceInput[1].value)
+
+    const inputMin = parseInt(e.target.min)
+
+    if (maxVal - minVal >= priceGap && e.target.value <= maxVal) {
+      if (e.target.className === "input-min") {
+        rangeInput[0].value = minVal
+        const range = rangeInput[0].max - rangeInput[0].min
+        const progressLeft = ((minVal - rangeInput[0].min) / range) * 100 + "%"
+
+        if (inputMin <= minVal && minVal !== NaN) {
+          progress.style.left = progressLeft
+        } else {
+          progress.style.left = 0 + "%"
+        }
+      } else {
+        rangeInput[1].value = maxVal
+        const range = rangeInput[1].max - rangeInput[1].min
+        const progressRight = ((maxVal - rangeInput[1].min) / range) * 100
+        console.log(e.target.max, maxVal)
+
+        if (e.target.max >= maxVal) {
+          progress.style.right = 100 - parseFloat(progressRight) + "%"
+        } else {
+          progress.style.right = 0 + "%"
+        }
+      }
+    }
+
+    // console.log(minVal, maxVal)
+  })
+})
+
+const rangeInputFunctionality = (minVal, maxVal) => {
+     priceInput[0].value = minVal
+     priceInput[1].value = maxVal
+     const range1 = rangeInput[0].max - rangeInput[0].min
+     const range2 = rangeInput[1].max - rangeInput[1].min
+     const progressLeft = ((minVal - rangeInput[0].min) / range1) * 100 + "%"
+     const progressRight = ((maxVal - rangeInput[1].min) / range2) * 100
+     progress.style.left = progressLeft
+     progress.style.right = 100 - parseFloat(progressRight) + "%"
+
+}
+
+rangeInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    e.stopPropagation()
+
+     let minVal = parseInt(rangeInput[0].value)
+     let maxVal = parseInt(rangeInput[1].value)
+
+     if (maxVal - minVal < priceGap) {
+       if (e.target.className === "range-min") {
+         rangeInput[0].value = maxVal - priceGap
+       } else {
+         rangeInput[1].value = minVal + priceGap
+       }
+     } else {
+       console.log(minVal)
+       rangeInputFunctionality(minVal, maxVal)
+   
+     }
+
+  })
+})
+
+
+
+
+const updatePriceValues = (list) => {
+  const biggestPrice = Math.max(...list.map((product) => product.price))
+  const smallestPrice = Math.min(...list.map((product) => product.price))
+  
+
+  priceInput[0].value = smallestPrice
+  priceInput[1].value = biggestPrice
+
+ 
+
+  rangeInput[0].value = smallestPrice
+  rangeInput[1].value = biggestPrice
+
+}
+
+const updatePriceInterval = (list, updateValue) => {
+  const biggestPrice = Math.max(...list.map((product) => product.price))
+  const smallestPrice = Math.min(...list.map((product) => product.price))
+  const priceRound = Math.ceil(biggestPrice / 50) * 50
+
+  if(biggestPrice !== smallestPrice){
+     priceInput[0].setAttribute("min", smallestPrice)
+     priceInput[1].setAttribute("max", biggestPrice)
+
+     priceInput[0].setAttribute("value", smallestPrice)
+     priceInput[1].setAttribute("value", biggestPrice)
+     updatePriceValues(list)
+     if (updateValue) {
+       rangeInputFunctionality(smallestPrice, biggestPrice)
+     }
+
+     rangeInput[0].setAttribute("value", smallestPrice)
+     rangeInput[1].setAttribute("value", biggestPrice)
+
+     rangeInput[0].setAttribute("min", smallestPrice)
+     rangeInput[0].setAttribute("max", biggestPrice)
+
+     rangeInput[1].setAttribute("min", smallestPrice)
+     rangeInput[1].setAttribute("max", biggestPrice)
+
+  } else {
+     priceInput[0].value = smallestPrice
+  }
+ 
+}
+
+updatePriceInterval(currentSearch)
 
 // SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL BECAUSE IF SEARCH DOEST NOT EXIST IT LOADS ALL LOGIC THEN SHOW FAULTY RESULT
 
@@ -236,14 +309,22 @@ plural.innerText = currentSearch.length > 1 ? "items" : "item"
 
 // GENERATING PRODUCT AND PAGINATION
 
+const getPaginationPrefrenceFromLocalStorage = () => {
+  const paginationPreference = localStorage.getItem("pagination")
+  const ifPaginationExists = paginationPreference ? paginationPreference : 8
+  
+  return ifPaginationExists  
+}
+
+const getPaginationPrefrence = () => {
+  return parseInt(getPaginationPrefrenceFromLocalStorage())
+}
+
+
 const paginationText = selectPagination.parentNode.querySelector("p")
-const paginationPreference = localStorage.getItem("pagination")
-const ifPaginationExists = paginationPreference ? paginationPreference : 8
 
-
-
-const  ITEMS_PER_PAGE = parseInt(ifPaginationExists)
-paginationText.innerText = `${ITEMS_PER_PAGE + 1} on page`
+// const ITEMS_PER_PAGE = getPaginationPrefrence()
+paginationText.innerText = `${getPaginationPrefrence() + 1} on page`
 
 const pagination = document.getElementById("pagination")
 
@@ -338,7 +419,7 @@ const generateProduct = (
             ${isNew}
             <h3 class="subtitle">${productName}</h3>
         
-            <span><strong>${productPrice}</strong> euro</span>
+            <span><strong>${productPrice}</strong> $</span>
 
             <button class="button">
                 <svg width="2rem" height="100%"  viewBox="-3 0 30 20" xmlns="http://www.w3.org/2000/svg">
@@ -395,7 +476,7 @@ const loadProducts = (searchResult, start, end) => {
 
 
 // IMPORTANT
-loadProducts(currentSearch, 0, ITEMS_PER_PAGE)
+loadProducts(currentSearch, 0, getPaginationPrefrence())
 
 const createButton = (id, btnClass, content) => {
     const btn = document.createElement("button")
@@ -422,7 +503,7 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
   if (pageRest > 1) {
     page = page + 1
   }
-
+ console.log(page, itemsPerPage)
   const ol = document.createElement("ol")
   ol.classList.add("pagination-list")
   ol.appendChild(createButton("page-backwards", "page-backwards", arrowBackwards))
@@ -458,12 +539,12 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
       const currentPage = parseInt(e.target.innerText)
 
       if (currentPage === pagEnd) {
-        updatePagination(list, ITEMS_PER_PAGE, pagStart + 4, pagEnd + 4)
+        updatePagination(list, getPaginationPrefrence(), pagStart + 4, pagEnd + 4)
       }
 
       if (currentPage === pagStart) {
         if (currentPage > 1) {
-          updatePagination(list, ITEMS_PER_PAGE, pagStart - 4, pagEnd - 4)
+          updatePagination(list, getPaginationPrefrence(), pagStart - 4, pagEnd - 4)
           const olListElements = pagination.querySelectorAll("li")
           olListElements[olListElements.length - 1].classList.add(
             "current-page"
@@ -516,14 +597,18 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
 
 // IMPORTANT
 
-const updatePagination = (list, end = 8, listStart = 1, listEnd = 5) => {
-    const generateOl = generatePagination(list, end, listStart, listEnd)
-    pagination.innerHTML = ""
-    pagination.appendChild(generateOl)
-
+const updatePagination = (
+  list,
+  end = getPaginationPrefrence(),
+  listStart = 1,
+  listEnd = 5
+) => {
+  const generateOl = generatePagination(list, end, listStart, listEnd)
+  pagination.innerHTML = ""
+  pagination.appendChild(generateOl)
 }
 
-updatePagination(currentSearch, ITEMS_PER_PAGE)
+updatePagination(currentSearch)
 
 // RETURN TO THE LAST PAGE REST OF CODE IN SHAREDSCRIPT
 
@@ -539,11 +624,18 @@ if(currentPage !== "1"){
   }
 }
 
-
+const deleteEvents = (children) => {
+  for (const child of children) {
+    const clone = child.cloneNode(true)
+    child.parentNode.replaceChild(clone, child)
+  }
+}
 
 
 const selectPaginationFunctionality = (list) => {
     const listElements = selectPagination.children
+
+    // deleteEvents(listElements)
 
     for(element of listElements){
         element.addEventListener("click", (e) => {
@@ -570,49 +662,6 @@ selectPaginationFunctionality(currentSearch)
 
 // ORDER OPTIONS
 
-const selectOrderFunctionality = (list, order) => {
-  const orderList = selectOrder.children
-
-  const text = selectOrder.parentNode.querySelector("p")
-
-
-
-  for (const element of orderList) {
-  element.addEventListener("click", (e) => {
-    let sorted = []
-    text.innerText = e.target.innerText
-    
-    if(orderList[0] === element){
-      sorted = sort(list, (a, b) => a.price - b.price)
-    }else if (orderList[1] === element) {
-      sorted = sort(list, (a, b) => b.price - a.price)
-    } else {
-      sorted = sort(list, (a, b) => b.new - a.new)
-    }
-
-
-    generatedProductsContainer.innerHTML = ""
-
-  
-
-    selectPaginationFunctionality(sorted)
-    loadProducts(sorted, 0, ITEMS_PER_PAGE)
-    updatePagination(sorted)
-  
-    })
-  }
-
-  for(const element of orderList){
-    if(element.innerText === order){
-      element.click()
-    }
-  }
-
-}
-
-selectOrderFunctionality(currentSearch)
-
-
 // toSort might not be the best approach here, but since my data has a small number there is no need for now for a better sorting solution. In the future or on other projects there is a big probability this might not be optimal and be in need of a different approach.
 
 
@@ -625,6 +674,60 @@ return sort
 }
 
 
+
+const generateOrderEvents = (list, orderList) => {
+   
+    const text = selectOrder.parentNode.querySelector("p")
+
+  for (const element of orderList) {
+    element.addEventListener("click", (e) => {
+      let sorted = []
+      text.innerText = e.target.innerText
+
+      if (orderList[0] === element) {
+        sorted = sort(list, (a, b) => a.price - b.price)
+      } else if (orderList[1] === element) {
+        sorted = sort(list, (a, b) => b.price - a.price)
+      } else {
+        sorted = sort(list, (a, b) => b.new - a.new)
+      }
+
+      generatedProductsContainer.innerHTML = ""
+
+      selectPaginationFunctionality(sorted)
+      loadProducts(sorted, 0, getPaginationPrefrence())
+      updatePagination(sorted, getPaginationPrefrence())
+      localStorage.setItem("order", e.target.innerText)
+    })
+  }
+}
+
+
+
+const selectOrderFunctionality = (list, order) => {
+  const orderList = selectOrder.children
+  const orderPreference = localStorage.getItem("order")
+  const order2 = orderPreference
+  
+
+  deleteEvents(orderList)
+  generateOrderEvents(list, orderList)
+
+
+  for(const element of orderList){
+    if(element.innerText === order2){
+      element.click()
+      
+    }
+  }
+
+}
+
+selectOrderFunctionality(currentSearch)
+
+
+// Function for obtaining all available products
+
 const getAllProducts = () => {
     const allProducts = localStorage.getItem("products")
     const parsedProducts = JSON.parse(allProducts)
@@ -634,7 +737,11 @@ const getAllProducts = () => {
 
 
 // !IMPORTANT 
-const updatePaginationAndProducts = (items, itemsPerPage, order) => {
+const updatePaginationAndProducts = (
+  items,
+  itemsPerPage = getPaginationPrefrence(),
+  order
+) => {
   generatedProductsContainer.innerHTML = ""
 
   loadProducts(items, 0, itemsPerPage)
@@ -651,15 +758,20 @@ const allProductsCount = document.getElementById("all-items-count")
 
 selectAllProducts.addEventListener("click", (e) => {
   const products = getAllProducts()
-  const inputParent =
-    e.target.parentNode.parentNode.querySelector("span")
+  const inputParent = e.target.parentNode.parentNode.querySelector("span")
+  
 
   if(e.target.checked){
-    updatePaginationAndProducts(products, ITEMS_PER_PAGE)
+    console.log(products)
+    updatePaginationAndProducts(products)
     categoriesFunctionality(products, inputParent)
+    updatePriceInterval(products)
+    updatePriceValues(products)
   } else {
-    updatePaginationAndProducts(currentSearch, ITEMS_PER_PAGE)
-     categoriesFunctionality(currentSearch, inputParent)
+    updatePaginationAndProducts(currentSearch)
+     categoriesFunctionality(currentSearch, inputParent, "category")
+     updatePriceInterval(currentSearch)
+     updatePriceValues(currentSearch)
   }
 
 })
@@ -745,14 +857,27 @@ const checkIfOrderSelected = () => {
 
 
 
-const deselectPriceFilters = (inputParent, options, e) => {
-    if (inputParent.innerText === "Price") {
-      options.forEach((input) => {
-        if (input !== e.target && input.checked) {
+const deselectPriceFilters = (options, e, optional, select) => {
+  
+  if (optional) {
+    options.forEach((input) => {
+      if(input.id !== select && input.checked){
+        options.forEach((input) => {
           input.click()
-        }
-      })
-    }
+        }) 
+      }
+    })
+
+    return
+  } 
+  options.forEach((input) => {
+    if (input !== e.target && input.checked) {
+      console.log(e.target.checked)
+      // console.log(input, e.target)
+      input.click()
+    } 
+  })
+
 }
 
 
@@ -766,17 +891,17 @@ const flattenArray = (array) => {
 let currentFilterItems = []
 
 const currentListItems = (isChecked, list) => {
-if (isChecked) {
-  currentFilterItems.push(list)
+  if (isChecked) {
+    currentFilterItems.push(list)
 
- 
-} else {
-  currentFilterItems = currentFilterItems.filter((array) => array !== list)
-}
+  
+  } else {
+    currentFilterItems = currentFilterItems.filter((array) => array !== list)
+  }
 
-const items = flattenArray(currentFilterItems)
-
-return items
+  const items = flattenArray(currentFilterItems)
+  console.log(items)
+  return items
   
 }
 
@@ -785,7 +910,6 @@ let currentFilterItems2 = []
 
 const currentListItems2 = (isChecked, list) => {
   if (isChecked) {
-    // const newList = currentFilterItems2.filter(newList => newList !== list)
     currentFilterItems2.push(list)
 
  
@@ -794,7 +918,7 @@ const currentListItems2 = (isChecked, list) => {
   
   }
 
-  const items = [].concat(...currentFilterItems2)
+  const items = flattenArray(currentFilterItems2)
 
   return items
 }
@@ -804,186 +928,185 @@ const currentListItems2 = (isChecked, list) => {
 let lastUsedFilterArray = []
 
 
-const generateFilterFunctionality = (element, list) => {
+const generateFilterEvent = (e, list) => {
+  const options = e.target.parentNode.parentNode.parentNode.querySelectorAll(
+    "input[type='checkbox'"
+  )
+  const inputParent =
+    e.target.parentNode.parentNode.parentNode.querySelector("span")
+  const isChecked = e.target.checked
 
-  const input = element.querySelector("input")
+  const selectedOrder = checkIfOrderSelected()
+  console.log(options)
 
-  input.addEventListener("click", (e) => {
-    const options = e.target.parentNode.parentNode.querySelectorAll("input")
-    const inputParent = e.target.parentNode.parentNode.parentNode.querySelector("span")
-    const isChecked = e.target.checked
+  if (inputParent.innerText === "Category") {
+    currentFilterItems2 = []
+    const currentList = currentListItems(isChecked, list)
+    lastUsedFilterArray = currentFilterItems
 
-    const selected = Array.from(options).filter((input) => input.checked)
+    if (isChecked) {
+      updatePaginationAndProducts(
+        currentList,
+        getPaginationPrefrence(),
+        selectedOrder
+      )
 
-    const selectedOrder = checkIfOrderSelected()
-    // console.log(options)
+      categoriesFunctionality(currentList, inputParent)
+    } else {
+      // console.log(selectAllProducts.checked, getAllProducts())
 
-    deselectPriceFilters(inputParent, options, e)
+      console.log(currentList)
 
-    if(inputParent.innerText === "Category"){
-      currentFilterItems2 = []
-      const currentList = currentListItems(isChecked, list)
-      lastUsedFilterArray = currentFilterItems
-  
-      if (isChecked) {
+      if (selectAllProducts.checked && currentFilterItems.length === 0) {
         updatePaginationAndProducts(
-          currentList,
-          ITEMS_PER_PAGE,
+          getAllProducts(),
+          getPaginationPrefrence(),
           selectedOrder
         )
-  
-        categoriesFunctionality(currentList, inputParent)
+        categoriesFunctionality(getAllProducts(), inputParent)
+        return
       }
-       else {
-          // console.log(selectAllProducts.checked, getAllProducts())
-  
-            console.log(currentList)
 
-        if (selectAllProducts.checked) {
-          updatePaginationAndProducts(
-            getAllProducts(),
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(getAllProducts(), inputParent)
-          return
-        }
-
-
-        if (currentList.length === 0) {
-          updatePaginationAndProducts(
-            currentSearch,
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(currentSearch, inputParent)
-          return
-        } else {
-          updatePaginationAndProducts(
-            currentList,
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(currentList, inputParent)
-        }
-  
-        // categoriesFunctionality(currentList, inputParent)
-      }
-    }
-
-
-
-    if (inputParent.innerText === "Brand") {
-      const currentList = currentListItems2(isChecked, list)
-      const categoryFilters = flattenArray(currentFilterItems)
-      lastUsedFilterArray = currentFilterItems2
-
-      if (isChecked) {
+      if (currentList.length === 0) {
         updatePaginationAndProducts(
-          currentList,
-          ITEMS_PER_PAGE,
+          currentSearch,
+          getPaginationPrefrence(),
           selectedOrder
         )
-
-        categoriesFunctionality(currentList, inputParent)
+        categoriesFunctionality(currentSearch, inputParent)
+        return
       } else {
-
-        if (selectAllProducts.checked && categoryFilters.length === 0) {
-          updatePaginationAndProducts(
-            getAllProducts(),
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(getAllProducts(), inputParent)
-          return
-        }
-
-          console.log(currentList.length, categoryFilters.length)
-        if (currentList.length === 0 && categoryFilters.length !== 0) {
-          updatePaginationAndProducts(
-            categoryFilters,
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(categoryFilters, inputParent)
-          return
-        } 
-        else {
-          console.log("else", currentSearch)
-          updatePaginationAndProducts(
-            currentList,
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(currentList, inputParent)
-        }
-
-        if(currentList.length === 0 && categoryFilters.length === 0){
-
-          updatePaginationAndProducts(
-            currentSearch,
-            ITEMS_PER_PAGE,
-            selectedOrder
-          )
-          categoriesFunctionality(currentSearch, inputParent)
-        }
-      }
-    }
-
-    if(inputParent.innerText === "Price"){
-      if (isChecked) {
         updatePaginationAndProducts(
-          list,
-          ITEMS_PER_PAGE,
+          currentList,
+          getPaginationPrefrence(),
           selectedOrder
         )
-  
-        // categoriesFunctionality(currentList, inputParent)
+        categoriesFunctionality(currentList, inputParent)
       }
-       else {
-        const categoryFilters = flattenArray(currentFilterItems2)
 
-         if (selectAllProducts.checked && categoryFilters.length === 0) {
-           updatePaginationAndProducts(
-             getAllProducts(),
-             ITEMS_PER_PAGE,
-             selectedOrder
-           )
-           categoriesFunctionality(getAllProducts(), inputParent)
-           return
-         }
+      // categoriesFunctionality(currentList, inputParent)
+    }
+  }
 
+  if (inputParent.innerText === "Brand") {
+    const currentList = currentListItems2(isChecked, list)
+    const categoryFilters = flattenArray(currentFilterItems)
+    lastUsedFilterArray = currentFilterItems2
 
+    if (isChecked) {
+      updatePaginationAndProducts(
+        currentList,
+        getPaginationPrefrence(),
+        selectedOrder
+      )
 
-
-        const whichToRender =
-          lastUsedFilterArray.length !== 0
-            ? flattenArray(lastUsedFilterArray)
-            : currentSearch
+      categoriesFunctionality(currentList, inputParent)
+    } else {
+      if (selectAllProducts.checked && categoryFilters.length === 0) {
         updatePaginationAndProducts(
-          whichToRender,
-          ITEMS_PER_PAGE,
+          getAllProducts(),
+          getPaginationPrefrence(),
           selectedOrder
         )
+        categoriesFunctionality(getAllProducts(), inputParent)
+        return
+      }
 
+      console.log(currentList.length, categoryFilters.length)
+      if (currentList.length === 0 && categoryFilters.length !== 0) {
+        updatePaginationAndProducts(
+          categoryFilters,
+          getPaginationPrefrence(),
+          selectedOrder
+        )
+        categoriesFunctionality(categoryFilters, inputParent)
+        return
+      } else {
+        console.log("else", currentSearch)
+        updatePaginationAndProducts(
+          currentList,
+          getPaginationPrefrence(),
+          selectedOrder
+        )
+        categoriesFunctionality(currentList, inputParent)
+      }
+
+      if (currentList.length === 0 && categoryFilters.length === 0) {
+        updatePaginationAndProducts(
+          currentSearch,
+          getPaginationPrefrence(),
+          selectedOrder
+        )
+        categoriesFunctionality(currentSearch, inputParent)
       }
     }
-  })
+  }
+
+  if (inputParent.innerText === "Price") {
+     
+    if (isChecked) {
+      deselectPriceFilters(options, e)
+      console.log("dap")
+
+      updatePaginationAndProducts(list, getPaginationPrefrence(), selectedOrder)
+
+      // categoriesFunctionality(currentList, inputParent)
+    } else {
+      const categoryFilters = flattenArray(currentFilterItems)
+
+      if (selectAllProducts.checked && categoryFilters.length === 0) {
+        updatePaginationAndProducts(
+          getAllProducts(),
+          getPaginationPrefrence(),
+          selectedOrder
+        )
+        categoriesFunctionality(getAllProducts(), inputParent)
+        return
+      }
+
+      const whichToRender =
+        lastUsedFilterArray.length !== 0
+          ? flattenArray(lastUsedFilterArray)
+          : currentSearch
+
+      updatePaginationAndProducts(
+        whichToRender,
+        getPaginationPrefrence(),
+        selectedOrder
+      )
+    }
+  }
 }
 
 
 
 
 
+const generateFilterFunctionality = (element, list ) => {
+  const input = element.querySelector("input") 
+
+  input.addEventListener("click", (e) => {
+    
+    // console.log(list)
+    generateFilterEvent(e, list)
+
+  })
+ 
+}
+
+
+// const filterHandler = generateFilterFunctionality(element, list)
+
+
 
 const generateFilter = (name, count, list) => {
-  const editName = name.replace(" ", "-")
+  const editName = name.replace(/ /g, "-")
 
   const container = document.createElement("div")
   container.innerHTML = `
-  <input id=${editName} type="checkbox" />
-  <label for=${editName} name=${editName}>
-    ${editName}
+  <input id='${editName}' type="checkbox" />
+  <label for='${editName}' name=${editName}>
+    ${name}
     <span>(${count})</span> 
   </label>
   `
@@ -996,23 +1119,28 @@ const generateFilter = (name, count, list) => {
 
 
 const filterType = (list, type, parent) => {
-   const containerResults = returnFromSearch(list, type)
-   parent.innerHTML = ""
-
-   containerResults.forEach((element) => {
-     const { name, count, products } = element
-     const filter = generateFilter(name, count, products)
-     parent.appendChild(filter)
-   })
+  const containerResults = returnFromSearch(list, type)
+  const inputs = parent.querySelectorAll("div input")
+  console.log(list)
+  deleteEvents(inputs)
+    
+    parent.innerHTML = ""
+    
+    containerResults.forEach((element) => {
+      const { name, count, products } = element
+      const filter = generateFilter(name, count, products)
+      parent.appendChild(filter)
+    })
+  
 }
-
 
 
 // On initial render brand and price update after the search that has been made 
 
 let isInitialRender = true
 
-const categoriesFunctionality = (list, category) => {
+const categoriesFunctionality = (list, category, individualUpdate) => {
+
   for (const container of filterContainers) {
     // if (index !== 0) {
       const containerType = container.querySelector("span").innerText.toLowerCase()
@@ -1020,22 +1148,38 @@ const categoriesFunctionality = (list, category) => {
 
     //  console.log(container.innerText)
 
-      if (isInitialRender) {
-        console.log("INITIAL RENDER")
-        if (containerType === "brand") {
-          filterType(currentSearch, "brand", filterContainer)
-        }
+    if (isInitialRender) {
+      console.log("INITIAL RENDER")
+      if (containerType === "brand") {
+        filterType(currentSearch, "brand", filterContainer)
+      }
 
-        if (containerType === "price") {
-          filterType(currentSearch, "price", filterContainer)
-        }
+      if (containerType === "price") {
+        filterType(currentSearch, "price", filterContainer)
+      }
 
-        if (containerType === "category") {
-          filterType(list, "category", filterContainer)
-        }
-      } else if (category.innerText === "All Available Products"){
-        currentFilterItems = []
+      if (containerType === "category") {
+        filterType(list, "category", filterContainer)
+      }
+    } else if (category.innerText === "All Available Products"){
+      currentFilterItems = []
+      
 
+      if (containerType === "brand") {
+        filterType(list, "brand", filterContainer)
+      }
+
+      if (containerType === "price") {
+        filterType(list, "price", filterContainer)
+      }
+
+      if (containerType === "category") {
+        filterType(list, "category", filterContainer)
+      }
+
+    } else {
+      updatePriceInterval(list, true)
+      if (category.innerText === "Category") {
         if (containerType === "brand") {
           filterType(list, "brand", filterContainer)
         }
@@ -1043,32 +1187,24 @@ const categoriesFunctionality = (list, category) => {
         if (containerType === "price") {
           filterType(list, "price", filterContainer)
         }
-
-        if (containerType === "category") {
-          filterType(list, "category", filterContainer)
-        }
-
-      } else {
-        // console.log(category)
-
-        if (category.innerText === "Category") {
-          if (containerType === "brand") {
-            filterType(list, "brand", filterContainer)
-          }
-
-          if (containerType === "price") {
-            filterType(list, "price", filterContainer)
-          }
-        }
-
-        if (category.innerText === "Brand") {
-          if (containerType === "price") {
-            filterType(list, "price", filterContainer)
-          }
-        }
-
-        // }
       }
+
+      if (category.innerText === "Brand") {
+        if (containerType === "price") {
+          filterType(list, "price", filterContainer)
+        }
+      }
+
+      // }
+    }
+   
+    if(individualUpdate){
+      if (containerType === individualUpdate) {
+         
+        filterType(getAllProducts(), individualUpdate, filterContainer)
+      }
+
+    }
   }
 
   isInitialRender = false
@@ -1086,26 +1222,66 @@ categoriesFunctionality(getAllProducts())
 // unique selection between price ranges and slide range needed
 
 
-// line 573 the prefrence for  order need to remain valid while changing filters
-// only when i go for product page or refresh
+const rangeButton = document.getElementById("range-button")
 
+const allFilters = document.getElementById("all-filters")
+const filters = allFilters.children
+const priceFilter = filters[filters.length - 1]
+const filterInputs = priceFilter.querySelectorAll("div input[type='checkbox']")
 
 
+console.log(filterInputs)
 
+const intervalInput = filterInputs[filterInputs.length - 1]
 
 
+intervalInput.addEventListener("click", (e) => {
 
+  const allFilters = document.getElementById("all-filters")
+  const filters = allFilters.children
+  const filterInputs = filters[filters.length - 1].querySelectorAll(
+    "div input[type='checkbox']"
+  )
+ 
+  deselectPriceFilters(filterInputs, e)
 
+  updatePaginationAndProducts(
+    currentSearch,
+    getPaginationPrefrence(),
+    checkIfOrderSelected()
+  )
 
+})
 
+// currentFilterItems
+// currentFilterItems2
 
+const rangePricesFromList = (list, min, max) => {
 
+  const filter = list.filter(element => element.price >= min && element.price <= max)
 
+  return filter
+}
 
 
+rangeButton.addEventListener('click', (e) => {
+  deselectPriceFilters(filterInputs, "empty", true, intervalInput.id)
+  intervalInput.checked = true
+  const inputs = e.target.parentNode.querySelectorAll("input")
 
+  const min = inputs[0].value
+  const max = inputs[1].value
+  console.log(min, max)
 
+  const ranges = rangePricesFromList(getAllProducts(), min, max)
 
+  updatePaginationAndProducts(
+    ranges,
+    getPaginationPrefrence(),
+    checkIfOrderSelected()
+  )
+    
+})
 
 
 
@@ -1113,7 +1289,9 @@ categoriesFunctionality(getAllProducts())
 
 
 
+// when range selected it searches in the last used filter either category or brand and from that it filters once again the items with the price selected when unselected it goes back to last filter made
 
+// after that all selected filters to to show on mobile and tablet, the pc version needs to generate a button that removes all filters made
 
 
 
@@ -1170,6 +1348,96 @@ categoriesFunctionality(getAllProducts())
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OLD PRICE RANGE VISUAL FUNCTIONALITY, NOT FUNCTIONAL
+
+// priceInput.forEach((input) => {
+//   input.addEventListener("input", (e) => {
+//     let minPrice = parseInt(priceInput[0].value),
+//       maxPrice = parseInt(priceInput[1].value)
+
+//     if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+//       if (e.target.className === "input-min") {
+//         rangeInput[0].value = minPrice
+//         range.style.left = (minPrice / rangeInput[0].max) * 100 + "%"
+//       } else {
+//         rangeInput[1].value = maxPrice
+//         range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%"
+//       }
+//     }
+//   })
+// })
+// rangeInput.forEach((input) => {
+//   input.addEventListener("input", (e) => {
+//     let minVal = parseInt(rangeInput[0].value),
+//       maxVal = parseInt(rangeInput[1].value)
+//     if (maxVal - minVal < priceGap) {
+//       if (e.target.className === "range-min") {
+//         rangeInput[0].value = maxVal - priceGap
+//       } else {
+//         rangeInput[1].value = minVal + priceGap
+//       }
+//     } else {
+//       priceInput[0].value = minVal
+//       priceInput[1].value = maxVal
+//       range.style.left = (minVal / rangeInput[0].max) * 100 + "%"
+//       range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%"
+//     }
+//   })
+// })
+
+
+
+// FAILED REPLACEMENT FOR CATEGORY AND BRAND DUPLICATE FUNCTIONS IF THERE IS NEED LATER
+
+// const ListItems = (isChecked, list, name) => {
+
+//   const items = localStorage.getItem(name)
+//   const parsedItems = JSON.parse(items)
+//   let ifItemsExist = parsedItems ? parsedItems : []
+
+
+
+  
+//   if (isChecked) {
+//     ifItemsExist.push(list)
+    
+//   } else {
+
+//     const filter = ifItemsExist.filter((array) => array !== list)
+
+//     ifItemsExist = filter
+    
+//     console.log(ifItemsExist.filter((array) => array !== list))
+//   }
+
+//   console.log(ifItemsExist)
+
+//   const flatArray = [].concat(...ifItemsExist)
+
+//   const stringifyList = JSON.stringify(ifItemsExist)
+//   localStorage.setItem(name, stringifyList)
+
+//   return flatArray
+
+
+// }
 
 
 

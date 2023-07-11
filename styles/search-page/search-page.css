@@ -980,6 +980,7 @@ footer .container nav .socials {
 .generated-search-result .container .filters .generated-filters .filter-container div input {
   margin: 0;
   text-align: center;
+  cursor: pointer;
 }
 .generated-search-result .container .filters .generated-filters .filter-container div label {
   position: relative;
@@ -1002,7 +1003,6 @@ footer .container nav .socials {
   padding-left: 0.5rem;
 }
 .generated-search-result .container .filters .generated-filters .filter-container .price-by-range .price-input {
-  align-items: center;
   gap: 0.25rem;
   padding: 1rem 0;
 }
@@ -1020,6 +1020,9 @@ footer .container nav .socials {
   border: 2px solid #F1F1F1;
   border-radius: 50%;
   background-color: #FFFFFF;
+}
+.generated-search-result .container .filters .generated-filters .filter-container .price-by-range .price-input button svg {
+  pointer-events: none;
 }
 .generated-search-result .container .filters .generated-filters .filter-container .range-slider {
   display: block;
@@ -1307,6 +1310,8 @@ footer .container nav .socials {
   display: block;
   padding-bottom: 1rem;
   margin-top: auto;
+  align-self: center;
+  font-size: 1.3rem;
 }
 .generated-search-result .container .display-search-results .generated-products article span strong {
   font-size: 1.5rem;
@@ -1373,7 +1378,6 @@ footer .container nav .socials {
   font-size: 1.5rem;
   background: none;
   cursor: pointer;
-  border: 1px solid #000000;
   transition: background-color 0.3s ease-in-out;
 }
 .generated-search-result .container .pagination .pagination-list .pagination-element:hover {

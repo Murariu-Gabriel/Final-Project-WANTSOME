@@ -361,13 +361,13 @@
                 <label for="price-interval" name="price-interval">Price Interval </label><span id="filtered-products-count"></span>
                   
                 <div class="price-input">
-                  <input type="number" class="input-min" value="0">
+                  <input type="number" class="input-min"  value="0">
   
                   <span class="separator">-</span>
   
-                  <input type="number" class="input-min" value="1000">
+                  <input type="number" class="input-max" value="1000">
                   
-                  <button class="button">
+                  <button class="button" id="range-button">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 22 24" height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
                       <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z">
                       </path>
@@ -378,8 +378,8 @@
                 <div class="range-slider">
                   <span class="progress"></span>
                   <div class="range-input">
-                    <input type="range" class="range-min" min="0" max="1000" value="0">
-                    <input type="range" class="range-max" min="0" max="1000" value="10000">
+                    <input type="range" class="range-min" min="0" max="1000" value="500">
+                    <input type="range" class="range-max" min="0" max="1000" value="1000">
                   </div>
                 </div>
               </div>
