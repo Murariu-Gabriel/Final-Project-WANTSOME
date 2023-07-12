@@ -48,7 +48,7 @@ headerNav.addEventListener("click", () => {
   closeButton.classList.toggle("display-none")
    popButton.classList.toggle("display-none")
    headerNav.classList.toggle("nav-toggle")
-  document.body.classList.toggle("stop-scroll")
+  document.body.classList.remove("stop-scroll")
 })
 
 secondNav.addEventListener("click", (e) => {
@@ -727,10 +727,7 @@ searchInput.addEventListener("keyup", (e) => {
     placeHolder.classList.add("hide")
   }
   
-  if(listResults.children.length === 0){
-    const noResult = generateListElement(value)
-    listResults.appendChild(noResult)
-  }
+
   // console.log(e.key)
   // if(e.key === "Escape"){
   //     removeSearchToggle()
@@ -782,9 +779,12 @@ searchInput.addEventListener("keyup", (e) => {
   
         return
       }
+    })
+  }
 
-  })
-
+  if (listResults.children.length === 0) {
+    const noResult = generateListElement(value)
+    listResults.appendChild(noResult)
   }
 
 })
@@ -813,6 +813,7 @@ document.body.addEventListener("keydown", (e) => {
     headerNav.classList.remove("nav-toggle")
 
     if (typeof filtersContainer !== "undefined" ){
+
       filtersContainer.classList.toggle("display")
       filtersContainer.classList.toggle("overlay")
       document.body.classList.remove("stop-scroll")
@@ -853,7 +854,7 @@ fillListWithData(searches)
 // console.log(searches)
 
 
-// REMOVE CURRENT PAGE
+// REMOVE CURRENT PAGE AND ORDER PREFRENCE FROM SEARCH PAGE
 
 if(!parameters.pathname.includes("search")){
   localStorage.removeItem("page")

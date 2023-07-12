@@ -21,6 +21,19 @@ const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-widt
 
 const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
 
+
+const rangeButton = document.getElementById("range-button")
+
+const allFilters = document.getElementById("all-filters")
+const filters = allFilters.children
+const priceFilter = filters[filters.length - 1]
+const filterInputs = priceFilter.querySelectorAll("div input[type='checkbox']")
+
+const intervalInput = filterInputs[filterInputs.length - 1]
+
+
+
+
 // FILTER AND SELECT TOGGLES TOGGLES
 
 const addSelectEvent = () => {
@@ -204,14 +217,22 @@ priceInput.forEach((input) => {
 })
 
 const rangeInputFunctionality = (minVal, maxVal) => {
-     priceInput[0].value = minVal
-     priceInput[1].value = maxVal
-     const range1 = rangeInput[0].max - rangeInput[0].min
-     const range2 = rangeInput[1].max - rangeInput[1].min
-     const progressLeft = ((minVal - rangeInput[0].min) / range1) * 100 + "%"
-     const progressRight = ((maxVal - rangeInput[1].min) / range2) * 100
-     progress.style.left = progressLeft
-     progress.style.right = 100 - parseFloat(progressRight) + "%"
+    if (minVal !== maxVal) {
+      priceInput[0].value = minVal
+      priceInput[1].value = maxVal
+      const range1 = rangeInput[0].max - rangeInput[0].min
+      const range2 = rangeInput[1].max - rangeInput[1].min
+      const progressLeft = ((minVal - rangeInput[0].min) / range1) * 100 + "%"
+      const progressRight = ((maxVal - rangeInput[1].min) / range2) * 100
+      progress.style.left = progressLeft
+      progress.style.right = 100 - parseFloat(progressRight) + "%"
+
+    } 
+    else {
+      progress.style.left = "0%"
+      // progress.style.right = "0%"
+      // priceInput[1].value = minVal
+    }
 
 }
 
@@ -253,6 +274,9 @@ const updatePriceValues = (list) => {
   rangeInput[0].value = smallestPrice
   rangeInput[1].value = biggestPrice
 
+  progress.style.left = "0%"
+  progress.style.right = "0%"
+
 }
 
 const updatePriceInterval = (list, updateValue) => {
@@ -261,27 +285,33 @@ const updatePriceInterval = (list, updateValue) => {
   const priceRound = Math.ceil(biggestPrice / 50) * 50
 
   if(biggestPrice !== smallestPrice){
-     priceInput[0].setAttribute("min", smallestPrice)
-     priceInput[1].setAttribute("max", biggestPrice)
+    priceInput[0].setAttribute("min", smallestPrice)
+    priceInput[1].setAttribute("max", biggestPrice)
 
-     priceInput[0].setAttribute("value", smallestPrice)
-     priceInput[1].setAttribute("value", biggestPrice)
-     updatePriceValues(list)
-     if (updateValue) {
-       rangeInputFunctionality(smallestPrice, biggestPrice)
-     }
+    priceInput[0].setAttribute("value", smallestPrice)
+    priceInput[1].setAttribute("value", biggestPrice)
 
-     rangeInput[0].setAttribute("value", smallestPrice)
-     rangeInput[1].setAttribute("value", biggestPrice)
+    updatePriceValues(list)
 
-     rangeInput[0].setAttribute("min", smallestPrice)
-     rangeInput[0].setAttribute("max", biggestPrice)
+    if (updateValue) {
+      rangeInputFunctionality(smallestPrice, biggestPrice)
+    }
 
-     rangeInput[1].setAttribute("min", smallestPrice)
-     rangeInput[1].setAttribute("max", biggestPrice)
+    rangeInput[0].setAttribute("value", smallestPrice)
+    rangeInput[1].setAttribute("value", biggestPrice)
+
+    rangeInput[0].setAttribute("min", smallestPrice)
+    rangeInput[0].setAttribute("max", biggestPrice)
+
+    rangeInput[1].setAttribute("min", smallestPrice)
+    rangeInput[1].setAttribute("max", biggestPrice)
 
   } else {
-     priceInput[0].value = smallestPrice
+
+    priceInput[0].value = smallestPrice
+    rangeInput[0].value = smallestPrice
+
+    rangeInputFunctionality(smallestPrice, biggestPrice)
   }
  
 }
@@ -732,7 +762,8 @@ const getAllProducts = () => {
     const allProducts = localStorage.getItem("products")
     const parsedProducts = JSON.parse(allProducts)
 
-    return parsedProducts
+    const ifExist = parsedProducts.length !== 0 ? parsedProducts : currentSearch
+    return ifExist
 }
 
 
@@ -743,6 +774,8 @@ const updatePaginationAndProducts = (
   order
 ) => {
   generatedProductsContainer.innerHTML = ""
+
+  generatedProductsCount.innerText = items.length
 
   loadProducts(items, 0, itemsPerPage)
   updatePagination(items, itemsPerPage)
@@ -1079,13 +1112,67 @@ const generateFilterEvent = (e, list) => {
 }
 
 
+const checkInputs = (inputs) => {
+  for (const input of inputs) {
+    if (input.checked) {
+      return true 
+    }
+  }
+}
 
+
+const getCheckedInputs = (inputs) => {
+  const listOfChecked = []
+
+  for (const input of inputs) {
+    if (input.checked) {
+      const inputId = input.id
+      console.log(input)
+      listOfChecked.push(inputId)
+    }
+  }
+
+  return listOfChecked
+}
+
+
+
+
+
+
+
+
+
+
+
+
+const removeFiltersBtn = document.getElementById("remove-all-filters")
+const removeAllBtnParent = document.getElementById("remove-all-filters-parent")
+// allFilters
+// console.log(allFilters.children)
+
+const storeCurrentFilters = () => {
+  const currentFilters = []
+
+  for(const container of filters){
+    const inputs = container.querySelectorAll("input[type='checkbox']")
+    
+    const selectedFilters = getCheckedInputs(inputs)
+    currentFilters.push(selectedFilters)
+    
+  }
+
+  return flattenArray(currentFilters)
+  
+}
 
 
 const generateFilterFunctionality = (element, list ) => {
   const input = element.querySelector("input") 
-
+  
   input.addEventListener("click", (e) => {
+    // removeAllBtnParent.classList.remove("hide")
+    // console.log(storeCurrentFilters())
     
     // console.log(list)
     generateFilterEvent(e, list)
@@ -1140,6 +1227,9 @@ const filterType = (list, type, parent) => {
 let isInitialRender = true
 
 const categoriesFunctionality = (list, category, individualUpdate) => {
+  if(intervalInput.checked){
+    intervalInput.checked = false
+  }
 
   for (const container of filterContainers) {
     // if (index !== 0) {
@@ -1222,35 +1312,31 @@ categoriesFunctionality(getAllProducts())
 // unique selection between price ranges and slide range needed
 
 
-const rangeButton = document.getElementById("range-button")
-
-const allFilters = document.getElementById("all-filters")
-const filters = allFilters.children
-const priceFilter = filters[filters.length - 1]
-const filterInputs = priceFilter.querySelectorAll("div input[type='checkbox']")
-
-
-console.log(filterInputs)
-
-const intervalInput = filterInputs[filterInputs.length - 1]
-
 
 intervalInput.addEventListener("click", (e) => {
-
   const allFilters = document.getElementById("all-filters")
   const filters = allFilters.children
   const filterInputs = filters[filters.length - 1].querySelectorAll(
     "div input[type='checkbox']"
   )
+
  
-  deselectPriceFilters(filterInputs, e)
+  
+  if (intervalInput.checked) {
+    deselectPriceFilters(filterInputs, e)
 
-  updatePaginationAndProducts(
-    currentSearch,
-    getPaginationPrefrence(),
-    checkIfOrderSelected()
-  )
+    rangeButton.click()
 
+  } else {
+
+
+
+    updatePaginationAndProducts(
+      getElementsFromLastArrayUsed(),
+      getPaginationPrefrence(),
+      checkIfOrderSelected()
+    )
+  }
 })
 
 // currentFilterItems
@@ -1264,16 +1350,66 @@ const rangePricesFromList = (list, min, max) => {
 }
 
 
+const getElementsFromLastArrayUsed = () => {
+  // filters
+  let lastFilter = null
+  for(const container of filters){
+    // const type = container.querySelector("span")
+    // console.log(type)
+    
+
+    if (container !== filters[filters.length - 1]) {
+
+      const inputs = container.querySelectorAll("input[type='checkbox']")
+
+      // console.log(inputs)
+      if(container === filters[1] && checkInputs(inputs)){
+        lastFilter = getAllProducts()
+      }
+
+      if(container === filters[2] && checkInputs(inputs)){
+        lastFilter = currentFilterItems
+      }
+
+      if(container === filters[3] && checkInputs(inputs)){
+        lastFilter = currentFilterItems2
+      }
+    }
+  } 
+
+  const result = lastFilter !== null ? flattenArray(lastFilter) : currentSearch
+  console.log(result)
+  return result
+   
+}
+
+
+
+
+
 rangeButton.addEventListener('click', (e) => {
-  deselectPriceFilters(filterInputs, "empty", true, intervalInput.id)
+  // deselectPriceFilters(filterInputs, "empty", true, intervalInput.id)
+console.log(getElementsFromLastArrayUsed())
   intervalInput.checked = true
+
   const inputs = e.target.parentNode.querySelectorAll("input")
 
   const min = inputs[0].value
   const max = inputs[1].value
-  console.log(min, max)
 
-  const ranges = rangePricesFromList(getAllProducts(), min, max)
+  console.log(min, max)
+  // updatePriceInterval(currentSearch, true)
+  
+
+
+  const ranges = rangePricesFromList(
+    getElementsFromLastArrayUsed(),
+    // getAllProducts(),
+    min,
+    max
+  )
+
+  console.log(ranges)
 
   updatePaginationAndProducts(
     ranges,

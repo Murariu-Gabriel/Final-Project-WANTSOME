@@ -21,8 +21,7 @@ body {
 }
 
 .stop-scroll {
-  position: fixed;
-  overflow-y: scroll;
+  overflow-y: hidden;
   width: 100%;
 }
 

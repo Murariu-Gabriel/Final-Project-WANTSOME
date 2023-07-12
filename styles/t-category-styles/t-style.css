@@ -21,8 +21,7 @@ body {
 }
 
 .stop-scroll {
-  position: fixed;
-  overflow-y: scroll;
+  overflow-y: hidden;
   width: 100%;
 }
 
@@ -404,7 +403,7 @@ label {
 }
 .navigation > .container header .nav-toggle {
   display: flex;
-  overflow-y: scroll;
+  overflow: scroll;
   position: absolute;
   top: 8.4rem;
   left: 0;
@@ -758,7 +757,7 @@ label {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-index: 4;
 }
 
 .categories {
@@ -958,21 +957,46 @@ footer .container nav .socials {
 .template-category .container article:last-of-type {
   padding-bottom: 3rem;
 }
-.template-category .container .pagination-list {
-  padding: 0;
+.template-category .container .pagination {
+  margin-top: 2rem;
+}
+.template-category .container .pagination .pagination-list {
   list-style: none;
   display: flex;
-  gap: 1rem;
   justify-content: center;
-}
-.template-category .container .pagination-list li {
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
+  padding: 0;
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   border: 1px solid #000000;
+  border-radius: 9px;
+}
+.template-category .container .pagination .pagination-list .pagination-element {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.65rem;
+  font-size: 1.5rem;
+  background: none;
+  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-.template-category .container .pagination-list li:hover {
+.template-category .container .pagination .pagination-list .pagination-element:hover {
   background-color: #000000;
   color: #FFFFFF;
+}
+.template-category .container .pagination .pagination-list .current-page {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+.template-category .container .pagination .pagination-list button svg {
+  pointer-events: none;
+}
+.template-category .container .pagination .pagination-list button:first-of-type {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.template-category .container .pagination .pagination-list button:last-of-type {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }/*# sourceMappingURL=t-style.css.map */

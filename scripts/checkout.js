@@ -305,19 +305,7 @@ const addEventsOnInputs = () => {
 
 addEventsOnInputs()
 
-const cleanLocalStorage = () => {
-  for(let i = 0; i < localStorage.length; i++){
-    const key = localStorage.key(i)
-    if (
-      key !== "products" &&
-      key !== "users" &&
-      key !== "debug" &&
-      key !== "recent-searches"
-    ) {
-      localStorage.removeItem(key)
-    }
-  }
-}
+
 
 // console.log(localStorage.getItem(localStorage.key(2)))
 
@@ -347,7 +335,7 @@ form.addEventListener("submit", (e) => {
         input.getAttribute("id") !== "card-number" &&
         input.getAttribute("id") !== "card-pin"
       ) {
-        console.log(input.id)
+        // console.log(input.id)
         insertInputValidation(input)
       }
     } else {
@@ -367,6 +355,41 @@ form.addEventListener("submit", (e) => {
     cleanLocalStorage()
   }
 })
+
+
+// Behaviour of local storage is diffrent it updated the length as items are removed so that is why we need to loop backwards
+
+// Also we can not delete them directly while looping because it updates like previously said, so we grab the keys then we delete the items
+
+const cleanLocalStorage = () => {
+  const toRemove = []
+
+  for (let i = localStorage.length - 1; i >= 0; i--) {
+    const key = localStorage.key(i)
+    // console.log(key)
+    if (
+      key !== "products" &&
+      key !== "price-ranges" &&
+      key !== "debug" &&
+      key !== "users" &&
+      key !== "recent-searches"
+    ) {
+      toRemove.push(key)
+    }
+  }
+
+  toRemove.forEach(key => localStorage.removeItem(key))
+
+}
+
+   
+
+
+
+
+
+
+
 
 const addSumEl = (
   productId,

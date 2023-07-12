@@ -340,12 +340,24 @@ const checkIfValid = (e) => {
 addEventsOnInputs()
 
 const cleanLocalStorage = () => {
-  for (let i = 0; i < localStorage.length; i++) {
+  const toRemove = []
+
+  for (let i = localStorage.length - 1; i >= 0; i--) {
     const key = localStorage.key(i)
-    if (key !== "products" && key !== "users" && key !== "debug") {
-      localStorage.removeItem(key)
+    // console.log(key)
+    if (
+      key !== "products" &&
+      key !== "price-ranges" &&
+      key !== "debug" &&
+      key !== "users" &&
+      key !== "recent-searches" &&
+      key !== "email"
+    ) {
+      toRemove.push(key)
     }
   }
+
+  toRemove.forEach((key) => localStorage.removeItem(key))
 }
 
 form.addEventListener("submit", (e) => {
@@ -372,11 +384,13 @@ form.addEventListener("submit", (e) => {
     users.push(user)
     const newUsers = JSON.stringify(users)
     localStorage.setItem("users", newUsers)
-    popupContainer.classList.toggle("hide")
+    popupContainer.classList.remove("hide")
+    popupContainer.style.display = "flex"
 
     // !Password1
   }
 })
+
+
 // localStorage.clear()
 // console.log(JSON.parse(localStorage.getItem("users")))
-// !AMS1euoparola
