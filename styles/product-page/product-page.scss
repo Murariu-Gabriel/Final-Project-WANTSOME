@@ -53,6 +53,10 @@
            margin-bottom: $m-spacing;
            display: block;
            font-size: $m-font;
+            small{
+              color: $out-of-color-palette-gray;
+              text-decoration: line-through;
+            }
           }
   
           h2 {

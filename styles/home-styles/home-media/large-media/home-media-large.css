@@ -269,6 +269,23 @@ label {
   color: orange;
 }
 
+@-webkit-keyframes nav-pop {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: -5px;
+  }
+}
+
+@keyframes nav-pop {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: -5px;
+  }
+}
 @-webkit-keyframes pop-out {
   0% {
     transform: scale(1, 0);
@@ -277,7 +294,6 @@ label {
     transform: scale(1, 1);
   }
 }
-
 @keyframes pop-out {
   0% {
     transform: scale(1, 0);
@@ -355,27 +371,27 @@ label {
     max-width: 1100px;
     padding: 0;
   }
-  .nav-and-hero .navigation > .container header {
+  .navigation > .container header {
     justify-content: space-between;
     align-items: center;
   }
-  .nav-and-hero .navigation > .container header > button:first-of-type {
+  .navigation > .container header > button:first-of-type {
     display: none;
   }
-  .nav-and-hero .navigation > .container header > button:nth-of-type(2) {
+  .navigation > .container header > button:nth-of-type(2) {
     display: none;
   }
-  .nav-and-hero .navigation > .container header .nav-toggle {
+  .navigation > .container header .nav-toggle {
     display: none;
   }
-  .nav-and-hero .navigation > .container header nav {
+  .navigation > .container header nav {
     margin-right: auto;
   }
-  .nav-and-hero .navigation > .container header nav:not(.visual-nav) {
+  .navigation > .container header nav:not(.visual-nav) {
     display: inline-block;
     flex-grow: 2;
   }
-  .nav-and-hero .navigation > .container header nav:not(.visual-nav) ul {
+  .navigation > .container header nav:not(.visual-nav) ul {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,3 +1,13 @@
+@keyframes nav-pop {
+   0% {
+    top: -100px;
+  }
+  100% {
+    top: -5px;
+  }
+}
+
+
 @keyframes pop-out {
   0% {
     transform: scale(1, 0);

@@ -134,12 +134,31 @@ const hideRemoveAll = (num) => {
     cartDeleteAll.classList.remove("hide")
   }
 
-  console.log(num)
+  // console.log(num)
 }
 
 const updateCounter = () => {
   const itemsCount = cartList.children.length
   cartCounter.innerText = itemsCount
+
+  let cartOuterCount = cartButton.querySelector("span")
+  
+  if(cartOuterCount && itemsCount != 0){
+    cartOuterCount.innerText = itemsCount
+  } 
+ 
+
+  if(itemsCount > 0 && cartOuterCount === null) {
+    const outerCounter = document.createElement("span")    
+    cartButton.appendChild(outerCounter)
+    outerCounter.innerText = itemsCount
+    
+  } 
+  if (itemsCount === 0 && cartButton.children.length > 1) {
+    cartOuterCount.remove()
+  }
+
+  
 
   hideRemoveAll(itemsCount)
 }
@@ -273,101 +292,9 @@ const cart = parsedCartProducts ? parsedCartProducts : []
 
      
     } 
-   
-
-    // else if (operation === "decrement") {
-    //   console.log(cart, object.id)
-    //   if (verifyIfIdExists(cart, object.id)) {
-    //     const element = returnEL(cart, object.id)
-    //     console.log(element)
-    //     element.count = parseInt(object.count)
-    //     return
-    //   }
-    // }
-
   }
-    // const newProducts = JSON.stringify(cart)
-    // localStorage.setItem("cart-products", newProducts)
-  
+ 
 }
-
- // else {
-    //   console.log("ELSE")
-    //   object.count = 1
-    //   cart.push(object)
-    // }
-
-
-// const addToLocalStorage = (productId, ProductValue, operation) => {
-//   const object = {
-//     id: productId,
-//     count: parseInt(ProductValue),
-//   }
-
-//   console.log(object.count)
-
-//   if (cart.length === 0) {
-//     cart.push(object)
-//     console.log("bleah")
-//   } else {
-//     if (verifyIfIdExistsForCart(cart, object.id)) {
-//       const element = returnEL(cart, object.id)
-//       element.count = parseInt(object.count)
-//     } 
-//     else if (operation === "decrement") {
-//       console.log(cart, object.id)
-//       if (verifyIfIdExists(cart, object.id)) {
-//         const element = returnEL(cart, object.id)
-//         element.count = parseInt(object.count)
-//       }
-//     } 
-//     else {
-//        console.log("da")
-//        object.count = 1
-//        cart.push(object)
-//     }
-  
-//   }
-
-  
-//   const newProducts = JSON.stringify(cart)
-//   localStorage.setItem("cart-products", newProducts)
-// }
-
-
-
-
-
-// const addToLocalStorage = (productId, ProductValue, operation) => {
-//   const object = {
-//     id: productId,
-//     count: parseInt(ProductValue),
-//   }
-
-//   if (cart.length === 0) {
-//     cart.push(object)
-//   } else {
-//     if (operation === "decrement") {
-//       if (verifyIfIdExists(cart, object.id) && parseInt(object.count)) {
-//         const element = returnEL(cart, object.id)
-//         element.count = parseInt(object.count)
-//         return
-//       }
-//     } else if (verifyIfIdExistsForCart(cart, object.id)) {
-//       const element = returnEL(cart, object.id)
-//       element.count = parseInt(returnValue(cart, object.id)) + 1
-//       return
-//     } else {
-//       object.count = 1
-//       cart.push(object)
-//     }
-//   }
-
-//   const newProducts = JSON.stringify(cart)
-//   localStorage.setItem("cart-products", newProducts)
-// }
-
-
 
 const counter = (element, counter) => {
   const id = element.getAttribute("id")
@@ -391,11 +318,10 @@ const cartButtonsEvent = (e) => {
   counter(e.target, input)
   calculateTotal(cartList.children)
   addToLocalStorage(id, input.value, e.target.id)
-  console.log("Da2123123")
-    const value = parseInt(input.value)
+  const value = parseInt(input.value)
 
   if (value === 0) {
-    console.log(parseInt(input.value), "asdadjhashabsdpiu")
+    console.log(parseInt(input.value))
     const otherButton = e.target.parentNode.querySelector("#increment")
     const listElement = e.target.parentNode.parentNode
     e.target.removeEventListener("click", cartButtonsEvent)
@@ -403,7 +329,7 @@ const cartButtonsEvent = (e) => {
     listElement.remove()
     deleteFromStorage(id)
 
-    console.log(id, "ASDASDASD")
+    console.log(id)
   }
 
   updateCounter()
@@ -447,6 +373,7 @@ const loadCart = () => {
     cartListFunctionality(listEL)
     cartList.appendChild(listEL)
   })
+  updateCounter()
 }
 
 loadCart()
@@ -814,8 +741,8 @@ document.body.addEventListener("keydown", (e) => {
 
     if (typeof filtersContainer !== "undefined" ){
 
-      filtersContainer.classList.toggle("display")
-      filtersContainer.classList.toggle("overlay")
+      filtersContainer.classList.remove("display")
+      filtersContainer.classList.remove("overlay")
       document.body.classList.remove("stop-scroll")
     }
   }
@@ -861,15 +788,46 @@ if(!parameters.pathname.includes("search")){
   localStorage.removeItem("order")
 }
 
+// NAVIGATION STICKY FUNCTIONALITY
 
 
+window.addEventListener("resize", () => {
+  const screenWidth = window.innerWidth
+
+  if (screenWidth > 550) {
+    if (navigation.classList.contains("slimmer-nav")) {
+      navigation.classList.remove("slimmer-nav")
+    }
+  } else {
+    if(navigation.classList.contains("sticky")){
+    navigation.classList.add("slimmer-nav")
+    }
+  }
+})
 
 
+const navigation = document.querySelector(".navigation")
+const scrollWatcher = document.createElement("div")
+
+scrollWatcher.setAttribute("data-scroll-watcher", '')
+
+navigation.before(scrollWatcher)
+
+const navObserver = new IntersectionObserver((entries) => {
+  navigation.classList.toggle("sticky", !entries[0].isIntersecting)
+
+  const mediaQuery = window.matchMedia("(max-width: 550px)")
+  if(mediaQuery.matches){
+
+    navigation.classList.toggle("slimmer-nav", !entries[0].isIntersecting)
+  } else {
+    navigation.classList.remove("slimmer-nav")
+  }
+
+}, {rootMargin: "400px 0px 0px 0px"})
 
 
-
-
-
+navObserver.observe(scrollWatcher)
 
 
 

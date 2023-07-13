@@ -269,7 +269,7 @@ const inputValidation = (e) => {
       //  }
     }
 
-    if (e.name === "repeated_password") {
+    if (e.name === "confirm_password") {
       hideShowError(e, `Password not matching`, repeatPasswordValidation)
     }
 

@@ -21,6 +21,7 @@
        
         .cart-button {
           order: 2;
+          
         }
         
         .user-account{
@@ -224,6 +225,11 @@
           &:nth-of-type(2) {
             display: none;
           }
+        }
+
+
+        nav{
+          align-self: center;
         }
 
        // NAV REVERTION

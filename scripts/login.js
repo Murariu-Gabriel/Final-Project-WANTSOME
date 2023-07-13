@@ -138,9 +138,9 @@ const inputValidation  = (e) => {
  if (e.value.length !== 0) {
 
   if(e.name === "email"){
-    if (e.value.includes(".") && e.value.includes("@")) {
+    // if (e.value.includes(".") && e.value.includes("@")) {
       hideShowError(e, "This mail is not registered", userExistenceValidation)
-    }
+    // }
 
   }
    if (e.name === "password") {
@@ -148,6 +148,8 @@ const inputValidation  = (e) => {
    }
  }
 }
+
+// localStorage.removeItem("users")
 
 const addEventsOnInputs = () => {
   for (const input of inputs) {

@@ -24,6 +24,7 @@
     "brand": "xiaomi",
     "new": false,
     "price": 100,
+    "discount": 10,
     "description": "Six all-new colors for the strap* and three for the watch case A watch with different, always changeable looksThe new beige watch case pairs with the skin-friendly, multiple color TPU strap selection. Adapt it to your style, whether it's street sports, fashion, or business.",
     "features": "\n32g lightweight design* Slim and lightweight Light as a lipstick tube, thanks to its brand-new, tailored frame* Unleash your energy and make your workouts more enjoyable. *32g lightweight design: Refers to the net weight of the watch (not including the strap). *The watch body weighs approximately 32g, about the weight of lipstick.. \n\n       16-day ultra-long battery life The longer battery life lets you travel stress-free Global upgrades of low-power AI algorithms extend the battery life of the watch. Charge instantly with the easy magnetic charging cable",
     "includes": [
@@ -66,6 +67,7 @@
     "brand": "xiaomi",
     "new": false,
     "price": 160,
+    "discount": false,
     "description": "Broader view, clearer detailsThe bigger, clearer, 1.43 AMOLED display offers a more colorful smoother viewing experience. The always-on display* allows you to check the time more conveniently. Important notifications such as incoming calls, reminders, and sports notifications can be displayed with clarity, even in strong light.",
     "features": "\n        Exquisite metal bezel Lightweight and comfortableThe new stylish and lightweight design to truly style up your fitness. Weighing only 36.3g, Xiaomi Watch S1 Active will assist your workout with no limits.\n\n        Dual-band multi-system GPSThe built-in dual-band GNSS chip supports five major satellite positioning systems: GPS, BeiDou, GLONASS, Galileo, and QZSS, together with advanced optimization algorithms to achieve faster, more accurate positioning, giving you professional statistics.",
     "includes": [
@@ -112,6 +114,7 @@
     "brand": "xiaomi",
     "new": true,
     "price": 198,
+    "discount": false,
     "description": "Introducing the classic wrist watch design with a sophisticated look and a large screen with ultra-narrow bezel, a strap for every occasion, and the next-level smart watch experience.",
     "features": "\n     Premium and simple. 46mm-diameter watch size 1.47\" large screen with ultra-narrow bezel looks and feels just right. The watch is simply exquisite with the narrowest bezel ever on Xiaomi watches* and larger display under the same dimensions. With improved brightness and contrast* for a more detailed display, this is the most advanced watch display produced by Xiaomi to date\n\n      Featuring sapphire glass visibly refined and eye-catching sapphire glass is smooth and bright, bringing a sense of elegance to any occasion. It is also extremely resistant to scratches during daily wear.",
     "includes": [
@@ -158,6 +161,7 @@
     "brand": "xiaomi",
     "new": false,
     "price": 70,
+    "discount": false,
     "description": "Too magnificent to miss 1.62'' AMOLED Display. The magnificent large AMOLED display debuts on your wrist, making it easy for you to read and control. Everything is presented in detail at high resolution. Even better, thanks to always-on mode, you can read date and time without lifting your wrist or using your fingers.",
     "features": "\n        You are mastering the game, workout and compete with your mate. The new fitness feature “Competition” has officially landed on Xiaomi Fitness APP, you can set the daily exercise goals for yourself, and you can also pick and invite of your friends to compete on workout achivements: the daily step count, calorie burned, workout time, etc. Stay fit and healthy and fun with your buddies！.\n\n        Going to the water with you, has 5ATM water resistance* Support pool swimming, snorkeling, and intelligent recognition of the 4 common swimming styles",
     "includes": [
@@ -190,7 +194,7 @@
       },
       "gallery": [
         {
-          "img": "./assets/Images/Devices/Fit-Bit/Fitbit-Charge/presentation-pictures/presentation-1.jpg"
+          "img": "/assets/Images/Devices/Fit-Bit/Fitbit-Charge/presentation-pictures/presentation-1.jpg"
         },
         {
           "img": "/assets/Images/Devices/Fit-Bit/Fitbit-Charge/presentation-pictures/presentation-2.jpg"
@@ -204,6 +208,7 @@
     "brand": "fitbit",
     "new": false,
     "price": 150,
+    "discount": false,
     "description": "Meet Fitbit Charge 5, our most advanced health and fitness tracker that helps you keep a pulse on your stress, physical readiness, heart health, and overall well-being",
     "features": "\n        Optimize your workout routine with a Daily Readiness Score that reveals if you’re ready to exercise or should focus on recovery (Requires Fitbit Premium membership). Compatibility-Apple iOS 15 or higher, Android OS 9 or higher.\n\n       Get a daily Stress Management Score showing your body’s response to stress and take steps to improve your levels with an on-wrist EDA sensor mindfulness session. Band Size:Sm: Fits wrist 5.1\"- 6.7\" . Lrg: Fits wrist 6.7\" - 8.3\" in circumference. Track your heart health with high & low heart rate notifications and a compatible ECG app (The Fitbit ECG app is available in select countries. Not intended for use by people under 22 years old.)",
     "includes": [
@@ -246,6 +251,7 @@
     "brand": "fitbit",
     "new": true,
     "price": 100,
+    "discount": false,
     "description": "Meet Fitbit Inspire 3™—the health & fitness tracker that helps you do what you love and feel your best. All you have to do is wear it.",
     "features": "\n        Inspire 3 is the tracker that helps you find your energy, do what you love and feel your best. All you have to do is wear it. Daily Readiness Score, Active Zone Minutes, all-day activity tracking and 24/7 heart rate, 20+ exercise modes, automatic exercise tracking and reminders to move. Always-on wellness tracking, daily Stress Management Score, mindfulness sessions, relax breathing sessions, irregular heart rhythm notification), SpO2, menstrual health tracking, resting heart rate and high/low heart rate notifications.\n        \nSleep better:  automatic sleep tracking, personalized Sleep Profile, daily detailed Sleep Score, smart wake vibrating alarm, sleep mode. Comfortably connected day and night: calls, texts & smartphone app notifications, color touchscreen with customizable clock faces, super lightweight and water resistant to 50 meters, up to 10 day battery life",
     "includes": [
@@ -288,6 +294,7 @@
     "brand": "garmin",
     "new": false,
     "price": 140,
+    "discount": 10,
     "description": "MORE THAN STYLISH This hybrid smartwatch combines the traditional look of an analog watch with the essential smart features you need to keep up with your busy life.",
     "features": "\n        Stylish 40 mm hybrid smartwatch with timeless analog look and smart features.Supported Application:Heart Rate Monitor,Fitness Tracker,Sleep Monitor,Social Media,Time Display. Battery life: up to 5 days in smartwatch mode and up to one additional day in watch mode (hands tell time only)\n        All-day activity tracking counts steps, calories, sleep and more (this device is intended to be an estimation of your activity and metrics; it is not a medical device)\n\n        Enhance your style with a metallic dial and accents, available in colors to suit every taste and preference. Effortlessly change your look with 20 mm industry standard quick release watch bands\n        Hidden touchscreen display reacts to your movements and is visible only when you need it",
     "includes": [
@@ -330,6 +337,7 @@
     "brand": "garmin",
     "new": false,
     "price": 200,
+    "discount": false,
     "description": "GET A PERFECT LOOK AROUND THE CLOCK The vívomove Trend hybrid smartwatch gives you a classic analog style and essential smart features such as smartphone notifications and Garmin Pay™ contactless payments",
     "features": "\n    Available in a number of colors, vívomove Trend features a stainless steel bezel, domed glass and comfortable silicone band, making it perfect for work, the weekend — everywhere. And it’s compatible with industry standard 20 mm quick release bands.Stay on the move longer with a battery life that lasts up to 5 days in smartwatch mode plus up to 1 additional day as an analog-only timepiece. Fifteen minutes of charging adds up to 1 day of battery life in smartwatch mode.\n\n     Enjoy the convenience of wireless charging with most Qi-certified charging pads (not included). The hidden full-dial display appears only when you need it. Interact with the touchscreen, and the hands dynamically move away.\n       ",
     "includes": [
@@ -372,6 +380,7 @@
     "brand": "garmin",
     "new": false,
     "price": 320,
+    "discount": false,
     "description": "To you, healthy living is about being more in touch with your mind and your body. Get the GPS smartwatch with advanced health and fitness features to help get you there.",
     "features": "\n      Suit your style with a smartwatch that's available in two colors and features a bright AMOLED display.Supported Application:GPS. Connectivity technology:GPS. \n\n      Use preloaded workouts that include cardio, yoga, strength, HIIT and Pilates, create your own in the Garmin Connect app on your compatible smartphone, or try Garmin Coach free adaptive training plans to help you prepare for your next running challenge. Find new ways to keep your body moving with more than 25 built-in indoor and GPS sports apps, including walking, running, cycling, HIIT, swimming, golf and many more\n       ",
     "includes": [
@@ -414,6 +423,7 @@
     "brand": "huawei",
     "new": false,
     "price": 180,
+    "discount": false,
     "description": "HUAWEI Watch GT Runner supports a whole host of health monitoring functions, including abnormal heart-rate notifications, 24/7 blood-oxygen monitoring, sleep monitoring, and period management. A personalised health manager on your wrist",
     "features": "\n      Designed for speed and taking inspiration from the grille of a sports car, HUAWEI WATCH GT Runner features a hollowed-out lug build to allow for a more breathable, comfortable wearing experience.\n\n      The durable polymer-fibre case, offset with ceramic finish, and aircraft-grade titanium-alloy crown combine to create a strong, lightweight and comfortable design of around 38.5 g1, helping you achieve better performance.\n       ",
     "includes": [
@@ -468,6 +478,7 @@
     "brand": "huawei",
     "new": false,
     "price": 56,
+    "discount": false,
     "description": "Put Your Best Face Forward With more than 4,000 exquisite watch faces to choose from,4 and the Always On Display (AOD) that shows key info when the display is off. The glimmer in your eye is always just a glimpse away!",
     "features": "\n      HUAWEI Band 7 supports automatic SpO21 and heart rate monitoring, made possible by HUAWEI TruSeen™ 4.0 hardware and a smart power saving algorithm, automatically vibrating to alert you if your blood oxygen level or heart rate strays from the healthy range.\n\n    HUAWEI Band 7 is designed for body, mind, and soul. The HUAWEI TruRelax™ stress monitoring comes with calming breathing exercises to help you relax whenever you need it. The Healthy Living Shamrock7 offers timely hydration and medication reminders, to help you check-in with your body and make sure you feel great throughout the day.\n       ",
     "includes": [
@@ -510,6 +521,7 @@
     "brand": "whoop",
     "new": true,
     "price": 50,
+    "discount": false,
     "description": "Unlock yourself with WHOOP 4.0 – the latest, most advanced fitness and health wearable available. Monitor your recovery, sleep, training, and health, with personalized recommendations and coaching feedback.",
     "features": "\n      WHOOP monitors your sleep, recovery, and daily effort around the clock to deliver actionable insights on how you can optimize your performance. WHOOP analyzes your key metrics like HRV and resting heart rate to determine a daily recovery score, and shows you how specific lifestyle and training behaviors affect Recovery.\n\n     WHOOP measures and accumulates your training activities and daily effort with a Strain score that helps you understand when to rest or push.\n       ",
     "includes": [

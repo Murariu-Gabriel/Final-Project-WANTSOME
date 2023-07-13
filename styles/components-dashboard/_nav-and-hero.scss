@@ -2,8 +2,16 @@
 
 @use "../components-dashboard/header"; 
 
+// .nav-and-hero{
+//      position: sticky;
+//      top: 0;
+//     z-index: 5;
+//     width: 100%;
+// }
+
 
 .hero {
+    
     height: 90vh;
     background-image: url(/assets/Images/Home-images/d1094b5234f1c27ccfbb091660517ebe.jpg);
     background-size: cover;
@@ -12,6 +20,7 @@
     @include flex(center, center, unset, unset);
 
     .container {
+    
         // display: flex;
         // flex-direction: column;
         // align-items: center;

@@ -269,6 +269,23 @@ label {
   color: orange;
 }
 
+@-webkit-keyframes nav-pop {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: -5px;
+  }
+}
+
+@keyframes nav-pop {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: -5px;
+  }
+}
 @-webkit-keyframes pop-out {
   0% {
     transform: scale(1, 0);
@@ -277,7 +294,6 @@ label {
     transform: scale(1, 1);
   }
 }
-
 @keyframes pop-out {
   0% {
     transform: scale(1, 0);
@@ -364,6 +380,9 @@ label {
   }
   .navigation > .container header > button:nth-of-type(2) {
     display: none;
+  }
+  .navigation > .container header nav {
+    align-self: center;
   }
   .navigation > .container header .nav-toggle {
     display: none;

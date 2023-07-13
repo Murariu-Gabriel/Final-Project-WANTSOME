@@ -435,6 +435,8 @@
                             border-radius: $base-border-radius;
                         }
 
+                       
+
                         span{
                             display: inline;
                             // padding-bottom: 1rem;
@@ -546,8 +548,24 @@
                         color: white;
                         font-size: 0.8rem;
                         border-radius: $base-border-radius;
+                       
+                    }
+
+                    .discount{
+                        padding: 0.3rem; 
+                        margin: 0;
+                        // text-align: center;
+                        position: absolute;
+                        letter-spacing: 0.2rem;
+                        top: 0;
+                        left: 0;
+                        background-color: rgb(99, 129, 250);
+                        color: white;
+                        font-size: 0.8rem;
+                        border-radius: $base-border-radius;
                         // width: 100%;
                     }
+
 
                     h3{
                         font-size: 1.2rem;
@@ -558,14 +576,22 @@
                     }
                     
                     span{
-                        display: block;
+                        display: flex;
+                        align-items: center;
                         padding-bottom: 1rem;
                         margin-top: auto;
                         align-self: center;
                         font-size: 1.3rem;
                         
+                        
                         strong{
                         font-size: 1.5rem;
+                        }
+
+                        small{
+                            color: $out-of-color-palette-gray;
+                            padding-right: 0.3rem;
+                            text-decoration: line-through
                         }
                     }
 
@@ -630,14 +656,8 @@
             height: 100vh;
             top: 0;
             left: 0;
-            z-index: 4;
+            z-index: 7;
         }
-
-
-
-
-
-
 
 
         .pagination{

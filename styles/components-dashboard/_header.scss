@@ -3,13 +3,54 @@
 
 .navigation{
     background-color: $black;
-    // position: fixed;
-    // z-index: 4;
-    // width: 100%;
+    
+    &.sticky{
+        margin-top: 1px;
+    animation: nav-pop 0.3s ease-in-out;
+
+    }
+
+    &.slimmer-nav{
+        
+         .container{
+        header{
+            flex-wrap: nowrap;
+    
+            a{
+                display: none;
+            }
+
+            .cart-button{
+                order: 3;
+
+            }
+
+            .nav-toggle {
+               
+                top: 4.2rem;
+            }
+
+
+
+        }
+
+        .search-container{
+            .top{
+                top: 1rem;
+            }
+        }
+    }
+
+    }
+
+   
+    // height: 100%;
     
     >.container {
         border-bottom: 1px solid $out-of-color-palette-gray;
         padding: $base-spacing;
+        height: 100%;
+
         .display-none {
             display: none;
         }
@@ -24,6 +65,8 @@
             cursor: pointer;
             fill: $white;
             width: 47px;
+            min-width: 47px;
+            height: 47px;
             svg{
                 pointer-events:none;
             }
@@ -32,12 +75,32 @@
             }
         }
 
+        .cart-button{
+            position: relative;
+
+                span{
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    top: 0;
+                    right: 0;
+                    border-radius: 50%;
+                    width: 17px;
+                    height: 17px;
+                    background-color: $orange;
+                    color: white;
+                }
+        }
+
+
+
         header {
             @include flex(space-between, unset, wrap, unset);
             gap: $base-spacing;
            
            .user-account{
-            display: none;
+            display: none !important; // This needs to be changed or removed
            }
 
             a {
@@ -90,6 +153,11 @@
 
                     li {
                         width: 100%;
+
+                        &:first-of-type{
+                            display: none;
+                        }
+
 
                         &:hover {
                             z-index: 1;
@@ -370,9 +438,15 @@
             .overlay {
                 position: absolute;
                 background: rgba(0, 0, 0, 0.5);
-                width: 100%;
-                height: 100%;
-                z-index: 4;
+
+                width: 100vw;
+                height: 100vh;
+                 z-index: 6;
+
+                //old
+                // width: 100%;
+                // height: 100%;
+                // z-index: 4;
             }
 
 
@@ -380,16 +454,26 @@
             .overlay2{
                 position: absolute;
                 background: rgba(0, 0, 0, 0.5);
-                width: 100%;
-                height: 100%;
+
+                width: 100vw;
+                height: 100vh;
+                z-index: 6;
                 max-width: 100vw;
-                z-index: 4;
-                // top: 0;
-                // left: 0;
-                //    position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+
+                // old
+                // width: 100%;
+                // height: 100%;
+
+                
+                
+                top: 0%;
+                left: 0%;
+
+
+                //old
+                // top: 50%;
+                // left: 50%;
+                // transform: translate(-50%, -50%);
             }
 
             // .search-animation{
@@ -517,12 +601,25 @@
     .overlay {
         position: absolute;
         background: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        height: 100%;
-        z-index: 4;
+        width: 100vw;
+        height: 100vh;
+        z-index: 6;
+
+        //old
+
+        // width: 100%;
+        // height: 100%;
+        // z-index: 4;
     }
 
 
 
+}
+
+.sticky{
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    width: 100%;
 }
 

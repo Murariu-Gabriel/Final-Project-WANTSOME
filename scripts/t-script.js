@@ -37,10 +37,13 @@ const addProduct = (
   productTitle,
   productDescription,
   imgSrc,
-  imgAlt
+  imgAlt,
+  discount
 ) => {
   const article = document.createElement("article")
   const ifNew = newProduct ? "<p class='overline'>new product</p>" : ""
+  const ifDiscount = discount ? `<p class='overline'>Discount: ${discount}% OFF</p>` : ""
+  
   article.innerHTML = `
           
           <a href="/html-pages/product-page.html?productId=${id}" class="image-container">
@@ -48,6 +51,7 @@ const addProduct = (
           </a>
           <div>
             ${ifNew}
+            ${ifDiscount}
             <h2>${productTitle}</h2>
             <p>${productDescription}</p>
             <a href="/html-pages/product-page.html?productId=${id}" class="button-1">see product</a>
@@ -85,7 +89,8 @@ const loadProducts = (listOfProducts, start, end) => {
           product.name,
           product.description,
           product.images.display.first,
-          product.name
+          product.name,
+          product.discount
         )
       )
     }

@@ -5,45 +5,47 @@
     max-width: 1100px;
     padding: 0;
   }
-  .nav-and-hero {
-    .navigation{
-      >.container {
-        header {
-          justify-content: space-between;
-          align-items: center;
-          >button {
-            &:first-of-type {
-              display: none;
-            }
-            &:nth-of-type(2){
-              display: none;
-            }
-          }
   
-          // NAV REVERTION
-          .nav-toggle{ 
+  .navigation{
+    >.container {
+      header {
+        justify-content: space-between;
+        align-items: center;
+        >button {
+          &:first-of-type {
             display: none;
           }
-  
-          nav {
-            margin-right: auto; /// this is for re styling
-            
-            &:not(.visual-nav){
-              display: inline-block;
-              flex-grow: 2;
-              ul {
-                @include flex(center, center, none, row);
-                gap: $m-spacing;
-              }
-
-            }
+          &:nth-of-type(2){
+            display: none;
           }
-  
-        
         }
-      }
 
+        // NAV REVERTION
+        .nav-toggle{ 
+          display: none;
+        }
+
+        nav {
+          margin-right: auto; /// this is for re styling
+          
+          &:not(.visual-nav){
+            display: inline-block;
+            flex-grow: 2;
+            ul {
+              @include flex(center, center, none, row);
+              gap: $m-spacing;
+            }
+
+          }
+        }
+
+      
+      }
     }
+
+  }
+
+  .nav-and-hero {
 
     .hero {
       .container {

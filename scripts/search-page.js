@@ -67,15 +67,15 @@ document.body.addEventListener("click", (e) => {
 // FILTER BTN
 
 filterButton.addEventListener("click", () => {
-  filtersContainer.classList.toggle("display")
-  filtersContainer.classList.toggle("overlay")
+  filtersContainer.classList.add("display")
+  filtersContainer.classList.add("overlay")
   document.body.classList.add("stop-scroll")
   window.scrollTo(0, 0)
 })
 
 displayResult.addEventListener("click", () => {
-  filtersContainer.classList.toggle("display")
-  filtersContainer.classList.toggle("overlay")
+  filtersContainer.classList.remove("display")
+  filtersContainer.classList.remove("overlay")
   document.body.classList.remove("stop-scroll")
 })
 
@@ -435,10 +435,16 @@ const generateProduct = (
   ifNew,
   productPrice,
   productId,
-  productSlug
+  productSlug,
+  ifDiscount
 ) => {
   const product = document.createElement("article")
-  const isNew = ifNew ? "<p class='overline'>new</p>" : ""
+  const isNew = ifNew ? "<span class='overline'>new</span>" : ""
+  const discount = ifDiscount ? `<span class="discount">${ifDiscount}% OFF</span>` : ""
+  const calcDiscount = productPrice * (ifDiscount / 100) 
+  const priceDiscount = ifDiscount ? productPrice - calcDiscount : productPrice
+  const strikedText = ifDiscount ? `<small>${productPrice}$</small>` : ""
+
   product.innerHTML = `
         <img
             class="category-image"
@@ -447,9 +453,10 @@ const generateProduct = (
         />
         <div>
             ${isNew}
+            ${discount}
             <h3 class="subtitle">${productName}</h3>
         
-            <span><strong>${productPrice}</strong> $</span>
+            <span>${strikedText}<strong>${priceDiscount}</strong> $</span>
 
             <button class="button">
                 <svg width="2rem" height="100%"  viewBox="-3 0 30 20" xmlns="http://www.w3.org/2000/svg">
@@ -466,26 +473,28 @@ const generateProduct = (
     `
    const addToCart = product.querySelector("button")
 
-   addToCart.addEventListener("click", () => {
+  addToCart.addEventListener("click", () => {
   
-  if (verifyCartItemExistence(cartItems.children, productId)) {
-    addCount(cartItems.children, productId)
-  } else {
-    const listEl = addListEl(
-      productId,
-      productImage,
-      productName,
-      productSlug,
-      productPrice,
-      1
-    )
+    if (verifyCartItemExistence(cartItems.children, productId)) {
+      addCount(cartItems.children, productId)
 
-    cartListFunctionality(listEl)
-    cartList.appendChild(listEl)
-  }
- 
-  addItemToLocalStorage(productId, 1) 
-})
+    } else {
+      const listEl = addListEl(
+        productId,
+        productImage,
+        productName,
+        productSlug,
+        productPrice,
+        1
+      )
+
+      cartListFunctionality(listEl)
+      cartList.appendChild(listEl)
+    }
+  
+    addItemToLocalStorage(productId, 1) 
+     updateCounter()
+  })
 
 
 
@@ -494,11 +503,19 @@ const generateProduct = (
 
 const loadProducts = (searchResult, start, end) => {
     searchResult.forEach((product, index) => {
-        const { images, new: ifNew, name, price, id, slug} = product
+        const { images, new: ifNew, name, price, id, slug, discount} = product
         
         if (index >= start && index <= end){
         generatedProductsContainer.appendChild(
-          generateProduct(images.display.first, name, ifNew, price, id, slug)
+          generateProduct(
+            images.display.first,
+            name,
+            ifNew,
+            price,
+            id,
+            slug,
+            discount
+          )
         )
     }
   })
@@ -718,8 +735,10 @@ const generateOrderEvents = (list, orderList) => {
         sorted = sort(list, (a, b) => a.price - b.price)
       } else if (orderList[1] === element) {
         sorted = sort(list, (a, b) => b.price - a.price)
-      } else {
+      } else if (orderList[2] === element) {
         sorted = sort(list, (a, b) => b.new - a.new)
+      } else {
+        sorted = sort(list, (a, b) => b.discount - a.discount)
       }
 
       generatedProductsContainer.innerHTML = ""
@@ -1134,8 +1153,6 @@ const getCheckedInputs = (inputs) => {
 
   return listOfChecked
 }
-
-
 
 
 

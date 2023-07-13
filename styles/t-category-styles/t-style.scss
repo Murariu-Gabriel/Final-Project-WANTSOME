@@ -10,20 +10,21 @@
 
 
 
-.navigation{
-    .container{
-        
-        &:last-of-type{
-            padding: 0;
-            h2{
-                text-align: center; 
-                color: $white;
-                font-size: $l-font;
-                border-bottom: none; 
-            }
+
+    .category{
+        background-color: $black;
+       
+        h2{
+            margin: 0;
+            padding: 3rem;
+            text-align: center; 
+            color: $white;
+            font-size: $l-font;
+            border-bottom: none; 
         }
+    
     }
-}
+
 
 
 .template-category{ 

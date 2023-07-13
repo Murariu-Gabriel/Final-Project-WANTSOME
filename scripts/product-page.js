@@ -103,7 +103,7 @@ if (!product) {
   )
 
   // Loading product info in the page
-  if (!product.new) {
+  if (!product.new && !product.discount) {
     newProduct.classList.add("hide")
   }
 
@@ -111,9 +111,26 @@ if (!product) {
   productImg.setAttribute("atl", product.name)
   productTitle.innerText = product.name
   productDescription.innerText = product.description
-  productPrice.innerText = product.price
+
+  if(product.discount){
+     overline.innerText = product.discount ? `discount: ${product.discount}% off` : ""
+  }
+
+  const calcDiscount = product.price * (product.discount / 100)
+  const priceDiscount = product.discount ? product.price - calcDiscount : product.price
+  const strikedText = product.discount ? `<small>${product.price}$</small>`: "product.price"
+ 
+
+  productPrice.innerHTML = `${strikedText} ${priceDiscount}$`
   productFeatures.innerText = product.features
-  overline.innerText = product.new ? "new product" : ""
+
+  
+  if (product.new) {
+    overline.innerText = product.new ? "new product" : ""
+  }
+  
+
+  
   // in the box
   const productItems = product.includes
   productItems.forEach((productItem) => {
@@ -353,6 +370,7 @@ addToCart.addEventListener("click", () => {
   }
  
   addToLocalStorage(product.id, productCounter.value) 
+  updateCounter()
 })
 // localStorage.removeItem("cart-products")
 
@@ -914,6 +932,47 @@ const fillListWithData = (array) => {
 fillListWithData(searches)
 
 
+
+// NAVIGATION STICKY FUNCTIONALITY
+
+
+window.addEventListener("resize", () => {
+  const screenWidth = window.innerWidth
+
+  if (screenWidth > 550) {
+    if (navigation.classList.contains("slimmer-nav")) {
+      navigation.classList.remove("slimmer-nav")
+    }
+  } else {
+    if(navigation.classList.contains("sticky")){
+    navigation.classList.add("slimmer-nav")
+    }
+  }
+})
+
+
+const navigation = document.querySelector(".navigation")
+const scrollWatcher = document.createElement("div")
+
+scrollWatcher.setAttribute("data-scroll-watcher", '')
+
+navigation.before(scrollWatcher)
+
+const navObserver = new IntersectionObserver((entries) => {
+  navigation.classList.toggle("sticky", !entries[0].isIntersecting)
+
+  const mediaQuery = window.matchMedia("(max-width: 550px)")
+  if(mediaQuery.matches){
+    navigation.classList.toggle("slimmer-nav", !entries[0].isIntersecting)
+
+  } else {
+    navigation.classList.remove("slimmer-nav")
+  }
+
+}, {rootMargin: "400px 0px 0px 0px"})
+
+
+navObserver.observe(scrollWatcher)
 
 
 
