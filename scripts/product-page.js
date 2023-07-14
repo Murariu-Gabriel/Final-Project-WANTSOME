@@ -118,7 +118,7 @@ if (!product) {
 
   const calcDiscount = product.price * (product.discount / 100)
   const priceDiscount = product.discount ? product.price - calcDiscount : product.price
-  const strikedText = product.discount ? `<small>${product.price}$</small>`: "product.price"
+  const strikedText = product.discount ? `<small>${product.price}$</small>`: ""
  
 
   productPrice.innerHTML = `${strikedText} ${priceDiscount}$`
@@ -203,6 +203,8 @@ const counter = (element, counter) => {
 const cartButton = document.getElementById("cart-button")
 const cartContainer = document.getElementById("cart-container")
 const cartForm = document.getElementById("count-form")
+const cartDeleteAll = document.getElementById("remove-cart-all")
+
 
 cartContainer.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")
@@ -221,16 +223,35 @@ const hideRemoveAll = (num) => {
 }
 
 const updateCounter = () => {
-  cartCounter.innerText = cartList.children.length
+  const itemsCount = cartList.children.length
+  cartCounter.innerText = itemsCount
 
-  hideRemoveAll(cartList.children.length)
+  let cartOuterCount = cartButton.querySelector("span")
+
+  if (cartOuterCount && itemsCount != 0) {
+    cartOuterCount.innerText = itemsCount
+  }
+
+  if (itemsCount > 0 && cartOuterCount === null) {
+    const outerCounter = document.createElement("span")
+    cartButton.appendChild(outerCounter)
+    outerCounter.innerText = itemsCount
+  }
+  if (itemsCount === 0 && cartButton.children.length > 1) {
+    cartOuterCount.remove()
+  }
+
+  hideRemoveAll(itemsCount)
 }
+
+
+
 // Decided that I want to calculate total amount only when I open cart
 cartButton.addEventListener("click", () => {
   cartContainer.classList.toggle("show-cart")
   document.body.classList.toggle("stop-scroll")
-  updateCounter()
   calculateTotal(cartList.children)
+  updateCounter()
 
    if (headerNav.classList.contains("nav-toggle")) {
      closeButton.classList.add("display-none")
@@ -461,25 +482,26 @@ const cart = parsedCartProducts ? parsedCartProducts : []
 
 
 const cartButtonsEvent = (e) => {
-      const id = e.target.parentNode.parentNode.id.slice(5,12)
-      const input = e.target.parentNode.querySelector(".product-counter")
-      if(parseInt(input.value) !== 0){
-        console.log(input.value)
-        counter(e.target, input)
-        calculateTotal(cartList.children)
-        addToLocalStorage(id, input.value, e.target.id)
-      } else {
-          deleteFromStorage(id)
-      }
-      if(parseInt(input.value) === 0){
-        const otherButton = e.target.parentNode.querySelector("#increment")
-        const listElement = e.target.parentNode.parentNode
-        e.target.removeEventListener("click", cartButtonsEvent)
-        otherButton.removeEventListener("click", cartButtonsEvent)
-        listElement.remove()
-        deleteFromStorage(id)
-      }
-      updateCounter()
+  const id = e.target.parentNode.parentNode.id.slice(5,12)
+  const input = e.target.parentNode.querySelector(".product-counter")
+  if(parseInt(input.value) !== 0){
+    console.log(input.value)
+    counter(e.target, input)
+    calculateTotal(cartList.children)
+    addToLocalStorage(id, input.value, e.target.id)
+  } else {
+      deleteFromStorage(id)
+  }
+  if(parseInt(input.value) === 0){
+    const otherButton = e.target.parentNode.querySelector("#increment")
+    const listElement = e.target.parentNode.parentNode
+    e.target.removeEventListener("click", cartButtonsEvent)
+    otherButton.removeEventListener("click", cartButtonsEvent)
+    listElement.remove()
+    deleteFromStorage(id)
+  }
+
+  updateCounter()
 }
 
 
@@ -514,12 +536,14 @@ const loadCart = () => {
     cartListFunctionality(listEL)
     cartList.appendChild(listEL)
   })
+
+  updateCounter()
 }
 
 loadCart()
 
 
-const cartDeleteAll = document.getElementById("remove-cart-all")
+
 
 cartDeleteAll.addEventListener("click", (e) => {
   e.preventDefault()

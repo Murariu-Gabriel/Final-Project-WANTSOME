@@ -22,6 +22,8 @@ const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-widt
 const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
 
 
+
+
 const rangeButton = document.getElementById("range-button")
 
 const allFilters = document.getElementById("all-filters")
@@ -805,25 +807,35 @@ const updatePaginationAndProducts = (
 
 const selectAllProducts = document.getElementById("all-items")
 const allProductsCount = document.getElementById("all-items-count")
- allProductsCount.innerText = getAllProducts().length
+allProductsCount.innerText = getAllProducts().length
 
 
 selectAllProducts.addEventListener("click", (e) => {
   const products = getAllProducts()
   const inputParent = e.target.parentNode.parentNode.querySelector("span")
   
-
+  
   if(e.target.checked){
     console.log(products)
     updatePaginationAndProducts(products)
     categoriesFunctionality(products, inputParent)
     updatePriceInterval(products)
     updatePriceValues(products)
+
   } else {
     updatePaginationAndProducts(currentSearch)
      categoriesFunctionality(currentSearch, inputParent, "category")
      updatePriceInterval(currentSearch)
      updatePriceValues(currentSearch)
+  }
+
+
+  if (checkInputs(reloadedFilters())) {
+    console.log("nu")
+    removeAllBtnParent.classList.remove("hide")
+  } else {
+    console.log("da")
+    removeAllBtnParent.classList.add("hide")
   }
 
 })
@@ -907,21 +919,40 @@ const checkIfOrderSelected = () => {
   return orderText
 }
 
+// IN ORDER TO DESELECT WITH .CLICK() I NEED THEM TO BE CLICKED IN REVERSE
+
+const deselectPriceFilters = (options, e, optional) => {
 
 
-const deselectPriceFilters = (options, e, optional, select) => {
+  if (optional === "select") {
+    const inputs = e.target.parentNode.parentNode.parentNode.querySelectorAll(
+      "input[type='checkbox']"
+    )
+    console.log(inputs)
+    console.log(options)
+    inputs.forEach((input) => {
+      if (options.includes(input.id)) {
+        input.click()
+      }
+    })
+    return
+  }
   
   if (optional) {
-    options.forEach((input) => {
-      if(input.id !== select && input.checked){
-        options.forEach((input) => {
-          input.click()
-        }) 
+    const reversed = Array.from(options).reverse()
+
+    reversed.forEach((input) => {
+      if (input.checked) {
+        input.click()
       }
     })
 
     return
   } 
+
+  
+
+
   options.forEach((input) => {
     if (input !== e.target && input.checked) {
       console.log(e.target.checked)
@@ -980,10 +1011,12 @@ const currentListItems2 = (isChecked, list) => {
 let lastUsedFilterArray = []
 
 
+
 const generateFilterEvent = (e, list) => {
   const options = e.target.parentNode.parentNode.parentNode.querySelectorAll(
-    "input[type='checkbox'"
-  )
+    "input[type='checkbox']"
+    )
+  
   const inputParent =
     e.target.parentNode.parentNode.parentNode.querySelector("span")
   const isChecked = e.target.checked
@@ -1097,8 +1130,9 @@ const generateFilterEvent = (e, list) => {
   if (inputParent.innerText === "Price") {
      
     if (isChecked) {
+      console.log(options)
       deselectPriceFilters(options, e)
-      console.log("dap")
+      
 
       updatePaginationAndProducts(list, getPaginationPrefrence(), selectedOrder)
 
@@ -1131,18 +1165,9 @@ const generateFilterEvent = (e, list) => {
 }
 
 
-const checkInputs = (inputs) => {
-  for (const input of inputs) {
-    if (input.checked) {
-      return true 
-    }
-  }
-}
-
-
 const getCheckedInputs = (inputs) => {
   const listOfChecked = []
-
+  
   for (const input of inputs) {
     if (input.checked) {
       const inputId = input.id
@@ -1150,23 +1175,19 @@ const getCheckedInputs = (inputs) => {
       listOfChecked.push(inputId)
     }
   }
-
+  
   return listOfChecked
 }
 
-
-
-
-
-
-
-
-
+// FILTER LOADING / FILTER ADDING TO LOCAL STORAGE
 
 const removeFiltersBtn = document.getElementById("remove-all-filters")
 const removeAllBtnParent = document.getElementById("remove-all-filters-parent")
-// allFilters
-// console.log(allFilters.children)
+
+
+
+
+
 
 const storeCurrentFilters = () => {
   const currentFilters = []
@@ -1184,22 +1205,46 @@ const storeCurrentFilters = () => {
 }
 
 
+
+window.addEventListener("beforeunload", (e) => {
+
+  const filters = JSON.stringify(storeCurrentFilters())
+  
+  localStorage.setItem('filters', filters)
+
+
+})
+
+
+
+
 const generateFilterFunctionality = (element, list ) => {
   const input = element.querySelector("input") 
   
   input.addEventListener("click", (e) => {
-    // removeAllBtnParent.classList.remove("hide")
-    // console.log(storeCurrentFilters())
-    
-    // console.log(list)
+ 
     generateFilterEvent(e, list)
+
+    if (checkInputs(reloadedFilters())) {
+      removeAllBtnParent.classList.remove("hide")
+    } else {
+      removeAllBtnParent.classList.add("hide")
+    }
 
   })
  
 }
 
 
-// const filterHandler = generateFilterFunctionality(element, list)
+removeFiltersBtn.addEventListener("click", (e) => {
+
+  deselectPriceFilters(reloadedFilters(), "empty", "reverse")
+
+  removeAllBtnParent.classList.add("hide")
+
+})
+
+
 
 
 
@@ -1323,10 +1368,6 @@ const categoriesFunctionality = (list, category, individualUpdate) => {
 categoriesFunctionality(getAllProducts())
 
 
-//STEPS LEFT TO MAKE
-
-
-// unique selection between price ranges and slide range needed
 
 
 
@@ -1337,15 +1378,22 @@ intervalInput.addEventListener("click", (e) => {
     "div input[type='checkbox']"
   )
 
+  const inputs =
+    e.target.parentNode.parentNode.parentNode.parentNode.querySelectorAll(
+      "input[type='checkbox']"
+    )
  
   
   if (intervalInput.checked) {
+    removeAllBtnParent.classList.remove("hide")
     deselectPriceFilters(filterInputs, e)
 
     rangeButton.click()
 
   } else {
-
+    if (!checkInputs(inputs)) {
+      removeAllBtnParent.classList.add("hide")
+    }
 
 
     updatePaginationAndProducts(
@@ -1354,6 +1402,7 @@ intervalInput.addEventListener("click", (e) => {
       checkIfOrderSelected()
     )
   }
+  
 })
 
 // currentFilterItems
@@ -1365,6 +1414,18 @@ const rangePricesFromList = (list, min, max) => {
 
   return filter
 }
+
+const checkInputs = (inputs) => {
+  for (const input of inputs) {
+    if (input.checked) {
+      
+      return true
+    }
+  }
+
+  return false
+}
+
 
 
 const getElementsFromLastArrayUsed = () => {
@@ -1438,18 +1499,39 @@ console.log(getElementsFromLastArrayUsed())
 
 
 
+const allFiltersLoaded = document.getElementById("all-filters").querySelectorAll("div input[type='checkbox']")
 
+const reloadedFilters = () => {
+ const allFiltersLoaded = document
+   .getElementById("all-filters")
+   .querySelectorAll("div input[type='checkbox']")
 
+   return allFiltersLoaded
+}
 
+// LOAD FILTERS 
 
-// when range selected it searches in the last used filter either category or brand and from that it filters once again the items with the price selected when unselected it goes back to last filter made
+// MUST FIND A WAY TO OVERCOME THE FACT THAT WHEN I LOAD FILTERS IT GIVES ERROR
+
+const loadFilters = (e) => {
+
+  const getFilters = localStorage.getItem("filters")
+  const lastUsedFilters = JSON.parse(getFilters)
+  console.log(lastUsedFilters)
+  deselectPriceFilters(lastUsedFilters, e, "select")
+
+}
+
+const customEvent = new Event("loaded")
+
+document.dispatchEvent(customEvent)
+
+allFilters.addEventListener("loaded", loadFilters)
+
 
 // after that all selected filters to to show on mobile and tablet, the pc version needs to generate a button that removes all filters made
 
-
-
-
-
+//
 
 
 

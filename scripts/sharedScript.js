@@ -170,12 +170,12 @@ cartButton.addEventListener("click", () => {
   calculateTotal(cartList.children)
   updateCounter()
 
-     if (headerNav.classList.contains("nav-toggle")) {
-       closeButton.classList.add("display-none")
-       popButton.classList.remove("display-none")
-       headerNav.classList.remove("nav-toggle")
-        document.body.classList.add("stop-scroll")
-     }
+  if (headerNav.classList.contains("nav-toggle")) {
+    closeButton.classList.add("display-none")
+    popButton.classList.remove("display-none")
+    headerNav.classList.remove("nav-toggle")
+    document.body.classList.add("stop-scroll")
+  }
 
 
 })
