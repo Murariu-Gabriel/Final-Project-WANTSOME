@@ -1039,6 +1039,7 @@ footer .container nav .socials {
 .generated-search-result .container .filters .generated-filters .remove-all-filters {
   width: 100%;
   border: 1px solid #D87D4A;
+  background-color: #F1F1F1;
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;

@@ -173,8 +173,7 @@ const progress = document.querySelector(".range-slider .progress")
 
 const priceInput = document.querySelectorAll(".price-input input")
 
-const priceGap = 25
-
+const priceGap = 50
 
 
 
@@ -293,7 +292,7 @@ const updatePriceInterval = (list, updateValue) => {
     priceInput[0].setAttribute("value", smallestPrice)
     priceInput[1].setAttribute("value", biggestPrice)
 
-    updatePriceValues(list)
+   
 
     if (updateValue) {
       rangeInputFunctionality(smallestPrice, biggestPrice)
@@ -307,7 +306,8 @@ const updatePriceInterval = (list, updateValue) => {
 
     rangeInput[1].setAttribute("min", smallestPrice)
     rangeInput[1].setAttribute("max", biggestPrice)
-
+    
+    updatePriceValues(list)
   } else {
 
     priceInput[0].value = smallestPrice
@@ -319,6 +319,7 @@ const updatePriceInterval = (list, updateValue) => {
 }
 
 updatePriceInterval(currentSearch)
+
 
 // SHOWING RESULT, FOR THE MOMENT NOT OPTIMAL BECAUSE IF SEARCH DOEST NOT EXIST IT LOADS ALL LOGIC THEN SHOW FAULTY RESULT
 
@@ -659,7 +660,7 @@ const updatePagination = (
 
 updatePagination(currentSearch)
 
-// RETURN TO THE LAST PAGE REST OF CODE IN SHAREDSCRIPT
+// RETURN TO THE LAST SELECTED PAGE FROM PAGINATION | REST OF CODE IN SHAREDSCRIPT
 
 const currentPage = localStorage.getItem("page")
 
@@ -722,6 +723,16 @@ const sort = (array, callback) => {
 return sort
 }
 
+const ifDiscount = (element) => {
+  if (element.discount) {
+    const calcDiscount = element.price * (element.discount / 100)
+    const discount = element.price - calcDiscount
+
+    return discount
+  }
+
+  return element.price
+}
 
 
 const generateOrderEvents = (list, orderList) => {
@@ -734,9 +745,9 @@ const generateOrderEvents = (list, orderList) => {
       text.innerText = e.target.innerText
 
       if (orderList[0] === element) {
-        sorted = sort(list, (a, b) => a.price - b.price)
+        sorted = sort(list, (a, b) => ifDiscount(a) - ifDiscount(b))
       } else if (orderList[1] === element) {
-        sorted = sort(list, (a, b) => b.price - a.price)
+        sorted = sort(list, (a, b) => ifDiscount(b) - ifDiscount(a))
       } else if (orderList[2] === element) {
         sorted = sort(list, (a, b) => b.new - a.new)
       } else {
@@ -925,16 +936,77 @@ const deselectPriceFilters = (options, e, optional) => {
 
 
   if (optional === "select") {
-    const inputs = e.target.parentNode.parentNode.parentNode.querySelectorAll(
-      "input[type='checkbox']"
-    )
-    console.log(inputs)
-    console.log(options)
-    inputs.forEach((input) => {
-      if (options.includes(input.id)) {
-        input.click()
-      }
-    })
+    // const inputs = e.target.parentNode.parentNode.parentNode.querySelectorAll(
+      //   "input[type='checkbox']"
+      // )
+
+      
+    let filters = reloadedFilters()
+    let restartLoop = true
+    
+    while(restartLoop){
+      restartLoop = false
+
+      filters.forEach((input) => {
+        if (options.includes(input.id) && !input.checked && Array.from(reloadedFilters()).includes(input) && input.id !== "price-interval") {
+          input.click()
+          filters = reloadedFilters()
+          restartLoop = true
+        }
+        if(options.includes("price-interval") && filters[filters.length - 1] === input){
+          const constPriceValues = options[options.length - 1]
+          let minPrice = constPriceValues.min
+          let maxPrice = constPriceValues.max
+
+          let minValue = priceInput[0].min
+          let maxValue = priceInput[1].max
+
+
+          
+          console.log(minPrice, maxPrice)
+          if(minPrice < maxPrice){
+            minPrice = minValue
+            maxPrice = maxValue
+          }
+
+          //  if (minPrice < maxPrice) {
+          //    minPrice = minValue
+          //    maxPrice = maxValue
+          //  }
+
+
+
+
+          if(maxPrice > maxValue){
+            maxPrice = maxValue
+          }
+
+          if (maxPrice < minValue) {
+            maxPrice = maxValue
+          }
+
+          if (minPrice < minValue) {
+            minPrice = minValue
+          }
+
+          if (minPrice > maxValue) {
+            minPrice = minValue
+          }
+
+          priceInput[0].value = minPrice
+          priceInput[1].value = maxPrice
+
+          rangeInput[0].value = minPrice
+          rangeInput[1].value = maxPrice
+
+
+          
+          rangeInputFunctionality(minPrice, maxPrice)
+          rangeButton.click()
+        
+        }
+      })
+    }
     return
   }
   
@@ -1171,8 +1243,21 @@ const getCheckedInputs = (inputs) => {
   for (const input of inputs) {
     if (input.checked) {
       const inputId = input.id
-      console.log(input)
-      listOfChecked.push(inputId)
+
+      if (inputId === "price-interval") {
+        const min = document.querySelector(".input-min")
+        const max = document.querySelector(".input-max")
+
+        const minVal = min.value
+        const maxVal = max.value
+
+
+        listOfChecked.push(  inputId ,{id: inputId, min: minVal, max: maxVal })
+      } else {
+
+       
+        listOfChecked.push(inputId)
+      }
     }
   }
   
@@ -1196,6 +1281,7 @@ const storeCurrentFilters = () => {
     const inputs = container.querySelectorAll("input[type='checkbox']")
     
     const selectedFilters = getCheckedInputs(inputs)
+
     currentFilters.push(selectedFilters)
     
   }
@@ -1410,8 +1496,11 @@ intervalInput.addEventListener("click", (e) => {
 
 const rangePricesFromList = (list, min, max) => {
 
-  const filter = list.filter(element => element.price >= min && element.price <= max)
-
+  const filter = list.filter(
+    (element) =>
+      ifDiscount(element) >= min && ifDiscount(element) <= max
+  )
+    console.log(filter)
   return filter
 }
 
@@ -1466,34 +1555,55 @@ const getElementsFromLastArrayUsed = () => {
 
 
 rangeButton.addEventListener('click', (e) => {
-  // deselectPriceFilters(filterInputs, "empty", true, intervalInput.id)
-console.log(getElementsFromLastArrayUsed())
-  intervalInput.checked = true
+  console.log(getElementsFromLastArrayUsed())
 
   const inputs = e.target.parentNode.querySelectorAll("input")
 
-  const min = inputs[0].value
-  const max = inputs[1].value
+  let min = parseInt(inputs[0].value)
+  let max = parseInt(inputs[1].value)
 
-  console.log(min, max)
-  // updatePriceInterval(currentSearch, true)
+ 
+
+
+  if(min === max){
+    max = max + priceGap
   
+  }
 
+  if(min > max){
+    console.log("mata")
+    e.preventDefault()
+    return
+  }
+
+  intervalInput.checked = true
+  console.log(min, max)
+  
 
   const ranges = rangePricesFromList(
     getElementsFromLastArrayUsed(),
-    // getAllProducts(),
     min,
     max
   )
 
   console.log(ranges)
+    if(ranges.length !== 0){
+      updatePaginationAndProducts(
+        ranges,
+        getPaginationPrefrence(),
+        checkIfOrderSelected()
+      )
 
-  updatePaginationAndProducts(
-    ranges,
-    getPaginationPrefrence(),
-    checkIfOrderSelected()
-  )
+    } else {
+      updatePaginationAndProducts(
+        getElementsFromLastArrayUsed(),
+        getPaginationPrefrence(),
+        checkIfOrderSelected()
+      )
+
+      intervalInput.click()
+
+    }
     
 })
 
@@ -1513,20 +1623,25 @@ const reloadedFilters = () => {
 
 // MUST FIND A WAY TO OVERCOME THE FACT THAT WHEN I LOAD FILTERS IT GIVES ERROR
 
-const loadFilters = (e) => {
+const loadFilters = () => {
 
   const getFilters = localStorage.getItem("filters")
   const lastUsedFilters = JSON.parse(getFilters)
   console.log(lastUsedFilters)
-  deselectPriceFilters(lastUsedFilters, e, "select")
+  deselectPriceFilters(lastUsedFilters, "empty", "select")
 
 }
 
-const customEvent = new Event("loaded")
+loadFilters()
 
-document.dispatchEvent(customEvent)
+  
+// rangeInputFunctionality
 
-allFilters.addEventListener("loaded", loadFilters)
+// const customEvent = new Event("loaded")
+
+// document.dispatchEvent(customEvent)
+
+// allFilters.addEventListener("loaded", loadFilters)
 
 
 // after that all selected filters to to show on mobile and tablet, the pc version needs to generate a button that removes all filters made

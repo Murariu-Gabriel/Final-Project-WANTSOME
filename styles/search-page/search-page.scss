@@ -88,10 +88,12 @@
                 .remove-all-filters{
                     width: 100%;
                     border: 1px solid $orange;
+                    background-color: $gray;
                     padding: 0.5rem 1rem;
                     display: flex;
                     justify-content: space-between;
                     border-radius: $base-border-radius;
+
 
                     &:hover{
                         color: $palette-red;
