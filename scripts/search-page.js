@@ -7,7 +7,8 @@ const displayResult = document.getElementById("display-result")
 const changeStyleButton = document.getElementById("change-style-button")
 
 const generatedProductsContainer = document.getElementById("generated-products")
-const generatedProductsCount = document.getElementById("result-count")
+const generatedSearchProductsCount = document.getElementById("result-count")
+const generatedProductsCountMobile = document.getElementById("products-counter")
 const resultText = document.getElementById("result-text")
 const searchBarInput = document.body.querySelector(".search-input")
 const searchPageContainer = document.getElementById("search-page-container")
@@ -142,7 +143,8 @@ const params = Object.fromEntries(searchParams.entries())
 const retrievedSearch = params.search
 
 const updateCount = (listCount) => {
-  generatedProductsCount.innerText = listCount
+  generatedSearchProductsCount.innerText = listCount
+  generatedProductsCountMobile.innerText = listCount
 }
 
 const getSearchProducts = (search) => {
@@ -205,7 +207,7 @@ priceInput.forEach((input) => {
         const progressRight = ((maxVal - rangeInput[1].min) / range) * 100
         console.log(e.target.max, maxVal)
 
-        if (e.target.max >= maxVal) {
+        if (parseInt(e.target.max) >= maxVal) {
           progress.style.right = 100 - parseFloat(progressRight) + "%"
         } else {
           progress.style.right = 0 + "%"
@@ -807,7 +809,9 @@ const updatePaginationAndProducts = (
 ) => {
   generatedProductsContainer.innerHTML = ""
 
-  generatedProductsCount.innerText = items.length
+  generatedSearchProductsCount.innerText = items.length
+  generatedProductsCountMobile.innerText = items.length
+
 
   loadProducts(items, 0, itemsPerPage)
   updatePagination(items, itemsPerPage)
@@ -955,19 +959,19 @@ const deselectPriceFilters = (options, e, optional) => {
         }
         if(options.includes("price-interval") && filters[filters.length - 1] === input){
           const constPriceValues = options[options.length - 1]
-          let minPrice = constPriceValues.min
-          let maxPrice = constPriceValues.max
+          let minPrice = parseInt(constPriceValues.min )
+          let maxPrice = parseInt(constPriceValues.max)
 
-          let minValue = priceInput[0].min
-          let maxValue = priceInput[1].max
+          let minValue = parseInt(priceInput[0].min)
+          let maxValue = parseInt(priceInput[1].max)
 
 
           
-          console.log(minPrice, maxPrice)
-          if(minPrice < maxPrice){
-            minPrice = minValue
-            maxPrice = maxValue
-          }
+          console.log(minPrice, maxValue)
+          // if(minPrice > maxPrice){
+          //   minPrice = minValue
+          //   // maxPrice = maxValue
+          // }
 
           //  if (minPrice < maxPrice) {
           //    minPrice = minValue
@@ -990,6 +994,7 @@ const deselectPriceFilters = (options, e, optional) => {
           }
 
           if (minPrice > maxValue) {
+            console.log("da valoarea este prea mare")
             minPrice = minValue
           }
 
@@ -1571,7 +1576,7 @@ rangeButton.addEventListener('click', (e) => {
   }
 
   if(min > max){
-    console.log("mata")
+    
     e.preventDefault()
     return
   }

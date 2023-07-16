@@ -824,18 +824,95 @@ const navObserver = new IntersectionObserver((entries) => {
     navigation.classList.remove("slimmer-nav")
   }
 
-}, {rootMargin: "400px 0px 0px 0px"})
+}, {rootMargin: "300px 0px 0px 0px"})
 
 
 navObserver.observe(scrollWatcher)
 
+// USER OPTIONS TOGGLE
+
+
+const getUserStatus = () => {
+  const storageStatus = localStorage.getItem("isUserLoggedIn")
+  const userStatus = JSON.parse(storageStatus)
+
+  return userStatus
+}
+
+const getLoggedUserName = (userEmail) => {
+
+  const storageStatus = localStorage.getItem("users")
+  const userStatus = JSON.parse(storageStatus)
+
+  for(let user of userStatus){
+    const currentUser = JSON.parse(user)
+
+    console.log(currentUser)
+    if (currentUser.email === userEmail) {
+      return currentUser.first_name
+    }
+  }
+
+
+   
+
+}
+
+console.log(getLoggedUserName())
+console.log(getUserStatus())
+
+const userIcon = document.getElementById("user-account")
+const userContainer = document.getElementById("user-container")
+const userOptionsContent = document.querySelectorAll(".user-options-content")
+// const 
+
+userIcon.addEventListener("click", (e) => {
+  userContainer.classList.toggle("hide")
+  document.body.classList.toggle("stop-scroll")
+  
+})
+
+userContainer.addEventListener("click", (e) => {
+  userContainer.classList.add("hide")
+  document.body.classList.remove("stop-scroll")
+
+})
+
+
+
+for(const container of userOptionsContent){
+  container.addEventListener("click", (e) => {
+    e.stopPropagation()
+  })
+
+}
+
+
+const loginStatusContainer = document.body.querySelector(".user-options")
+const userName = document.getElementById("user-name-after-login")
+
+console.log(loginStatusContainer.children[0])
+
+if (getUserStatus()?.status) {
+  loginStatusContainer.children[0].classList.add("hide")
+  loginStatusContainer.children[1].classList.remove("hide")
+
+  userName.innerText = getLoggedUserName(getUserStatus().user)
+}  
+
+const logout = document.getElementById("logout")
+
+logout.addEventListener("click", () => {
+  loginStatusContainer.children[1].classList.add("hide")
+  loginStatusContainer.children[0].classList.remove("hide")
+  localStorage.removeItem("isUserLoggedIn")
+
+})
 
 
 
 
-
-
-
+// NEXT THERE IS NEEDED TO BE FOOL PROOF FOR CLICKING MULTIPLE TOGGLES
 
 
 

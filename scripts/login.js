@@ -167,6 +167,9 @@ form.addEventListener("submit", (e) => {
    let noError = false
    const errors = []
 
+   const formData = new FormData(form)
+   const email = formData.get("email")
+
   for (const input of inputs) {
     const label = input.parentElement.firstElementChild
     const span = input.parentElement.children[1]
@@ -181,10 +184,13 @@ form.addEventListener("submit", (e) => {
      }
   }
 
-  //  if (!errors.includes("error")) {
-    
+   if (!errors.includes("error")) {
+    const rawUserInfo = {status: true, user: email }
+    const userInfo = JSON.stringify(rawUserInfo)
+
+      localStorage.setItem("isUserLoggedIn", userInfo)
   //    window.location.assign("http://127.0.0.1:5500/html-pages/dashboard.html")
-  //  } 
+   } 
 
 })
 

@@ -389,6 +389,9 @@ label {
     background: none;
     padding: 0;
   }
+  .generated-search-result .container .filters .generated-filters .remove-all-filters {
+    width: 100%;
+  }
   .generated-search-result .container .display-search-results {
     width: 100%;
   }

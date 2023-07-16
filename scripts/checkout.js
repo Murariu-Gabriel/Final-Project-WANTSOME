@@ -150,8 +150,8 @@ const emailValidation = (email) => {
 }
 
 const ifTypeNumberValidation = (value) => {
-  console.log(value.includes(" "))
-  if (value.includes(" ")) {
+  console.log(value?.includes(" "))
+  if (value?.includes(" ")) {
     return true
   }
   return isNaN(value)
@@ -240,6 +240,18 @@ const insertInputValidation = (e) => {
         returnHideShowError(e, 6, checkLength)
       }
     }
+
+    if(e.name === "city"){
+      hideShowError(e, `Wrong format`, namesValidation)
+    }
+
+    if (e.name === "country") {
+      hideShowError(e, `Wrong format`, namesValidation)
+    }
+
+    if (e.name === "address") {
+      hideShowError(e, `Wrong format`, namesValidation)
+    }
   }
 }
 
@@ -251,6 +263,16 @@ const noNumbersTypeEvent = (input) => {
     if (!isNaN(e.key) && e.key !== "Backspace" && e.key !== " ") {
       e.preventDefault()
     }
+
+    // if(e.target.id === "city"){
+    //    console.log(e.target.classList)
+    //    console.log(!e.target.classList.contains("error"))
+
+    //    if (!e.target.classList.contains("error")) {
+    //      hideShowError(e.target, `Wrong format`, namesValidation)
+    //    }
+    // }
+
   })
 }
 
@@ -295,6 +317,7 @@ const addEventsOnInputs = () => {
 
     if (input.getAttribute("id") === "city") {
       noNumbersTypeEvent(input)
+     
     }
 
     if (input.getAttribute("id") === "country") {
