@@ -123,24 +123,46 @@
     padding-top: $section-spacing;
 
     .container {
+
+      .carousel, .carousel-copy{
+        .carousel-track-container{
+          .carousel-track{
+
+            .carousel-slide{
+              background-position-x: 50%;
+              background-position-y: -300px;
+              background-size: 150%;
+
+              img {
+              width: 230px;
+              }
+
+              h2 {
+                font-size: $h1-font-size;
+                line-height: $h1-line-height;
+              }
+
+              h2,
+              p {
+                width: 50%;
+              }
+            }
+          }
+          .carousel-button{
+            bottom: -320px;
+          }
+        }  
+      }  
+
+      //  &:first-of-type {
+      //  
+      //   }
+
+
+
+
       article {
         &:first-of-type {
-          background-position-x: 50%;
-          background-position-y: -300px;
-          background-size: 150%;
-
-          h2 {
-            font-size: $h1-font-size;
-            line-height: $h1-line-height;
-          }
-
-          h2,
-          p {
-            width: 50%;
-          }
-        }
-
-        &:nth-of-type(2) {
           height: 320px;
           // background-position: -10%;
           background-repeat: no-repeat;

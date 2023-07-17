@@ -26,7 +26,7 @@
             flex-wrap: nowrap;
     
             a{
-                display: none;
+                // display: none;
             }
 
             .cart-button{
@@ -163,9 +163,9 @@
                     li {
                         width: 100%;
 
-                        // &:first-of-type{
-                        //     display: none;
-                        // }
+                        .hide{
+                            display: none;
+                        }
 
 
                         &:hover {

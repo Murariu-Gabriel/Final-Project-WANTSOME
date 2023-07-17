@@ -2,6 +2,127 @@
 
 const cartDeleteAll = document.getElementById("remove-cart-all")
 
+
+
+// USER OPTIONS TOGGLE
+
+
+const getUserStatus = () => {
+  const storageStatus = localStorage.getItem("isUserLoggedIn")
+  const userStatus = JSON.parse(storageStatus)
+
+  return userStatus
+}
+
+const getLoggedUserName = (userEmail) => {
+
+  const storageStatus = localStorage.getItem("users")
+  const userStatus = JSON.parse(storageStatus)
+
+  for(let user of userStatus){
+    const currentUser = JSON.parse(user)
+
+    console.log(currentUser)
+    if (currentUser.email === userEmail) {
+      return currentUser.first_name
+    }
+  }
+
+}
+
+console.log(getLoggedUserName())
+console.log(getUserStatus())
+
+const userIcon = document.getElementById("user-account")
+const userContainer = document.getElementById("user-container")
+const userOptionsContent = document.querySelectorAll(".user-options-content")
+
+const secondNavUser = document.body.querySelector(".user-element")
+
+console.log(secondNavUser)
+// const 
+
+userIcon.addEventListener("click", (e) => {
+  if(userContainer.classList.contains("hide")){
+    userContainer.classList.remove("hide")
+    document.body.classList.add("stop-scroll")
+
+  } 
+  else {
+    userContainer.classList.add("hide")
+    document.body.classList.remove("stop-scroll")
+
+  }
+
+  if(cartContainer.classList.contains("show-cart")){
+     cartContainer.classList.remove("show-cart")
+    // document.body.classList.remove("stop-scroll")
+  }
+
+ 
+   if (headerNav.classList.contains("nav-toggle")) {
+     closeButton.classList.add("display-none")
+     popButton.classList.remove("display-none")
+     headerNav.classList.remove("nav-toggle")
+     document.body.classList.add("stop-scroll")
+   }
+  
+})
+
+userContainer.addEventListener("click", (e) => {
+  userContainer.classList.add("hide")
+  document.body.classList.remove("stop-scroll")
+
+})
+
+
+
+for(const container of userOptionsContent){
+  container.addEventListener("click", (e) => {
+    e.stopPropagation()
+  })
+
+}
+
+
+const loginStatusContainer = document.body.querySelector(".user-options")
+const userName = document.getElementById("user-name-after-login")
+const mobileUserName = document.getElementById("mobile-nav-name")
+
+console.log(loginStatusContainer.children[0])
+
+if (getUserStatus()?.status) {
+  loginStatusContainer.children[0].classList.add("hide")
+  loginStatusContainer.children[1].classList.remove("hide")
+
+  secondNavUser.children[0].classList.add("hide")
+  secondNavUser.children[1].classList.remove("hide")
+
+  userName.innerText = getLoggedUserName(getUserStatus().user)
+  mobileUserName.innerText = getLoggedUserName(getUserStatus().user)
+
+}  
+
+const logout = document.getElementById("logout")
+
+logout.addEventListener("click", () => {
+  loginStatusContainer.children[1].classList.add("hide")
+  loginStatusContainer.children[0].classList.remove("hide")
+
+  secondNavUser.children[1].classList.add("hide")
+  secondNavUser.children[0].classList.remove("hide")
+  localStorage.removeItem("isUserLoggedIn")
+
+})
+
+secondNavUser.children[1]. addEventListener("click", () => {
+  secondNavUser.children[1].classList.add("hide")
+  secondNavUser.children[0].classList.remove("hide")
+  localStorage.removeItem("isUserLoggedIn")
+})
+
+
+
 // SHARED NAV TOGGLE
 
 const headerNav = document.getElementById("header-nav")
@@ -26,8 +147,15 @@ const addButtonEvent = () => {
         addToggleFunctionality()
 
         if(id === "h-button"){
-            document.body.classList.add("stop-scroll")
-            cartContainer.classList.remove("show-cart")
+          document.body.classList.add("stop-scroll")
+          cartContainer.classList.remove("show-cart")
+
+          if(!userContainer.classList.contains("hide")){
+            userContainer.classList.add("hide")
+            
+          }
+
+
         } else {
           document.body.classList.remove("stop-scroll")
         }
@@ -165,8 +293,16 @@ const updateCounter = () => {
 
 
 cartButton.addEventListener("click", () => {
-  cartContainer.classList.toggle("show-cart")
-  document.body.classList.toggle("stop-scroll")
+
+  if (!cartContainer.classList.contains("show-cart")){
+    cartContainer.classList.add("show-cart")
+    document.body.classList.add("stop-scroll")
+
+  } else{
+    cartContainer.classList.remove("show-cart")
+    document.body.classList.remove("stop-scroll")
+
+  }
   calculateTotal(cartList.children)
   updateCounter()
 
@@ -175,6 +311,10 @@ cartButton.addEventListener("click", () => {
     popButton.classList.remove("display-none")
     headerNav.classList.remove("nav-toggle")
     document.body.classList.add("stop-scroll")
+  }
+
+  if (!userContainer.classList.contains("hide")) {
+    userContainer.classList.add("hide")
   }
 
 
@@ -527,6 +667,10 @@ const addSearchToggle = (e) => {
    popButton.classList.toggle("display-none")
    headerNav.classList.toggle("nav-toggle")
   }
+
+  if(!userContainer.classList.contains("hide")){
+    userContainer.classList.add("hide")
+  }
 }
 // console.log(headerNav.classList.contains("nav-toggle"))
 
@@ -745,6 +889,11 @@ document.body.addEventListener("keydown", (e) => {
       filtersContainer.classList.remove("overlay")
       document.body.classList.remove("stop-scroll")
     }
+
+     if (!userContainer.classList.contains("hide")) {
+       userContainer.classList.add("hide")
+       document.body.classList.remove("stop-scroll")
+     }
   }
 })
 
@@ -786,7 +935,14 @@ fillListWithData(searches)
 if(!parameters.pathname.includes("search")){
   localStorage.removeItem("page")
   localStorage.removeItem("order")
+  localStorage.removeItem("filters")
 }
+
+
+
+
+
+
 
 // NAVIGATION STICKY FUNCTIONALITY
 
@@ -802,6 +958,10 @@ window.addEventListener("resize", () => {
     if(navigation.classList.contains("sticky")){
     navigation.classList.add("slimmer-nav")
     }
+
+     userContainer.classList.add("hide")
+    
+
   }
 })
 
@@ -829,92 +989,12 @@ const navObserver = new IntersectionObserver((entries) => {
 
 navObserver.observe(scrollWatcher)
 
-// USER OPTIONS TOGGLE
-
-
-const getUserStatus = () => {
-  const storageStatus = localStorage.getItem("isUserLoggedIn")
-  const userStatus = JSON.parse(storageStatus)
-
-  return userStatus
-}
-
-const getLoggedUserName = (userEmail) => {
-
-  const storageStatus = localStorage.getItem("users")
-  const userStatus = JSON.parse(storageStatus)
-
-  for(let user of userStatus){
-    const currentUser = JSON.parse(user)
-
-    console.log(currentUser)
-    if (currentUser.email === userEmail) {
-      return currentUser.first_name
-    }
-  }
-
-
-   
-
-}
-
-console.log(getLoggedUserName())
-console.log(getUserStatus())
-
-const userIcon = document.getElementById("user-account")
-const userContainer = document.getElementById("user-container")
-const userOptionsContent = document.querySelectorAll(".user-options-content")
-// const 
-
-userIcon.addEventListener("click", (e) => {
-  userContainer.classList.toggle("hide")
-  document.body.classList.toggle("stop-scroll")
-  
-})
-
-userContainer.addEventListener("click", (e) => {
-  userContainer.classList.add("hide")
-  document.body.classList.remove("stop-scroll")
-
-})
-
-
-
-for(const container of userOptionsContent){
-  container.addEventListener("click", (e) => {
-    e.stopPropagation()
-  })
-
-}
-
-
-const loginStatusContainer = document.body.querySelector(".user-options")
-const userName = document.getElementById("user-name-after-login")
-
-console.log(loginStatusContainer.children[0])
-
-if (getUserStatus()?.status) {
-  loginStatusContainer.children[0].classList.add("hide")
-  loginStatusContainer.children[1].classList.remove("hide")
-
-  userName.innerText = getLoggedUserName(getUserStatus().user)
-}  
-
-const logout = document.getElementById("logout")
-
-logout.addEventListener("click", () => {
-  loginStatusContainer.children[1].classList.add("hide")
-  loginStatusContainer.children[0].classList.remove("hide")
-  localStorage.removeItem("isUserLoggedIn")
-
-})
-
 
 
 
 // NEXT THERE IS NEEDED TO BE FOOL PROOF FOR CLICKING MULTIPLE TOGGLES
 
-
+// YOU NEED TO COPY PASTE THIS IN PRODUCT PAGE AND ALSO THE HTML IN ALL PAGES
 
 
 

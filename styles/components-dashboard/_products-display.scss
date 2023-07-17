@@ -3,46 +3,204 @@
 .products-display {
   padding-top: $section-spacing;
 
+  
   .container {
+    .carousel{
+      position: relative;
+      transition: box-shadow 0.3s ease-in-out;
+      height: 100%;
+      z-index: 2;
+      
+      .carousel-track-container{
+        position: relative;
+        height: 5px;
+        max-width: 1100px;
+
+        .carousel-track{
+
+          .carousel-slide{
+            width: 100%;
+            position: absolute;
+           
+
+            &:first-of-type{
+              z-index: 2;
+            }
+  
+            @include flex(center, center, unset, column);
+  
+            div{
+              @include flex(center, center, unset, column);
+  
+            }
+  
+  
+            border-radius: $base-border-radius;
+  
+            padding: $xl-spacing $base-spacing;
+            color: $white;
+            text-align: center;
+            background-color: $orange;
+            background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+            background-repeat: no-repeat;
+            background-position-x: 50%;
+            background-position-y: -100px;
+            background-size: 170%;
+  
+            img {
+              width: 200px;
+            }
+  
+            p {
+              padding: $base-padding;
+            }
+  
+            h2 {
+              margin: 2.5rem 0.625rem 0.625rem 0.625rem;
+              font-size: $xl-font;
+            }
+  
+  
+          }
+        }
+
+        .carousel-button{
+          position: absolute;
+          z-index: 3;
+          border: none;
+          background: none;
+          color: white;
+          bottom: -250px;
+
+          svg{
+            font-size: 5rem;
+          }
+
+        }
+        .button-right{
+           right: 0;
+        }
+
+        // .carousel-nav{
+        //   position: absolute;
+        //   z-index: 4;
+        //   top: 0;
+        //   transform: translate(50%, -50%);
+
+        //   .carousel-indicator{
+        //     border: 0;
+        //     border-radius: 50%;
+        //     width: 20px;
+        //     height: 20px;
+        //     background-color: $black;
+        //   }
+        // }
+
+      
+        
+
+      }
+
+
+
+
+      &:hover  ~ .carousel-copy {
+        box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
+      }
+    }
+    
+    .carousel-copy{
+      transition: box-shadow 0.3s ease-in-out;
+      border-radius: $base-border-radius;
+
+      .carousel-track-container{
+        position: relative;
+        
+      
+        .carousel-track{
+          .carousel-slide{
+            @include flex(center, center, unset, column);
+
+            div{
+              @include flex(center, center, unset, column);
+
+            }
+            border-radius: $base-border-radius;
+
+            padding: $xl-spacing $base-spacing;
+            color: $white;
+            text-align: center;
+            background-color: $orange;
+            background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
+            background-repeat: no-repeat;
+            background-position-x: 50%;
+            background-position-y: -100px;
+            background-size: 170%;
+
+            img {
+              width: 200px;
+            }
+
+            p {
+              padding: $base-padding;
+            }
+
+            h2 {
+              margin: 2.5rem 0.625rem 0.625rem 0.625rem;
+              font-size: $xl-font;
+            }
+
+
+          }
+        }
+
+
+        .carousel-nav{
+          position: absolute;
+          z-index: 3;
+          bottom: 10px;
+           left: 50%; /* Center the element horizontally at 50% of the containing block */
+            transform: translate(-50%, -50%); /* Precisely center the element */
+            display: flex;
+            gap: 0.5rem;
+
+          .carousel-indicator{
+            border: 0;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: $gray ;
+            transition: background-color 0.3s ease-in-out;
+
+            cursor: pointer;
+
+            &:hover{
+              background-color: $black;
+            }
+          }
+
+          .current-slide{
+            background-color: $black
+          }
+        }
+      }
+    }
+
     article {
       border-radius: $base-border-radius;
       transition: box-shadow 0.3s ease-in-out;
 
-      &:not(:first-of-type) {
+      // &:not(:first-of-type) {
         margin-top: $m-spacing;
-      }
+      // }
 
-      &:first-of-type,
-      &:first-of-type > div {
-        @include flex(center, center, unset, column);
-      }
+      
+
+      // &:first-of-type {
+      //   
+      // }
 
       &:first-of-type {
-        padding: $xl-spacing $base-spacing;
-        color: $white;
-        text-align: center;
-        background-color: $orange;
-        background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-        background-repeat: no-repeat;
-        background-position-x: 50%;
-        background-position-y: -100px;
-        background-size: 170%;
-
-        img {
-          width: 200px;
-        }
-
-        p {
-          padding: $base-padding;
-        }
-
-        h2 {
-          margin: 2.5rem 0.625rem 0.625rem 0.625rem;
-          font-size: $xl-font;
-        }
-      }
-
-      &:nth-of-type(2) {
         height: 320px;
         @include flex(flex-start, center, unset, unset);
         background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/presentation-pictures/mi-watch-display.jpg");

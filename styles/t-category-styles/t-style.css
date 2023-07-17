@@ -386,9 +386,6 @@ label {
 .navigation.slimmer-nav .container header {
   flex-wrap: nowrap;
 }
-.navigation.slimmer-nav .container header a {
-  display: none;
-}
 .navigation.slimmer-nav .container header .cart-button {
   order: 3;
 }
@@ -499,6 +496,9 @@ label {
 }
 .navigation > .container header .nav-toggle .special-nav li {
   width: 100%;
+}
+.navigation > .container header .nav-toggle .special-nav li .hide {
+  display: none;
 }
 .navigation > .container header .nav-toggle .special-nav li:hover {
   z-index: 1;

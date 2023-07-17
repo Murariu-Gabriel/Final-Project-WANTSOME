@@ -431,15 +431,15 @@ label {
   .products-display {
     padding-top: 11rem;
   }
-  .products-display .container article:first-of-type {
-    height: 560px;
-    padding: 4rem 1rem;
-    color: #FFFFFF;
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: unset;
     flex-direction: unset;
+    height: 560px;
+    padding: 4rem 1rem;
+    color: #FFFFFF;
     text-align: left;
     background-color: #D87D4A;
     background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
@@ -448,27 +448,28 @@ label {
     background-position-y: 50%;
     background-size: 100%;
   }
-  .products-display .container article:first-of-type img {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide img, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide img {
     width: 400px;
   }
-  .products-display .container article:first-of-type div {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div {
     width: 35%;
     align-items: flex-start;
     gap: 2rem;
   }
-  .products-display .container article:first-of-type div h2 {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div h2, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div h2 {
     font-size: 3.5rem;
   }
-  .products-display .container article:first-of-type div h2,
-.products-display .container article:first-of-type div p {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div h2,
+.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div p, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div h2,
+.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div p {
     margin: 0;
     padding: 0;
     width: 90%;
   }
-  .products-display .container article:nth-of-type(2) {
+  .products-display .container article:first-of-type {
     background-position: center;
   }
-  .products-display .container article:nth-of-type(2) div {
+  .products-display .container article:first-of-type div {
     padding: 0 4rem;
   }
   .products-display .container article:last-of-type div:last-of-type h4 {
