@@ -26,10 +26,6 @@ getProducts()
 const users = localStorage.getItem("products")
 const parsedProducts = JSON.parse(users)
 
-console.log(parsedProducts)
-
-
-
 
 const firstResponse = (response) => {
   if (response.ok && response.status === 200) {
@@ -50,14 +46,21 @@ fetch("../ranges.json")
   const priceRanges = JSON.stringify(response)
 
   localStorageLoadData("price-ranges", priceRanges)
-  console.log(response)
-
 
 })
 .catch(error)
 
 
-// localStorage.removeItem("price-ranges")
+
+
+
+
+
+
+
+
+
+
 
 /// Left this here so you just know 
 
@@ -79,10 +82,173 @@ fetch("../ranges.json")
 
 
 
+// CAROUSEL
+
+
+// - loading carousel items
+const track = document.getElementById("carousel-track")
+
+const createCarouselElement = (name, imagePath, description, id) => {
+  const listElement = document.createElement("li")
+  listElement.classList.add("carousel-slide")
+
+  listElement.innerHTML = `
+    <img
+      class="category-image"
+      src="${imagePath}"
+      alt="${name}"
+    />
+    <div>
+      <h2>${name}</h2>
+      <p>
+        ${description}
+      </p>
+      <a
+        href="/html-pages/product-page.html?productId=${id}"
+        class="button-2b"
+        >see product</a
+      >
+    </div>
+  `
+
+  return listElement
+}
+
+const items = JSON.parse(localStorage.getItem("products"))
+const newItems = items.filter((item) => item.new && item.slug !== "S1-Pro")
+
+console.log(newItems)
+
+const loadCarousel = (items, parent) => {
+
+  items.forEach((item, index) => {
+    const {name, images, shortDescription, id} = item
+
+    const element = createCarouselElement(
+      name,
+      images.productDisplay, 
+      shortDescription,
+      id
+    )
+
+    if(index === 0){
+      element.classList.add("current-slide")
+    }
+
+    parent.appendChild(element)
+
+  })
+}
+
+loadCarousel(newItems, track)
+// loadCarousel(newItems, fakeTrack)
+
+
+const slides = Array.from(track.children)
+const nextBtn = document.querySelector(".button-right")
+const previousBtn = document.body.querySelector(".button-left")
+const carouselNav = document.body.querySelector(".carousel-nav")
+const navDots = Array.from(carouselNav.children)
+const carouselButtons = carouselNav.children
+
+
+const slideWidth = slides[0].getBoundingClientRect().width
+
+
+const setSlidePosition = (slide, index) => {
+  slide.style.left = `${slideWidth * index}px`
+}
+
+slides.forEach(setSlidePosition)
 
 
 
+const moveToSlide = (track, currentSlide, targetSlide) => {
+  track.style.transform = `translateX(-${targetSlide.style.left})`
+  currentSlide.classList.remove("current-slide")
+  targetSlide.classList.add("current-slide")
+}
 
+const updateDots = (selected, target) => {
+  selected.classList.remove("current-slide")
+  target.classList.add("current-slide")
+}
+
+
+let carouselTimeout
+
+previousBtn.addEventListener("click", (e) => {
+  const currentSlide = track.querySelector(".current-slide")
+  const previousSlide = currentSlide.previousElementSibling
+  const currentDot = carouselNav.querySelector(".current-slide")
+  const previousDot = currentDot.previousElementSibling
+
+  resetAutomaticSwitch()
+  
+  if (carouselButtons[0].classList.contains("current-slide")) {
+    carouselButtons[carouselButtons.length - 1].click()
+    return
+    
+  }
+
+  moveToSlide(track, currentSlide, previousSlide)
+  updateDots(currentDot, previousDot)
+
+})
+
+
+nextBtn.addEventListener("click", e => {
+  const currentSlide = track.querySelector(".current-slide")
+  const nextSlide = currentSlide.nextElementSibling
+  const currentDot = carouselNav.querySelector(".current-slide")
+  const nextDot = currentDot.nextElementSibling
+
+  resetAutomaticSwitch()
+
+  if (carouselButtons[carouselButtons.length - 1].classList.contains("current-slide")) {
+    carouselButtons[0].click()
+    return
+  }
+
+  moveToSlide(track, currentSlide, nextSlide)
+  updateDots(currentDot, nextDot)
+})
+
+
+carouselNav.addEventListener("click", e => {
+  const target = e.target.closest("button")
+
+  if(!target) return
+
+  resetAutomaticSwitch()
+
+  const currentSlide = track.querySelector(".current-slide")
+  const selected = carouselNav.querySelector(".current-slide")
+  const index = navDots.findIndex(dot => dot === target)
+  const targetSlide = slides[index]
+  
+  moveToSlide(track, currentSlide, targetSlide)
+
+  updateDots(selected, target)
+})
+
+
+// TIMED SWIPE OF CAROUSEL
+
+
+const setAutomaticSwitch = () => {
+  
+  carouselTimeout = setInterval(() => { nextBtn.click() }, 8000)
+
+}
+
+setAutomaticSwitch()
+
+const resetAutomaticSwitch = () => {
+  clearInterval(carouselTimeout)
+  carouselTimeout = setInterval(() => { nextBtn.click() }, 8000)
+
+}
 
 
 

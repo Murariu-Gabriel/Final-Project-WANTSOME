@@ -453,25 +453,25 @@ label {
   .products-display {
     padding-top: 6.1rem;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide {
+  .products-display .container .carousel {
+    height: 750px;
     background-position-x: 50%;
     background-position-y: -300px;
     background-size: 150%;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide img, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide img {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide {
+    width: 100%;
+  }
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide img {
     width: 230px;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide h2, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide h2 {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide h2 {
     font-size: 3.5rem;
     line-height: 3.625rem;
   }
   .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide h2,
-.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide p, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide h2,
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide p {
-    width: 50%;
-  }
-  .products-display .container .carousel .carousel-track-container .carousel-button, .products-display .container .carousel-copy .carousel-track-container .carousel-button {
-    bottom: -320px;
+.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide p {
+    width: 70%;
   }
   .products-display .container article:first-of-type {
     height: 320px;

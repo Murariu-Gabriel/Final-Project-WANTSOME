@@ -392,6 +392,9 @@ label {
 .navigation.slimmer-nav .container header .nav-toggle {
   top: 4rem;
 }
+.navigation.slimmer-nav .container header > a {
+  display: none;
+}
 .navigation.slimmer-nav .container .search-container .top {
   top: 1rem;
 }
@@ -955,33 +958,37 @@ label {
   transition: box-shadow 0.3s ease-in-out;
   height: 100%;
   z-index: 2;
-}
-.products-display .container .carousel .carousel-track-container {
-  position: relative;
-  height: 5px;
-  max-width: 1100px;
-}
-.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide {
-  width: 100%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-  border-radius: 8px;
-  padding: 4rem 1rem;
-  color: #FFFFFF;
-  text-align: center;
+  transform: scale(1);
+  height: 650px;
   background-color: #D87D4A;
   background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
   background-repeat: no-repeat;
   background-position-x: 50%;
   background-position-y: -100px;
   background-size: 170%;
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  color: #FFFFFF;
 }
-.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide:first-of-type {
-  z-index: 2;
+.products-display .container .carousel .carousel-track-container {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.products-display .container .carousel .carousel-track-container .carousel-track {
+  position: relative;
+  height: 100%;
+  transition: transform 300ms ease-in;
+}
+.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: unset;
+  flex-direction: column;
 }
 .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div {
   display: flex;
@@ -1005,69 +1012,32 @@ label {
   z-index: 3;
   border: none;
   background: none;
-  color: white;
-  bottom: -250px;
+  color: #FFFFFF;
+  top: 20%;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 .products-display .container .carousel .carousel-track-container .carousel-button svg {
   font-size: 5rem;
 }
+.products-display .container .carousel .carousel-track-container .carousel-button svg path {
+  text-align: end;
+}
+.products-display .container .carousel .carousel-track-container .carousel-button:hover {
+  color: #000000;
+}
 .products-display .container .carousel .carousel-track-container .button-right {
   right: 0;
 }
-.products-display .container .carousel:hover ~ .carousel-copy {
-  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
-}
-.products-display .container .carousel-copy {
-  transition: box-shadow 0.3s ease-in-out;
-  border-radius: 8px;
-}
-.products-display .container .carousel-copy .carousel-track-container {
-  position: relative;
-}
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-  border-radius: 8px;
-  padding: 4rem 1rem;
-  color: #FFFFFF;
-  text-align: center;
-  background-color: #D87D4A;
-  background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-  background-repeat: no-repeat;
-  background-position-x: 50%;
-  background-position-y: -100px;
-  background-size: 170%;
-}
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: unset;
-  flex-direction: column;
-}
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide img {
-  width: 200px;
-}
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide p {
-  padding: 1rem;
-}
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide h2 {
-  margin: 2.5rem 0.625rem 0.625rem 0.625rem;
-  font-size: 2.25rem;
-}
-.products-display .container .carousel-copy .carousel-track-container .carousel-nav {
-  position: absolute;
+.products-display .container .carousel .carousel-track-container .carousel-nav {
+  position: fixed;
   z-index: 3;
-  bottom: 10px;
-  left: 50%; /* Center the element horizontally at 50% of the containing block */
-  transform: translate(-50%, -50%); /* Precisely center the element */
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 0.5rem;
 }
-.products-display .container .carousel-copy .carousel-track-container .carousel-nav .carousel-indicator {
+.products-display .container .carousel .carousel-track-container .carousel-nav .carousel-indicator {
   border: 0;
   border-radius: 50%;
   width: 20px;
@@ -1076,16 +1046,19 @@ label {
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
 }
-.products-display .container .carousel-copy .carousel-track-container .carousel-nav .carousel-indicator:hover {
+.products-display .container .carousel .carousel-track-container .carousel-nav .carousel-indicator:hover {
   background-color: #000000;
 }
-.products-display .container .carousel-copy .carousel-track-container .carousel-nav .current-slide {
+.products-display .container .carousel .carousel-track-container .carousel-nav .current-slide {
   background-color: #000000;
+}
+.products-display .container .carousel:hover {
+  box-shadow: 0px 0px 20px 1px rgb(150, 150, 150);
 }
 .products-display .container article {
+  margin-top: 2rem;
   border-radius: 8px;
   transition: box-shadow 0.3s ease-in-out;
-  margin-top: 2rem;
 }
 .products-display .container article:first-of-type {
   height: 320px;

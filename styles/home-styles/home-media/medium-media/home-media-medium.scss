@@ -108,6 +108,7 @@
       margin: 0 auto;
       @include flex(space-around, unset, unset, unset);
       gap: 10px;
+
       article {
         div{
           .subtitle{
@@ -124,14 +125,16 @@
 
     .container {
 
-      .carousel, .carousel-copy{
+      .carousel{
+        height: 750px;
+        background-position-x: 50%;
+        background-position-y: -300px;
+        background-size: 150%;
+
         .carousel-track-container{
           .carousel-track{
-
             .carousel-slide{
-              background-position-x: 50%;
-              background-position-y: -300px;
-              background-size: 150%;
+              width: 100%;
 
               img {
               width: 230px;
@@ -144,22 +147,12 @@
 
               h2,
               p {
-                width: 50%;
+                width: 70%;
               }
             }
           }
-          .carousel-button{
-            bottom: -320px;
-          }
         }  
       }  
-
-      //  &:first-of-type {
-      //  
-      //   }
-
-
-
 
       article {
         &:first-of-type {
@@ -238,5 +231,3 @@
     }
   }
 }
-
-// for categories firs solution would be to erase flex-direction and set width for article to 100% and the gap 10px

@@ -22,7 +22,6 @@ const getLoggedUserName = (userEmail) => {
   for(let user of userStatus){
     const currentUser = JSON.parse(user)
 
-    console.log(currentUser)
     if (currentUser.email === userEmail) {
       return currentUser.first_name
     }
@@ -30,8 +29,6 @@ const getLoggedUserName = (userEmail) => {
 
 }
 
-console.log(getLoggedUserName())
-console.log(getUserStatus())
 
 const userIcon = document.getElementById("user-account")
 const userContainer = document.getElementById("user-container")
@@ -39,8 +36,6 @@ const userOptionsContent = document.querySelectorAll(".user-options-content")
 
 const secondNavUser = document.body.querySelector(".user-element")
 
-console.log(secondNavUser)
-// const 
 
 userIcon.addEventListener("click", (e) => {
   if(userContainer.classList.contains("hide")){
@@ -89,7 +84,6 @@ const loginStatusContainer = document.body.querySelector(".user-options")
 const userName = document.getElementById("user-name-after-login")
 const mobileUserName = document.getElementById("mobile-nav-name")
 
-console.log(loginStatusContainer.children[0])
 
 if (getUserStatus()?.status) {
   loginStatusContainer.children[0].classList.add("hide")

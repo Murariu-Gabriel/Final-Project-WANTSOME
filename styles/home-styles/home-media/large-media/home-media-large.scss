@@ -92,25 +92,24 @@
     padding-top: $m-section-spacing;
     .container {
 
-      .carousel, .carousel-copy{
+      .carousel{
+        height: 550px;
+        background-position-x: -250px;
+        background-position-y: 50%;
+        background-size: 100%;
+
+
         .carousel-track-container{
           .carousel-track{
 
             .carousel-slide{
 
-              @include flex(space-around, center, unset, unset);
-              height: 560px;
-              padding: $xl-spacing $base-spacing;
-              color: $white;
+               @include flex(space-around, center, unset, unset);
+              
+              
               text-align: left;
-              background-color: $orange;
-              background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-              background-repeat: no-repeat;
-              background-position-x: -250px;
-              background-position-y: 50%;
-              // background-position: left;
-              background-size: 100%;
-
+             
+            
               img {
                 width: 400px;
               }
@@ -133,9 +132,12 @@
               }
             }
           }
+
+          .carousel-button{
+            top: 40%;
+          }
         }
       }
-
 
       article {
         &:first-of-type {

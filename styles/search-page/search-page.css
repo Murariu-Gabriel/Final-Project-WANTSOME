@@ -392,6 +392,9 @@ label {
 .navigation.slimmer-nav .container header .nav-toggle {
   top: 4rem;
 }
+.navigation.slimmer-nav .container header > a {
+  display: none;
+}
 .navigation.slimmer-nav .container .search-container .top {
   top: 1rem;
 }

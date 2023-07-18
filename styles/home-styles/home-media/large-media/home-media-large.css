@@ -431,40 +431,39 @@ label {
   .products-display {
     padding-top: 11rem;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide {
+  .products-display .container .carousel {
+    height: 550px;
+    background-position-x: -250px;
+    background-position-y: 50%;
+    background-size: 100%;
+  }
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: unset;
     flex-direction: unset;
-    height: 560px;
-    padding: 4rem 1rem;
-    color: #FFFFFF;
     text-align: left;
-    background-color: #D87D4A;
-    background-image: url("/assets/from-project-assets/home/desktop/pattern-circles.svg");
-    background-repeat: no-repeat;
-    background-position-x: -250px;
-    background-position-y: 50%;
-    background-size: 100%;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide img, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide img {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide img {
     width: 400px;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div {
     width: 35%;
     align-items: flex-start;
     gap: 2rem;
   }
-  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div h2, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div h2 {
+  .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div h2 {
     font-size: 3.5rem;
   }
   .products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div h2,
-.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div p, .products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div h2,
-.products-display .container .carousel-copy .carousel-track-container .carousel-track .carousel-slide div p {
+.products-display .container .carousel .carousel-track-container .carousel-track .carousel-slide div p {
     margin: 0;
     padding: 0;
     width: 90%;
+  }
+  .products-display .container .carousel .carousel-track-container .carousel-button {
+    top: 40%;
   }
   .products-display .container article:first-of-type {
     background-position: center;

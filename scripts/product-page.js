@@ -4,7 +4,6 @@ const existingCartProducts = localStorage.getItem("cart-products")
 const parsedCartProducts = JSON.parse(existingCartProducts)
 const cart = parsedCartProducts ? parsedCartProducts : []
 
-
 // USER OPTIONS TOGGLE
 
 
@@ -29,9 +28,6 @@ const getLoggedUserName = (userEmail) => {
     }
   }
 
-
-   
-
 }
 
 console.log(getLoggedUserName())
@@ -40,10 +36,14 @@ console.log(getUserStatus())
 const userIcon = document.getElementById("user-account")
 const userContainer = document.getElementById("user-container")
 const userOptionsContent = document.querySelectorAll(".user-options-content")
+
+const secondNavUser = document.body.querySelector(".user-element")
+
+console.log(secondNavUser)
 // const 
 
 userIcon.addEventListener("click", (e) => {
-   if(userContainer.classList.contains("hide")){
+  if(userContainer.classList.contains("hide")){
     userContainer.classList.remove("hide")
     document.body.classList.add("stop-scroll")
 
@@ -56,6 +56,7 @@ userIcon.addEventListener("click", (e) => {
 
   if(cartContainer.classList.contains("show-cart")){
      cartContainer.classList.remove("show-cart")
+    // document.body.classList.remove("stop-scroll")
   }
 
  
@@ -86,6 +87,7 @@ for(const container of userOptionsContent){
 
 const loginStatusContainer = document.body.querySelector(".user-options")
 const userName = document.getElementById("user-name-after-login")
+const mobileUserName = document.getElementById("mobile-nav-name")
 
 console.log(loginStatusContainer.children[0])
 
@@ -93,7 +95,12 @@ if (getUserStatus()?.status) {
   loginStatusContainer.children[0].classList.add("hide")
   loginStatusContainer.children[1].classList.remove("hide")
 
+  secondNavUser.children[0].classList.add("hide")
+  secondNavUser.children[1].classList.remove("hide")
+
   userName.innerText = getLoggedUserName(getUserStatus().user)
+  mobileUserName.innerText = getLoggedUserName(getUserStatus().user)
+
 }  
 
 const logout = document.getElementById("logout")
@@ -101,8 +108,17 @@ const logout = document.getElementById("logout")
 logout.addEventListener("click", () => {
   loginStatusContainer.children[1].classList.add("hide")
   loginStatusContainer.children[0].classList.remove("hide")
+
+  secondNavUser.children[1].classList.add("hide")
+  secondNavUser.children[0].classList.remove("hide")
   localStorage.removeItem("isUserLoggedIn")
 
+})
+
+secondNavUser.children[1]. addEventListener("click", () => {
+  secondNavUser.children[1].classList.add("hide")
+  secondNavUser.children[0].classList.remove("hide")
+  localStorage.removeItem("isUserLoggedIn")
 })
 
 // Nav toggle
