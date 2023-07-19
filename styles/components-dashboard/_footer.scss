@@ -66,6 +66,8 @@ footer {
     }
     
     nav {
+      text-transform: uppercase;
+
       .socials {
         @include flex(center, center, unset, unset);
         gap: $base-spacing;

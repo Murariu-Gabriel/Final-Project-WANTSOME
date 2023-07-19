@@ -395,7 +395,8 @@ const cleanLocalStorage = () => {
       key !== "price-ranges" &&
       key !== "debug" &&
       key !== "users" &&
-      key !== "recent-searches"
+      key !== "recent-searches" &&
+      key !== "isUserLoggedIn"
     ) {
       toRemove.push(key)
     }

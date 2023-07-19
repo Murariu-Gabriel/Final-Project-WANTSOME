@@ -676,8 +676,9 @@ const noMatterSearch = (windowKey) => {
   if (searchValidation(windowKey)) {
     searches.unshift(windowKey)
 
+    const lowerCased = windowKey.toLowerCase()
     window.location.assign(
-      `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}`
+      `http://127.0.0.1:5500/html-pages/search.html?search=${lowerCased}`
     )
   }
 

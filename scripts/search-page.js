@@ -323,23 +323,21 @@ const updatePriceInterval = (list, updateValue) => {
     
     updatePriceValues(list)
   } else {
-    if(biggestPrice === smallestPrice){
+    if (currentSearch.length === 1) {
       console.log("da")
-      priceInput[0].value = 0 
-      rangeInput[0].value = 0 
+      priceInput[0].value = 0
+      rangeInput[0].value = 0
       priceInput[0].max = 0
-      rangeInput[0].max = 0 
+      rangeInput[0].max = 0
 
-      priceInput[1].value = biggestPrice 
-      rangeInput[1].value = biggestPrice 
+      priceInput[1].value = biggestPrice
+      rangeInput[1].value = biggestPrice
       priceInput[1].max = biggestPrice
-      rangeInput[1].max = biggestPrice 
-
+      rangeInput[1].max = biggestPrice
     } else {
-
       priceInput[0].value = smallestPrice
       rangeInput[0].value = smallestPrice
-  
+
       rangeInputFunctionality(smallestPrice, biggestPrice)
     }
 
@@ -1594,7 +1592,7 @@ rangeButton.addEventListener('click', (e) => {
 
   if(min > max){
     
-    e.preventDefault()
+    // e.preventDefault()
     return
   }
 
@@ -1608,22 +1606,22 @@ rangeButton.addEventListener('click', (e) => {
     max
   )
 
-  console.log(ranges)
-    if(ranges.length !== 0){
-      updatePaginationAndProducts(
-        ranges,
-        getPaginationPrefrence(),
-        checkIfOrderSelected()
-      )
+  
+  if(ranges.length !== 0){
+    updatePaginationAndProducts(
+      ranges,
+      getPaginationPrefrence(),
+      checkIfOrderSelected()
+    )
 
-    } else {
-      updatePaginationAndProducts(
-        getElementsFromLastArrayUsed(),
-        getPaginationPrefrence(),
-        checkIfOrderSelected()
-      )
+  } else {
+    updatePaginationAndProducts(
+      getElementsFromLastArrayUsed(),
+      getPaginationPrefrence(),
+      checkIfOrderSelected()
+    )
 
-      intervalInput.click()
+    intervalInput.click()
 
     }
     
@@ -1649,8 +1647,10 @@ const loadFilters = () => {
 
   const getFilters = localStorage.getItem("filters")
   const lastUsedFilters = JSON.parse(getFilters)
-  console.log(lastUsedFilters)
-  deselectPriceFilters(lastUsedFilters, "empty", "select")
+  if(lastUsedFilters !== null){
+
+    deselectPriceFilters(lastUsedFilters, "empty", "select")
+  }
 
 }
 

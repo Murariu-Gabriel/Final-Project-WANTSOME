@@ -977,7 +977,7 @@ const highlight = (element, searchedWord) => {
 searchInput.addEventListener("keyup", (e) => {
   const normalValue = e.target.value
   const value = e.target.value.toLowerCase()
-  // e.target.value = value
+
   listResults.innerHTML = ""
   searchTitle.innerText = "Search suggestions"
 
@@ -1007,7 +1007,6 @@ searchInput.addEventListener("keyup", (e) => {
   const inputCategories = inputSearchResult.map((product) => product.category)
   const setCategories = new Set(inputCategories)
   const cleanCategories = [...setCategories]
-  console.log(cleanCategories)
 
   placeHolder.innerText = ""
 
@@ -1036,6 +1035,11 @@ searchInput.addEventListener("keyup", (e) => {
         return
       }
     })
+  }
+
+  if (listResults.children.length === 0) {
+    const noResult = generateListElement(value)
+    listResults.appendChild(noResult)
   }
 })
 

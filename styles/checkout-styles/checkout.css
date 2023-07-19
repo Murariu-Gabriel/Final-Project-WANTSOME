@@ -464,6 +464,7 @@ label {
 }
 .navigation > .container header nav {
   display: none;
+  text-transform: uppercase;
 }
 .navigation > .container header .nav-toggle {
   display: flex;
@@ -916,6 +917,9 @@ footer .container img:hover {
 }
 footer .container p {
   color: gray;
+}
+footer .container nav {
+  text-transform: uppercase;
 }
 footer .container nav .socials {
   display: flex;

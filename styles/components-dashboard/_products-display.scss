@@ -148,7 +148,7 @@
       transition: box-shadow 0.3s ease-in-out;
 
       position: relative;
-      overflow: hidden;
+     
 
         .subtitle{
           color: $white;
@@ -161,9 +161,9 @@
           transform: translate(-50%, -50%);
           width: 120px;
           height: 120px;
-          // padding: 1rem 1rem 1rem 1rem;
           background-color: rgb(99, 129, 250);
           border-radius: 50% 50% 50% 50%;
+          
           span{
             font-size: 1.3rem;
             position: absolute;
@@ -179,6 +179,7 @@
         background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/presentation-pictures/mi-watch-display.jpg");
         background-size: cover;
         background-position: 30%;
+        overflow: hidden;
 
         div {
           position: relative;
@@ -193,10 +194,13 @@
 
       &:last-of-type {
         //  height: 500px; // Pentru desktop
-        position: relative;
+        // position: relative;
+        
         div {
           height: 200px;
           margin-top: $m-spacing;
+          position: relative;
+          overflow: hidden;
 
           &:first-of-type {
             border-radius: $base-border-radius;
@@ -204,14 +208,16 @@
             background-size: cover;
             background-position: center;
             margin-top: 0;
+            
           }
 
           &:last-of-type {
             border-radius: $base-border-radius;
             background-color: $gray;
-            transition: box-shadow 0.2s ease-in-out;
+            transition: box-shadow 0.3s ease-in-out;
             // padding: 0 $base-spacing;
             @include flex(center, flex-start, unset, column);
+           
 
             h4 {
               padding: 0 0 $m-spacing $m-spacing;

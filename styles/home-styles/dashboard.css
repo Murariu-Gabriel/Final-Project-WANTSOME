@@ -464,6 +464,7 @@ label {
 }
 .navigation > .container header nav {
   display: none;
+  text-transform: uppercase;
 }
 .navigation > .container header .nav-toggle {
   display: flex;
@@ -1066,7 +1067,6 @@ label {
   border-radius: 8px;
   transition: box-shadow 0.3s ease-in-out;
   position: relative;
-  overflow: hidden;
 }
 .products-display .container article .subtitle {
   color: #FFFFFF;
@@ -1098,6 +1098,7 @@ label {
   background-image: url("/assets/Images/Devices/Xiaomi/Smart-Watches/Mi-Watch/presentation-pictures/mi-watch-display.jpg");
   background-size: cover;
   background-position: 30%;
+  overflow: hidden;
 }
 .products-display .container article:first-of-type div {
   position: relative;
@@ -1107,12 +1108,11 @@ label {
   margin-top: 0;
   width: 60%;
 }
-.products-display .container article:last-of-type {
-  position: relative;
-}
 .products-display .container article:last-of-type div {
   height: 200px;
   margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 .products-display .container article:last-of-type div:first-of-type {
   border-radius: 8px;
@@ -1124,7 +1124,7 @@ label {
 .products-display .container article:last-of-type div:last-of-type {
   border-radius: 8px;
   background-color: #F1F1F1;
-  transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1229,6 +1229,9 @@ footer .container img:hover {
 }
 footer .container p {
   color: gray;
+}
+footer .container nav {
+  text-transform: uppercase;
 }
 footer .container nav .socials {
   display: flex;
