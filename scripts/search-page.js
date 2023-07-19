@@ -168,6 +168,18 @@ const getSearchProducts = (search) => {
 const currentSearch = getSearchProducts(retrievedSearch)
 
 
+// Function for obtaining all available products
+
+const getAllProducts = () => {
+    const allProducts = localStorage.getItem("products")
+    const parsedProducts = JSON.parse(allProducts)
+
+    const ifExist = parsedProducts.length !== 0 ? parsedProducts : currentSearch
+    return ifExist
+}
+
+
+
 // FILTER RANGE INTERACTIVE FUNCTIONALITY
 
 const rangeInput = document.querySelectorAll(".range-input input")
@@ -311,11 +323,26 @@ const updatePriceInterval = (list, updateValue) => {
     
     updatePriceValues(list)
   } else {
+    if(biggestPrice === smallestPrice){
+      console.log("da")
+      priceInput[0].value = 0 
+      rangeInput[0].value = 0 
+      priceInput[0].max = 0
+      rangeInput[0].max = 0 
 
-    priceInput[0].value = smallestPrice
-    rangeInput[0].value = smallestPrice
+      priceInput[1].value = biggestPrice 
+      rangeInput[1].value = biggestPrice 
+      priceInput[1].max = biggestPrice
+      rangeInput[1].max = biggestPrice 
 
-    rangeInputFunctionality(smallestPrice, biggestPrice)
+    } else {
+
+      priceInput[0].value = smallestPrice
+      rangeInput[0].value = smallestPrice
+  
+      rangeInputFunctionality(smallestPrice, biggestPrice)
+    }
+
   }
  
 }
@@ -790,15 +817,6 @@ const selectOrderFunctionality = (list, order) => {
 selectOrderFunctionality(currentSearch)
 
 
-// Function for obtaining all available products
-
-const getAllProducts = () => {
-    const allProducts = localStorage.getItem("products")
-    const parsedProducts = JSON.parse(allProducts)
-
-    const ifExist = parsedProducts.length !== 0 ? parsedProducts : currentSearch
-    return ifExist
-}
 
 
 // !IMPORTANT 
@@ -994,7 +1012,6 @@ const deselectPriceFilters = (options, e, optional) => {
           }
 
           if (minPrice > maxValue) {
-            console.log("da valoarea este prea mare")
             minPrice = minValue
           }
 
@@ -1344,7 +1361,7 @@ const generateFilter = (name, count, list) => {
 
   const container = document.createElement("div")
   container.innerHTML = `
-  <input id='${editName}' type="checkbox" />
+  <input id='${editName}' type="checkbox" autocomplete="off" />
   <label for='${editName}' name=${editName}>
     ${name}
     <span>(${count})</span> 

@@ -135,7 +135,7 @@ const verifyIfInputEmpty = (value) => {
 }
 
 const namesValidation = (name) => {
-  const regex = /[\d!@#$%^&*()\-=_+[\]{};':"\\|,.<>/?]/
+  const regex = /[\!@#$%^&*()\-=_+[\]{};':"\\|,.<>/?]/
   // const specialCharacters = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?"
   // const test = name.includes(specialCharacters)
   const test = regex.test(name)
@@ -373,12 +373,12 @@ form.addEventListener("submit", (e) => {
 
   if(!errors.includes("invalid")){
     const orderSuccessPop = document.getElementById("order-success")
-    orderSuccessPop.classList.toggle("hide")
-    document.body.classList.toggle("stop-scroll")
+    orderSuccessPop.classList.remove("hide")
+    document.body.classList.add("stop-scroll")
     cleanLocalStorage()
   }
 })
-
+ 
 
 // Behaviour of local storage is diffrent it updated the length as items are removed so that is why we need to loop backwards
 

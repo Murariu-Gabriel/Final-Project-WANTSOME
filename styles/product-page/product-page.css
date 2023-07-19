@@ -920,7 +920,7 @@ label {
 }
 
 .about {
-  padding-top: 6.1rem;
+  padding-top: 8rem;
   padding-bottom: 6.1rem;
 }
 .about .container {
@@ -973,7 +973,7 @@ footer .container .back-to-top {
   background-color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
   position: fixed;
-  bottom: 3.5%;
+  bottom: 2%;
   right: 3.5%;
   z-index: 3;
   transition: color 0.3s ease-in-out;

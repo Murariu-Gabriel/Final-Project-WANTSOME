@@ -44,19 +44,26 @@ const addProduct = (
   const ifNew = newProduct ? "<p class='overline'>new product</p>" : ""
   const ifDiscount = discount ? `<p class='overline'>Discount: ${discount}% OFF</p>` : ""
   
+
   article.innerHTML = `
           
-          <a href="/html-pages/product-page.html?productId=${id}" class="image-container">
-            <img src=${imgSrc} alt="${imgAlt}">
-          </a>
-          <div>
-            ${ifNew}
-            ${ifDiscount}
-            <h2>${productTitle}</h2>
-            <p>${productDescription}</p>
-            <a href="/html-pages/product-page.html?productId=${id}" class="button-1">see product</a>
-          </div>
-          `
+    <a href="/html-pages/product-page.html?productId=${id}" class="image-container">
+      <img src=${imgSrc} alt="${imgAlt}">
+    </a>
+    <div>
+      ${ifNew}
+      ${ifDiscount}
+      <h2>${productTitle}</h2>
+      <p>${productDescription}</p>
+      <a href="/html-pages/product-page.html?productId=${id}" class="button-1">see product</a>
+    </div>
+    `
+
+    
+  if (discount) {
+    const overline = article.querySelector(".overline")
+    overline.style.color = "rgb(99, 129, 250)"
+  }
 
   return article
 }
@@ -72,7 +79,9 @@ const getCategoryProducts = (category) => {
     product.category.includes(category)
   )
 
-  return categorySpecificProducts
+  const sortedByNew = categorySpecificProducts.sort((a,b) => b.new - a.new)
+
+  return sortedByNew
 }
 
 

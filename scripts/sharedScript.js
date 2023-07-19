@@ -578,41 +578,6 @@ const deleteFromStorage = (identification) => {
 // console.log(localStorage.getItem("cart-products"))
 
 
-// BACK TO TOP
-
-if(parameters.pathname !== "/html-pages/checkout.html"){
-
-  const toTopBtn = document.getElementById("back-to-top")
-  
-  // window.onscroll = () => {
-  //   if(document.body.scrollTop > 10 || document.documentElement.scrollTop > 10){
-  //     toTopBtn.classList.remove("hide")
-  //   } else {
-  //     toTopBtn.classList.add("hide")
-  //   }
-  // }
-  
-  window.addEventListener("scroll", (e) => {
-    if(window.scrollY > 10){
-    // toTopBtn.classList.remove("hide")
-    toTopBtn.style.display = "block"
-    } else {
-    // toTopBtn.classList.add("hide")
-      toTopBtn.style.display = "none"
-    }
-  })
-  
-  
-  // {top: 0, behavior: "smooth"}  not supported on MAC
-  toTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      // behavior: "smooth", // Add smooth scrolling animation
-    })
-  })
-
-}  
-
 // SEARCH FUNCTIONALITY
 
 
@@ -725,6 +690,7 @@ const noMatterSearch = (windowKey) => {
   const stringSearches = JSON.stringify(newArray)
   localStorage.setItem("recent-searches", stringSearches)
   localStorage.removeItem("page")
+  localStorage.removeItem("filters")
 }
 
 
@@ -934,8 +900,54 @@ if(!parameters.pathname.includes("search")){
 
 
 
+// BACK TO TOP
+
+if(parameters.pathname !== "/html-pages/checkout.html"){
+
+  const toTopBtn = document.getElementById("back-to-top")
+  const footer = document.body.querySelector("footer")
+ 
+ 
+   
+  window.addEventListener("scroll", (e) => {
+  
+    let isButtonOnTop = false
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        console.log(entry.target && entry.isIntersecting)
+        if (entry.target === footer && entry.isIntersecting) {
+          isButtonOnTop = true
+          toTopBtn.style.bottom = "80px"
+        } else {
+          toTopBtn.style.bottom = "1%"
+        }
+      })
+    }, {rootMargin: "300px 0px 0px 0px"})
+
+    observer.observe(footer)  
 
 
+    if(window.scrollY > 100){
+      toTopBtn.style.display = "block"
+
+    } else {
+      toTopBtn.style.display = "none"
+    }
+
+  
+  })
+  
+  
+  // {top: 0, behavior: "smooth"}  not supported on MAC
+  toTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      // behavior: "smooth", // Add smooth scrolling animation
+    })
+  })
+
+}  
 
 
 // NAVIGATION STICKY FUNCTIONALITY

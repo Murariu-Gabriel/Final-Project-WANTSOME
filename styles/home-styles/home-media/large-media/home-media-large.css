@@ -463,7 +463,7 @@ label {
     width: 90%;
   }
   .products-display .container .carousel .carousel-track-container .carousel-button {
-    top: 40%;
+    top: 43%;
   }
   .products-display .container article:first-of-type {
     background-position: center;
@@ -502,9 +502,6 @@ label {
   .about .container div:last-of-type h2,
 .about .container div:last-of-type p {
     width: 80%;
-  }
-  footer .container .back-to-top {
-    bottom: 150px;
   }
   footer .container img {
     order: 1;

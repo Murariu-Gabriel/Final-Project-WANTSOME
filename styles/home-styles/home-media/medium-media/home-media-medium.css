@@ -509,9 +509,6 @@ label {
     text-align: unset;
     padding: 2rem 0;
   }
-  footer .container .back-to-top {
-    bottom: 80px;
-  }
   footer .container nav:first-of-type {
     width: 100%;
   }

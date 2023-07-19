@@ -953,6 +953,12 @@ label {
 .products-display {
   padding-top: 6.1rem;
 }
+.products-display .container > h2 {
+  margin-top: 0;
+}
+.products-display .container > h2:last-of-type {
+  margin-top: 4rem;
+}
 .products-display .container .carousel {
   position: relative;
   transition: box-shadow 0.3s ease-in-out;
@@ -1059,6 +1065,28 @@ label {
   margin-top: 2rem;
   border-radius: 8px;
   transition: box-shadow 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+.products-display .container article .subtitle {
+  color: #FFFFFF;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  left: 20px;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background-color: rgb(99, 129, 250);
+  border-radius: 50% 50% 50% 50%;
+}
+.products-display .container article .subtitle span {
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: 18%;
+  right: 15%;
 }
 .products-display .container article:first-of-type {
   height: 320px;
@@ -1072,6 +1100,7 @@ label {
   background-position: 30%;
 }
 .products-display .container article:first-of-type div {
+  position: relative;
   padding: 0 2rem;
 }
 .products-display .container article:first-of-type div h4 {
@@ -1090,6 +1119,7 @@ label {
   background-image: url("/assets/Images/Devices/Garmin/Garmin-vivomove/presentation-pictures/presentation-dashboard.jpg");
   background-size: cover;
   background-position: center;
+  margin-top: 0;
 }
 .products-display .container article:last-of-type div:last-of-type {
   border-radius: 8px;
@@ -1117,7 +1147,7 @@ label {
 }
 
 .about {
-  padding-top: 6.1rem;
+  padding-top: 8rem;
   padding-bottom: 6.1rem;
 }
 .about .container {
@@ -1170,7 +1200,7 @@ footer .container .back-to-top {
   background-color: rgba(0, 0, 0, 0.7);
   cursor: pointer;
   position: fixed;
-  bottom: 3.5%;
+  bottom: 2%;
   right: 3.5%;
   z-index: 3;
   transition: color 0.3s ease-in-out;

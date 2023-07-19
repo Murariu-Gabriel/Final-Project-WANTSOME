@@ -12,6 +12,9 @@ footer {
     text-align: center;
 
     .back-to-top{
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
       color: white;
       background: none;
       height: 48px;
@@ -24,7 +27,7 @@ footer {
       // bottom: 80px;
       // bottom: 25px;
       // right: 22px;
-      bottom: 3.5%;
+      bottom: 2%;
       right: 3.5%;
       z-index: 3;
       transition: color 0.3s ease-in-out;

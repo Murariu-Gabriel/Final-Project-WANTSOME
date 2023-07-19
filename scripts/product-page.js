@@ -237,6 +237,7 @@ if (!product) {
 
   if(product.discount){
      overline.innerText = product.discount ? `discount: ${product.discount}% off` : ""
+     overline.style.color = "rgb(99, 129, 250)"
   }
 
   const calcDiscount = product.price * (product.discount / 100)
@@ -341,7 +342,9 @@ cartForm.addEventListener("click", (e) => {
 
 const hideRemoveAll = (num) => {
   if (num === 0) {
-    cartDeleteAll.classList.toggle("hide")
+    cartDeleteAll.classList.add("hide")
+  } else {
+    cartDeleteAll.classList.remove("hide")
   }
 }
 
@@ -911,7 +914,7 @@ const noMatterSearch = (windowKey) => {
     searches.unshift(windowKey)
 
     window.location.assign(
-      `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}"`
+      `http://127.0.0.1:5500/html-pages/search.html?search=${windowKey}`
     )
   }
 
@@ -1041,6 +1044,7 @@ searchInput.addEventListener("keyup", (e) => {
 
 searchButton.addEventListener("click", (e) => {
   noMatterSearch(searchInput.value)
+  
 })
 
 document.body.addEventListener("keydown", (e) => {
