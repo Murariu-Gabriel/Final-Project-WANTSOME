@@ -351,7 +351,9 @@ const cleanLocalStorage = () => {
       key !== "debug" &&
       key !== "users" &&
       key !== "recent-searches" &&
-      key !== "email"
+      key !== "email" &&
+      key !== "isUserLoggedIn" &&
+      key !== "cart-products"
     ) {
       toRemove.push(key)
     }
@@ -365,6 +367,9 @@ form.addEventListener("submit", (e) => {
 
   const formData = new FormData(e.currentTarget)
   const entries = [...formData.entries()]
+  
+  const fullName = `${formData.get("first_name")} ${formData.get("last_name")}` 
+ 
 
   const formObject = Object.fromEntries(formData)
   const user = JSON.stringify(formObject)
@@ -386,8 +391,7 @@ form.addEventListener("submit", (e) => {
     localStorage.setItem("users", newUsers)
     popupContainer.classList.remove("hide")
     popupContainer.style.display = "flex"
-
-    // !Password1
+    localStorage.setItem("full-name", fullName)
   }
 })
 

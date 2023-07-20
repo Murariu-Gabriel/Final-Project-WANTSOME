@@ -40,7 +40,6 @@ const userOptionsContent = document.querySelectorAll(".user-options-content")
 const secondNavUser = document.body.querySelector(".user-element")
 
 console.log(secondNavUser)
-// const 
 
 userIcon.addEventListener("click", (e) => {
   if(userContainer.classList.contains("hide")){
@@ -193,6 +192,8 @@ backButton.addEventListener("click", () => {
 const searchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(searchParams.entries())
 
+console.log(params)
+
 const productListString = localStorage.getItem("products")
 
 // Guard IF
@@ -204,6 +205,17 @@ if (!productListString) {
 const productList = JSON.parse(productListString)
 
 const product = productList.find((element) => element.id === params.productId)
+
+
+// SETTING TITLE
+
+const capitalize = (name) => {
+  return  name.replace(/\b\w/g, char => char.toUpperCase());
+}
+
+document.title = capitalize(product.name)
+
+console.log(product)
 
 if (!product) {
   // Aici trebuie sa faci ceva eroare sa apara pe ecran
@@ -255,7 +267,7 @@ if (!product) {
   
 
   
-  // in the box
+  // IN THE BOX
   const productItems = product.includes
   productItems.forEach((productItem) => {
     const boxItem = document.createElement("p")
@@ -272,7 +284,7 @@ if (!product) {
   })
 }
 
-// BUTTON Increment part
+// BUTTON INCREMENT
 
 const productCounter = document.getElementById("product-counter")
 const countButtons = document.body.querySelectorAll(
@@ -422,7 +434,18 @@ const verifyIfIdExists = (list, id) => {
 
 const verifyIfIdExistsForCart = (list, id) => {
   for (const el of list) {
+    console.log(el.id, id)
     if (el.id === id) {
+      return true
+    }
+  }
+  return false
+}
+
+const verifyLocalAndCartId = (list, id) => {
+  for (const el of list) {
+    console.log(el.id.slice(5, 12), id)
+    if (el.id.slice(5, 12) === id) {
       return true
     }
   }
@@ -432,7 +455,8 @@ const verifyIfIdExistsForCart = (list, id) => {
 
 const addProductCount = (list, id) => {
   for (const el of list) {
-    if (el.id.includes(id)) {
+    console.log(el.id, id)
+    if (el.id.slice(5, 12) === id) {
       const elInput = el.querySelector("input")
       let inputValue = parseInt(elInput.value)
       let addValue = parseInt(productCounter.value)
@@ -459,9 +483,6 @@ const calculateTotal = (list) => {
   totalPrice.innerText = total
 }
 
-//  cart.push("productInfo")
-//  const newProducts = JSON.stringify(cart)
-//  localStorage.setItem("cart-products", newProducts)
 
 const addListEl = (
   productId,
@@ -469,10 +490,15 @@ const addListEl = (
   productAlt,
   productName,
   productPrice,
-  productCount
+  productCount,
+  ifDiscount
 ) => {
   const li = document.createElement("li")
   li.setAttribute("id", `list-${productId}`)
+
+  const calcDiscount = productPrice * (ifDiscount / 100)
+  const priceDiscount = ifDiscount ? productPrice - calcDiscount : productPrice
+
   li.innerHTML = `<div class="img-container">
       <img src=${productImg} alt=${productAlt} />
     </div>
@@ -480,7 +506,7 @@ const addListEl = (
     <p>
       <strong>${productName}</strong>
       <span>$</span>
-      <span>${productPrice}</span>
+      <span>${priceDiscount}</span>
     </p>
 
     <div class="input-stepper">
@@ -508,8 +534,10 @@ console.log(cart)
 
 addToCart.addEventListener("click", () => {
   
-  if (verifyIfIdExists(cartList.children, product.id)) {
+    console.log(verifyLocalAndCartId(cartList.children, product.id))
+  if (verifyLocalAndCartId(cartList.children, product.id)) {
     addProductCount(cartList.children, product.id)
+    
   } else {
 
     const listEl = addListEl(
@@ -518,7 +546,8 @@ addToCart.addEventListener("click", () => {
       product.name,
       product.slug,
       product.price,
-      productCounter.value
+      productCounter.value,
+      product.discount
     )
 
 
@@ -551,7 +580,6 @@ const returnValue = (list, id) => {
 
 //  addToLocalStorage(newCartProduct, product.id, productCounter.value)
 
-// THIS IS WEIRD I HAVE TO ACCESS INDIVIDUALLY LOCAL STORAGE
 const deleteFromStorage = (identification) => {
   const getLocal = localStorage.getItem("cart-products")
   const cartProducts = JSON.parse(getLocal)
@@ -565,14 +593,12 @@ const deleteFromStorage = (identification) => {
   }
 }
 
-// THIS IS WEIRD I HAVE TO ACCESS INDIVIDUALLY LOCAL STORAGE
 
 const addToLocalStorage = (productId, ProductValue, operation) => {
 
 const existingCartProducts = localStorage.getItem("cart-products")
 const parsedCartProducts = JSON.parse(existingCartProducts)
 const cart = parsedCartProducts ? parsedCartProducts : []
-
   const object = {
     id: productId,
     count: parseInt(ProductValue),
@@ -583,15 +609,17 @@ const cart = parsedCartProducts ? parsedCartProducts : []
     if(cart.length === 0){
       cart.push(object)
     } else {
+
+      console.log(verifyIfIdExistsForCart(cart, object.id), object.id)
      if (verifyIfIdExistsForCart(cart, object.id)) {
         const element = returnEL(cart, object.id)
         const ifListIncrement = operation === "increment" ? 1 : parseInt(productCounter.value)
         element.count = parseInt(returnValue(cart, object.id)) + ifListIncrement
     
-      } 
-      else {
+      } else {
         object.count = 1
         cart.push(object)
+        console.log(object)
       }
 
        if (operation === "decrement") {
@@ -620,6 +648,7 @@ const cart = parsedCartProducts ? parsedCartProducts : []
 const cartButtonsEvent = (e) => {
   const id = e.target.parentNode.parentNode.id.slice(5,12)
   const input = e.target.parentNode.querySelector(".product-counter")
+  console.log(id)
   if(parseInt(input.value) !== 0){
     console.log(input.value)
     counter(e.target, input)
@@ -667,7 +696,8 @@ const loadCart = () => {
       product.name,
       product.slug,
       product.price,
-      cartEl.count
+      cartEl.count,
+      product.discount
     )
     cartListFunctionality(listEL)
     cartList.appendChild(listEL)
@@ -699,11 +729,7 @@ cartDeleteAll.addEventListener("click", (e) => {
 // YOU MAY ALSO LIKE
 
 const recommendedProducts = document.getElementById("recommended-products")
-
-
-
 const itemsWithoutCurrentOne = productList.filter((element) => element.id !== params.productId)
-
 
 
 const recommendedProduct = (productImage, productName, productId, secondImage) => {
@@ -784,32 +810,7 @@ console.log(addRecommended())
 
 
 
-// Back to top
 
-const toTopBtn = document.getElementById("back-to-top")
-
-// window.onscroll = () => {
-//   if(document.body.scrollTop > 10 || document.documentElement.scrollTop > 10){
-//     toTopBtn.classList.remove("hide")
-//   } else {
-//     toTopBtn.classList.add("hide")
-//   }
-// }
-
-window.addEventListener("scroll", (e) => {
-  if (window.scrollY > 10) {
-    // toTopBtn.classList.remove("hide")
-    toTopBtn.style.display = "block"
-  } else {
-    // toTopBtn.classList.add("hide")
-    toTopBtn.style.display = "none"
-  }
-})
-
-// {top: 0, behavior: "smooth"} would look nicer but it s not supported on MAC
-toTopBtn.addEventListener("click", () => {
-  window.scrollTo(0, 0)
-})
 
 // SEARCH FUNCTIONALITY
 
@@ -839,8 +840,8 @@ const getProductsData = () => {
 
 const addSearchToggle = (e) => {
   if (e) {
-    e.preventDefault()
-    e.stopPropagation()
+    // e.preventDefault()
+    // e.stopPropagation()
   }
   searchContainer.classList.add("overlay2")
   inputContainer.classList.add("top")
@@ -871,6 +872,10 @@ const addSearchToggle = (e) => {
 
 
 const removeSearchToggle = (e) => {
+  searchInput.value = ""
+  listResults.innerHTML = ""
+  showSearchResults(searchInput.value)
+
   if (e) {
     e.preventDefault()
     e.stopPropagation()
@@ -885,7 +890,7 @@ const removeSearchToggle = (e) => {
   document.body.classList.remove("stop-scroll")
 }
 
-searchInput.addEventListener("click", addSearchToggle)
+searchInput.addEventListener("mousedown", addSearchToggle)
 
 closeSearch.addEventListener("click", (e) => {
   removeSearchToggle(e)
@@ -931,14 +936,10 @@ const placeHolderAssist = (text, value) => {
   const wordStart = text.indexOf(value)
   const wordEnd = text.lastIndexOf(value)
   const whiteSpace = splitWord.splice(0, value.length, value)
-  // const wordConversion = `<span class="highlight">${value}</span>`
 
-  // splitWord.splice(wordStart, value.length,)
-  //  const restOfSentence = text.substring(wordEnd, text.length)
-  // console.log(restOfSentence)
   console.log(splitWord)
   console.log(text)
-  // return whiteSpace + restOfSentence
+
   return splitWord.join("")
 }
 
@@ -974,6 +975,27 @@ const highlight = (element, searchedWord) => {
   span.innerHTML = highlightAssist()
 }
 
+const showSearchResults = (value) => {
+  if (value.length < 2) {
+    searchTitle.innerText = "Recent searches"
+    fillListWithData(searches)
+    placeHolder.classList.add("hide")
+  }
+}
+
+const checkIfResultRepeats = (domList, value) => {
+  // const domElements = domList.children
+  // console.log(domElements)
+  for (const element of domList) {
+    console.log(element.innerText, value)
+    if (element.innerText === value) {
+      return true
+    }
+  }
+
+  return false
+}
+
 searchInput.addEventListener("keyup", (e) => {
   const normalValue = e.target.value
   const value = e.target.value.toLowerCase()
@@ -981,22 +1003,12 @@ searchInput.addEventListener("keyup", (e) => {
   listResults.innerHTML = ""
   searchTitle.innerText = "Search suggestions"
 
-  console.log(value.length)
-  if (value.length < 2) {
-    searchTitle.innerText = "Recent searches"
-    fillListWithData(searches)
-    placeHolder.classList.add("hide")
-  }
+  showSearchResults(value)
 
-  // console.log(e.key)
-  // if(e.key === "Escape"){
-  //     removeSearchToggle()
-  // }
   if (e.key === "Enter") {
     e.preventDefault()
   }
 
-  // NEXT
 
   const products = getProductsData()
   console.log(value)
@@ -1010,6 +1022,10 @@ searchInput.addEventListener("keyup", (e) => {
 
   placeHolder.innerText = ""
 
+  const currentListResults = searchResults.querySelector("ul")
+
+  let isRepeating = false
+
   if (value.length >= 2) {
     inputSearchResult.forEach((element, index) => {
       if (element.name.includes(value)) {
@@ -1022,6 +1038,17 @@ searchInput.addEventListener("keyup", (e) => {
           ? placeHolderAssist(inputSearchResult[0]?.name, normalValue) || ""
           : placeHolderAssist(cutWord.replace(" ", ""), normalValue)
         placeHolder.classList.remove("hide")
+
+        if (element.category.includes(value) && !isRepeating) {
+          const listElement2 = generateListElement(element.category)
+          highlight(listElement2, value)
+          listResults.appendChild(listElement2)
+
+          isRepeating = checkIfResultRepeats(
+            currentListResults.children,
+            element.category
+          )
+        }
       } else if (index < cleanCategories.length) {
         const listElement = generateListElement(cleanCategories[index])
         highlight(listElement, value)
@@ -1106,6 +1133,53 @@ const fillListWithData = (array) => {
 }
 
 fillListWithData(searches)
+
+// BACK TO TOP
+
+
+
+const toTopBtn = document.getElementById("back-to-top")
+const footer = document.body.querySelector("footer")
+
+
+  
+window.addEventListener("scroll", (e) => {
+
+  let isButtonOnTop = false
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      console.log(entry.target && entry.isIntersecting)
+      if (entry.target === footer && entry.isIntersecting) {
+        isButtonOnTop = true
+        toTopBtn.style.bottom = "80px"
+      } else {
+        toTopBtn.style.bottom = "1%"
+      }
+    })
+  }, {rootMargin: "300px 0px 0px 0px"})
+
+  observer.observe(footer)  
+
+
+  if(window.scrollY > 100){
+    toTopBtn.style.display = "block"
+
+  } else {
+    toTopBtn.style.display = "none"
+  }
+
+
+})
+
+
+// {top: 0, behavior: "smooth"}  not supported on MAC
+toTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Add smooth scrolling animation
+  })
+})
 
 
 

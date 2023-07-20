@@ -141,6 +141,7 @@ window.addEventListener("resize", () => {
 const searchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(searchParams.entries())
 const retrievedSearch = params.search
+document.title = `Search: ${retrievedSearch}`
 
 const updateCount = (listCount) => {
   generatedSearchProductsCount.innerText = listCount
@@ -404,9 +405,19 @@ const verifyCartItemExistence = (list, id) => {
   return false
 }
 
+const verifyLocalAndCartId = (list, id) => {
+  for (const el of list) {
+    console.log(el.id.slice(5, 12), id)
+    if (el.id.slice(5, 12) === id) {
+      return true
+    }
+  }
+  return false
+}
+
 const addCount = (list, id) => {
   for (const el of list) {
-    if (el.id.includes(id)) {
+    if (el.id.slice(5, 12) === id) {
       const elInput = el.querySelector("input")
       let inputValue = parseInt(elInput.value)
       let addValue = 1
@@ -505,9 +516,8 @@ const generateProduct = (
 
   addToCart.addEventListener("click", () => {
   
-    if (verifyCartItemExistence(cartItems.children, productId)) {
+    if (verifyLocalAndCartId(cartItems.children, productId)) {
       addCount(cartItems.children, productId)
-
     } else {
       const listEl = addListEl(
         productId,
@@ -515,7 +525,8 @@ const generateProduct = (
         productName,
         productSlug,
         productPrice,
-        1
+        1,
+        ifDiscount
       )
 
       cartListFunctionality(listEl)

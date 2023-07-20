@@ -8,12 +8,15 @@
 
 @use "../components-dashboard/footer";
 
-
+#title{
+  text-transform: capitalize;
+}
 
 .product {
   .container {
     padding: 0 $xs-padding;
     p {
+      margin-top: $l-spacing;
       margin-bottom: 1.5rem;
       a {
         color: $out-of-color-palette-gray;

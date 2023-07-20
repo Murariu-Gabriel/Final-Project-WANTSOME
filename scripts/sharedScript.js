@@ -328,10 +328,15 @@ const addListEl = (
   productAlt,
   productName,
   productPrice,
-  productCount
+  productCount,
+  ifDiscount
 ) => {
   const li = document.createElement("li")
   li.setAttribute("id", `list-${productId}`)
+
+  const calcDiscount = productPrice * (ifDiscount / 100)
+  const priceDiscount = ifDiscount ? productPrice - calcDiscount : productPrice
+
   li.innerHTML = `<div class="img-container">
       <img src=${productImg} alt=${productAlt} />
     </div>
@@ -339,7 +344,7 @@ const addListEl = (
     <p>
       <strong>${productName}</strong>
       <span>$</span>
-      <span>${productPrice}</span>
+      <span>${priceDiscount}</span>
     </p>
 
     <div class="input-stepper">
@@ -502,7 +507,8 @@ const loadCart = () => {
       product.name,
       product.slug,
       product.price,
-      cartEl.count
+      cartEl.count,
+      product.discount
     )
     cartListFunctionality(listEL)
     cartList.appendChild(listEL)
@@ -590,6 +596,10 @@ const searchResults = document.getElementById("search-results")
 const closeSearch = document.getElementById("close-search")
 const placeHolder = document.getElementById("place-holder")
 
+const listResults = searchResults.querySelector("ul")
+const searchTitle = document.getElementById("search-title")
+const searchButton = document.getElementById("search-button")
+
 const recentSearches = localStorage.getItem("recent-searches")
 const parsedRecentSearches = JSON.parse(recentSearches)
 const searches = parsedRecentSearches ? parsedRecentSearches : []
@@ -605,7 +615,7 @@ const getProductsData = () => {
 
 const addSearchToggle = (e) => {
   if (e) {
-    e.preventDefault()
+    // e.preventDefault()
     // e.stopPropagation()
   }
   searchContainer.classList.add("overlay2")
@@ -634,10 +644,15 @@ const addSearchToggle = (e) => {
 // console.log(headerNav.classList.contains("nav-toggle"))
 
 const removeSearchToggle = (e) => {
+  searchInput.value = ""
+  listResults.innerHTML = ""
+  showSearchResults(searchInput.value)
+
   if (e) {
     e.preventDefault()
     e.stopPropagation()
   }
+
   searchContainer.classList.remove("overlay2")
   inputContainer.classList.remove("top")
   inputContainer.classList.remove("search-animation")
@@ -648,15 +663,10 @@ const removeSearchToggle = (e) => {
   document.body.classList.remove("stop-scroll")
 }
 
-searchInput.addEventListener("click", addSearchToggle)
+searchInput.addEventListener("mousedown", addSearchToggle)
 
-closeSearch.addEventListener("click", (e) => {
-  removeSearchToggle(e)
-})
+closeSearch.addEventListener("click", removeSearchToggle)
 
-const listResults = searchResults.querySelector("ul")
-const searchTitle = document.getElementById("search-title")
-const searchButton = document.getElementById("search-button")
 
 const searchValidation = (value) => {
   if (value.includes(" ") || value.length >= 2) {
@@ -701,21 +711,16 @@ const placeHolderAssist = (text, value) => {
   const wordStart = text.indexOf(value)
   const wordEnd = text.lastIndexOf(value)
   const whiteSpace = splitWord.splice(0, value.length, value)
-  // const wordConversion = `<span class="highlight">${value}</span>`
-
-  // splitWord.splice(wordStart, value.length,)
-//  const restOfSentence = text.substring(wordEnd, text.length)
-  // console.log(restOfSentence)
+  
   console.log(splitWord)
   console.log(text)
-  // return whiteSpace + restOfSentence
+
   return splitWord.join("")
 }
 
 const cutBehindWord = (sentence, word) => {
   const startingWord = " " + word
   const start = sentence.indexOf(startingWord)
-  // const whiteSpace = sentence.slice(0, start).replace(/./g, " ")
   if (start < 0) {
     return ""
   }
@@ -744,6 +749,27 @@ const highlight = (element, searchedWord) => {
   span.innerHTML = highlightAssist()
 }
 
+const showSearchResults = (value) => {
+  if (value.length < 2) {
+    searchTitle.innerText = "Recent searches"
+    fillListWithData(searches)
+    placeHolder.classList.add("hide")
+  }
+}
+
+const checkIfResultRepeats = (domList, value) => {
+  // const domElements = domList.children
+  // console.log(domElements)
+  for (const element of domList) {
+    console.log(element.innerText, value)
+    if (element.innerText === value) {
+      return true
+    }
+  }
+
+  return false
+}
+
 searchInput.addEventListener("keyup", (e) => {
   const normalValue = e.target.value
   const value = e.target.value.toLowerCase()
@@ -751,25 +777,14 @@ searchInput.addEventListener("keyup", (e) => {
   listResults.innerHTML = ""
   searchTitle.innerText = "Search suggestions"
 
-  
-  console.log(value.length)
-  if (value.length < 2) {
-    searchTitle.innerText = "Recent searches"
-    fillListWithData(searches)
-    placeHolder.classList.add("hide")
-  }
+  showSearchResults(value)
   
 
-  // console.log(e.key)
-  // if(e.key === "Escape"){
-  //     removeSearchToggle()
-  // }
   if (e.key === "Enter") {
     e.preventDefault()
   }
 
-  // NEXT
-
+ 
   const products = getProductsData()
   console.log(value)
   const inputSearchResult = products.filter(
@@ -785,10 +800,16 @@ searchInput.addEventListener("keyup", (e) => {
 
   placeHolder.innerText = ""
   
+  const currentListResults = searchResults.querySelector("ul")
+
+  let isRepeating = false
 
   if (value.length >= 2) {
     inputSearchResult.forEach((element, index) =>{
-      if(element.name.includes(value)){
+
+
+
+      if(element.name.includes(value) ){
         const listElement = generateListElement(element.name)
         highlight(listElement, value)
         listResults.appendChild(listElement)
@@ -798,6 +819,17 @@ searchInput.addEventListener("keyup", (e) => {
           ? placeHolderAssist(inputSearchResult[0]?.name, normalValue) || ""
           : placeHolderAssist(cutWord.replace(" ", ""), normalValue)
         placeHolder.classList.remove("hide")
+
+        if (element.category.includes(value) && !isRepeating ) {
+           const listElement2 = generateListElement(element.category)
+           highlight(listElement2, value)
+           listResults.appendChild(listElement2)
+
+           isRepeating = checkIfResultRepeats(
+             currentListResults.children,
+             element.category
+           )
+        }
 
       } else if(index < cleanCategories.length){
             
@@ -820,9 +852,6 @@ searchInput.addEventListener("keyup", (e) => {
   }
 
 })
-
-// localStorage.clear()
-// localStorage.removeItem("recent-searches")
 
 searchButton.addEventListener("click", (e) => {
   noMatterSearch(searchInput.value)
@@ -882,7 +911,7 @@ const generateListElement = (content) => {
 }
 
 const fillListWithData = (array) => {
-  searches.forEach((element) => {
+  array.forEach((element) => {
     listResults.appendChild(generateListElement(element))
   })
 }

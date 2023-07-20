@@ -1016,10 +1016,15 @@ footer .container nav .socials {
   gap: 1rem;
 }
 
+#title {
+  text-transform: capitalize;
+}
+
 .product .container {
   padding: 0 1.5rem;
 }
 .product .container p {
+  margin-top: 3rem;
   margin-bottom: 1.5rem;
 }
 .product .container p a {

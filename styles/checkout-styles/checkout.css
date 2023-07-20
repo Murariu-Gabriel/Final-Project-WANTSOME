@@ -937,7 +937,7 @@ body .hide {
   display: none;
 }
 
-.overlay2 {
+.overlay3 {
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -1038,10 +1038,16 @@ body .hide {
   padding-bottom: 8rem;
 }
 .checkout .container p {
+  margin-top: 3rem;
   margin-bottom: 1.563rem;
 }
 .checkout .container p a {
   color: gray;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+.checkout .container p a:hover {
+  color: #D87D4A;
 }
 .checkout .container .message {
   text-align: center;

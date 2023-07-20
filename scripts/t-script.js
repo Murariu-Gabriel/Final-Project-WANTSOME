@@ -3,7 +3,6 @@ const ITEMS_PER_PAGE = 4
 const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>`
 const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
 
-
 // checking nav param window category
 
 const searchParams = new URLSearchParams(window.location.search)
@@ -17,10 +16,13 @@ console.log(paramsCategory)
 const updateCategoryTitle = (category) => {
   if (category.includes("strap")) {
     categoryTitle.innerText = "smart straps"
+    document.title = "Smart Straps"
   } else if (category.includes("watch")) {
     categoryTitle.innerText = "smart watches"
+    document.title = "Smart Watches"
   } else if (category.includes("band")) {
     categoryTitle.innerText = "smart bands"
+    document.title = "Smart Bands"
   }
 }
 
@@ -42,8 +44,9 @@ const addProduct = (
 ) => {
   const article = document.createElement("article")
   const ifNew = newProduct ? "<p class='overline'>new product</p>" : ""
-  const ifDiscount = discount ? `<p class='overline'>Discount: ${discount}% OFF</p>` : ""
-  
+  const ifDiscount = discount
+    ? `<p class='overline'>Discount: ${discount}% OFF</p>`
+    : ""
 
   article.innerHTML = `
           
@@ -59,7 +62,6 @@ const addProduct = (
     </div>
     `
 
-    
   if (discount) {
     const overline = article.querySelector(".overline")
     overline.style.color = "rgb(99, 129, 250)"
@@ -79,18 +81,14 @@ const getCategoryProducts = (category) => {
     product.category.includes(category)
   )
 
-  const sortedByNew = categorySpecificProducts.sort((a,b) => b.new - a.new)
+  const sortedByNew = categorySpecificProducts.sort((a, b) => b.new - a.new)
 
   return sortedByNew
 }
 
-
-
-
 const loadProducts = (listOfProducts, start, end) => {
   listOfProducts.forEach((product, index) => {
-    
-    if(index >= start && index <= end){
+    if (index >= start && index <= end) {
       productsContainer.appendChild(
         addProduct(
           product.id,
@@ -110,10 +108,9 @@ const categoryProducts = getCategoryProducts(paramsCategory)
 
 if (categoryProducts.length === 0) {
   productsContainer.innerHTML = "<h2>Sorry, something went wrong</h2>"
-} 
+}
 
 loadProducts(categoryProducts, 0, ITEMS_PER_PAGE - 1)
-
 
 const createButton = (id, btnClass, content) => {
   const btn = document.createElement("button")
@@ -125,7 +122,6 @@ const createButton = (id, btnClass, content) => {
 
   return btn
 }
-
 
 const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
   let page = Math.floor(list.length / itemsPerPage)
@@ -170,22 +166,12 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
       const currentPage = parseInt(e.target.innerText)
 
       if (currentPage === pagEnd) {
-        updatePagination(
-          list,
-          ITEMS_PER_PAGE,
-          pagStart + 4,
-          pagEnd + 4
-        )
+        updatePagination(list, ITEMS_PER_PAGE, pagStart + 4, pagEnd + 4)
       }
 
       if (currentPage === pagStart) {
         if (currentPage > 1) {
-          updatePagination(
-            list,
-            ITEMS_PER_PAGE,
-            pagStart - 4,
-            pagEnd - 4
-          )
+          updatePagination(list, ITEMS_PER_PAGE, pagStart - 4, pagEnd - 4)
           const olListElements = pagination.querySelectorAll("li")
           olListElements[olListElements.length - 1].classList.add(
             "current-page"
@@ -251,11 +237,6 @@ const updatePagination = (
 
 updatePagination(categoryProducts)
 
-
-
-
-
-
 // GENERATE PRODUCTS 1.0
 
 // const generatePagination = (list) => {
@@ -273,7 +254,7 @@ updatePagination(categoryProducts)
 //     li.textContent = i
 //     li.addEventListener("click", (e) => {
 //       productsContainer.innerHTML = ""
-   
+
 //       const count = parseInt(e.target.textContent)
 
 //       const start = ITEMS_PER_PAGE * (count - 1)
@@ -290,9 +271,6 @@ updatePagination(categoryProducts)
 
 // const generateOl = generatePagination(categoryProducts)
 // pagination.appendChild(generateOl)
-
-
-
 
 // console.log(loadProducts())
 

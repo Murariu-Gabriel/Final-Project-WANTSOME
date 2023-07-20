@@ -11,7 +11,7 @@ body{
 
 }
 
-.overlay2 {
+.overlay3 {
     position: fixed;
     background: rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -139,10 +139,18 @@ body{
     .container{
          padding-bottom: $xxl-spacing; 
         p{
+            margin-top: $l-spacing;
             margin-bottom: $g-back-margin-bootom;
             a{
-                color: $out-of-color-palette-gray;      
+                color: $out-of-color-palette-gray;   
+                cursor: pointer; 
+                transition: color 0.3s ease-in-out;
+
+                &:hover{
+                    color: $orange;
+                }
             }
+
         }
 
         .message{

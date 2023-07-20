@@ -421,10 +421,16 @@ const addSumEl = (
   productAlt,
   productName,
   productPrice,
-  productCount
+  productCount,
+  ifDiscount
 ) => {
   const li = document.createElement("li")
   li.setAttribute("id", `list-${productId}`)
+
+  const calcDiscount = productPrice * (ifDiscount / 100)
+  const priceDiscount = ifDiscount ? productPrice - calcDiscount : productPrice
+
+
   li.innerHTML = `
   
     <div class="img-container">
@@ -434,7 +440,7 @@ const addSumEl = (
     <p>
       <strong>${productName}</strong>
       <span>$</span>
-      <span id="price">${productPrice}</span>
+      <span id="price">${priceDiscount}</span>
     </p>
 
     <span>x <span id="sum-count">${productCount}</span></span>
@@ -457,7 +463,8 @@ const loadSummary = () => {
       product.name,
       product.slug,
       product.price,
-      cartEl.count
+      cartEl.count,
+      product.discount
     )
     summaryList.appendChild(listEL)
   })
