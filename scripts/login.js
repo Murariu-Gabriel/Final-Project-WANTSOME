@@ -12,7 +12,6 @@ const addInLocalStorage = (key, value) => {
   localStorage.setItem(key, value)
 }
 
-// console.log(JSON.parse(parsedUsers[0]))
 
 const loadInputs = (inputs) => {
   for (const input of inputs) {
@@ -24,21 +23,26 @@ const loadInputs = (inputs) => {
 
 loadInputs(inputs)
 
-// toggle for showing password
+// TOGGLE FOR SHOWING PASSWORD
 
-eyeButton.addEventListener("click", (e) => {
- const eyeShow = eyeButton.children[0]
- const eyeHide = eyeButton.children[1]
+const showHide = () => {
+  const eyeShow = eyeButton.children[0]
+  const eyeHide = eyeButton.children[1]
+
+  eyeHide.classList.toggle("hide")
+  eyeShow.classList.toggle("hide")
+}
+
+eyeButton.addEventListener("click", () => {
+
   if (password.getAttribute("type") === "password") {
     
     password.setAttribute("type", "text")
-    eyeHide.classList.toggle("hide")
-    eyeShow.classList.toggle("hide")
+    showHide()
   } else {
 
     password.setAttribute("type", "password")
-    eyeHide.classList.toggle("hide")
-    eyeShow.classList.toggle("hide")
+    showHide()
   }
 })
 
@@ -69,11 +73,14 @@ const userExistenceValidation = (emailValidation) => {
 const checkUserPassword = (password) => {
   const user = getUser(email.value)
   // console.log(user.signup_password)
+  console.log(user)
   if(user){
     if (user.signup_password === password) {
       return !true
     }
-  } 
+  } else {
+    return !true
+  }
   return !false
 }
 
@@ -81,11 +88,9 @@ const checkUserPassword = (password) => {
 const emailValidation = (string) => {
   const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
   const isValidEmail = emailRegex.test(string)
-  // console.log(isValidEmail)
 
   return !isValidEmail
 }
-
 
 
 const getSpanElement = (element) => {
@@ -109,11 +114,9 @@ const hideShowError = (input, errorMessage, func) => {
     input.classList.remove("error")
     span.classList.replace("show", "hide")
   }
+
   span.textContent = errorMessage
 
-  // return span.classList.contains("show") && !label.classList.contains("show")
-  //   ? true
-  //   : false
 }
 
 const upperCaseFirstLetter = (name) => {
@@ -149,7 +152,6 @@ const inputValidation  = (e) => {
  }
 }
 
-// localStorage.removeItem("users")
 
 const addEventsOnInputs = () => {
   for (const input of inputs) {
