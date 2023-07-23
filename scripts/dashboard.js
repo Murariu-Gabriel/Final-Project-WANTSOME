@@ -1,4 +1,4 @@
-// FETCHING DATA AN MAKING IT USABLE
+// FETCHING DATA ADDING IT IN LOCAL STORAGE TO BE USED IN ALL PAGES
 
 const getProducts = async () => {
   try {
@@ -31,7 +31,7 @@ const firstResponse = (response) => {
   if (response.ok && response.status === 200) {
     return response.json()
   }
-  console.log(response)
+  
   return Promise.reject("ERROR")
 }
 
@@ -52,40 +52,11 @@ fetch("../ranges.json")
 
 
 
-
-
-
-
-
-
-
-
-
-
-/// Left this here so you just know 
-
-
-// import { faker } from "https://cdn.skypack.dev/@faker-js/faker"
-
-// console.log(faker.person.fullName())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // CAROUSEL
 
 
-// - loading carousel items
+// - LOADING CAROUSEL ITEMS
+
 const track = document.getElementById("carousel-track")
 
 const createCarouselElement = (name, imagePath, description, id) => {
@@ -117,7 +88,6 @@ const createCarouselElement = (name, imagePath, description, id) => {
 const items = JSON.parse(localStorage.getItem("products"))
 const newItems = items.filter((item) => item.new && item.slug !== "S1-Pro")
 
-console.log(newItems)
 
 const loadCarousel = (items, parent) => {
 
@@ -141,8 +111,9 @@ const loadCarousel = (items, parent) => {
 }
 
 loadCarousel(newItems, track)
-// loadCarousel(newItems, fakeTrack)
 
+
+// CAROUSEL FUNCTIONALITY
 
 const slides = Array.from(track.children)
 const nextBtn = document.querySelector(".button-right")
@@ -160,7 +131,6 @@ const setSlidePosition = (slide, index) => {
 }
 
 slides.forEach(setSlidePosition)
-
 
 
 const moveToSlide = (track, currentSlide, targetSlide) => {
@@ -188,7 +158,6 @@ previousBtn.addEventListener("click", (e) => {
   if (carouselButtons[0].classList.contains("current-slide")) {
     carouselButtons[carouselButtons.length - 1].click()
     return
-    
   }
 
   moveToSlide(track, currentSlide, previousSlide)
@@ -358,13 +327,7 @@ const resetAutomaticSwitch = () => {
 
 
 
-
-
-
-
-
-
-// IN cazul in care te razgandesti la nav toggle
+// OLD CODE JUST IN CASE NAV NEEDS REWRITING
 
 // if (hamburgerButton.classList.contains("toggle-close")) {
 //   hamburgerButton.innerHTML = `

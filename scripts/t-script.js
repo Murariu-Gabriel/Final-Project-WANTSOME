@@ -3,7 +3,7 @@ const ITEMS_PER_PAGE = 4
 const arrowForward = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>`
 const arrowBackwards = `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="2rem" width="2rem" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg>`
 
-// checking nav param window category
+// CHECKING NAV PARAM WINDOW CATEGORY
 
 const searchParams = new URLSearchParams(window.location.search)
 const params = Object.fromEntries(searchParams.entries())
@@ -13,26 +13,21 @@ const paramsCategory = params.category.replace("-", " ")
 const categoryTitle = document.getElementById("page-category")
 console.log(paramsCategory)
 
-const updateCategoryTitle = (category) => {
-  if (category.includes("strap")) {
-    categoryTitle.innerText = "smart straps"
-    document.title = "Smart Straps"
-  } else if (category.includes("watch")) {
-    categoryTitle.innerText = "smart watches"
-    document.title = "Smart Watches"
-  } else if (category.includes("band")) {
-    categoryTitle.innerText = "smart bands"
-    document.title = "Smart Bands"
-  }
+const updateCategoryAndTitle = (category) => {
+  categoryTitle.innerText = category
+  document.title = category
 }
 
-updateCategoryTitle(paramsCategory)
+updateCategoryAndTitle(paramsCategory)
+
+
 
 // const category = productList.find(function (element) {
 //   return element.id === params.productId
 // })
 
-// Adding product on page
+// ADDING PRODUCT ON PAGE
+
 const addProduct = (
   id,
   newProduct,
@@ -69,6 +64,8 @@ const addProduct = (
 
   return article
 }
+
+
 
 const productsContainer = document.getElementById("generated-items")
 const pagination = document.getElementById("pagination")
@@ -111,6 +108,9 @@ if (categoryProducts.length === 0) {
 }
 
 loadProducts(categoryProducts, 0, ITEMS_PER_PAGE - 1)
+
+
+// PAGINATION
 
 const createButton = (id, btnClass, content) => {
   const btn = document.createElement("button")
@@ -180,7 +180,6 @@ const generatePagination = (list, itemsPerPage, pagStart, pagEnd) => {
         }
       }
 
-      // localStorage.setItem("page", li.textContent)
     })
 
     ol.appendChild(li)
@@ -236,6 +235,15 @@ const updatePagination = (
 }
 
 updatePagination(categoryProducts)
+
+
+
+
+
+
+
+
+
 
 // GENERATE PRODUCTS 1.0
 

@@ -4,18 +4,13 @@ const password = document.getElementById("signup_password")
 const conditionTerms = document.getElementById("condition_terms")
 const popupContainer = document.body.querySelector(".popup")
 const popupButton = document.body.querySelector(".popup button")
-console.log(popupButton)
-// popupContainer.classList.toggle("hide")
-// localStorage.clear()
-// First part for getting and and adding user || rest of the code is at form event
+
+
+// GETTING EXISTING USERS
+
 const existingUsers = localStorage.getItem("users")
 const parsedUsers = JSON.parse(existingUsers)
 const users = existingUsers ? parsedUsers : []
-// Note you will have to parse it twice =))))
-// console.log(JSON.parse(JSON.parse(existingUsers)[0]))
-
-console.log(users)
-
 
 
 const addInLocalStorage = (key, value) => {
@@ -23,23 +18,7 @@ const addInLocalStorage = (key, value) => {
 }
 
 
- const loadInputs = (inputs) => {
-   for (const input of inputs) {
-     const inputName = input.getAttribute("name")
-     const localStorageValue = localStorage.getItem(inputName)
-     input.value = localStorageValue
-   }
- }
-loadInputs(inputs)
-
-
-// for(let user of parsedUsers){
-//   const parsedUser = JSON.parse(user)
-//   console.log(parsedUser.email)
-// }
-
-//
-// validation functions
+// VALIDATOR FUNCTIONS
 
 const getUser = (email) => {
   if(users.length > 0){
@@ -59,16 +38,6 @@ const userExistenceValidation = (emailValidation) => {
 
   return false
 }
-
-// const checkUserPassword = (password) => {
-//   const user = getUser(email.value)
-//   if (user.signup_password === password) {
-//     return !true
-//   }
-
-//   return !false
-// }
-
 
 const getSpanElement = (element) => {
   return element.parentNode.querySelector("span")
@@ -129,21 +98,14 @@ const namesValidation = (name) => {
 const checkBoxValidation = () => {
   return !conditionTerms.checked
 }
-// !Amparola1
-const passwordErrorMessages = [
-  "Password is required",
-  "Password should contain at least 1 special character",
-  "Password should contain at least 1 number",
-  "Password should contain at least one upper case letter ",
-  "Length should be at least 8 characters",
-  "error",
-]
 
-//MULTIPLE ERROR VALIDATOR FUNCTION FOR PASSWORD
+
+//MULTIPLE ERROR VALIDATion FUNCTION FOR PASSWORD
 
 const multipleConditionPasswordValidator = (input) => {
   const span = getSpanElement(input)
   const label = span.parentNode.firstElementChild
+  
   if (passwordValidation(input.value, containsSpecialChar)) {
     showError(
       input,
@@ -151,6 +113,7 @@ const multipleConditionPasswordValidator = (input) => {
       label,
       "Password should contain at least 1 special character"
     )
+
   } else if (passwordValidation(input.value, containsUpperCase)) {
     showError(
       input,
@@ -158,14 +121,29 @@ const multipleConditionPasswordValidator = (input) => {
       label,
       "Password should contain at least one upper case letter"
     )
+
   } else if (passwordValidation(input.value, containsNum)) {
-    showError(input, span, label, "Password should contain at least 1 number")
+    showError(
+      input,
+      span,
+      label,
+      "Password should contain at least 1 number"
+      )
+
   } else if (passwordValidation(input.value, verifyIfLengthUnder8)) {
-    showError(input, span, label, "Length should be at least 8 characters")
+    showError(
+      input,
+      span,
+      label,
+      "Length should be at least 8 characters"
+      )
+      
   } else {
     hideError(input, span, label)
+
   }
 }
+
 
 // MULTIPLE ERROR VALIDATION FOR MAIL
 
@@ -180,20 +158,19 @@ const multipleConditionMailValidator = (input) => {
         label,
         "Email not valid"
       )
+
   } else if (userExistenceValidation(input.value)) {
-      showError(input, span, label, "Email is already registered")
+    showError(input,
+      span, 
+      label,
+      "Email is already registered"
+    )
+
    } else {
     hideError(input, span, label)
+
    }
 }
-
-
-
-
-
-
-
-
 
 
 // ERROR DISPLAY FUNCTIONS
@@ -222,6 +199,9 @@ const hideShowError = (input, errorMessage, func) => {
   }
 }
 
+
+// EDITING STRING FUNCTIONS
+
 const upperCaseFirstLetter = (name) => {
   const split = name.split("")
   split[0] = split[0].toUpperCase()
@@ -235,14 +215,13 @@ const clearName = (name) => {
     modifiedName = name.replace("signup_", "")
   }
   const upperCased = upperCaseFirstLetter(modifiedName)
-  console.log(upperCased)
   return upperCased
 }
 
+// INPUT EVENT LOGIC FOR VALIDATION
+
 const inputValidation = (e) => {
-  addInLocalStorage(e.name, e.value)
   const name = clearName(e.name)
-  // console.log(e.name)
   const msg =
     e.name ===  e.name === "signup_password"
       ? "Please confirm password"
@@ -250,23 +229,11 @@ const inputValidation = (e) => {
 
   hideShowError(e, msg, verifyIfInputEmpty)
 
-  // console.log(e.checked)
-  if (e.value.length !== 0) {
-    // if (e.name === "email") {
-    //   hideShowError(e, `This email address is not valid`, emailValidation)
-       
-    // }
 
+  if (e.value.length !== 0) {
+   
     if(e.name === "email"){
-      // hideShowError(e, `This email address is not valid`, emailValidation)
       multipleConditionMailValidator(e)
-      //  if (e.value.includes(".") && e.value.includes("@")) {
-      //    hideShowError(
-      //      e,
-      //      "This mail is already registered",
-      //      userExistenceValidation
-      //    )
-      //  }
     }
 
     if (e.name === "confirm_password") {
@@ -284,7 +251,7 @@ const inputValidation = (e) => {
 
   if (e.name === "condition_terms") {
     if (e.checked) {
-      addInLocalStorage(e.name, "true")
+      addInLocalStorage(e.name, true)
     }
     hideShowError(
       e,
@@ -296,16 +263,14 @@ const inputValidation = (e) => {
 
 const addEventsOnInputs = () => {
   for (const input of inputs) {
-    // console.log(input.name)
-    // if (input.name !== "condition_terms") {
     input.addEventListener("input", (e) => {
       inputValidation(e.target)
     })
-    // }
   }
 }
 
-// Validation function for the form
+
+// VALIDATION FOR THE FORM
 
 const checkIfValid = (e) => {
   let noError = false
@@ -333,34 +298,11 @@ const checkIfValid = (e) => {
   } 
 
   noError = true
-  console.log(errors)
   return noError
 }
 
 addEventsOnInputs()
 
-const cleanLocalStorage = () => {
-  const toRemove = []
-
-  for (let i = localStorage.length - 1; i >= 0; i--) {
-    const key = localStorage.key(i)
-    // console.log(key)
-    if (
-      key !== "products" &&
-      key !== "price-ranges" &&
-      key !== "debug" &&
-      key !== "users" &&
-      key !== "recent-searches" &&
-      key !== "email" &&
-      key !== "isUserLoggedIn" &&
-      key !== "cart-products"
-    ) {
-      toRemove.push(key)
-    }
-  }
-
-  toRemove.forEach((key) => localStorage.removeItem(key))
-}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault()
@@ -368,8 +310,10 @@ form.addEventListener("submit", (e) => {
   const formData = new FormData(e.currentTarget)
   const entries = [...formData.entries()]
   
+  
   const fullName = `${formData.get("first_name")} ${formData.get("last_name")}` 
- 
+  const email = entries[2]
+
 
   const formObject = Object.fromEntries(formData)
   const user = JSON.stringify(formObject)
@@ -378,23 +322,23 @@ form.addEventListener("submit", (e) => {
 
   const isValid = checkIfValid(e)
 
-  // !Parola12
+ 
   if (isValid) {
-    //Clearing local storage of inputs
-    cleanLocalStorage()
-    // Resetting inputs
+
     e.currentTarget.reset()
 
     // Second part | adds user in array and then sends it to local storage
-    users.push(user)
-    const newUsers = JSON.stringify(users)
-    localStorage.setItem("users", newUsers)
+
     popupContainer.classList.remove("hide")
     popupContainer.style.display = "flex"
+    
+    users.push(user)
+    const newUsers = JSON.stringify(users)
+
+    localStorage.setItem("users", newUsers)
     localStorage.setItem("full-name", fullName)
+    localStorage.setItem(email[0], email[1])
   }
 })
 
 
-// localStorage.clear()
-// console.log(JSON.parse(localStorage.getItem("users")))

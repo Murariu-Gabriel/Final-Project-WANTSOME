@@ -177,22 +177,22 @@ form.addEventListener("submit", (e) => {
     const span = input.parentElement.children[1]
     inputValidation(input)
 
-     if (label.classList.contains("error") || span.classList.contains("show")) {
-       errors.push("error")
-       e.preventDefault()
-       noError = false
-     } else {
-       errors.push("valid")
-     }
+    if (label.classList.contains("error") || span.classList.contains("show")) {
+      errors.push("error")
+      e.preventDefault()
+      noError = false
+    } else {
+      errors.push("valid")
+    }
   }
 
-   if (!errors.includes("error")) {
-    const rawUserInfo = {status: true, user: email }
-    const userInfo = JSON.stringify(rawUserInfo)
+  if (!errors.includes("error")) {
+  const rawUserInfo = {status: true, user: email }
+  const userInfo = JSON.stringify(rawUserInfo)
 
-      localStorage.setItem("isUserLoggedIn", userInfo)
-     window.location.assign("http://127.0.0.1:5500/html-pages/dashboard.html")
-   } 
+    localStorage.setItem("isUserLoggedIn", userInfo)
+    window.location.assign("http://127.0.0.1:5500/html-pages/dashboard.html")
+  } 
 
 })
 
