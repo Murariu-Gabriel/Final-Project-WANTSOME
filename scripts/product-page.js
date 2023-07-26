@@ -561,21 +561,16 @@ addToCart.addEventListener("click", () => {
 // localStorage.removeItem("cart-products")
 
 
-const returnEL = (list, id) => {
-  for(const el of list){
-    if(el.id === id){
-      return el
-    }
-  }
+const returnEl = (list, id) => {
+  const findElement = list.find((element) => element.id === id)
 
+  return findElement
 }
 
 const returnValue = (list, id) => {
-  for (const el of list) {
-    if (el.id === id) {
-      return el.count
-    }
-  }
+  const foundElement = returnEl(list, id)
+
+  return foundElement ? foundElement.count : undefined
 }
 
 //  addToLocalStorage(newCartProduct, product.id, productCounter.value)
@@ -637,13 +632,7 @@ const cart = parsedCartProducts ? parsedCartProducts : []
 }
 
 
-
-
-
-
 // CART LIST ELEMENT FUNCTIONALITY 
-// localStorage.removeItem("cart-products")
-
 
 const cartButtonsEvent = (e) => {
   const id = e.target.parentNode.parentNode.id.slice(5,12)
@@ -806,15 +795,7 @@ const addRecommended = () => {
 console.log(addRecommended())
 
 
-
-
-
-
-
-
 // SEARCH FUNCTIONALITY
-
-
 
 const searchContainer = document.getElementById("search-container")
 const inputContainer = document.getElementById("input-container")
@@ -828,7 +809,6 @@ const placeHolder = document.getElementById("place-holder")
 const recentSearches = localStorage.getItem("recent-searches")
 const parsedRecentSearches = JSON.parse(recentSearches)
 const searches = parsedRecentSearches ? parsedRecentSearches : []
-// const searches = recentSearches ? recentSearches : []
 
 const getProductsData = () => {
   const allProducts = localStorage.getItem("products")
@@ -839,10 +819,7 @@ const getProductsData = () => {
 }
 
 const addSearchToggle = (e) => {
-  if (e) {
-    // e.preventDefault()
-    // e.stopPropagation()
-  }
+ 
   searchContainer.classList.add("overlay2")
   inputContainer.classList.add("top")
   inputContainer.classList.add("search-animation")
@@ -933,12 +910,7 @@ const noMatterSearch = (windowKey) => {
 
 const placeHolderAssist = (text, value) => {
   const splitWord = text.split("")
-  const wordStart = text.indexOf(value)
-  const wordEnd = text.lastIndexOf(value)
-  const whiteSpace = splitWord.splice(0, value.length, value)
-
-  console.log(splitWord)
-  console.log(text)
+  splitWord.splice(0, value.length, value)
 
   return splitWord.join("")
 }
@@ -946,15 +918,13 @@ const placeHolderAssist = (text, value) => {
 const cutBehindWord = (sentence, word) => {
   const startingWord = " " + word
   const start = sentence.indexOf(startingWord)
-  // const whiteSpace = sentence.slice(0, start).replace(/./g, " ")
+  
   if (start < 0) {
     return ""
   }
   const restOfSentence = sentence.substring(start, sentence.length)
   return restOfSentence
 }
-
-console.log(placeHolderAssist("garmin venu 2", "GARrmin venu"))
 
 const highlight = (element, searchedWord) => {
   const span = element.querySelector("#list-text")
@@ -984,16 +954,7 @@ const showSearchResults = (value) => {
 }
 
 const checkIfResultRepeats = (domList, value) => {
-  // const domElements = domList.children
-  // console.log(domElements)
-  for (const element of domList) {
-    console.log(element.innerText, value)
-    if (element.innerText === value) {
-      return true
-    }
-  }
-
-  return false
+  return Array.from(domList).some((element) => element.innerText === value)
 }
 
 searchInput.addEventListener("keyup", (e) => {
@@ -1014,7 +975,7 @@ searchInput.addEventListener("keyup", (e) => {
   console.log(value)
   const inputSearchResult = products.filter((product) => {
     return product.name.includes(value) || product.category.includes(value)
-    //  return product.name.startsWith(value) || product.category.startsWith(value)
+   
   })
   const inputCategories = inputSearchResult.map((product) => product.category)
   const setCategories = new Set(inputCategories)
@@ -1070,16 +1031,12 @@ searchInput.addEventListener("keyup", (e) => {
   }
 })
 
-// localStorage.clear()
-// localStorage.removeItem("recent-searches")
-
 searchButton.addEventListener("click", (e) => {
   noMatterSearch(searchInput.value)
   
 })
 
 document.body.addEventListener("keydown", (e) => {
-  //   console.log(e.key)
   if (e.key === "Enter") {
     noMatterSearch(searchInput.value)
     e.preventDefault()
@@ -1105,7 +1062,7 @@ document.body.addEventListener("keydown", (e) => {
 
 const generateListElement = (content) => {
   const element = document.createElement("li")
-  // console.log(content)
+
   element.innerHTML = `
         <a href="/html-pages/search.html?search=${content}">
             <svg
@@ -1134,15 +1091,12 @@ const fillListWithData = (array) => {
 
 fillListWithData(searches)
 
+
 // BACK TO TOP
-
-
 
 const toTopBtn = document.getElementById("back-to-top")
 const footer = document.body.querySelector("footer")
 
-
-  
 window.addEventListener("scroll", (e) => {
 
   let isButtonOnTop = false
@@ -1177,14 +1131,12 @@ window.addEventListener("scroll", (e) => {
 toTopBtn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth", // Add smooth scrolling animation
+    behavior: "smooth", 
   })
 })
 
 
-
 // NAVIGATION STICKY FUNCTIONALITY
-
 
 window.addEventListener("resize", () => {
   const screenWidth = window.innerWidth

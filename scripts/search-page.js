@@ -1,4 +1,3 @@
-
 const mainSection = document.body.querySelector(".generated-search-result")
 const selectContainers = document.body.querySelectorAll(".select-box")
 const filterButton = document.getElementById("filter-button")
@@ -52,19 +51,19 @@ const addSelectEvent = () => {
 
 addSelectEvent()
 
+
 // WHEN USER CLICKS OUT OF SELECT BOXES
 
 document.body.addEventListener("click", (e) => {
       
     if (!selectPagination.classList.contains("hide")) {
-        selectPagination.classList.add("hide")
+      selectPagination.classList.add("hide")
     }
 
     if (!selectOrder.classList.contains("hide")) {
       selectOrder.classList.add("hide")
     }
 })
-
 
 
 // FILTER BTN
@@ -82,12 +81,13 @@ displayResult.addEventListener("click", () => {
   document.body.classList.remove("stop-scroll")
 })
 
+
 // TOGGLE FOR VIEW STYLE
 
 const buttonSvg = changeStyleButton.children 
 
 const toggleBtnSvg = (svgs) => {
-for (const svg of buttonSvg) {
+for (const svg of svgs) {
   svg.classList.contains("hide")
     ? svg.classList.remove("hide")
     : svg.classList.add("hide")
@@ -96,9 +96,8 @@ for (const svg of buttonSvg) {
 
 changeStyleButton.addEventListener("click", (e) => {
 
-    toggleBtnSvg(buttonSvg)
+  toggleBtnSvg(buttonSvg)
   
-
   if (generatedProductsContainer.classList.contains("generated-products")) {
     generatedProductsContainer.classList.remove("generated-products")
     generatedProductsContainer.classList.add("generated-products-line")
@@ -107,6 +106,7 @@ changeStyleButton.addEventListener("click", (e) => {
     generatedProductsContainer.classList.add("generated-products")
   }
 })
+
 
 // DISABLE FILTER OVERLAY IF VIEWPORT IS BIG
 
@@ -134,8 +134,6 @@ window.addEventListener("resize", () => {
 })
 
 
-
-
 // GENERATE LIST OF SEARCHED PRODUCTS
 
 const searchParams = new URLSearchParams(window.location.search)
@@ -159,10 +157,6 @@ const getSearchProducts = (search) => {
 
   return searchSpecificProducts
 }
-
-// console.log(retrievedSearch)
-
-
 
 
 // IMPORTANT VARIABLE CONTAINING SEARCH RESULT
@@ -189,9 +183,6 @@ const progress = document.querySelector(".range-slider .progress")
 const priceInput = document.querySelectorAll(".price-input input")
 
 const priceGap = 50
-
-
-
 
 
 
@@ -246,8 +237,7 @@ const rangeInputFunctionality = (minVal, maxVal) => {
     } 
     else {
       progress.style.left = "0%"
-      // progress.style.right = "0%"
-      // priceInput[1].value = minVal
+
     }
 
 }
@@ -430,6 +420,7 @@ const addCount = (list, id) => {
   }
 }
 
+// THIS FUNCTION
 
 const addItemToLocalStorage = (productId, ProductValue, operation) => {
   const existingCartProducts = localStorage.getItem("cart-products")
@@ -445,10 +436,11 @@ const addItemToLocalStorage = (productId, ProductValue, operation) => {
     cart.push(object)
   } else {
     if (verifyIfIdExistsForCart(cart, object.id)) {
-      const element = returnEL(cart, object.id)
+      const element = returnEl(cart, object.id)
       const ifListIncrement =
         operation === "increment" ? 1 : 1
       element.count = parseInt(returnValue(cart, object.id)) + ifListIncrement
+
     } else {
       object.count = 1
       cart.push(object)
@@ -466,8 +458,6 @@ const addItemToLocalStorage = (productId, ProductValue, operation) => {
   const newProducts = JSON.stringify(cart)
   localStorage.setItem("cart-products", newProducts)
 }
-
-
 
 
 const generateProduct = (
@@ -826,8 +816,6 @@ const selectOrderFunctionality = (list, order) => {
 selectOrderFunctionality(currentSearch)
 
 
-
-
 // !IMPORTANT 
 const updatePaginationAndProducts = (
   items,
@@ -965,12 +953,7 @@ const checkIfOrderSelected = () => {
 
 const deselectPriceFilters = (options, e, optional) => {
 
-
   if (optional === "select") {
-    // const inputs = e.target.parentNode.parentNode.parentNode.querySelectorAll(
-      //   "input[type='checkbox']"
-      // )
-
       
     let filters = reloadedFilters()
     let restartLoop = true
@@ -983,7 +966,9 @@ const deselectPriceFilters = (options, e, optional) => {
           input.click()
           filters = reloadedFilters()
           restartLoop = true
+
         }
+
         if(options.includes("price-interval") && filters[filters.length - 1] === input){
           const constPriceValues = options[options.length - 1]
           let minPrice = parseInt(constPriceValues.min )
@@ -991,22 +976,6 @@ const deselectPriceFilters = (options, e, optional) => {
 
           let minValue = parseInt(priceInput[0].min)
           let maxValue = parseInt(priceInput[1].max)
-
-
-          
-          console.log(minPrice, maxValue)
-          // if(minPrice > maxPrice){
-          //   minPrice = minValue
-          //   // maxPrice = maxValue
-          // }
-
-          //  if (minPrice < maxPrice) {
-          //    minPrice = minValue
-          //    maxPrice = maxValue
-          //  }
-
-
-
 
           if(maxPrice > maxValue){
             maxPrice = maxValue
@@ -1030,8 +999,6 @@ const deselectPriceFilters = (options, e, optional) => {
           rangeInput[0].value = minPrice
           rangeInput[1].value = maxPrice
 
-
-          
           rangeInputFunctionality(minPrice, maxPrice)
           rangeButton.click()
         
@@ -1053,13 +1020,9 @@ const deselectPriceFilters = (options, e, optional) => {
     return
   } 
 
-  
-
-
   options.forEach((input) => {
     if (input !== e.target && input.checked) {
       console.log(e.target.checked)
-      // console.log(input, e.target)
       input.click()
     } 
   })
@@ -1080,15 +1043,13 @@ const currentListItems = (isChecked, list) => {
   if (isChecked) {
     currentFilterItems.push(list)
 
-  
   } else {
     currentFilterItems = currentFilterItems.filter((array) => array !== list)
+
   }
 
   const items = flattenArray(currentFilterItems)
-  console.log(items)
-  return items
-  
+  return items  
 }
 
 
@@ -1098,7 +1059,6 @@ const currentListItems2 = (isChecked, list) => {
   if (isChecked) {
     currentFilterItems2.push(list)
 
- 
   } else {
     currentFilterItems2 = currentFilterItems2.filter((array) => array !== list)
   
@@ -1141,9 +1101,6 @@ const generateFilterEvent = (e, list) => {
 
       categoriesFunctionality(currentList, inputParent)
     } else {
-      // console.log(selectAllProducts.checked, getAllProducts())
-
-      console.log(currentList)
 
       if (selectAllProducts.checked && currentFilterItems.length === 0) {
         updatePaginationAndProducts(
@@ -1171,8 +1128,6 @@ const generateFilterEvent = (e, list) => {
         )
         categoriesFunctionality(currentList, inputParent)
       }
-
-      // categoriesFunctionality(currentList, inputParent)
     }
   }
 
@@ -1301,10 +1256,6 @@ const removeFiltersBtn = document.getElementById("remove-all-filters")
 const removeAllBtnParent = document.getElementById("remove-all-filters-parent")
 
 
-
-
-
-
 const storeCurrentFilters = () => {
   const currentFilters = []
 
@@ -1333,8 +1284,6 @@ window.addEventListener("beforeunload", (e) => {
 })
 
 
-
-
 const generateFilterFunctionality = (element, list ) => {
   const input = element.querySelector("input") 
   
@@ -1360,9 +1309,6 @@ removeFiltersBtn.addEventListener("click", (e) => {
   removeAllBtnParent.classList.add("hide")
 
 })
-
-
-
 
 
 const generateFilter = (name, count, list) => {
@@ -1411,11 +1357,9 @@ const categoriesFunctionality = (list, category, individualUpdate) => {
   }
 
   for (const container of filterContainers) {
-    // if (index !== 0) {
-      const containerType = container.querySelector("span").innerText.toLowerCase()
-      const filterContainer = container.querySelector("aside") 
-
-    //  console.log(container.innerText)
+  
+    const containerType = container.querySelector("span").innerText.toLowerCase()
+    const filterContainer = container.querySelector("aside") 
 
     if (isInitialRender) {
       console.log("INITIAL RENDER")
@@ -1463,8 +1407,6 @@ const categoriesFunctionality = (list, category, individualUpdate) => {
           filterType(list, "price", filterContainer)
         }
       }
-
-      // }
     }
    
     if(individualUpdate){
@@ -1483,9 +1425,6 @@ const categoriesFunctionality = (list, category, individualUpdate) => {
 // On load the category will be generated considering all products first
 
 categoriesFunctionality(getAllProducts())
-
-
-
 
 
 intervalInput.addEventListener("click", (e) => {
@@ -1522,9 +1461,6 @@ intervalInput.addEventListener("click", (e) => {
   
 })
 
-// currentFilterItems
-// currentFilterItems2
-
 const rangePricesFromList = (list, min, max) => {
 
   const filter = list.filter(
@@ -1549,18 +1485,14 @@ const checkInputs = (inputs) => {
 
 
 const getElementsFromLastArrayUsed = () => {
-  // filters
   let lastFilter = null
+
   for(const container of filters){
-    // const type = container.querySelector("span")
-    // console.log(type)
-    
 
     if (container !== filters[filters.length - 1]) {
 
       const inputs = container.querySelectorAll("input[type='checkbox']")
 
-      // console.log(inputs)
       if(container === filters[1] && checkInputs(inputs)){
         lastFilter = getAllProducts()
       }
@@ -1582,9 +1514,6 @@ const getElementsFromLastArrayUsed = () => {
 }
 
 
-
-
-
 rangeButton.addEventListener('click', (e) => {
   console.log(getElementsFromLastArrayUsed())
 
@@ -1593,9 +1522,6 @@ rangeButton.addEventListener('click', (e) => {
   let min = parseInt(inputs[0].value)
   let max = parseInt(inputs[1].value)
 
- 
-
-
   if(min === max){
     max = max + priceGap
   
@@ -1603,7 +1529,6 @@ rangeButton.addEventListener('click', (e) => {
 
   if(min > max){
     
-    // e.preventDefault()
     return
   }
 
@@ -1633,9 +1558,7 @@ rangeButton.addEventListener('click', (e) => {
     )
 
     intervalInput.click()
-
-    }
-    
+  }
 })
 
 
@@ -1668,83 +1591,6 @@ const loadFilters = () => {
 loadFilters()
 
   
-// rangeInputFunctionality
-
-// const customEvent = new Event("loaded")
-
-// document.dispatchEvent(customEvent)
-
-// allFilters.addEventListener("loaded", loadFilters)
-
-
-// after that all selected filters to to show on mobile and tablet, the pc version needs to generate a button that removes all filters made
-
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,11 +1,12 @@
+// This is a js file tht contains functionality that is shared through all pages not including product page
+
+
 // cart remove button
 
 const cartDeleteAll = document.getElementById("remove-cart-all")
 
 
-
 // USER OPTIONS TOGGLE
-
 
 const getUserStatus = () => {
   const storageStatus = localStorage.getItem("isUserLoggedIn")
@@ -50,17 +51,18 @@ userIcon.addEventListener("click", (e) => {
   }
 
   if(cartContainer.classList.contains("show-cart")){
-     cartContainer.classList.remove("show-cart")
-    // document.body.classList.remove("stop-scroll")
+    cartContainer.classList.remove("show-cart")
+
   }
 
  
-   if (headerNav.classList.contains("nav-toggle")) {
-     closeButton.classList.add("display-none")
-     popButton.classList.remove("display-none")
-     headerNav.classList.remove("nav-toggle")
-     document.body.classList.add("stop-scroll")
-   }
+  if (headerNav.classList.contains("nav-toggle")) {
+    closeButton.classList.add("display-none")
+    popButton.classList.remove("display-none")
+    headerNav.classList.remove("nav-toggle")
+    document.body.classList.add("stop-scroll")
+
+  }
   
 })
 
@@ -209,8 +211,6 @@ const searchParameters = new URLSearchParams(window.location)
 const parameters = Object.fromEntries(searchParameters.entries())
 
 
-
-
 // Shared local storage loading
 
 if(parameters.pathname !== "/html-pages/checkout.html"){
@@ -252,11 +252,12 @@ cartForm.addEventListener("click", (e) => {
 const hideRemoveAll = (num) => {
   if(num === 0){
     cartDeleteAll.classList.add("hide")
+
   } else {
     cartDeleteAll.classList.remove("hide")
+
   }
 
-  // console.log(num)
 }
 
 const updateCounter = () => {
@@ -276,11 +277,10 @@ const updateCounter = () => {
     outerCounter.innerText = itemsCount
     
   } 
+
   if (itemsCount === 0 && cartButton.children.length > 1) {
     cartOuterCount.remove()
   }
-
-  
 
   hideRemoveAll(itemsCount)
 }
@@ -297,6 +297,7 @@ cartButton.addEventListener("click", () => {
     document.body.classList.remove("stop-scroll")
 
   }
+
   calculateTotal(cartList.children)
   updateCounter()
 
@@ -320,7 +321,6 @@ const productListString = localStorage.getItem("products")
 const productList = JSON.parse(productListString)
 
 const cartList = document.getElementById("cart-list")
-// console.log(cartList)
 
 const addListEl = (
   productId,
@@ -364,40 +364,28 @@ const addListEl = (
 }
 
 
-// I m sure most of these can be made info filters or find functions
 
-const returnEL = (list, id) => {
-  for (const el of list) {
-    if (el.id === id) {
-      return el
-    }
-  }
+const returnEl = (list, id) => {
+  
+  const findElement = list.find(element => element.id === id)
+
+  return findElement
 }
 
 const returnValue = (list, id) => {
-  for (const el of list) {
-    if (el.id === id) {
-      return el.count
-    }
-  }
+  const foundElement = returnEl(list, id)
+
+  return foundElement ? foundElement.count : undefined
 }
 
-const verifyIfIdExists = (list, id) => {
-  for (const el of list) {
-    if (el.id.includes(id)) {
-      return true
-    }
-  }
-  return false
-}
+// const verifyIfIdExists = (list, id) => {
+//   return list.some(element => element.id.includes(id) )
+
+// }
 
 const verifyIfIdExistsForCart = (list, id) => {
-  for (const el of list) {
-    if (el.id === id) {
-      return true
-    }
-  }
-  return false
+  return list.some(element => element.id === id)
+
 }
 
 const existingCartProducts = localStorage.getItem("cart-products")
@@ -420,16 +408,16 @@ const cart = parsedCartProducts ? parsedCartProducts : []
   if (cart.length === 0) {
     cart.push(object)
   } else {
+
     if (verifyIfIdExistsForCart(cart, object.id) && object.count !== 0) {
       console.log(verifyIfIdExistsForCart(cart, object.id))
       console.log(cart, object.id)
-      const element = returnEL(cart, object.id)
+      const element = returnEl(cart, object.id)
       element.count = parseInt(object.count)
 
       const newProducts = JSON.stringify(cart)
       localStorage.setItem("cart-products", newProducts)
 
-     
     } 
   }
  
@@ -473,13 +461,11 @@ const cartButtonsEvent = (e) => {
 
   updateCounter()
 }
-//  localStorage.removeItem("cart-products")
-
 
 
 const cartListFunctionality = (parent) => {
   const containerButtons = parent.querySelectorAll("button")
-  // console.log(containerButtons)
+
   for (const button of containerButtons) {
     button.addEventListener("click", cartButtonsEvent)
   }
@@ -487,7 +473,7 @@ const cartListFunctionality = (parent) => {
 
 const removeCartListFunctionality = (parent) => {
   const containerButtons = parent.querySelectorAll("button")
-  console.log(containerButtons)
+
   for (const button of containerButtons) {
     button.removeEventListener("click", cartButtonsEvent)
   }
@@ -536,11 +522,6 @@ const calculateTotal = (list) => {
 
 
 
-
-
-
-
-
 cartDeleteAll.addEventListener("click", (e) => {
   e.preventDefault()
   
@@ -563,25 +544,16 @@ const deleteFromStorage = (identification) => {
   const cartProducts = JSON.parse(getLocal)
 
   if (verifyIfIdExistsForCart(cartProducts, identification)) {
-    // console.log(verifyIfIdExistsForCart(cart, identification))
-    // console.log(cart)
+  
     const newCart = cartProducts.filter((el) => {
-      // console.log(el.id, identification)
       return el.id !== identification
     })
-    console.log(newCart)
+
+  
     const newCartItems = JSON.stringify(newCart)
     localStorage.setItem("cart-products", newCartItems)
   }
 }
-
-// console.log(cart)
-//  const item = cart.filter(el => el.id != "item-2")
-//  console.log(item)
-//  const newCartItems = JSON.stringify(item)
-//  localStorage.setItem("cart-products", newCartItems)
-
-// console.log(localStorage.getItem("cart-products"))
 
 
 // SEARCH FUNCTIONALITY
@@ -603,7 +575,6 @@ const searchButton = document.getElementById("search-button")
 const recentSearches = localStorage.getItem("recent-searches")
 const parsedRecentSearches = JSON.parse(recentSearches)
 const searches = parsedRecentSearches ? parsedRecentSearches : []
-// const searches = recentSearches ? recentSearches : []
 
 const getProductsData = () => {
   const allProducts = localStorage.getItem("products")
@@ -614,10 +585,7 @@ const getProductsData = () => {
 }
 
 const addSearchToggle = (e) => {
-  if (e) {
-    // e.preventDefault()
-    // e.stopPropagation()
-  }
+ 
   searchContainer.classList.add("overlay2")
   inputContainer.classList.add("top")
   inputContainer.classList.add("search-animation")
@@ -641,7 +609,7 @@ const addSearchToggle = (e) => {
     userContainer.classList.add("hide")
   }
 }
-// console.log(headerNav.classList.contains("nav-toggle"))
+
 
 const removeSearchToggle = (e) => {
   searchInput.value = ""
@@ -705,15 +673,9 @@ const noMatterSearch = (windowKey) => {
 }
 
 
-
 const placeHolderAssist = (text, value) => {
   const splitWord = text.split("")
-  const wordStart = text.indexOf(value)
-  const wordEnd = text.lastIndexOf(value)
-  const whiteSpace = splitWord.splice(0, value.length, value)
-  
-  console.log(splitWord)
-  console.log(text)
+  splitWord.splice(0, value.length, value)
 
   return splitWord.join("")
 }
@@ -729,7 +691,6 @@ const cutBehindWord = (sentence, word) => {
 }
 
  
-
 const highlight = (element, searchedWord) => {
   const span = element.querySelector("#list-text")
   const elementText = span.innerText
@@ -758,16 +719,7 @@ const showSearchResults = (value) => {
 }
 
 const checkIfResultRepeats = (domList, value) => {
-  // const domElements = domList.children
-  // console.log(domElements)
-  for (const element of domList) {
-    console.log(element.innerText, value)
-    if (element.innerText === value) {
-      return true
-    }
-  }
-
-  return false
+  return Array.from(domList).some((element) => element.innerText === value)
 }
 
 searchInput.addEventListener("keyup", (e) => {
@@ -791,7 +743,7 @@ searchInput.addEventListener("keyup", (e) => {
     (product) => {
 
      return product.name.includes(value) || product.category.includes(value)
-     //  return product.name.startsWith(value) || product.category.startsWith(value)
+  
     }
   )
   const inputCategories = inputSearchResult.map(product => product.category)
@@ -806,7 +758,6 @@ searchInput.addEventListener("keyup", (e) => {
 
   if (value.length >= 2) {
     inputSearchResult.forEach((element, index) =>{
-
 
 
       if(element.name.includes(value) ){
@@ -858,7 +809,6 @@ searchButton.addEventListener("click", (e) => {
 })
 
 document.body.addEventListener("keydown", (e) => {
-  //   console.log(e.key)
   if (e.key === "Enter") {
     noMatterSearch(searchInput.value)
     e.preventDefault()
@@ -917,7 +867,7 @@ const fillListWithData = (array) => {
 }
 
 fillListWithData(searches)
-// console.log(searches)
+
 
 
 // REMOVE CURRENT PAGE AND ORDER PREFRENCE FROM SEARCH PAGE
@@ -982,7 +932,6 @@ if(parameters.pathname !== "/html-pages/checkout.html"){
 
 // NAVIGATION STICKY FUNCTIONALITY
 
-
 window.addEventListener("resize", () => {
   const screenWidth = window.innerWidth
 
@@ -1026,11 +975,6 @@ const navObserver = new IntersectionObserver((entries) => {
 navObserver.observe(scrollWatcher)
 
 
-
-
-// NEXT THERE IS NEEDED TO BE FOOL PROOF FOR CLICKING MULTIPLE TOGGLES
-
-// YOU NEED TO COPY PASTE THIS IN PRODUCT PAGE AND ALSO THE HTML IN ALL PAGES
 
 
 
